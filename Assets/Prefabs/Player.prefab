@@ -96,9 +96,9 @@ GameObject:
   - component: {fileID: 9216489362185656824}
   - component: {fileID: 9216489362185656830}
   - component: {fileID: 9216489362185656825}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -214,3 +214,4 @@ MonoBehaviour:
   maxHealth: 100
   spells:
   - {fileID: 11400000, guid: ed98ab687c1a1b64282b6f76a1976590, type: 2}
+  turnOver: 0

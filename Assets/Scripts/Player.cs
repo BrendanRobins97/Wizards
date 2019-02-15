@@ -5,6 +5,7 @@
 // Description: 
 
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -33,15 +34,18 @@ public class Player : MonoBehaviour
     private readonly float cameraXOffset = 1f;
 
     private int currentSpellIndex;
+    [HideInInspector] public bool turnOver;
 
     public void Enable()
     {
+        turnOver = false;
         enabled = true;
         playerCamera.enabled = true;
     }
 
     public void Disable()
     {
+        turnOver = true;
         enabled = false;
         playerCamera.enabled = false;
     }
@@ -119,10 +123,12 @@ public class Player : MonoBehaviour
 
         if (Input.GetButtonUp("Fire1"))
         {
+            // Fire spell when mouse is released
             Vector3 spellStart =
                 transform.TransformPoint(new Vector3(cameraXOffset, cameraYOffset));
             spells[currentSpellIndex].ThrowSpell(spellStart, playerCamera.transform.forward, chargePercent);
-
+            enabled = false; // Disable movement
+            turnOver = true; // Signal that their turn is over
         }
         // Handle charge for spell
         if (Input.GetButton("Fire1"))
@@ -137,5 +143,15 @@ public class Player : MonoBehaviour
         chargeAmount = Mathf.Clamp(chargeAmount, 0, chargeMax);
         chargePercent = chargeAmount / chargeMax;
         
+    }
+
+    public void Damage(int amount)
+    {
+        health -= amount;
+    }
+
+    public float HealthPercent()
+    {
+        return (float)health / maxHealth;
     }
 }

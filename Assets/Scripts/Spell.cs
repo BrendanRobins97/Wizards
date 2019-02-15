@@ -7,12 +7,14 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Spell", menuName = "Spell", order = 0)]
 public class Spell : ScriptableObject
 {
-    public GameObject spellPrefab;
+    public SpellObject spellPrefab;
     public float speed;
+    public int contactDamage;
 
     public void ThrowSpell(Vector3 startPosition, Vector3 direction, float charge)
     {
-        GameObject spell = Instantiate(spellPrefab, startPosition, Quaternion.identity);
+        SpellObject spell = Instantiate(spellPrefab, startPosition, Quaternion.identity);
         spell.GetComponent<Rigidbody>().velocity = direction * charge * speed;
+        spell.damage = contactDamage;
     }
 }

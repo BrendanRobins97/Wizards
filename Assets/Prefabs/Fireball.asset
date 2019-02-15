@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5108f924abb79d54eb11c01d57bc46c4, type: 3}
   m_Name: Fireball
   m_EditorClassIdentifier: 
-  spellPrefab: {fileID: 844738351872716877, guid: 32c14bf24e1f71840820214db12558d3,
+  spellPrefab: {fileID: 8146729462779372412, guid: 32c14bf24e1f71840820214db12558d3,
     type: 3}
   speed: 40
+  contactDamage: 55
