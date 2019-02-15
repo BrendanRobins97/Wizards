@@ -11,12 +11,11 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private TextMeshProUGUI gameOverText;
     [SerializeField] private Slider chargeBar;
     [SerializeField] private TextMeshProUGUI turnText;
     [SerializeField] private Transform playerInfoContainer;
-
     [SerializeField] private PlayerUI playerUIPrefab;
-
     [SerializeField] private Camera mainCamera;
     [SerializeField] private GameObject playerPrefab;
     [SerializeField] private GameObject playerContainer;
@@ -24,14 +23,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<Transform> spawnLocations;
     [SerializeField] private float turnTime = 20f;
     [SerializeField] private float timeAfterSpellCast = 5f;
+    [SerializeField] private List<Material> playerMaterials;
 
     private List<PlayerInfo> players = new List<PlayerInfo>();
-
     private int playerTurn;
-
     private float currentTurnTimeLeft;
-
     private bool endOfTurn;
+    private int numPlayersLeft;
 
     public Player CurrentPlayer => players[playerTurn].player;
 
@@ -40,16 +38,21 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < numPlayers; i++)
         {
             PlayerInfo newPlayerInfo;
-            newPlayerInfo.player = Instantiate(playerPrefab, spawnLocations[i].position, spawnLocations[i].rotation,
+            Player player = Instantiate(playerPrefab, spawnLocations[i].position, spawnLocations[i].rotation,
                     transform)
                 .GetComponent<Player>();
-            newPlayerInfo.playerUI = Instantiate(playerUIPrefab, playerInfoContainer).GetComponent<PlayerUI>();
+            player.GetComponent<MeshRenderer>().material = playerMaterials[i];
+            PlayerUI playerUI = Instantiate(playerUIPrefab, playerInfoContainer).GetComponent<PlayerUI>();
+            playerUI.playerImage.color = playerMaterials[i].color;
+            newPlayerInfo.player = player;
+            newPlayerInfo.playerUI = playerUI;
             newPlayerInfo.dead = false;
             players.Add(newPlayerInfo);
         }
-
+        gameOverText.gameObject.SetActive(false);
         mainCamera.enabled = false;
         playerTurn = 0;
+        numPlayersLeft = numPlayers;
         CurrentPlayer.Enable();
         StartTurn();
     }
@@ -76,6 +79,8 @@ public class GameManager : MonoBehaviour
             endOfTurn = true;
         }
 
+        
+
         // Destroy all players with health below 0
         for (int i = 0; i < numPlayers; i++)
         {
@@ -89,15 +94,25 @@ public class GameManager : MonoBehaviour
             playerUI.healthBar.value = player.HealthPercent();
             if (player.health <= 0)
             {
+                player.Disable();
                 Destroy(player.gameObject);
-                playerUI.playerImage.color = Color.red;
+                playerUI.playerImage.color = Color.gray;
+                numPlayersLeft--;
+                if (i == playerTurn)
+                {
+                    currentTurnTimeLeft = 0;
+                }
             }
         }
-
-        if (currentTurnTimeLeft <= 0)
-        {
+        if (currentTurnTimeLeft <= 0) {
             NextPlayerTurn();
             StartTurn();
+        }
+
+        if (numPlayersLeft <= 1)
+        {
+            gameOverText.text = "Player " + (playerTurn+1) + " Wins!";
+            gameOverText.gameObject.SetActive(true);
         }
     }
 

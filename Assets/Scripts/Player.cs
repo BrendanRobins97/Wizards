@@ -47,7 +47,10 @@ public class Player : MonoBehaviour
     {
         turnOver = true;
         enabled = false;
-        playerCamera.enabled = false;
+        if (playerCamera)
+        {
+            playerCamera.enabled = false;
+        }
     }
 
     private void Awake()
@@ -148,6 +151,11 @@ public class Player : MonoBehaviour
     public void Damage(int amount)
     {
         health -= amount;
+    }
+
+    public void Kill()
+    {
+        health = 0;
     }
 
     public float HealthPercent()

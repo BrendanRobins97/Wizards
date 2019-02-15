@@ -396,3 +396,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 5820351932358815397}
+  playerImage: {fileID: 345412973431957574}
