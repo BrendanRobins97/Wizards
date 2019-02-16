@@ -17,13 +17,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Transform playerInfoContainer;
     [SerializeField] private PlayerUI playerUIPrefab;
     [SerializeField] private Camera mainCamera;
-    [SerializeField] private GameObject playerPrefab;
     [SerializeField] private GameObject playerContainer;
     [SerializeField] private int numPlayers = 2;
     [SerializeField] private List<Transform> spawnLocations;
     [SerializeField] private float turnTime = 20f;
     [SerializeField] private float timeAfterSpellCast = 5f;
-    [SerializeField] private List<Material> playerMaterials;
+    [SerializeField] private List<GameObject> playerPrefabs;
 
     private List<PlayerInfo> players = new List<PlayerInfo>();
     private int playerTurn;
@@ -38,12 +37,10 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < numPlayers; i++)
         {
             PlayerInfo newPlayerInfo;
-            Player player = Instantiate(playerPrefab, spawnLocations[i].position, spawnLocations[i].rotation,
+            Player player = Instantiate(playerPrefabs[i], spawnLocations[i].position, spawnLocations[i].rotation,
                     transform)
                 .GetComponent<Player>();
-            player.GetComponent<MeshRenderer>().material = playerMaterials[i];
             PlayerUI playerUI = Instantiate(playerUIPrefab, playerInfoContainer).GetComponent<PlayerUI>();
-            playerUI.playerImage.color = playerMaterials[i].color;
             newPlayerInfo.player = player;
             newPlayerInfo.playerUI = playerUI;
             newPlayerInfo.dead = false;

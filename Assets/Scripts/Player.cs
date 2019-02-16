@@ -5,7 +5,6 @@
 // Description: 
 
 using System.Collections.Generic;
-using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -30,7 +29,7 @@ public class Player : MonoBehaviour
     private readonly float cameraRotationLimit = 80f;
 
     private readonly float cameraDistFromPlayer = 6f;
-    private readonly float cameraYOffset = 1f;
+    private readonly float cameraYOffset = 2f;
     private readonly float cameraXOffset = 1f;
 
     private int currentSpellIndex;
@@ -62,6 +61,30 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        // Vertical rotation calculations
+        // Applies to Camera
+        float xRot = Input.GetAxisRaw("Mouse Y");
+
+        float cameraRotationX = xRot * sensitivity;
+
+        currentCameraRotationX -= cameraRotationX;
+        currentCameraRotationX = Mathf.Clamp(currentCameraRotationX, -cameraRotationLimit, cameraRotationLimit);
+
+        float cameraOffsetZ = -cameraDistFromPlayer * Mathf.Cos(currentCameraRotationX * Mathf.Deg2Rad);
+        float cameraOffsetY = cameraDistFromPlayer * Mathf.Sin(currentCameraRotationX * Mathf.Deg2Rad)
+                              + cameraYOffset;
+        cameraOffsetY = Mathf.Max(0, cameraOffsetY);
+        playerCamera.transform.localPosition = new Vector3(cameraXOffset, cameraOffsetY, cameraOffsetZ);
+        playerCamera.transform.localEulerAngles = new Vector3(currentCameraRotationX, 0f, 0f);
+
+        // Horizontal rotation calculations
+        // Applies to character
+        float rot = Input.GetAxisRaw("Mouse X");
+
+        Vector3 yRot = new Vector3(0f, rot, 0f) * sensitivity;
+
+        rigidbody.MoveRotation(rigidbody.rotation * Quaternion.Euler(yRot));
+
         if (!enabled)
         {
             return;
@@ -78,29 +101,6 @@ public class Player : MonoBehaviour
 
         rigidbody.MovePosition(rigidbody.position + velocity);
 
-        // Horizontal rotation calculations
-        // Applies to character
-        float rot = Input.GetAxisRaw("Mouse X");
-
-        Vector3 yRot = new Vector3(0f, rot, 0f) * sensitivity;
-
-        rigidbody.MoveRotation(rigidbody.rotation * Quaternion.Euler(yRot));
-
-        // Vertical rotation calculations
-        // Applies to Camera
-        float xRot = Input.GetAxisRaw("Mouse Y");
-
-        float cameraRotationX = xRot * sensitivity;
-
-        currentCameraRotationX -= cameraRotationX;
-        currentCameraRotationX = Mathf.Clamp(currentCameraRotationX, -cameraRotationLimit, cameraRotationLimit);
-
-        float cameraOffsetZ = -cameraDistFromPlayer * Mathf.Cos(currentCameraRotationX * Mathf.Deg2Rad);
-        float cameraOffsetY = cameraDistFromPlayer * Mathf.Sin(currentCameraRotationX * Mathf.Deg2Rad)
-                              + cameraYOffset;
-        cameraOffsetY = Mathf.Max(0, cameraOffsetY);
-        playerCamera.transform.localPosition = new Vector3(cameraXOffset, cameraOffsetY, cameraOffsetZ);
-        playerCamera.transform.localEulerAngles = new Vector3(currentCameraRotationX, 0f, 0f);
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
@@ -128,7 +128,7 @@ public class Player : MonoBehaviour
         {
             // Fire spell when mouse is released
             Vector3 spellStart =
-                transform.TransformPoint(new Vector3(cameraXOffset, cameraYOffset));
+                transform.TransformPoint(new Vector3(cameraXOffset, cameraYOffset, 0.5f));
             spells[currentSpellIndex].ThrowSpell(spellStart, playerCamera.transform.forward, chargePercent);
             enabled = false; // Disable movement
             turnOver = true; // Signal that their turn is over

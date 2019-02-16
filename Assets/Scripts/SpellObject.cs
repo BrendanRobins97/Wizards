@@ -4,6 +4,7 @@
 // Date Last Modified: 02/15/2019
 // Description: 
 
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SpellObject : MonoBehaviour
@@ -12,6 +13,9 @@ public class SpellObject : MonoBehaviour
 
     private MeshCollider collider;
 
+    private List<Player> playersHit = new List<Player>();
+
+    [SerializeField] private List<Component> componentsToDestroy;
     // Start is called before the first frame update
     private void Start()
     {
@@ -25,10 +29,21 @@ public class SpellObject : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        Destroy(gameObject);
+        for (int i = 0; i < componentsToDestroy.Count; i++)
+        {
+            Destroy(componentsToDestroy[i]);
+        }
+        Destroy(gameObject, 5);
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<Player>().Damage(damage);
+
+            Player player = collision.gameObject.GetComponentInParent<Player>();
+            if (playersHit.Contains(player))
+            {
+                return;
+            }
+            player.Damage(damage);
+            playersHit.Add(player);
         }
     }
 }
