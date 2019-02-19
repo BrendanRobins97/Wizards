@@ -9,11 +9,16 @@ public class Spell : ScriptableObject
     public SpellObject spellPrefab;
     public float speed;
     public int contactDamage;
+    public bool affectedByCharge;
 
     public void ThrowSpell(Vector3 startPosition, Vector3 direction, float charge)
     {
         SpellObject spell = Instantiate(spellPrefab, startPosition, Quaternion.identity);
+        if (!affectedByCharge) {
+            charge = 1;
+        }
         spell.GetComponent<Rigidbody>().velocity = direction * charge * speed;
+        spell.transform.forward = direction;
         spell.damage = contactDamage;
     }
 }

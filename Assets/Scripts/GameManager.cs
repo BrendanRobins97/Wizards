@@ -11,6 +11,8 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
+
     [SerializeField] private TextMeshProUGUI gameOverText;
     [SerializeField] private Slider chargeBar;
     [SerializeField] private TextMeshProUGUI turnText;
@@ -23,6 +25,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float turnTime = 20f;
     [SerializeField] private float timeAfterSpellCast = 5f;
     [SerializeField] private List<GameObject> playerPrefabs;
+    [SerializeField] private List<Image> spellImages;
 
     private List<PlayerInfo> players = new List<PlayerInfo>();
     private int playerTurn;
@@ -31,6 +34,14 @@ public class GameManager : MonoBehaviour
     private int numPlayersLeft;
 
     public Player CurrentPlayer => players[playerTurn].player;
+
+    private void Awake() {
+        if (instance != null) {
+            Destroy(this);
+        } else {
+            instance = this;
+        }
+    }
 
     private void Start()
     {
@@ -41,6 +52,7 @@ public class GameManager : MonoBehaviour
                     transform)
                 .GetComponent<Player>();
             PlayerUI playerUI = Instantiate(playerUIPrefab, playerInfoContainer).GetComponent<PlayerUI>();
+            playerUI.playerImage.color = player.color;
             newPlayerInfo.player = player;
             newPlayerInfo.playerUI = playerUI;
             newPlayerInfo.dead = false;
@@ -112,6 +124,13 @@ public class GameManager : MonoBehaviour
             gameOverText.gameObject.SetActive(true);
         }
     }
+    
+    public void UpdateSpellImage(int index) {
+        for (int i = 0; i < spellImages.Count; i++) {
+            spellImages[i].color = new Color(spellImages[i].color.r, spellImages[i].color.g, spellImages[i].color.b, 0.1f);
+        }
+        spellImages[index].color = new Color(spellImages[index].color.r, spellImages[index].color.g, spellImages[index].color.b, 1);
+    }
 
     private void NextPlayerTurn()
     {
@@ -134,6 +153,7 @@ public class GameManager : MonoBehaviour
         endOfTurn = false;
         currentTurnTimeLeft = turnTime;
     }
+
 }
 
 public struct PlayerInfo

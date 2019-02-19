@@ -77,5 +77,31 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: b580a03919b803646825d90c29079977, type: 2}
+    - target: {fileID: 4163205028047680382, guid: ddebc06a6a43c93479e861341313b537,
+        type: 3}
+      propertyPath: color.r
+      value: 0.8470589
+      objectReference: {fileID: 0}
+    - target: {fileID: 4163205028047680382, guid: ddebc06a6a43c93479e861341313b537,
+        type: 3}
+      propertyPath: color.g
+      value: 0.8431373
+      objectReference: {fileID: 0}
+    - target: {fileID: 4163205028047680382, guid: ddebc06a6a43c93479e861341313b537,
+        type: 3}
+      propertyPath: color.b
+      value: 0.23137257
+      objectReference: {fileID: 0}
+    - target: {fileID: 4163205028047680382, guid: ddebc06a6a43c93479e861341313b537,
+        type: 3}
+      propertyPath: playerCamera
+      value: 
+      objectReference: {fileID: 8397435095481709188}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddebc06a6a43c93479e861341313b537, type: 3}
+--- !u!20 &8397435095481709188 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 6967732776618140109, guid: ddebc06a6a43c93479e861341313b537,
+    type: 3}
+  m_PrefabInstance: {fileID: 1458025748064260937}
+  m_PrefabAsset: {fileID: 0}

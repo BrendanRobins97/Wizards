@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5108f924abb79d54eb11c01d57bc46c4, type: 3}
-  m_Name: Fireball
+  m_Name: Lightning
   m_EditorClassIdentifier: 
-  spellPrefab: {fileID: 8146729462779372412, guid: 32c14bf24e1f71840820214db12558d3,
+  spellPrefab: {fileID: 8146729462779372412, guid: 8d19e0c9eca232d4593c90673c2014ca,
     type: 3}
-  speed: 40
-  contactDamage: 55
+  speed: 200
+  contactDamage: 25
+  affectedByCharge: 0

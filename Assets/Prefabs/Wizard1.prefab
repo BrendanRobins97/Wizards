@@ -244,6 +244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ca155e1e3fa98846baa0f3469b25946, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  color: {r: 0.09411766, g: 0.40000004, b: 0.10980393, a: 1}
   chargeAmount: 2
   health: 0
   chargePercent: 0
@@ -252,6 +253,7 @@ MonoBehaviour:
   playerCamera: {fileID: 6967732776618140109}
   maxHealth: 100
   spells:
+  - {fileID: 11400000, guid: 635e02da8bdfcdf46879664f40b33f5a, type: 2}
   - {fileID: 11400000, guid: ed98ab687c1a1b64282b6f76a1976590, type: 2}
   turnOver: 0
 --- !u!1 &4524869613454635231

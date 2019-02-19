@@ -67,31 +67,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5320584278526621774, guid: ddebc06a6a43c93479e861341313b537,
-        type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 662450660741398305, guid: ddebc06a6a43c93479e861341313b537,
-        type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 4524869613454635231, guid: ddebc06a6a43c93479e861341313b537,
-        type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
     - target: {fileID: 7391975641146880937, guid: ddebc06a6a43c93479e861341313b537,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e7dca80d6e5864d42bf2bc91ad6fdea8, type: 2}
-    - target: {fileID: 8521593990272644568, guid: ddebc06a6a43c93479e861341313b537,
-        type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
     - target: {fileID: 6105901297633125279, guid: ddebc06a6a43c93479e861341313b537,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -102,7 +82,42 @@ PrefabInstance:
       propertyPath: playerCamera
       value: 
       objectReference: {fileID: 2733340935981303857}
+    - target: {fileID: 4163205028047680382, guid: ddebc06a6a43c93479e861341313b537,
+        type: 3}
+      propertyPath: color.r
+      value: 0.07450981
+      objectReference: {fileID: 0}
+    - target: {fileID: 4163205028047680382, guid: ddebc06a6a43c93479e861341313b537,
+        type: 3}
+      propertyPath: color.g
+      value: 0.15294118
+      objectReference: {fileID: 0}
+    - target: {fileID: 4163205028047680382, guid: ddebc06a6a43c93479e861341313b537,
+        type: 3}
+      propertyPath: color.b
+      value: 0.35686275
+      objectReference: {fileID: 0}
+    - target: {fileID: 5320584278526621774, guid: ddebc06a6a43c93479e861341313b537,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4524869613454635231, guid: ddebc06a6a43c93479e861341313b537,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 662450660741398305, guid: ddebc06a6a43c93479e861341313b537,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 1456659502329391224, guid: ddebc06a6a43c93479e861341313b537,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8521593990272644568, guid: ddebc06a6a43c93479e861341313b537,
         type: 3}
       propertyPath: m_TagString
       value: Player

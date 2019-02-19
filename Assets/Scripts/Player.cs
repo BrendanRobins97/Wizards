@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     private const float chargeMax = 2f;
     private const float chargeRate = 1f;
 
+    public Color color;
     public float chargeAmount;
     [HideInInspector] public int health;
     [HideInInspector] public float chargePercent;
@@ -34,6 +35,10 @@ public class Player : MonoBehaviour
 
     private int currentSpellIndex;
     [HideInInspector] public bool turnOver;
+    private Vector3 prevPosition;
+
+    private float stamina;
+    private const float startingStamina = 10f;
 
     public void Enable()
     {
@@ -41,6 +46,8 @@ public class Player : MonoBehaviour
         enabled = true;
         playerCamera.enabled = true;
         chargeAmount = 0;
+        stamina = startingStamina;
+        prevPosition = transform.position;
     }
 
     public void Disable()
@@ -62,6 +69,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        
         // Vertical rotation calculations
         // Applies to Camera
         float xRot = Input.GetAxisRaw("Mouse Y");
@@ -90,18 +98,21 @@ public class Player : MonoBehaviour
         {
             return;
         }
+        stamina -= (transform.position - prevPosition).magnitude;
+        prevPosition = transform.position;
+        if (stamina > 0) {
+            // Movement Calculations
+            float xVelocity = Input.GetAxis("Horizontal") * movementSpeed;
+            float zVelocity = Input.GetAxis("Vertical") * movementSpeed;
 
-        // Movement Calculations
-        float xVelocity = Input.GetAxis("Horizontal") * movementSpeed;
-        float zVelocity = Input.GetAxis("Vertical") * movementSpeed;
+            Vector3 movX = transform.right * xVelocity;
+            Vector3 movZ = transform.forward * zVelocity;
 
-        Vector3 movX = transform.right * xVelocity;
-        Vector3 movZ = transform.forward * zVelocity;
+            Vector3 velocity = (movX + movZ) * movementSpeed * Time.deltaTime;
 
-        Vector3 velocity = (movX + movZ) * movementSpeed * Time.deltaTime;
-
-        rigidbody.MovePosition(rigidbody.position + velocity);
-
+            rigidbody.MovePosition(rigidbody.position + velocity);
+        }
+        
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
@@ -123,7 +134,9 @@ public class Player : MonoBehaviour
             currentSpellIndex = 3;
         }
 
-        currentSpellIndex = Mathf.Clamp(currentSpellIndex, 0, spells.Count);
+        currentSpellIndex = Mathf.Clamp(currentSpellIndex, 0, spells.Count-1);
+
+        GameManager.instance.UpdateSpellImage(currentSpellIndex);
 
         if (Input.GetButtonUp("Fire1"))
         {
@@ -146,6 +159,7 @@ public class Player : MonoBehaviour
 
         chargeAmount = Mathf.Clamp(chargeAmount, 0, chargeMax);
         chargePercent = chargeAmount / chargeMax;
+        
         
     }
 

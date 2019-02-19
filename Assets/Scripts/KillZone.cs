@@ -13,7 +13,7 @@ public class KillZone : MonoBehaviour
         // Kill player if they touch this
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<Player>().Kill();
+            collision.gameObject.GetComponentInParent<Player>().Kill();
         }
     }
 }
