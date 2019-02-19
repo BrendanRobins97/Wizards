@@ -40,6 +40,7 @@ public class Player : MonoBehaviour
         turnOver = false;
         enabled = true;
         playerCamera.enabled = true;
+        chargeAmount = 0;
     }
 
     public void Disable()
