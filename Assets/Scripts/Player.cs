@@ -37,8 +37,8 @@ public class Player : MonoBehaviour
     [HideInInspector] public bool turnOver;
     private Vector3 prevPosition;
 
-    private float stamina;
-    private const float startingStamina = 10f;
+    public float stamina;
+    [HideInInspector] private const float startingStamina = 30f;
 
     public void Enable()
     {
