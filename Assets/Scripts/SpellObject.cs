@@ -10,8 +10,7 @@ using UnityEngine;
 public class SpellObject : MonoBehaviour
 {
     [HideInInspector] public int damage = 10;
-
-    private MeshCollider collider;
+    [HideInInspector] public float destroyTime = 10;
 
     private List<Player> playersHit = new List<Player>();
 
@@ -19,7 +18,7 @@ public class SpellObject : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        collider = GetComponent<MeshCollider>();
+        Destroy(gameObject, 10);
     }
 
     // Update is called once per frame
@@ -29,10 +28,7 @@ public class SpellObject : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        for (int i = 0; i < componentsToDestroy.Count; i++)
-        {
-            Destroy(componentsToDestroy[i]);
-        }
+        DestroyComponents();
         Destroy(gameObject, 5);
         if (collision.gameObject.CompareTag("Player"))
         {
@@ -44,6 +40,16 @@ public class SpellObject : MonoBehaviour
             }
             player.Damage(damage);
             playersHit.Add(player);
+        }
+    }
+
+    public void Disable(float time) {
+        Invoke("DestroyComponents", time);
+    }
+
+    private void DestroyComponents() {
+        for (int i = 0; i < componentsToDestroy.Count; i++) {
+            Destroy(componentsToDestroy[i]);
         }
     }
 }

@@ -255,7 +255,9 @@ MonoBehaviour:
   spells:
   - {fileID: 11400000, guid: 635e02da8bdfcdf46879664f40b33f5a, type: 2}
   - {fileID: 11400000, guid: ed98ab687c1a1b64282b6f76a1976590, type: 2}
+  - {fileID: 11400000, guid: 965e4dcc0d5f33e4bb05d8319c2a04e1, type: 2}
   turnOver: 0
+  stamina: 0
 --- !u!1 &4524869613454635231
 GameObject:
   m_ObjectHideFlags: 0
