@@ -11,6 +11,7 @@ public class Spell : ScriptableObject
     public int contactDamage;
     public bool affectedByCharge;
     public float duration = 5f;
+    public float collisionHoleSize = 2f;
 
     public void ThrowSpell(Vector3 startPosition, Vector3 direction, float charge)
     {
@@ -21,6 +22,7 @@ public class Spell : ScriptableObject
         spell.GetComponent<Rigidbody>().velocity = direction * charge * speed;
         spell.transform.forward = direction;
         spell.damage = contactDamage;
+        spell.collisionHoleSize = collisionHoleSize;
         spell.Disable(duration);
     }
 }

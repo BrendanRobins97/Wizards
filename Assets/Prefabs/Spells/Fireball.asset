@@ -17,3 +17,5 @@ MonoBehaviour:
   speed: 40
   contactDamage: 55
   affectedByCharge: 1
+  duration: 5
+  collisionHoleSize: 5

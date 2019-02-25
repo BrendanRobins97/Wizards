@@ -109,7 +109,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 2
 --- !u!114 &8146729462779372412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,6 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
+  destroyTime: 10
   componentsToDestroy:
   - {fileID: 844738351872716872}
   - {fileID: 844738351872716879}
@@ -134,11 +135,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 844738351872716874}
     m_Modifications:
-    - target: {fileID: 8370148598216877952, guid: fa317938ecd7d8f4cbb2d1f3a8c764ab,
-        type: 3}
-      propertyPath: m_Name
-      value: FlameParticle
-      objectReference: {fileID: 0}
     - target: {fileID: 8370148598216877953, guid: fa317938ecd7d8f4cbb2d1f3a8c764ab,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -193,6 +189,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8370148598216877952, guid: fa317938ecd7d8f4cbb2d1f3a8c764ab,
+        type: 3}
+      propertyPath: m_Name
+      value: FlameParticle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa317938ecd7d8f4cbb2d1f3a8c764ab, type: 3}
