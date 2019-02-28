@@ -1,8 +1,7 @@
 ﻿// File: Chunk.cs
 // Author: Brendan Robinson
 // Date Created: 02/22/2019
-// Date Last Modified: 02/22/2019
-// Description: 
+// Date Last Modified: 02/28/2019
 
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,10 +10,10 @@ public class Chunk : MonoBehaviour {
 
     #region Fields
 
+    public Int2 position;
+
     [HideInInspector] public int width;
     [HideInInspector] public int length;
-
-    public Int2 position;
 
     private MeshFilter   filter;
     private MeshCollider collider;

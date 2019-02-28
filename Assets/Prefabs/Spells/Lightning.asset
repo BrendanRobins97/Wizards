@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spellPrefab: {fileID: 8146729462779372412, guid: 8d19e0c9eca232d4593c90673c2014ca,
     type: 3}
-  speed: 200
+  speed: 100
   contactDamage: 25
   affectedByCharge: 0
   duration: 5
+  collisionHoleSize: 3

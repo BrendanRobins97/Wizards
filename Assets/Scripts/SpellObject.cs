@@ -1,8 +1,7 @@
 ﻿// File: SpellObject.cs
 // Author: Brendan Robinson
 // Date Created: 02/15/2019
-// Date Last Modified: 02/22/2019
-// Description: 
+// Date Last Modified: 02/28/2019
 
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,8 +10,9 @@ public class SpellObject : MonoBehaviour {
 
     #region Fields
 
-    [HideInInspector] public int   damage      = 10;
-    [HideInInspector] public float destroyTime = 10;
+    [HideInInspector] public int   damage            = 10;
+    [HideInInspector] public float destroyTime       = 10;
+    [HideInInspector] public float collisionHoleSize = 2;
 
     private List<Player> playersHit = new List<Player>();
 
@@ -33,13 +33,15 @@ public class SpellObject : MonoBehaviour {
     private void OnTriggerEnter(Collider collision) {
         DestroyComponents();
         Destroy(gameObject, 5);
+        Debug.Log(transform.position.x + " " + transform.position.y + " " + transform.position.z);
+        TerrainManager.instance.Circle(transform.position.x, transform.position.y, transform.position.z,
+            collisionHoleSize, 1f);
         if (collision.gameObject.CompareTag("Player")) {
             Player player = collision.gameObject.GetComponentInParent<Player>();
             if (playersHit.Contains(player)) { return; }
             player.Damage(damage);
             playersHit.Add(player);
         }
-        TerrainManager.instance.Circle(transform.position.x, transform.position.y, transform.position.z, 5f, 0.5f);
     }
 
     private void DestroyComponents() {

@@ -1,8 +1,7 @@
 ﻿// File: TerrainManager.cs
 // Author: Brendan Robinson
 // Date Created: 02/22/2019
-// Date Last Modified: 02/22/2019
-// Description: 
+// Date Last Modified: 02/28/2019
 
 using System.Collections.Generic;
 using UnityEngine;
@@ -84,7 +83,7 @@ public class TerrainManager : MonoBehaviour {
     }
 
     public void Circle(float x, float y, float z, float radius, float heightDampen = 1) {
-        Vector3 meshPoint = meshPoints[(int)x, (int)z];
+        Vector3 meshPoint = meshPoints[(int) x, (int) z];
         x = meshPoint.x;
         y = meshPoint.y;
         z = meshPoint.z;

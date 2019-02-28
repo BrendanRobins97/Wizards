@@ -1,8 +1,7 @@
 ﻿// File: GameManager.cs
 // Author: Brendan Robinson
 // Date Created: 02/19/2019
-// Date Last Modified: 02/22/2019
-// Description: 
+// Date Last Modified: 02/28/2019
 
 using System.Collections.Generic;
 using TMPro;

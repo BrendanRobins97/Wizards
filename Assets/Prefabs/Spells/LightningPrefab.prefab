@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 844738351872716874}
-  - component: {fileID: 844738351872716879}
+  - component: {fileID: 1745900029273594163}
   - component: {fileID: 844738351872716878}
   - component: {fileID: 8146729462779372412}
   m_Layer: 0
@@ -28,14 +28,14 @@ Transform:
   m_GameObject: {fileID: 844738351872716877}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5502956920857729459}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &844738351872716879
-SphereCollider:
+--- !u!136 &1745900029273594163
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -44,9 +44,10 @@ SphereCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.25
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.05
+  m_Height: 2
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: -0.5}
 --- !u!54 &844738351872716878
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -62,7 +63,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 2
 --- !u!114 &8146729462779372412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,7 +79,7 @@ MonoBehaviour:
   damage: 10
   destroyTime: 10
   componentsToDestroy:
-  - {fileID: 844738351872716879}
+  - {fileID: 1745900029273594163}
   - {fileID: 844738351872716878}
 --- !u!1001 &8558675302710037171
 PrefabInstance:
@@ -87,11 +88,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 844738351872716874}
     m_Modifications:
-    - target: {fileID: 4222384128692081409, guid: b311a190fbf6d6f4f88c155366cc25c5,
-        type: 3}
-      propertyPath: m_Name
-      value: Lightning
-      objectReference: {fileID: 0}
     - target: {fileID: 4222384128692081408, guid: b311a190fbf6d6f4f88c155366cc25c5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -161,6 +157,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4222384128692081409, guid: b311a190fbf6d6f4f88c155366cc25c5,
+        type: 3}
+      propertyPath: m_Name
+      value: Lightning
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b311a190fbf6d6f4f88c155366cc25c5, type: 3}
