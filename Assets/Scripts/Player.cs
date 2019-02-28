@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Camera playerCamera;
     [SerializeField] private int maxHealth = 100;
     [SerializeField] private List<Spell> spells;
+    [SerializeField] private GameObject PS_ElectricOrbPrefab;
     private Rigidbody rigidbody;
 
     private float currentCameraRotationX;
@@ -65,6 +66,10 @@ public class Player : MonoBehaviour
         health = maxHealth;
         rigidbody = GetComponent<Rigidbody>();
         Disable();
+        //locks the cursor to the bounds of the screen. Press 'esc' to unlock.
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
     }
 
     private void Update()
@@ -117,16 +122,22 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             currentSpellIndex = 0;
+
+            PS_ElectricOrbPrefab.SetActive(true);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             currentSpellIndex = 1;
+
+            PS_ElectricOrbPrefab.SetActive(false);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             currentSpellIndex = 2;
+
+            PS_ElectricOrbPrefab.SetActive(false);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha4))
