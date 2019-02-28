@@ -33,12 +33,12 @@ public class Player : MonoBehaviour {
     [SerializeField] private Camera      playerCamera;
     [SerializeField] private int         maxHealth = 100;
     [SerializeField] private List<Spell> spells;
-<<<<<<< HEAD
+
     [SerializeField] private GameObject PS_ElectricOrbPrefab;
     private Rigidbody rigidbody;
-=======
-    private                  Rigidbody   rigidbody;
->>>>>>> f3320eac012ca2111a202cae93a6d7ccff1e68a3
+
+    //private Rigidbody   rigidbody;
+
 
     private          float currentCameraRotationX;
     private readonly float cameraRotationLimit = 80f;
@@ -105,34 +105,13 @@ public class Player : MonoBehaviour {
             rigidbody.MovePosition(rigidbody.position + velocity);
         }
 
-<<<<<<< HEAD
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            currentSpellIndex = 0;
 
-            PS_ElectricOrbPrefab.SetActive(true);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            currentSpellIndex = 1;
-
-            PS_ElectricOrbPrefab.SetActive(false);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            currentSpellIndex = 2;
-
-            PS_ElectricOrbPrefab.SetActive(false);
-        }
-=======
         if (Input.GetKeyDown(KeyCode.Alpha1)) { currentSpellIndex = 0; }
 
         if (Input.GetKeyDown(KeyCode.Alpha2)) { currentSpellIndex = 1; }
 
         if (Input.GetKeyDown(KeyCode.Alpha3)) { currentSpellIndex = 2; }
->>>>>>> f3320eac012ca2111a202cae93a6d7ccff1e68a3
+
 
         if (Input.GetKeyDown(KeyCode.Alpha4)) { currentSpellIndex = 3; }
 
