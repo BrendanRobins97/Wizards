@@ -14,6 +14,7 @@ public class TerrainManager : MonoBehaviour {
 
     public static TerrainManager instance;
     public GameObject treePrefab;
+    public GameObject[] rockPrefabs;
     #endregion
 
     #region Fields
@@ -109,10 +110,19 @@ public class TerrainManager : MonoBehaviour {
                 float yCoordinate = Utilities.PerlinNoise(x, z, smoothness, scale, octaves, persistence, lacunarity);
                 yCoordinate *= heightMap.Evaluate(yCoordinate / scale);
                 meshPoints[x, z] = new Vector3(x * voxelSize, yCoordinate, z * voxelSize);
-                float random = Random.Range(0, 800);
+                float random = Random.Range(0, 400);
                 if (random < .01)
-                {  
-                    Instantiate(treePrefab, meshPoints[x,z], treePrefab.transform.rotation);
+                {
+                    float random1 = Random.Range(0, 100);
+                    if (random1 <= 50)
+                    {
+                        Instantiate(treePrefab, meshPoints[x, z], treePrefab.transform.rotation);
+                    }
+                    else
+                    {
+                        int randomIndex = Random.Range(0, rockPrefabs.Length);
+                        Instantiate(rockPrefabs[randomIndex], meshPoints[x, z], rockPrefabs[randomIndex].transform.rotation);
+                    }
                 }
             }
         }
