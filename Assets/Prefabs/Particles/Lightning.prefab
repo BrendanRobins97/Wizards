@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4222384128094289091}
   - component: {fileID: 4222384128094289090}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Lightning SourceLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80,7 +80,7 @@ GameObject:
   - component: {fileID: 4222384128186003129}
   - component: {fileID: 4222384128186003135}
   - component: {fileID: 4222384128186003128}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Lightning Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4222384128186003130}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.34, y: 8.44, z: 3.24}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4222384128358039240}
@@ -1721,7 +1721,7 @@ ParticleSystem:
     z:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 200
+      scalar: 100
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -4837,7 +4837,7 @@ GameObject:
   - component: {fileID: 4222384128358039240}
   - component: {fileID: 4222384128358039246}
   - component: {fileID: 4222384128358039247}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Lightning Sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9591,7 +9591,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4222384128692081408}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Lightning
   m_TagString: Untagged
   m_Icon: {fileID: 0}

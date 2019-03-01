@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 844738351872716874}
   - component: {fileID: 844738351872716878}
-  - component: {fileID: 8146729462779372412}
   - component: {fileID: 368405944238096615}
+  - component: {fileID: 787893643419106668}
   m_Layer: 0
   m_Name: IcePrefab
   m_TagString: Untagged
@@ -52,23 +52,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!114 &8146729462779372412
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 844738351872716877}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be547305c28069249a902bbfcb46d274, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 10
-  destroyTime: 10
-  componentsToDestroy:
-  - {fileID: 368405944238096615}
-  - {fileID: 844738351872716878}
 --- !u!65 &368405944238096615
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -77,11 +60,28 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 844738351872716877}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 4, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &787893643419106668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 844738351872716877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5108f924abb79d54eb11c01d57bc46c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 30
+  contactDamage: 45
+  affectedByCharge: 0
+  duration: 0.5
+  collisionHoleSize: 1
 --- !u!1001 &3964539101254594187
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -89,16 +89,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 844738351872716874}
     m_Modifications:
-    - target: {fileID: 6868160562993901513, guid: 94709489d9721ef49b0f51ac47b3333c,
-        type: 3}
-      propertyPath: m_Name
-      value: Ice Effect
-      objectReference: {fileID: 0}
-    - target: {fileID: 6868160562993901513, guid: 94709489d9721ef49b0f51ac47b3333c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6868160562993901518, guid: 94709489d9721ef49b0f51ac47b3333c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -154,6 +144,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6868160562993901513, guid: 94709489d9721ef49b0f51ac47b3333c,
+        type: 3}
+      propertyPath: m_Name
+      value: Ice Effect
+      objectReference: {fileID: 0}
+    - target: {fileID: 6868160562993901513, guid: 94709489d9721ef49b0f51ac47b3333c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94709489d9721ef49b0f51ac47b3333c, type: 3}
 --- !u!4 &7517709450437984581 stripped
@@ -169,11 +169,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 844738351872716874}
     m_Modifications:
-    - target: {fileID: 6868160562993901513, guid: 94709489d9721ef49b0f51ac47b3333c,
-        type: 3}
-      propertyPath: m_Name
-      value: Ice Effect (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 6868160562993901518, guid: 94709489d9721ef49b0f51ac47b3333c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -229,6 +224,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6868160562993901513, guid: 94709489d9721ef49b0f51ac47b3333c,
+        type: 3}
+      propertyPath: m_Name
+      value: Ice Effect (1)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94709489d9721ef49b0f51ac47b3333c, type: 3}
 --- !u!4 &4450022191371699152 stripped
@@ -244,11 +244,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 844738351872716874}
     m_Modifications:
-    - target: {fileID: 6868160562993901513, guid: 94709489d9721ef49b0f51ac47b3333c,
-        type: 3}
-      propertyPath: m_Name
-      value: Ice Effect (2)
-      objectReference: {fileID: 0}
     - target: {fileID: 6868160562993901518, guid: 94709489d9721ef49b0f51ac47b3333c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -303,6 +298,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6868160562993901513, guid: 94709489d9721ef49b0f51ac47b3333c,
+        type: 3}
+      propertyPath: m_Name
+      value: Ice Effect (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94709489d9721ef49b0f51ac47b3333c, type: 3}

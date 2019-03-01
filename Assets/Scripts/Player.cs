@@ -123,7 +123,7 @@ public class Player : MonoBehaviour {
             // Fire spell when mouse is released
             Vector3 spellStart =
                 transform.TransformPoint(new Vector3(cameraXOffset, cameraYOffset, 0.5f));
-            spells[currentSpellIndex].ThrowSpell(spellStart, playerCamera.transform.forward, chargePercent);
+            Instantiate(spells[currentSpellIndex], spellStart, Quaternion.identity).ThrowSpell(playerCamera.transform.forward, chargePercent);
             enabled = false; // Disable movement
             turnOver = true; // Signal that their turn is over
         }

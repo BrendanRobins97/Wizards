@@ -247,19 +247,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   color: {r: 0.09411766, g: 0.40000004, b: 0.10980393, a: 1}
   chargeAmount: 2
+  stamina: 0
   health: 0
   chargePercent: 0
+  turnOver: 0
   sensitivity: 1
   movementSpeed: 2
   playerCamera: {fileID: 6967732776618140109}
   maxHealth: 100
   spells:
-  - {fileID: 11400000, guid: 635e02da8bdfcdf46879664f40b33f5a, type: 2}
-  - {fileID: 11400000, guid: ed98ab687c1a1b64282b6f76a1976590, type: 2}
-  - {fileID: 11400000, guid: 965e4dcc0d5f33e4bb05d8319c2a04e1, type: 2}
+  - {fileID: 8940775995591046101, guid: 8d19e0c9eca232d4593c90673c2014ca, type: 3}
+  - {fileID: 4278813243256328214, guid: cb9537d7d621b6648a7867fcc3f3316b, type: 3}
+  - {fileID: 787893643419106668, guid: 508f936bd647a33458ffc34e83f73d0b, type: 3}
   PS_ElectricOrbPrefab: {fileID: 9200029078089606267}
-  turnOver: 0
-  stamina: 0
 --- !u!1 &4524869613454635231
 GameObject:
   m_ObjectHideFlags: 0

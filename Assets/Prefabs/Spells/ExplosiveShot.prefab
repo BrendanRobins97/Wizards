@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 844738351872716872}
   - component: {fileID: 844738351872716879}
   - component: {fileID: 844738351872716878}
-  - component: {fileID: 6996181480485081848}
+  - component: {fileID: 4278813243256328214}
   m_Layer: 0
-  m_Name: FireballPrefab
+  m_Name: ExplosiveShot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -110,7 +110,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
---- !u!114 &6996181480485081848
+--- !u!114 &4278813243256328214
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -119,14 +119,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 844738351872716877}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5108f924abb79d54eb11c01d57bc46c4, type: 3}
+  m_Script: {fileID: 11500000, guid: b0d1fb3bfa1f4f247b4db8f361b2e81d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 25
-  contactDamage: 55
+  speed: 50
+  contactDamage: 30
   affectedByCharge: 1
   duration: 10
-  collisionHoleSize: 4
+  collisionHoleSize: 5
+  smallExplosiveShot: {fileID: 6996181480485081848, guid: f295441d6e87fac4eb7ff47959e8d3c3,
+    type: 3}
 --- !u!1001 &2076967705125730053
 PrefabInstance:
   m_ObjectHideFlags: 0
