@@ -105,8 +105,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98f2f70fdcf479045baed0080fb64156, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 0
-  length: 0
   position:
     x: 0
     y: 0
+  objectToPlace: {fileID: 5502511869987978858, guid: 3263b2ebe69482e48a58f42a269712f9,
+    type: 3}
+  width: 0
+  length: 0

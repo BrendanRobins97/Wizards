@@ -13,7 +13,7 @@ public class TerrainManager : MonoBehaviour {
     private const float voxelSize = 1f;
 
     public static TerrainManager instance;
-
+    public GameObject treePrefab;
     #endregion
 
     #region Fields
@@ -103,20 +103,25 @@ public class TerrainManager : MonoBehaviour {
 
     private void GenerateTerrain() {
         meshPoints = new Vector3[width + 1, length + 1];
-        for (int x = 0; x <= width; x++) {
+        //treePrefab.transform.Rotate(-90, 0, 0);
+        for (int x = 0; x <= width; x++) {            
             for (int z = 0; z <= length; z++) {
                 float yCoordinate = Utilities.PerlinNoise(x, z, smoothness, scale, octaves, persistence, lacunarity);
                 yCoordinate *= heightMap.Evaluate(yCoordinate / scale);
                 meshPoints[x, z] = new Vector3(x * voxelSize, yCoordinate, z * voxelSize);
+                float random = Random.Range(0, 800);
+                if (random < .01)
+                {  
+                    Instantiate(treePrefab, meshPoints[x,z], treePrefab.transform.rotation);
+                }
             }
         }
         for (int i = 0; i < numChunks; i++) {
             for (int j = 0; j < numChunks; j++) {
-                chunks[i, j] = Instantiate(chunkPrefab);
+                chunks[i, j] = Instantiate(chunkPrefab);               
                 chunks[i, j].position = new Int2(i * chunkSize, j * chunkSize);
                 chunks[i, j].width = chunkSize;
                 chunks[i, j].length = chunkSize;
-
                 chunks[i, j].UpdateChunk(ref meshPoints);
             }
         }

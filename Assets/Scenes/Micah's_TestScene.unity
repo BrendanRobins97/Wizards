@@ -392,6 +392,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: ce201e89a9a7cfe46914c2542df6e758, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: ce201e89a9a7cfe46914c2542df6e758, type: 3}
       propertyPath: m_LocalPosition.x
       value: -35.080627
@@ -1052,6 +1056,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: ce201e89a9a7cfe46914c2542df6e758, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: ce201e89a9a7cfe46914c2542df6e758, type: 3}
       propertyPath: m_LocalPosition.x
       value: -12.64
@@ -1479,6 +1487,10 @@ PrefabInstance:
     - target: {fileID: 100002, guid: ce201e89a9a7cfe46914c2542df6e758, type: 3}
       propertyPath: m_Name
       value: Tree
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: ce201e89a9a7cfe46914c2542df6e758, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: ce201e89a9a7cfe46914c2542df6e758, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2172,6 +2184,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: ce201e89a9a7cfe46914c2542df6e758, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: ce201e89a9a7cfe46914c2542df6e758, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10.528609
@@ -2484,6 +2500,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cce1a318cf0925148a866c73b4238e6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  treePrefab: {fileID: 5502511869987978858, guid: 3263b2ebe69482e48a58f42a269712f9,
+    type: 3}
   octaves: 5
   smoothness: 120
   scale: 100
@@ -2870,6 +2888,10 @@ PrefabInstance:
     - target: {fileID: 100002, guid: ce201e89a9a7cfe46914c2542df6e758, type: 3}
       propertyPath: m_Name
       value: Tree (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: ce201e89a9a7cfe46914c2542df6e758, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: ce201e89a9a7cfe46914c2542df6e758, type: 3}
       propertyPath: m_LocalPosition.x
