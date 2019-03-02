@@ -88,7 +88,7 @@ public class TerrainManager : MonoBehaviour {
         x = meshPoint.x;
         y = meshPoint.y;
         z = meshPoint.z;
-
+        
         for (float i = -radius; i < radius; i++) {
             for (float j = -radius; j < radius; j++) {
                 if (i * i + j * j < radius * radius) {
@@ -96,7 +96,7 @@ public class TerrainManager : MonoBehaviour {
                         meshPoints[(int) (i + x), (int) (j + z)].y);
                     UpdatePosition((int) (i + x), (int) (j + z),
                         new Vector3(meshPoints[(int) (i + x), (int) (j + z)].x, minY
-                            , meshPoints[(int) (i + x), (int) (j + z)].z));
+                            , meshPoints[(int) (i + x), (int) (j + z)].z)); 
                 }
             }
         }
@@ -104,26 +104,11 @@ public class TerrainManager : MonoBehaviour {
 
     private void GenerateTerrain() {
         meshPoints = new Vector3[width + 1, length + 1];
-        //treePrefab.transform.Rotate(-90, 0, 0);
         for (int x = 0; x <= width; x++) {            
             for (int z = 0; z <= length; z++) {
                 float yCoordinate = Utilities.PerlinNoise(x, z, smoothness, scale, octaves, persistence, lacunarity);
                 yCoordinate *= heightMap.Evaluate(yCoordinate / scale);
                 meshPoints[x, z] = new Vector3(x * voxelSize, yCoordinate, z * voxelSize);
-                float random = Random.Range(0, 400);
-                if (random < .01)
-                {
-                    float random1 = Random.Range(0, 100);
-                    if (random1 <= 50)
-                    {
-                        Instantiate(treePrefab, meshPoints[x, z], treePrefab.transform.rotation);
-                    }
-                    else
-                    {
-                        int randomIndex = Random.Range(0, rockPrefabs.Length);
-                        Instantiate(rockPrefabs[randomIndex], meshPoints[x, z], rockPrefabs[randomIndex].transform.rotation);
-                    }
-                }
             }
         }
         for (int i = 0; i < numChunks; i++) {
@@ -133,6 +118,33 @@ public class TerrainManager : MonoBehaviour {
                 chunks[i, j].width = chunkSize;
                 chunks[i, j].length = chunkSize;
                 chunks[i, j].UpdateChunk(ref meshPoints);
+                float random1 = Random.Range(0, 100);
+                if (random1 <= 50 && (i > 0 || i != numChunks) && (j > 0 || j != numChunks))
+                {
+                    Vector3 spawnPoint = new Vector3(chunks[i, j].position.x, chunks[i, j].transform.localPosition.y + 15f, chunks[i, j].position.y);
+                    RaycastHit hit;
+                    Ray downRay = new Ray(spawnPoint, -Vector3.up);
+                    float newY = 0;
+                    if (Physics.Raycast(downRay, out hit))
+                    {
+                        float distanceToCollision = hit.distance;
+                        Debug.Log(distanceToCollision);
+                        newY = chunks[i, j].transform.localPosition.y + 15f - distanceToCollision;
+                        spawnPoint = new Vector3(chunks[i, j].position.x, newY-.8f, chunks[i, j].position.y);
+                    }
+                    float random2 = Random.Range(0, 100);
+                    if (random2 < 60)
+                    {    
+                        Instantiate(treePrefab, spawnPoint, treePrefab.transform.rotation);
+                        treePrefab.SetActive(true);
+                    }
+                    else
+                    {
+                        int randomIndex = Random.Range(0, rockPrefabs.Length);
+                        Instantiate(rockPrefabs[randomIndex], spawnPoint,
+                            rockPrefabs[randomIndex].transform.rotation);
+                    } 
+                }
             }
         }
     }
