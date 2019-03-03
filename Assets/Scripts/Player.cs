@@ -22,7 +22,7 @@ public class Player : MonoBehaviour {
     public float chargeAmount;
 
     public                   float stamina;
-     public int   health;
+    [HideInInspector] public int   health;
     [HideInInspector] public float chargePercent;
     [HideInInspector] public bool  turnOver;
 
