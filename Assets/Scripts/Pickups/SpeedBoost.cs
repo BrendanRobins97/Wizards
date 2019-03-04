@@ -40,7 +40,7 @@ public class SpeedBoost : MonoBehaviour
             this.GetComponent<MeshRenderer>().enabled = false;
             this.GetComponent<BoxCollider>().enabled = false;
             Debug.Log("SpeedBoost");
-            //col.GetComponent<Player>().movementSpeed *= 2;
+            //player.GetComponent<Player>().movementSpeed *= 2;
         }
     }
 }
