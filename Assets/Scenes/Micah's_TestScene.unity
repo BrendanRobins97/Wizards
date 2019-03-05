@@ -2397,14 +2397,14 @@ MonoBehaviour:
     type: 3}
   rockPrefabs:
   - {fileID: 100000, guid: 057de40c678c6ac4498995c9f85beb5b, type: 3}
-  - {fileID: 100000, guid: 4a9d2f30f5d7fe14690d7705d366e358, type: 3}
-  - {fileID: 100000, guid: 6e32062908ff8e744a0c194abf3f3b95, type: 3}
   - {fileID: 100000, guid: 057de40c678c6ac4498995c9f85beb5b, type: 3}
   - {fileID: 100000, guid: 057de40c678c6ac4498995c9f85beb5b, type: 3}
   - {fileID: 100000, guid: 057de40c678c6ac4498995c9f85beb5b, type: 3}
   - {fileID: 100000, guid: 057de40c678c6ac4498995c9f85beb5b, type: 3}
-  chanceToSpawn: 60
-  slopeValue: 0.214
+  - {fileID: 100000, guid: 057de40c678c6ac4498995c9f85beb5b, type: 3}
+  - {fileID: 100000, guid: 057de40c678c6ac4498995c9f85beb5b, type: 3}
+  chanceToSpawn: 86
+  slopeValue: 0.2
   octaves: 5
   smoothness: 120
   scale: 100
@@ -2879,7 +2879,7 @@ MonoBehaviour:
     type: 3}
   mainCamera: {fileID: 669687616}
   playerContainer: {fileID: 2141200333}
-  numPlayers: 2
+  numPlayers: 4
   spawnLocations:
   - {fileID: 699662579}
   - {fileID: 927715569}
@@ -2889,7 +2889,9 @@ MonoBehaviour:
   timeAfterSpellCast: 3
   playerPrefabs:
   - {fileID: 4088739267935619923, guid: ddebc06a6a43c93479e861341313b537, type: 3}
+  - {fileID: 9070959527077536431, guid: 83e2ba667b7ae1d46a49ed64a6a815f7, type: 3}
   - {fileID: 5060357612499765487, guid: 9c7bb63818ccf754c9430c932bdf0644, type: 3}
+  - {fileID: 3208229803421341722, guid: 70654a830dd878e45ba62d1ba94f3c82, type: 3}
   spellImages:
   - {fileID: 2084032489}
   - {fileID: 431379283}
@@ -4243,7 +4245,7 @@ PrefabInstance:
     - target: {fileID: 2503946757892938682, guid: 9e568b20b3ab3f34ab7fb4c3ad40862c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10
+      value: 53.5
       objectReference: {fileID: 0}
     - target: {fileID: 2503946757892938682, guid: 9e568b20b3ab3f34ab7fb4c3ad40862c,
         type: 3}
@@ -4253,7 +4255,7 @@ PrefabInstance:
     - target: {fileID: 2503946757892938682, guid: 9e568b20b3ab3f34ab7fb4c3ad40862c,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 99.7
       objectReference: {fileID: 0}
     - target: {fileID: 2503946757892938682, guid: 9e568b20b3ab3f34ab7fb4c3ad40862c,
         type: 3}
@@ -4293,6 +4295,11 @@ PrefabInstance:
     - target: {fileID: 2503946757892938682, guid: 9e568b20b3ab3f34ab7fb4c3ad40862c,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2503946758003298422, guid: 9e568b20b3ab3f34ab7fb4c3ad40862c,
+        type: 3}
+      propertyPath: m_Constraints
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

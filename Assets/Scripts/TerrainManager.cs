@@ -17,7 +17,7 @@ public class TerrainManager : MonoBehaviour {
     public GameObject treePrefab;
     public GameObject[] rockPrefabs;
     [Range(0,100)]public int chanceToSpawn = 60;
-    [Range(0.0f, 0.5f)] public float slopeValue = .3f;
+    [Range(0.0f, 10.0f)] public float slopeValue = 8f;
     #endregion
 
     #region Fields
@@ -30,7 +30,7 @@ public class TerrainManager : MonoBehaviour {
     [SerializeField] private AnimationCurve heightMap;
     [SerializeField] private Chunk          chunkPrefab;
 
-    private bool firstPass = false;
+    private bool firstPass = true;
     private int            width     = 128;
     private int            length    = 128;
     private int            numChunks = 8;
@@ -58,8 +58,7 @@ public class TerrainManager : MonoBehaviour {
         chunks = new Chunk[numChunks, numChunks];
         chunkSize = width / numChunks;
 
-        GenerateTerrain();
-
+        GenerateTerrain(); 
         Vector3 meshPoint = meshPoints[67, 36];
         Circle(meshPoint.x, meshPoint.y, meshPoint.z, 12, 0.5f);
     }
@@ -73,24 +72,29 @@ public class TerrainManager : MonoBehaviour {
         //2). if it was spawned on too steep of a slope.
         //only checks a fixed number of times after everything has spawned in.
         
-        if (firstPass && (count <= 5))
+        if (firstPass && (count <= 255))
         {
             for (int i = 0; i < spawnedItems.Count; i++)
             {
                 Debug.Log(spawnedItems[i]);
+               
                 RaycastHit hit, hitUp;
-                Ray downRay = new Ray(spawnedItems[i].transform.position, -Vector3.up);
+                Vector3 downRayEnd = new Vector3(spawnedItems[i].transform.position.x,
+                    spawnedItems[i].transform.position.y - 10, spawnedItems[i].transform.position.z);
+                Ray downRay = new Ray(spawnedItems[i].transform.position, downRayEnd);
+                
                 Ray upRay = new Ray(spawnedItems[i].transform.position, Vector3.up);
-                if (Physics.Raycast(upRay, out hitUp))
+                if (Physics.Raycast(upRay, out hitUp, 20f))
                 {
                     Debug.Log("Deactivated due to underground" + spawnedItems[i].name);
+                    Debug.DrawLine(spawnedItems[i].transform.position, Vector3.up, Color.yellow, 100f);
                     spawnedItems[i].SetActive(false);
                 }
-                if (Physics.Raycast(downRay, out hit))
+                if (Physics.Raycast(downRay, out hit,10f))
                 {
                     float distanceToCollision = hit.distance;
                     Debug.Log(distanceToCollision);
-                    if (distanceToCollision > .2f)
+                    if (distanceToCollision > 5)
                     {
                         Debug.Log("Deactivated due to hole" + spawnedItems[i].name);
                         spawnedItems[i].SetActive(false);
@@ -98,49 +102,49 @@ public class TerrainManager : MonoBehaviour {
                 }
                 RaycastHit hitNorth, hitEast, hitSouth, hitWest;
                  
-                Ray downRayNorth = new Ray(new Vector3(spawnedItems[i].transform.position.x+2.5f, spawnedItems[i].transform.position.y, spawnedItems[i].transform.position.z), -Vector3.up);
-                Ray downRayEast = new Ray(new Vector3(spawnedItems[i].transform.position.x, spawnedItems[i].transform.position.y, spawnedItems[i].transform.position.z+2.5f), -Vector3.up);
-                Ray downRaySouth = new Ray(new Vector3(spawnedItems[i].transform.position.x-2.5f, spawnedItems[i].transform.position.y, spawnedItems[i].transform.position.z), -Vector3.up);
-                Ray downRayWest = new Ray(new Vector3(spawnedItems[i].transform.position.x, spawnedItems[i].transform.position.y, spawnedItems[i].transform.position.z-2.5f), -Vector3.up);
+                Ray downRayNorth = new Ray(new Vector3(spawnedItems[i].transform.position.x+1.5f, spawnedItems[i].transform.position.y, spawnedItems[i].transform.position.z), -Vector3.up);
+                Ray downRayEast = new Ray(new Vector3(spawnedItems[i].transform.position.x, spawnedItems[i].transform.position.y, spawnedItems[i].transform.position.z+1.5f), -Vector3.up);
+                Ray downRaySouth = new Ray(new Vector3(spawnedItems[i].transform.position.x-1.5f, spawnedItems[i].transform.position.y, spawnedItems[i].transform.position.z), -Vector3.up);
+                Ray downRayWest = new Ray(new Vector3(spawnedItems[i].transform.position.x, spawnedItems[i].transform.position.y, spawnedItems[i].transform.position.z-1.5f), -Vector3.up);
                 if (Physics.Raycast(downRayNorth, out hitNorth))
                 {
                     float distanceToCollision = Mathf.Abs(hitNorth.distance);
-                    if (distanceToCollision > slopeValue || distanceToCollision >= 100)
+                    if (distanceToCollision > slopeValue)
                     {
-                        Debug.Log("Deactivated due to slope " + spawnedItems[i].name);
+                        Debug.Log("Deactivated due to slope " + spawnedItems[i].name + distanceToCollision);
                         spawnedItems[i].SetActive(false);
                     }
                 }
                 if (Physics.Raycast(downRayEast, out hitEast))
                 {
                     float distanceToCollision = Mathf.Abs(hitEast.distance);
-                    if (distanceToCollision > slopeValue || distanceToCollision >= 100)
+                    if (distanceToCollision > slopeValue )
                     {
-                        Debug.Log("Deactivated due to slope " + spawnedItems[i].name);
+                        Debug.Log("Deactivated due to slope " + spawnedItems[i].name + distanceToCollision);
                         spawnedItems[i].SetActive(false);
                     }
                 }
                 if (Physics.Raycast(downRaySouth, out hitSouth))
                 {
                     float distanceToCollision = Mathf.Abs(hitSouth.distance);
-                    if (distanceToCollision > slopeValue || distanceToCollision >= 100)
+                    if (distanceToCollision > slopeValue)
                     {
-                        Debug.Log("Deactivated due to slope " + spawnedItems[i].name);
+                        Debug.Log("Deactivated due to slope " + spawnedItems[i].name + distanceToCollision);
                         spawnedItems[i].SetActive(false);
                     }
                 }
                 if (Physics.Raycast(downRayWest, out hitWest))
                 {
                     float distanceToCollision = Mathf.Abs(hitWest.distance);
-                    if (distanceToCollision > slopeValue || distanceToCollision >= 100)
+                    if (distanceToCollision > slopeValue)
                     {
-                        Debug.Log("Deactivated due to slope " + spawnedItems[i].name);
+                        Debug.Log("Deactivated due to slope " + spawnedItems[i].name + distanceToCollision);
                         spawnedItems[i].SetActive(false);
                     }
                 }
 
                 count++;
-                firstPass = false;
+                //firstPass = false;
             }
         }//end of spawn check.
     }
@@ -217,7 +221,7 @@ public class TerrainManager : MonoBehaviour {
                 chunks[i, j].width = chunkSize;
                 chunks[i, j].length = chunkSize;
                 chunks[i, j].UpdateChunk(ref meshPoints);
-                float random1 = Random.Range(0, 100);
+                int random1 = Random.Range(0, 100);
                 if (random1 <= chanceToSpawn && (i > 0 || i != numChunks) && (j > 0 || j != numChunks))
                 {
                     Vector3 spawnPoint = new Vector3(chunks[i, j].position.x, chunks[i, j].transform.localPosition.y + 15f, chunks[i, j].position.y);
@@ -229,12 +233,15 @@ public class TerrainManager : MonoBehaviour {
                         float distanceToCollision = hit.distance;
                         Debug.Log(distanceToCollision);
                         newY = chunks[i, j].transform.localPosition.y + 15f - distanceToCollision;
-                        spawnPoint = new Vector3(chunks[i, j].position.x, newY-.8f, chunks[i, j].position.y);
+                        spawnPoint =
+                            hit.point; //new Vector3(chunks[i, j].position.x, newY-.8f, chunks[i, j].position.y);
                     }
-                    float random2 = Random.Range(0, 100);
-                    if (random2 < 50)
-                    {   
-                        Instantiate(treePrefab, spawnPoint, treePrefab.transform.rotation);
+                    int random2 = Random.Range(0, 100);
+               
+                    if (random2 < 40)
+                    {
+                        treePrefab.transform.position = spawnPoint;
+                        Instantiate(treePrefab, treePrefab.transform.position, treePrefab.transform.rotation);
                         treePrefab.SetActive(true);
                         spawnedItems.Add(treePrefab);
                     }
