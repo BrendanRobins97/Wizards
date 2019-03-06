@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StaminaBoost : MonoBehaviour
+public class HealthBoost : MonoBehaviour
 {
+    [SerializeField] private int healthBoost = 20;
     private Player player;
 
     private GameManager gm;
@@ -11,12 +12,14 @@ public class StaminaBoost : MonoBehaviour
     void Start()
     {
         gm = FindObjectOfType<GameManager>();
-        this.GetComponent<MeshRenderer>().material.color = Color.green;
+        this.GetComponent<MeshRenderer>().material.color = Color.red;
     }
 
+    // Update is called once per frame
     void Update()
     {
         player = gm.GetComponent<GameManager>().CurrentPlayer;
+        
         if (player == null)
         {
             Debug.Log("No Player Found");
@@ -25,13 +28,11 @@ public class StaminaBoost : MonoBehaviour
 
     void OnTriggerEnter(Collider col)
     {
-        if (player != null)
-        {
-            if (col.tag == "Player")
-            {
-                player.GetComponent<Player>().stamina = player.GetComponent<Player>().stamina + 20f;
-                Destroy(this.gameObject, .02f);
-            }
+        if (col.tag == "Player")
+        { 
+            Debug.Log("HealthBoost");
+            player.GetComponent<Player>().health = player.GetComponent<Player>().health + healthBoost;
+            Destroy(this.gameObject,.05f);
         }
     }
 }
