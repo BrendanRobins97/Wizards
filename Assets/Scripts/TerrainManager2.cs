@@ -119,9 +119,8 @@ public class TerrainManager2 : MonoBehaviour {
         for (int i = -radius; i <= radius; i++) {
             for (int j = -radius; j <= radius; j++) {
                 for (int k = -radius; k <= radius; k++) {
-                    float density = Mathf.Sign(SampleDensity(x + i, y+j, z+k)) + 
-                        -(i * i + j * j + k * k - radius * radius) / (float)(radius * radius);
-                    UpdatePosition(new Vector3(x + i, y + j, z + k),density + 1f);
+                    float density =  Mathf.Max(0, -(i * i + j * j / heightDampen + k * k - radius * radius) / (float)(radius * radius / 2f));
+                    UpdatePosition(new Vector3(x + i, y + j, z + k), density + SampleDensity(x + i, y + j, z + k));
                 }
             }
         }
@@ -132,6 +131,10 @@ public class TerrainManager2 : MonoBehaviour {
                   || y < 0 || y >= height
                   || z < 0 || z >= length) { return 0; }
         return grid[x, y, z].Density;
+    }
+
+    private float SampleDensity(float x, float y, float z) {
+        return SampleDensity(Mathf.RoundToInt(x), Mathf.RoundToInt(y), Mathf.RoundToInt(z));
     }
 
     #endregion

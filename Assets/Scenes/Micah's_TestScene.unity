@@ -346,7 +346,7 @@ MonoBehaviour:
   scale: 100
   persistence: 0.4
   lacunarity: 0.5
-  groundThickness: 4
+  groundThickness: 10
   heightMap:
     serializedVersion: 2
     m_Curve:

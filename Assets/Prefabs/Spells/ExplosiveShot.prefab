@@ -126,9 +126,11 @@ MonoBehaviour:
   contactDamage: 30
   affectedByCharge: 1
   duration: 10
-  collisionHoleSize: 5
+  damageRadius: 6
+  explosionDampen: 0.25
   smallExplosiveShot: {fileID: 6996181480485081848, guid: f295441d6e87fac4eb7ff47959e8d3c3,
     type: 3}
+  numSmallExplosions: 6
 --- !u!1001 &2076967705125730053
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -136,6 +138,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 844738351872716874}
     m_Modifications:
+    - target: {fileID: 8370148598216877952, guid: fa317938ecd7d8f4cbb2d1f3a8c764ab,
+        type: 3}
+      propertyPath: m_Name
+      value: FlameParticle
+      objectReference: {fileID: 0}
     - target: {fileID: 8370148598216877953, guid: fa317938ecd7d8f4cbb2d1f3a8c764ab,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -190,11 +197,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8370148598216877952, guid: fa317938ecd7d8f4cbb2d1f3a8c764ab,
-        type: 3}
-      propertyPath: m_Name
-      value: FlameParticle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa317938ecd7d8f4cbb2d1f3a8c764ab, type: 3}
