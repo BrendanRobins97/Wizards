@@ -42,8 +42,10 @@ public class Spell : MonoBehaviour {
     protected virtual void OnCollisionEnter(Collision collision) {
         DestroyComponents();
         Debug.Log(transform.position.x + " " + transform.position.y + " " + transform.position.z);
-        TerrainManager.instance.Circle(transform.position.x, transform.position.y, transform.position.z,
-            damageRadius, explosionDampen);
+        TerrainManager2.instance.Circle(Mathf.RoundToInt(transform.position.x)
+            , Mathf.RoundToInt(transform.position.y)
+            , Mathf.RoundToInt(transform.position.z),
+            (int)damageRadius, explosionDampen);
         Player[] players = FindObjectsOfType<Player>();
         for (int i = 0; i < players.Length; i++) {
             if ((players[i].transform.position - collision.GetContact(0).point).magnitude < damageRadius) {

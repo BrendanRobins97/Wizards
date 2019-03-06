@@ -20,6 +20,15 @@ public static class Utilities {
         return total;
     }
 
+    public static Vector3Int Vector3IntFromVector3(Vector3 vec, bool round = true) {
+        if (round) {
+            return new Vector3Int(Mathf.RoundToInt(vec.x), Mathf.RoundToInt(vec.y), Mathf.RoundToInt(vec.z));
+        }
+        else {
+            return new Vector3Int((int)(vec.x), (int)(vec.y), (int)(vec.z));
+        }
+    }
+
     #endregion
 
 }

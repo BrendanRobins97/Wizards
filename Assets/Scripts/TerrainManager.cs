@@ -18,6 +18,7 @@ public class TerrainManager : MonoBehaviour {
     public GameObject[] rockPrefabs;
     [Range(0,100)]public int chanceToSpawn = 60;
     [Range(0.0f, 10.0f)] public float slopeValue = 8f;
+
     #endregion
 
     #region Fields
@@ -153,6 +154,7 @@ public class TerrainManager : MonoBehaviour {
         int xPoint = (int) x;
         int zPoint = (int) z;
         meshPoints[xPoint, zPoint] = newValue;
+   
         UpdateChunk(xPoint, zPoint);
         if (xPoint % chunkSize == 0) { UpdateChunk(xPoint - 1, zPoint); }
         if (xPoint % chunkSize == chunkSize - 1) { UpdateChunk(xPoint + 1, zPoint); }
