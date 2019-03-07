@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Ice
+  m_Shader: {fileID: 4800000, guid: e9fe14e9ddff940e7a05531c2bfa02d7, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_843F385:
+        m_Texture: {fileID: 2800000, guid: 9006ac5d4e34b41aa980c892c78fc466, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_C19DB47C:
+        m_Texture: {fileID: 2800000, guid: a888e10db905648fc8308f2100c4bd31, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_D71CD363:
+        m_Texture: {fileID: 2800000, guid: 2710bd7d6ea8c47d5aa166a5d6ba7ec7, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_105D7807: 0.1
+    - Vector1_2931283A: 0.25
+    - Vector1_6C3E63AB: -0.48
+    - Vector1_70D89C04: 0.2
+    - Vector1_89C1ED67: 0.4
+    - Vector1_9956D92: 0.2
+    - Vector1_9D5A9906: 0.1
+    - Vector1_A99139F7: 0.75
+    - Vector1_BCDE9C10: 1
+    m_Colors:
+    - Color_66F8739E: {r: 0, g: 0, b: 0, a: 0}
+    - Color_D2899B59: {r: 0.057849795, g: 0.3000845, b: 0.9433962, a: 0}
+    - Vector3_DBC0FD: {r: 0, g: 1, b: 0, a: 0}
