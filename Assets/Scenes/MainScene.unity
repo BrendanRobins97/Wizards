@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1597,6 +1597,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cce1a318cf0925148a866c73b4238e6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  treePrefab: {fileID: 5502511869987978858, guid: 3263b2ebe69482e48a58f42a269712f9,
+    type: 3}
+  rockPrefabs:
+  - {fileID: 100000, guid: 057de40c678c6ac4498995c9f85beb5b, type: 3}
+  chanceToSpawn: 60
+  slopeValue: 8
   octaves: 5
   smoothness: 120
   scale: 100

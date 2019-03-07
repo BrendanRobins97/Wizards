@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 787893643419106668}
   m_Layer: 0
   m_Name: IcePrefab
-  m_TagString: Untagged
+  m_TagString: Spell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -81,7 +81,8 @@ MonoBehaviour:
   contactDamage: 45
   affectedByCharge: 0
   duration: 0.5
-  collisionHoleSize: 1
+  damageRadius: 5
+  explosionDampen: 0.75
 --- !u!1001 &3964539101254594187
 PrefabInstance:
   m_ObjectHideFlags: 0

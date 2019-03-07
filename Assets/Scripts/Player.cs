@@ -28,8 +28,8 @@ public class Player : MonoBehaviour {
 
     [SerializeField] private float sensitivity = 1f;
 
-    [SerializeField] private float       movementSpeed = 8f;
-    private                  bool        enabled       = true;
+    [HideInInspector] public float       movementSpeed = 8f;
+    [HideInInspector] public bool        enabled       = true;
     [SerializeField] private Camera      playerCamera;
     [SerializeField] private int         maxHealth = 100;
     [SerializeField] private List<Spell> spells;

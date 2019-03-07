@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8940775995591046101}
   m_Layer: 18
   m_Name: LightningPrefab
-  m_TagString: Untagged
+  m_TagString: Spell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -80,7 +80,8 @@ MonoBehaviour:
   contactDamage: 25
   affectedByCharge: 0
   duration: 10
-  collisionHoleSize: 2
+  damageRadius: 5
+  explosionDampen: 0.75
 --- !u!1001 &8558675302710037171
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -6,6 +6,8 @@ public class SpeedBoost : MonoBehaviour
 {   
     [SerializeField]
     private float speedUpTime;
+
+    private float tempStamina;
     private GameManager gm;
     private Player player;
     private bool pickedUp = false;
@@ -20,12 +22,14 @@ public class SpeedBoost : MonoBehaviour
     void Update()
     {
         player = gm.GetComponent<GameManager>().CurrentPlayer;
+        Debug.Log(player.movementSpeed);
         if (pickedUp)
         {
             speedUpTime -= Time.deltaTime;
-            if (speedUpTime < 0)
+            player.GetComponent<Player>().stamina = tempStamina;
+            if (speedUpTime <= 0 || gm.currentTurnTimeLeft <= 0)
             {
-                //player.movementSpeed = 8;
+                player.movementSpeed = 2;
                 Debug.Log("Speed normal");
                 Destroy(this.gameObject, 0.05f);
             }
@@ -40,7 +44,8 @@ public class SpeedBoost : MonoBehaviour
             this.GetComponent<MeshRenderer>().enabled = false;
             this.GetComponent<BoxCollider>().enabled = false;
             Debug.Log("SpeedBoost");
-            //player.GetComponent<Player>().movementSpeed *= 2;
+            player.GetComponent<Player>().movementSpeed *= 2;
+            tempStamina = player.GetComponent<Player>().stamina;
         }
     }
 }

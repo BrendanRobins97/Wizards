@@ -28,13 +28,13 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private int              numPlayers = 2;
     [SerializeField] private List<Transform>  spawnLocations;
     [SerializeField] private float            turnTime           = 20f;
-    [SerializeField] private float            timeAfterSpellCast = 5f;
+    [SerializeField] public float            timeAfterSpellCast = 5f;
     [SerializeField] private List<GameObject> playerPrefabs;
     [SerializeField] private List<Image>      spellImages;
 
     private List<PlayerInfo> players = new List<PlayerInfo>();
-    private int              playerTurn;
-    private float            currentTurnTimeLeft;
+    [HideInInspector] public int              playerTurn;
+    public float            currentTurnTimeLeft;
     private bool             endOfTurn;
     private int              numPlayersLeft;
 
