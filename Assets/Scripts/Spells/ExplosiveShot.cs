@@ -23,10 +23,13 @@ public class ExplosiveShot : Spell {
         Vector3 normal = collision.GetContact(0).normal;
         for (int i = 0; i < numSmallExplosions; i++) {
             // Jitter start direction based on normal
-            Vector3 randNormal = new Vector3(normal.x + (2 * Random.value - 1), normal.y,
-                normal.z + (2 * Random.value - 1));
+            Vector3 randNormal = new Vector3((2 * Random.value - 1), 1,
+                (2 * Random.value - 1));
             randNormal.Normalize();
-            Instantiate(smallExplosiveShot, transform.position, Quaternion.identity).ThrowSpell(randNormal, 1);
+            Spell smallExplosion = Instantiate(smallExplosiveShot, transform.position, Quaternion.identity);
+            smallExplosion.ThrowSpell(randNormal, 1);
+            // Disable collisions to start so it doesn't instantly collide with who it hit.
+            smallExplosion.DisableCollisions(0.25f);
         }
     }
 

@@ -123,11 +123,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 8
-  contactDamage: 15
+  contactDamage: 12
   affectedByCharge: 1
   duration: 10
-  damageRadius: 3
+  damageRadius: 4
   explosionDampen: 0.5
+  knockBackForce: 100
 --- !u!1001 &2076967705125730053
 PrefabInstance:
   m_ObjectHideFlags: 0

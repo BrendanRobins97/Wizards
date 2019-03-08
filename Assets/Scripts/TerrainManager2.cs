@@ -33,7 +33,7 @@ public class TerrainManager2 : MonoBehaviour {
     private                  int             width     = 128;
     private                  int             length    = 128;
     private                  int             height    = 64;
-    private                  int             chunkSize = 8;
+    private                  int             chunkSize = 16;
     private                  Vector3Int      numChunks;
     private                  Chunk2[,,]      chunks;
     private                  HashSet<Chunk2> chunksToUpdate = new HashSet<Chunk2>();
