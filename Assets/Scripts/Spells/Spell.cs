@@ -49,7 +49,8 @@ public class Spell : MonoBehaviour {
             return;
         }
         DestroyComponents();
-        TerrainManager2.instance.Circle(Mathf.RoundToInt(transform.position.x)
+        
+        TerrainManager2.instance.AntiCircle(Mathf.RoundToInt(transform.position.x)
             , Mathf.RoundToInt(transform.position.y)
             , Mathf.RoundToInt(transform.position.z),
             (int)damageRadius, explosionDampen);

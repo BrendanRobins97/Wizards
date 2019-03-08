@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CameraBehavior : MonoBehaviour
 {
-    private GameManager gm;
     private Player player;
     [SerializeField] private GameObject spell, fireSpell;
     private float xpos, zpos;
@@ -17,36 +16,34 @@ public class CameraBehavior : MonoBehaviour
     {
         
         spellCamera.enabled = false;
-        gm = FindObjectOfType<GameManager>();
-        
     }
 
     // Update is called once per frame
     void Update()
     {
-        player = gm.GetComponent<GameManager>().CurrentPlayer;
+        player = GameManager.instance.GetComponent<GameManager>().CurrentPlayer;
         xpos = player.transform.position.x;
         zpos = player.transform.position.z;
         spell = GameObject.FindGameObjectWithTag("Spell");
         fireSpell = GameObject.FindGameObjectWithTag("FireSpell");
-        if ((spell == null && fireSpell == null) || gm.currentTurnTimeLeft > gm.timeAfterSpellCast)
+        if ((spell == null && fireSpell == null) || GameManager.instance.currentTurnTimeLeft > GameManager.instance.timeAfterSpellCast)
         {
             spellCamera.enabled = false;
-            Destroy(spell,gm.timeAfterSpellCast);
+            Destroy(spell, GameManager.instance.timeAfterSpellCast);
             Debug.Log("Spell Cam = disabled.");
         }
-        if (spell != null && gm.currentTurnTimeLeft <= gm.timeAfterSpellCast)
+        if (spell != null && GameManager.instance.currentTurnTimeLeft <= GameManager.instance.timeAfterSpellCast)
         {
             ChangeToSpellCamera();
         }
-        if ( (spell == null && fireSpell == null) || gm.currentTurnTimeLeft > gm.timeAfterSpellCast)
+        if ( (spell == null && fireSpell == null) || GameManager.instance.currentTurnTimeLeft > GameManager.instance.timeAfterSpellCast)
         {
             spellCamera.enabled = false;
-            Destroy(fireSpell, gm.timeAfterSpellCast);
+            Destroy(fireSpell, GameManager.instance.timeAfterSpellCast);
             tempY = 7;
             Debug.Log("Fireball Cam = disabled.");
         }
-        if (fireSpell != null && gm.currentTurnTimeLeft <= gm.timeAfterSpellCast)
+        if (fireSpell != null && GameManager.instance.currentTurnTimeLeft <= GameManager.instance.timeAfterSpellCast)
         {
             ChangeToFireballCamera();
         }

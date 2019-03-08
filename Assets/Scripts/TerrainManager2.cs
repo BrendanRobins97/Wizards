@@ -126,6 +126,18 @@ public class TerrainManager2 : MonoBehaviour {
         }
     }
 
+    public void AntiCircle(int x, int y, int z, int radius, float heightDampen = 1) {
+
+        for (int i = -radius; i <= radius; i++) {
+            for (int j = -radius; j <= radius; j++) {
+                for (int k = -radius; k <= radius; k++) {
+                    float density = -Mathf.Max(0, -(i * i + j * j / heightDampen + k * k - radius * radius) / (float)(radius * radius / 2f));
+                    UpdatePosition(new Vector3(x + i, y + j, z + k), density + SampleDensity(x + i, y + j, z + k));
+                }
+            }
+        }
+    }
+
     private float SampleDensity(int x, int y, int z) {
         if (x < 0 || x >= width
                   || y < 0 || y >= height
