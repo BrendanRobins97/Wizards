@@ -77,6 +77,16 @@ PrefabInstance:
       propertyPath: PS_ElectricOrbPrefab
       value: 
       objectReference: {fileID: 4247328350396419463}
+    - target: {fileID: 8515095811290676924, guid: ddebc06a6a43c93479e861341313b537,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 51e97759becd24c479d41c0a5f36ed62, type: 2}
+    - target: {fileID: 7169671117718689455, guid: ddebc06a6a43c93479e861341313b537,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f86f2b15dadd743f2a2ddc7e6a088956, type: 2}
     - target: {fileID: 9200029076998644426, guid: ddebc06a6a43c93479e861341313b537,
         type: 3}
       propertyPath: SubModule.subEmitters.Array.data[0].emitter

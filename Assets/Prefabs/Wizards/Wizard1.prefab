@@ -57,7 +57,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100002, guid: a9064d47af6f5dd43bd64b84af73ea98, type: 3}
+  - {fileID: 2100000, guid: 51e97759becd24c479d41c0a5f36ed62, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -253,6 +253,7 @@ MonoBehaviour:
   turnOver: 0
   sensitivity: 1
   movementSpeed: 2
+  enabled: 1
   playerCamera: {fileID: 6967732776618140109}
   maxHealth: 100
   spells:
@@ -409,7 +410,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a9064d47af6f5dd43bd64b84af73ea98, type: 3}
+  - {fileID: 2100000, guid: f86f2b15dadd743f2a2ddc7e6a088956, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

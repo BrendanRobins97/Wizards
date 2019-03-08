@@ -7,10 +7,12 @@
 	}
 		SubShader
 	{
-		Tags { "RenderType" = "Opaque" }
+		Tags{"RenderType" = "Opaque" "RenderPipeline" = "LightweightPipeline" "IgnoreProjector" = "True"}
+        LOD 300
 		CGPROGRAM
 		#pragma surface surf Standard fullforwardshadows
 		#pragma target 3.0
+        
 
 		struct Input {
 			float3 worldPos;

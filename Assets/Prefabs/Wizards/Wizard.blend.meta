@@ -31,7 +31,27 @@ ModelImporter:
     4300006: WizardBody
     7400000: Default Take
     9500000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Black
+    second: {fileID: 2100000, guid: f86f2b15dadd743f2a2ddc7e6a088956, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DarkGreen
+    second: {fileID: 2100000, guid: e1cd7017c6cf9d443b884a0350986ac9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: NavyBlue
+    second: {fileID: 2100000, guid: e7dca80d6e5864d42bf2bc91ad6fdea8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Skin
+    second: {fileID: 2100000, guid: 51e97759becd24c479d41c0a5f36ed62, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
