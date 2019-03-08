@@ -290,7 +290,7 @@ MonoBehaviour:
   maxHealth: 100
   spells:
   - {fileID: 8940775995591046101, guid: 8d19e0c9eca232d4593c90673c2014ca, type: 3}
-  - {fileID: 4278813243256328214, guid: cb9537d7d621b6648a7867fcc3f3316b, type: 3}
+  - {fileID: 8627637389754969580, guid: 478ac01ad88806c4eb7de68098f1efc4, type: 3}
   - {fileID: 787893643419106668, guid: 508f936bd647a33458ffc34e83f73d0b, type: 3}
   feetPosition: {fileID: 3265819485150037938}
   PS_ElectricOrbPrefab: {fileID: 9200029078089606267}

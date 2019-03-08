@@ -1053,13 +1053,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 669687614}
-  m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: 0, y: 20, z: -20}
+  m_LocalRotation: {x: 0.5, y: 0, z: 0, w: 0.8660254}
+  m_LocalPosition: {x: 59.4, y: 130.8, z: -10.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 60, y: 0, z: 0}
 --- !u!1 &672014594
 GameObject:
   m_ObjectHideFlags: 0
@@ -1848,9 +1848,10 @@ MonoBehaviour:
   - {fileID: 202394725}
   turnTime: 20
   timeAfterSpellCast: 3
+  gameStartTime: 2
   playerPrefabs:
   - {fileID: 4088739267935619923, guid: ddebc06a6a43c93479e861341313b537, type: 3}
-  - {fileID: 9070959527077536431, guid: 83e2ba667b7ae1d46a49ed64a6a815f7, type: 3}
+  - {fileID: 4088739267935619923, guid: ddebc06a6a43c93479e861341313b537, type: 3}
   - {fileID: 5060357612499765487, guid: 9c7bb63818ccf754c9430c932bdf0644, type: 3}
   - {fileID: 3208229803421341722, guid: 70654a830dd878e45ba62d1ba94f3c82, type: 3}
   spellImages:
