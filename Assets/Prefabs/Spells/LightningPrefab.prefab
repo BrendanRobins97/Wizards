@@ -82,6 +82,7 @@ MonoBehaviour:
   duration: 10
   damageRadius: 5
   explosionDampen: 0.75
+  knockBackForce: 300
 --- !u!1001 &8558675302710037171
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -23,5 +23,5 @@ Material:
     - _GrassBlendAmount: 0.821
     - _GrassSlopeThreshold: 0.183
     m_Colors:
-    - _GrassColour: {r: 0.6784314, g: 0.48294497, b: 0.1882353, a: 1}
-    - _RockColour: {r: 0.5849056, g: 0.15303217, b: 0.124154516, a: 1}
+    - _GrassColour: {r: 0.6865433, g: 0.7169812, b: 0.7169812, a: 1}
+    - _RockColour: {r: 0.12549019, g: 0.54731035, b: 0.58431375, a: 1}

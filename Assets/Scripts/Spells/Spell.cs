@@ -3,6 +3,7 @@
 // Date Created: 02/19/2019
 // Date Last Modified: 03/01/2019
 
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,8 +18,10 @@ public class Spell : MonoBehaviour {
     public    float        duration     = 10f;
     public    float        damageRadius = 5f;
     public float explosionDampen = .75f;
+    public float knockBackForce;
 
     protected List<Player> playersHit   = new List<Player>();
+    protected bool collisions = true;
 
     #endregion
 
@@ -39,18 +42,28 @@ public class Spell : MonoBehaviour {
 
     public void Disable(float time) { Invoke("DestroyComponents", time); }
 
+    public void DisableCollisions(float time) { StartCoroutine("DisableCollisionsRoutine", time); }
+
     protected virtual void OnCollisionEnter(Collision collision) {
+        if (!collisions) {
+            return;
+        }
         DestroyComponents();
-        Debug.Log(transform.position.x + " " + transform.position.y + " " + transform.position.z);
         TerrainManager2.instance.Circle(Mathf.RoundToInt(transform.position.x)
             , Mathf.RoundToInt(transform.position.y)
             , Mathf.RoundToInt(transform.position.z),
             (int)damageRadius, explosionDampen);
         Player[] players = FindObjectsOfType<Player>();
+        
         for (int i = 0; i < players.Length; i++) {
-            if ((players[i].transform.position - collision.GetContact(0).point).magnitude < damageRadius) {
+            Player player = players[i];
+            Vector3 playerDirection = players[i].transform.position - collision.GetContact(0).point;
+            if (playerDirection.magnitude < damageRadius) {
                 if (playersHit.Contains(players[i])) { return; }
-                players[i].Damage(contactDamage);
+                player.Damage(contactDamage);
+                player.GetComponent<Rigidbody>().Sleep();
+                playerDirection.Normalize();
+                player.rigidbody.AddForce(playerDirection.x * knockBackForce, (playerDirection.y + 1) * knockBackForce, playerDirection.z * knockBackForce);
                 playersHit.Add(players[i]);
             }
         }
@@ -65,6 +78,11 @@ public class Spell : MonoBehaviour {
         if (rend) { Destroy(rend); }
     }
 
+    protected IEnumerator DisableCollisionsRoutine(float time) {
+        collisions = false;
+        yield return new WaitForSeconds(time);
+        collisions = true;
+    }
     #endregion
 
 }

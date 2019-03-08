@@ -22,6 +22,7 @@ public class Player : MonoBehaviour {
     public float chargeAmount;
 
     public                   float stamina;
+    public float jumpForce = 400;
     [HideInInspector] public int   health;
     [HideInInspector] public float chargePercent;
     [HideInInspector] public bool  turnOver;
@@ -33,9 +34,11 @@ public class Player : MonoBehaviour {
     [SerializeField] private Camera      playerCamera;
     [SerializeField] private int         maxHealth = 100;
     [SerializeField] private List<Spell> spells;
+    [SerializeField] private Transform feetPosition;
+
 
     [SerializeField] private GameObject PS_ElectricOrbPrefab;
-    private Rigidbody rigidbody;
+    [HideInInspector] public Rigidbody rigidbody;
 
     //private Rigidbody   rigidbody;
 
@@ -65,6 +68,8 @@ public class Player : MonoBehaviour {
     }
 
     private void Update() {
+        if (!enabled) { return; }
+
         // Vertical rotation calculations
         // Applies to Camera
         float xRot = Input.GetAxisRaw("Mouse Y");
@@ -89,9 +94,9 @@ public class Player : MonoBehaviour {
 
         rigidbody.MoveRotation(rigidbody.rotation * Quaternion.Euler(yRot));
 
-        if (!enabled) { return; }
         stamina -= (transform.position - prevPosition).magnitude;
         prevPosition = transform.position;
+
         if (stamina > 0) {
             // Movement Calculations
             float xVelocity = Input.GetAxis("Horizontal") * movementSpeed;
@@ -103,6 +108,9 @@ public class Player : MonoBehaviour {
             Vector3 velocity = (movX + movZ) * movementSpeed * Time.deltaTime;
 
             rigidbody.MovePosition(rigidbody.position + velocity);
+            if (Input.GetButtonDown("Jump") && Physics.Raycast(feetPosition.position, Vector3.down, 0.5f)) {
+                rigidbody.AddForce(0, jumpForce, 0);
+            }
         }
 
 
