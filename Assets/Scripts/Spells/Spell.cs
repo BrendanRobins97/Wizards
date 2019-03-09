@@ -22,16 +22,23 @@ public class Spell : MonoBehaviour {
 
     protected List<Player> playersHit   = new List<Player>();
     protected bool collisions = true;
-
+    protected Rigidbody rigidbody;
     #endregion
 
     #region Methods
 
     // Start is called before the first frame update
-    protected void Start() { Destroy(gameObject, 10); }
+    protected void Start() {
+        Destroy(gameObject, 10);
+        rigidbody = GetComponent<Rigidbody>();
+    }
 
     // Update is called once per frame
-    protected void Update() { }
+    protected void Update() {
+        if (rigidbody) {
+            transform.right = -rigidbody.velocity;
+        }
+    }
 
     public void ThrowSpell(Vector3 direction, float charge) {
         if (!affectedByCharge) { charge = 1; }
@@ -50,7 +57,7 @@ public class Spell : MonoBehaviour {
         }
         DestroyComponents();
         
-        TerrainManager2.instance.AntiCircle(Mathf.RoundToInt(transform.position.x)
+        TerrainManager2.instance.Circle(Mathf.RoundToInt(transform.position.x)
             , Mathf.RoundToInt(transform.position.y)
             , Mathf.RoundToInt(transform.position.z),
             (int)damageRadius, explosionDampen);
@@ -77,6 +84,8 @@ public class Spell : MonoBehaviour {
         if (rb) { Destroy(rb); }
         if (col) { Destroy(col); }
         if (rend) { Destroy(rend); }
+
+        foreach (Transform child in transform) { Destroy(child.gameObject); }
     }
 
     protected IEnumerator DisableCollisionsRoutine(float time) {
