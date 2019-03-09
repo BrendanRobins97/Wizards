@@ -110,6 +110,7 @@ public class GameManager : MonoBehaviour {
             if (player == null) { continue; }
             PlayerUI playerUI = players[i].playerUI;
             playerUI.healthBar.value = player.HealthPercent();
+            playerUI.staminaBar.value = player.StaminaPercent();
             if (player.health <= 0) {
                 player.Disable();
                 Destroy(player.gameObject);

@@ -11,6 +11,7 @@ public class PlayerUI : MonoBehaviour {
     #region Fields
 
     public Slider healthBar;
+    public Slider staminaBar;
     public Image  playerImage;
 
     #endregion
