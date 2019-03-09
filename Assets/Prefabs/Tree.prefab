@@ -14,13 +14,14 @@ GameObject:
   - component: {fileID: 2218394703389889202}
   - component: {fileID: 4176472951031073642}
   - component: {fileID: 415446818648154045}
+  - component: {fileID: 7858699709036499734}
   m_Layer: 0
   m_Name: Tree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8440971559480952921
 Transform:
   m_ObjectHideFlags: 0
@@ -29,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5502511869987978858}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 112, y: 1.5673819, z: 16}
+  m_LocalPosition: {x: -5294.904, y: 24, z: -4997}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6467551303011331628}
@@ -130,6 +131,19 @@ CapsuleCollider:
   m_Height: 5.7893734
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 3.36}
+--- !u!114 &7858699709036499734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5502511869987978858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 025c80e176d48ec4785924fb5ecd9ca5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxGroundAngle: 20
 --- !u!1 &7933916895828086965
 GameObject:
   m_ObjectHideFlags: 0
