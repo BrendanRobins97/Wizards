@@ -6,22 +6,27 @@ public class CameraBehavior : MonoBehaviour
 {
     private Player player;
     [SerializeField] private GameObject spell, fireSpell;
+    //[SerializeField] private Animator anim;
     private float xpos, zpos;
     private float tempY = 7;
+    
     public Camera spellCamera;
 
     public float speed = 1f;
     // Start is called before the first frame update
     void Start()
     {
-        
+        //anim = FindObjectOfType<Animator>();
         spellCamera.enabled = false;
+        //anim.enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         player = GameManager.instance.GetComponent<GameManager>().CurrentPlayer;
+        
         xpos = player.transform.position.x;
         zpos = player.transform.position.z;
         spell = GameObject.FindGameObjectWithTag("Spell");

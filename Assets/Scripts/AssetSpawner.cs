@@ -23,10 +23,12 @@ public class AssetSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Random.InitState(10);
+        //Random.InitState(10);
+        Random randomSequence = new Random();
+        Random.InitState(randomSequence.GetHashCode());
         for (int i = 0; i < numItemsToSpawn; i++)
         {
-            Random.InitState(i * i);
+            
 
             Vector3 position = new Vector3(Random.Range(min, max), defaultY, Random.Range(min, max));
             for (int k = 0; k < usedPoints.Count; k++)
@@ -60,7 +62,6 @@ public class AssetSpawner : MonoBehaviour
         ].transform.rotation);
             assetList.Add(assetPrefab[randomIndex]);
         }
-        
     }
 
     // Update is called once per frame
@@ -70,7 +71,7 @@ public class AssetSpawner : MonoBehaviour
     }
 
 
-    Vector3 Spawn()
+    void Spawn()
     {
         float bestCandidateX = new float();
         float bestCandidateZ = new float();
@@ -107,10 +108,12 @@ public class AssetSpawner : MonoBehaviour
             }
         }
         Debug.Log("Spawn asset " + new Vector3(bestCandidateX, defaultY, bestCandidateZ));
-        //Instantiate(assetPrefab, new Vector3(bestCandidateX, defaultY, bestCandidateZ), assetPrefab.transform.rotation);
-        //assetPrefab.SetActive(true);
+        Instantiate(assetList[0], new Vector3(bestCandidateX, defaultY, bestCandidateZ), assetList[0].transform.rotation);
+        assetList[0].SetActive(true);
         usedPoints.Add(new Vector3(bestCandidateX, defaultY, bestCandidateZ));
         numItemsToSpawn--;
-        return new Vector3(bestCandidateX, defaultY, bestCandidateZ);
+        //return new Vector3(bestCandidateX, defaultY, bestCandidateZ);
     }
+
+    
 }

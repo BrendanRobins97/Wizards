@@ -25,4 +25,15 @@ public class AssetBehavior : MonoBehaviour
     {
         
     }
+
+    void OnTriggerEnter(Collider col)
+    {
+        if (col.tag == "FireSpell" || col.tag == "Spell")
+        {
+            Debug.Log("unfreezing");
+            this.gameObject.GetComponent<Rigidbody>().constraints &= RigidbodyConstraints.FreezePositionX;
+            this.gameObject.GetComponent<Rigidbody>().constraints &= RigidbodyConstraints.FreezePositionZ;
+            this.gameObject.GetComponent<Rigidbody>().constraints &= RigidbodyConstraints.FreezePositionY;
+        }
+    }
 }
