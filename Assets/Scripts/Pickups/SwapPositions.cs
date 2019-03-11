@@ -60,7 +60,12 @@ public class SwapPositions : MonoBehaviour
             
             Destroy(this.gameObject);
         }
-        
+
+        if (playerWithItem != player)
+        {
+            swapPositionsText.gameObject.SetActive(false);
+        }
+        if(playerWithItem == player) { swapPositionsText.gameObject.SetActive(true); }
         if (!playersFound)
         {
             players = FindObjectsOfType<Player>();
@@ -82,6 +87,8 @@ public class SwapPositions : MonoBehaviour
             this.GetComponent<MeshRenderer>().enabled = false;
             this.GetComponent<BoxCollider>().enabled = false;
             swapPositionsText.gameObject.SetActive(true);
+            swapPositionsText.text = "Press E to Show Players." +
+                                     "Right Click to Swap.";
         }
     }
 

@@ -6,16 +6,16 @@ using UnityEngine;
 public class AssetSpawner : MonoBehaviour
 {
 
-    public int numItemsToSpawn;
-    [SerializeField] private float min = 10.0f;
-    [SerializeField] private float max = 124.0f;
+    [Range(0,35)]public int numItemsToSpawn;
+    [SerializeField] public float min = 10.0f;
+    [SerializeField] public float max = 124.0f;
     [SerializeField] private GameObject [] assetPrefab;
-    [SerializeField] private float maxGroundAngle = 20;
+    [SerializeField] public float maxGroundAngle = 20;
     private float angle;
     private float bestDistance = 5;
-    //private float bestCandidateX = new float();
-    //private float bestCandidateZ = new float();
+
     private float defaultY = 24.0f;
+    private float finalX, finalZ = 0;
     private int numCandidates = 10;
     private RaycastHit hitInfo;
     private List<Vector3> usedPoints = new List<Vector3>();
@@ -23,13 +23,11 @@ public class AssetSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Random.InitState(10);
         Random randomSequence = new Random();
         Random.InitState(randomSequence.GetHashCode());
         for (int i = 0; i < numItemsToSpawn; i++)
         {
-            
-
+            bestDistance = 10;
             Vector3 position = new Vector3(Random.Range(min, max), defaultY, Random.Range(min, max));
             for (int k = 0; k < usedPoints.Count; k++)
             {
@@ -55,7 +53,7 @@ public class AssetSpawner : MonoBehaviour
                     }
                 }
             }
-
+            //Vector3 position = new Vector3(finalX, defaultY, finalZ);
             int randomIndex = Random.Range(0, assetPrefab.Length);
             usedPoints.Add(position);
             Instantiate(assetPrefab[randomIndex], position, assetPrefab[randomIndex

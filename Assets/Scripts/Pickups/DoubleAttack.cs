@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class DoubleAttack : MonoBehaviour
 {
     [SerializeField] private GameManager gm;
+    [SerializeField] private TextMeshProUGUI text;
     private Player player, playerWithItem;
     private bool pickedUp;
     private bool doubleAttack = false;
@@ -33,6 +34,7 @@ public class DoubleAttack : MonoBehaviour
         {   
             playerWithItem.enabled = true;
             playerWithItem.turnOver = false;
+            text.gameObject.SetActive(false);
             Destroy(this.gameObject,.2f);
         }
         if (Input.GetButtonUp("Fire1") && pickedUp && player == playerWithItem && numFire > 1)
@@ -50,6 +52,8 @@ public class DoubleAttack : MonoBehaviour
             playerWithItem = player;
             pickedUp = true;
             doubleAttack = true;
+            text.gameObject.SetActive(true);
+            text.text = "Double Attack";
             this.GetComponent<MeshRenderer>().enabled = false;
             this.GetComponent<BoxCollider>().enabled = false;
         }

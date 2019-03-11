@@ -1,12 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class SpeedBoost : MonoBehaviour
 {   
     [SerializeField]
     private float speedUpTime;
-
+    [SerializeField] private TextMeshProUGUI text;
     private float tempStamina;
     private GameManager gm;
     private Player player;
@@ -31,6 +31,7 @@ public class SpeedBoost : MonoBehaviour
             {
                 player.movementSpeed = 2;
                 Debug.Log("Speed normal");
+                text.gameObject.SetActive(false);
                 Destroy(this.gameObject, 0.05f);
             }
         }
@@ -43,6 +44,8 @@ public class SpeedBoost : MonoBehaviour
             pickedUp = true;
             this.GetComponent<MeshRenderer>().enabled = false;
             this.GetComponent<BoxCollider>().enabled = false;
+            text.gameObject.SetActive(true);
+            text.text = "Speed Boost";
             Debug.Log("SpeedBoost");
             player.GetComponent<Player>().movementSpeed *= 2;
             tempStamina = player.GetComponent<Player>().stamina;

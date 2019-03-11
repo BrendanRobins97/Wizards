@@ -7,7 +7,7 @@ public class MapUpdate : MonoBehaviour
     public Camera updateCamera;
     [SerializeField] private Animator anim;
     private Player player, startingPlayer;
-    private bool reset = false;
+    private bool reset = true;
     private float resetTime = 2f;
     private int numPlayers;
     // Start is called before the first frame update
@@ -20,10 +20,11 @@ public class MapUpdate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.instance.GetComponent<GameManager>().playerTurn == 0 && resetTime > 0)
+        if (GameManager.instance.GetComponent<GameManager>().playerTurn == 0 && reset)
         {
-            UpdateMap();
-            reset = true;
+            //UpdateMap();
+            Debug.Log("MapUpdating." + " reset is false");
+            reset = false;
         }
         else
         {
@@ -32,21 +33,27 @@ public class MapUpdate : MonoBehaviour
             
         }
 
+        if (GameManager.instance.GetComponent<GameManager>().playerTurn == GameManager.instance.GetComponent<GameManager>().numPlayersLeft-1)
+        {
+            reset = true;
+            Debug.Log("reset = true");
+        }
+        
     }
 
     public void UpdateMap()
     {
-        resetTime = 2f;
+        resetTime = 5f;
         StartCoroutine(CameraUp());
         reset = false;
     }
     IEnumerator CameraUp()
     {
-        resetTime -= Time.deltaTime;
-        updateCamera.enabled = true;
-        anim.SetBool("isUpdate", true);
-        GameManager.instance.GetComponent<GameManager>().currentTurnTimeLeft = 20;
-        yield return new WaitForSeconds(1.0f);
-        
+            resetTime -= Time.deltaTime;
+            //updateCamera.enabled = true;
+            //anim.SetBool("isUpdate", true);
+            GameManager.instance.GetComponent<GameManager>().currentTurnTimeLeft = 5;
+            yield return new WaitForSeconds(5.0f);
+
     }
 }

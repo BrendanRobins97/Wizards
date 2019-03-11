@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour {
     private bool             endOfTurn;
     private bool gameStarted = false;
 
-    private int              numPlayersLeft;
+   [HideInInspector] public int              numPlayersLeft;
 
     #endregion
 
