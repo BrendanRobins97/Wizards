@@ -3159,6 +3159,11 @@ PrefabInstance:
       propertyPath: swapPositionsText
       value: 
       objectReference: {fileID: 416504575}
+    - target: {fileID: 2503946758003298418, guid: 9e568b20b3ab3f34ab7fb4c3ad40862c,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 614e2ff7ba32f114fb3d0e3b2c25ccad, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e568b20b3ab3f34ab7fb4c3ad40862c, type: 3}
 --- !u!1001 &3354523427395400910

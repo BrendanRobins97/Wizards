@@ -13,13 +13,11 @@ public class SwapPositions : MonoBehaviour
     private bool playersFound = false;
     private Canvas canvas;
     private bool canSwap = false;
-
     private int index = 0;
     // Start is called before the first frame update
     void Start()
     {
         gm = FindObjectOfType<GameManager>();
-        this.GetComponent<MeshRenderer>().material.color = Color.clear;
     }
 
     // Update is called once per frame

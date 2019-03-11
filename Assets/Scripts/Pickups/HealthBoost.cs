@@ -14,7 +14,6 @@ public class HealthBoost : MonoBehaviour
     void Start()
     {
         gm = FindObjectOfType<GameManager>();
-        this.GetComponent<MeshRenderer>().material.color = Color.red;
     }
 
     // Update is called once per frame

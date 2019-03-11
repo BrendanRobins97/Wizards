@@ -11,7 +11,12 @@ ModelImporter:
     4300000: Rock_S
     7400000: Default Take
     9500000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rock
+    second: {fileID: 2100000, guid: 9beb66c5051856c40b750659b7aabfec, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

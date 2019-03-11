@@ -40,7 +40,10 @@ public class RipplePostProcessor : MonoBehaviour
     }
     void Update()
     {
-       
+        if (Input.GetMouseButton(0))
+        {
+            Ripple();
+        }
     }
 
     void OnRenderImage(RenderTexture src, RenderTexture dst)
@@ -50,9 +53,9 @@ public class RipplePostProcessor : MonoBehaviour
 
     public void Ripple()
     {
-        
+    Debug.Log("Ripple");
     this.Amount = this.MaxAmount;
-    Vector3 pos = gm.CurrentPlayer.transform.position;
+    Vector3 pos = Input.mousePosition;
     this.RippleMaterial.SetFloat("_CenterX", pos.x);
     this.RippleMaterial.SetFloat("_CenterY", pos.y);
     //this.RippleMaterial.SetFloat("_CenterZ", pos.z);

@@ -15,7 +15,6 @@ public class DoubleAttack : MonoBehaviour
     void Start()
     {
         gm = FindObjectOfType<GameManager>();
-        this.GetComponent<MeshRenderer>().material.color = Color.magenta;
     }
 
     // Update is called once per frame

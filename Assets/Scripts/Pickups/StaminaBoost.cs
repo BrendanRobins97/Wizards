@@ -14,7 +14,6 @@ public class StaminaBoost : MonoBehaviour
     void Start()
     {
         gm = FindObjectOfType<GameManager>();
-        this.GetComponent<MeshRenderer>().material.color = Color.green;
     }
 
     void Update()
