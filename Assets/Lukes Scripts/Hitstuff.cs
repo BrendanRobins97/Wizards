@@ -13,7 +13,6 @@ public class Hitstuff : MonoBehaviour {
         Instance.transform.position = transform.position;
         Instance.transform.rotation = transform.rotation;
         Instance.SetActive(true);
-        Destroy(gameObject);
         Destroy(Instance, 2f);
     }
 }
