@@ -164,6 +164,11 @@ public class Player : MonoBehaviour {
 
     public float HealthPercent() { return (float) health / maxHealth; }
 
+    public float StaminaPercent()
+    {
+        return (float) stamina / startingStamina;
+    }
+
     #endregion
 
 }

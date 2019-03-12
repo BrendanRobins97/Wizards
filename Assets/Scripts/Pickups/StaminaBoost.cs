@@ -1,25 +1,42 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class StaminaBoost : MonoBehaviour
 {
-    private Player player;
-
+    private Player player,playerWithItem;
+    [SerializeField] private TextMeshProUGUI text;
     private GameManager gm;
+    private float displayTime = 2f;
+
+    private bool pickedUp = false;
     // Start is called before the first frame update
     void Start()
     {
         gm = FindObjectOfType<GameManager>();
-        this.GetComponent<MeshRenderer>().material.color = Color.green;
     }
 
     void Update()
     {
         player = gm.GetComponent<GameManager>().CurrentPlayer;
-        if (player == null)
+        displayTime -= Time.deltaTime;
+        if (pickedUp)
         {
-            Debug.Log("No Player Found");
+            if (displayTime <= 0)
+            {
+                text.gameObject.SetActive(false);
+                Destroy(this.gameObject);
+            }
+
+            if (playerWithItem != player)
+            {
+                text.gameObject.SetActive(false);
+            }
+
+            if (player == null)
+            {
+                Debug.Log("No Player Found");
+            }
         }
     }
 
@@ -29,8 +46,14 @@ public class StaminaBoost : MonoBehaviour
         {
             if (col.tag == "Player")
             {
+                playerWithItem = player;
+                text.gameObject.SetActive(true);
+                text.text = "Stamina Boost";
+                pickedUp = true;
+                displayTime = 2f;
                 player.GetComponent<Player>().stamina = player.GetComponent<Player>().stamina + 20f;
-                Destroy(this.gameObject, .02f);
+                this.GetComponent<MeshRenderer>().enabled = false;
+                this.GetComponent<BoxCollider>().enabled = false;
             }
         }
     }

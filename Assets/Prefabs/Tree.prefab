@@ -14,13 +14,15 @@ GameObject:
   - component: {fileID: 2218394703389889202}
   - component: {fileID: 4176472951031073642}
   - component: {fileID: 415446818648154045}
+  - component: {fileID: 7858699709036499734}
+  - component: {fileID: 211076120905592342}
   m_Layer: 0
   m_Name: Tree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8440971559480952921
 Transform:
   m_ObjectHideFlags: 0
@@ -29,7 +31,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5502511869987978858}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 112, y: 1.5673819, z: 16}
+  m_LocalPosition: {x: -31479.904, y: 24, z: -31492}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6467551303011331628}
@@ -61,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ce201e89a9a7cfe46914c2542df6e758, type: 3}
+  - {fileID: 2100000, guid: 67756a2c8f20d2c45b250f742119cb9f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -108,14 +110,14 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5502511869987978858}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
+  m_Mass: 2
+  m_Drag: 1
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 122
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!136 &415446818648154045
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -130,6 +132,32 @@ CapsuleCollider:
   m_Height: 5.7893734
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 3.36}
+--- !u!114 &7858699709036499734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5502511869987978858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 025c80e176d48ec4785924fb5ecd9ca5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxGroundAngle: 20
+--- !u!65 &211076120905592342
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5502511869987978858}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.3901367, y: 4.2514634, z: 6.218651}
+  m_Center: {x: -0.13696289, y: 0.05628586, z: 3.1724932}
 --- !u!1 &7933916895828086965
 GameObject:
   m_ObjectHideFlags: 0
@@ -187,7 +215,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100002, guid: ce201e89a9a7cfe46914c2542df6e758, type: 3}
+  - {fileID: 2100000, guid: fee42d1d12a813948888f21e1f4ac5b8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

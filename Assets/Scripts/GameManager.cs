@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private List<Transform>  spawnLocations;
     [SerializeField] private float            turnTime           = 20f;
     [SerializeField] public float            timeAfterSpellCast = 5f;
+    [SerializeField] public float gameStartTime = 5f;
+
     [SerializeField] private List<GameObject> playerPrefabs;
     [SerializeField] private List<Image>      spellImages;
 
@@ -36,7 +38,9 @@ public class GameManager : MonoBehaviour {
     [HideInInspector] public int              playerTurn;
     public float            currentTurnTimeLeft;
     private bool             endOfTurn;
-    private int              numPlayersLeft;
+    private bool gameStarted = false;
+
+   [HideInInspector] public int              numPlayersLeft;
 
     #endregion
 
@@ -63,21 +67,36 @@ public class GameManager : MonoBehaviour {
             players.Add(newPlayerInfo);
         }
         gameOverText.gameObject.SetActive(false);
-        mainCamera.enabled = false;
+        
         playerTurn = 0;
         numPlayersLeft = numPlayers;
-        CurrentPlayer.Enable();
-        StartTurn();
+        currentTurnTimeLeft = gameStartTime;
     }
 
     private void Update() {
+
+        // Update the current time left and update the timer text
+        currentTurnTimeLeft -= Time.deltaTime;
+        currentTurnTimeLeft = Mathf.Clamp(currentTurnTimeLeft, -0.9f, turnTime);
+        turnText.text = "Time Left: " + (int)(currentTurnTimeLeft + 1);
+
+        if (!gameStarted) { // Handle game start behavior
+
+            // Start game when initial timer hits 0
+            if (currentTurnTimeLeft < 0) {
+                CurrentPlayer.Enable();
+                StartTurn();
+                mainCamera.enabled = false;
+                gameStarted = true;
+            }
+        }
+        
+        if (!gameStarted) {
+            return;
+        }
         chargeBar.value = CurrentPlayer.chargePercent;
         if (chargeBar.value <= 0) { chargeBar.enabled = false; }
         else { chargeBar.enabled = true; }
-
-        currentTurnTimeLeft -= Time.deltaTime;
-        currentTurnTimeLeft = Mathf.Clamp(currentTurnTimeLeft, -0.9f, turnTime);
-        turnText.text = "Time Left: " + (int) (currentTurnTimeLeft + 1);
 
         if (CurrentPlayer.turnOver && !endOfTurn) {
             currentTurnTimeLeft = timeAfterSpellCast;
@@ -91,6 +110,7 @@ public class GameManager : MonoBehaviour {
             if (player == null) { continue; }
             PlayerUI playerUI = players[i].playerUI;
             playerUI.healthBar.value = player.HealthPercent();
+            playerUI.staminaBar.value = player.StaminaPercent();
             if (player.health <= 0) {
                 player.Disable();
                 Destroy(player.gameObject);

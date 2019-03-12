@@ -4,49 +4,51 @@ using UnityEngine;
 
 public class CameraBehavior : MonoBehaviour
 {
-    private GameManager gm;
     private Player player;
     [SerializeField] private GameObject spell, fireSpell;
+    //[SerializeField] private Animator anim;
     private float xpos, zpos;
     private float tempY = 7;
+    
     public Camera spellCamera;
 
     public float speed = 1f;
     // Start is called before the first frame update
     void Start()
     {
-        
+        //anim = FindObjectOfType<Animator>();
         spellCamera.enabled = false;
-        gm = FindObjectOfType<GameManager>();
-        
+        //anim.enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        player = gm.GetComponent<GameManager>().CurrentPlayer;
+        
+        player = GameManager.instance.GetComponent<GameManager>().CurrentPlayer;
+        
         xpos = player.transform.position.x;
         zpos = player.transform.position.z;
         spell = GameObject.FindGameObjectWithTag("Spell");
         fireSpell = GameObject.FindGameObjectWithTag("FireSpell");
-        if ((spell == null && fireSpell == null) || gm.currentTurnTimeLeft > gm.timeAfterSpellCast)
+        if ((spell == null && fireSpell == null) || GameManager.instance.currentTurnTimeLeft > GameManager.instance.timeAfterSpellCast)
         {
             spellCamera.enabled = false;
-            Destroy(spell,gm.timeAfterSpellCast);
+            Destroy(spell, GameManager.instance.timeAfterSpellCast);
             Debug.Log("Spell Cam = disabled.");
         }
-        if (spell != null && gm.currentTurnTimeLeft <= gm.timeAfterSpellCast)
+        if (spell != null && GameManager.instance.currentTurnTimeLeft <= GameManager.instance.timeAfterSpellCast)
         {
             ChangeToSpellCamera();
         }
-        if ( (spell == null && fireSpell == null) || gm.currentTurnTimeLeft > gm.timeAfterSpellCast)
+        if ( (spell == null && fireSpell == null) || GameManager.instance.currentTurnTimeLeft > GameManager.instance.timeAfterSpellCast)
         {
             spellCamera.enabled = false;
-            Destroy(fireSpell, gm.timeAfterSpellCast);
+            Destroy(fireSpell, GameManager.instance.timeAfterSpellCast);
             tempY = 7;
             Debug.Log("Fireball Cam = disabled.");
         }
-        if (fireSpell != null && gm.currentTurnTimeLeft <= gm.timeAfterSpellCast)
+        if (fireSpell != null && GameManager.instance.currentTurnTimeLeft <= GameManager.instance.timeAfterSpellCast)
         {
             ChangeToFireballCamera();
         }
