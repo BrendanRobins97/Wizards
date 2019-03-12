@@ -14,6 +14,8 @@ public class SwapPositions : MonoBehaviour
     private Canvas canvas;
     private bool canSwap = false;
     private int index = 0;
+
+    private bool pickedUp = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,55 +27,66 @@ public class SwapPositions : MonoBehaviour
     {
         player = gm.GetComponent<GameManager>().CurrentPlayer;
         Debug.Log(player);
-        if (Input.GetKeyDown(KeyCode.E) && canSwap && player == playerWithItem)
-        {
-            index++;
-            if (canSwap && player == playerWithItem)
+        
+            if (Input.GetKeyDown(KeyCode.E) && canSwap && player == playerWithItem)
             {
-                if (index >= players.Length)
+                index++;
+                if (canSwap && player == playerWithItem)
                 {
-                    index = 0;
-                }
-                if (playerWithItem.name == players[index].name)
-                {
-                    index++;
-                    if (index > players.Length)
+                    if (index >= players.Length)
                     {
                         index = 0;
                     }
+
+                    if (playerWithItem.name == players[index].name)
+                    {
+                        index++;
+                        if (index > players.Length)
+                        {
+                            index = 0;
+                        }
+                    }
+
+                    swapPositionsText.text = players[index].name;
+                    ShowPlayers();
+
                 }
-                swapPositionsText.text = players[index].name;
-                ShowPlayers();
-                
             }
-        }
 
-        if (Input.GetMouseButtonDown(1) && canSwap && player == playerWithItem)
-        {
-            Vector3 tempPos = player.transform.position;
-            player.transform.position = players[index].transform.position;
-            players[index].transform.position = tempPos;
-            Debug.Log(player.name + " swapped with " + players[index].name);
-            swapPositionsText.gameObject.SetActive(false);
-            
-            Destroy(this.gameObject);
-        }
-
-        if (playerWithItem != player)
-        {
-            swapPositionsText.gameObject.SetActive(false);
-        }
-        if(playerWithItem == player) { swapPositionsText.gameObject.SetActive(true); }
-        if (!playersFound)
-        {
-            players = FindObjectsOfType<Player>();
-            for (int i = 0; i < players.Length; i++)
+            if (Input.GetMouseButtonDown(1) && canSwap && player == playerWithItem)
             {
-                print(players[i]);
+                Vector3 tempPos = player.transform.position;
+                player.transform.position = players[index].transform.position;
+                players[index].transform.position = tempPos;
+                Debug.Log(player.name + " swapped with " + players[index].name);
+                swapPositionsText.gameObject.SetActive(false);
+                canSwap = false;
+                Destroy(this.gameObject,.2f);
             }
 
-            playersFound = true;
-        }
+            if (playerWithItem != player)
+            {
+                swapPositionsText.text = "";
+            }
+
+            if (playerWithItem == player && canSwap)
+            {
+                swapPositionsText.gameObject.SetActive(true);
+               // swapPositionsText.text = "Press E to Show Players." +
+                                        // "Right Click to Swap.";
+            }
+
+            if (!playersFound)
+            {
+                players = FindObjectsOfType<Player>();
+                for (int i = 0; i < players.Length; i++)
+                {
+                    print(players[i]);
+                }
+
+                playersFound = true;
+            }
+        
     }
 
     void OnTriggerEnter(Collider col)
@@ -81,6 +94,7 @@ public class SwapPositions : MonoBehaviour
         if (col.tag == "Player")
         {
             playerWithItem = player;
+            pickedUp = true;
             canSwap = true;
             this.GetComponent<MeshRenderer>().enabled = false;
             this.GetComponent<BoxCollider>().enabled = false;

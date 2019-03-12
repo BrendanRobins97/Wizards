@@ -9,7 +9,7 @@ public class SpeedBoost : MonoBehaviour
     [SerializeField] private TextMeshProUGUI text;
     private float tempStamina;
     private GameManager gm;
-    private Player player;
+    private Player player, playerWithItem;
     private bool pickedUp = false;
     // Start is called before the first frame update
     void Start()
@@ -24,14 +24,28 @@ public class SpeedBoost : MonoBehaviour
         Debug.Log(player.movementSpeed);
         if (pickedUp)
         {
-            speedUpTime -= Time.deltaTime;
-            player.GetComponent<Player>().stamina = tempStamina;
-            if (speedUpTime <= 0 || gm.currentTurnTimeLeft <= 0)
+            if (playerWithItem != player)
             {
-                player.movementSpeed = 2;
-                Debug.Log("Speed normal");
                 text.gameObject.SetActive(false);
-                Destroy(this.gameObject, 0.05f);
+            }
+
+            if (playerWithItem == player)
+            {
+                text.gameObject.SetActive(true);
+                text.text = "Speed Boost";
+            }
+
+            if (pickedUp)
+            {
+                speedUpTime -= Time.deltaTime;
+                player.GetComponent<Player>().stamina = tempStamina;
+                if (speedUpTime <= 0 || gm.currentTurnTimeLeft <= 0)
+                {
+                    player.movementSpeed = 2;
+                    Debug.Log("Speed normal");
+                    text.gameObject.SetActive(false);
+                    Destroy(this.gameObject, 0.05f);
+                }
             }
         }
     }
@@ -40,6 +54,7 @@ public class SpeedBoost : MonoBehaviour
     {
         if (col.tag == "Player")
         {
+            playerWithItem = player;
             pickedUp = true;
             this.GetComponent<MeshRenderer>().enabled = false;
             this.GetComponent<BoxCollider>().enabled = false;

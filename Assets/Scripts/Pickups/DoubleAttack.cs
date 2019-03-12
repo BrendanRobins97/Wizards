@@ -11,6 +11,7 @@ public class DoubleAttack : MonoBehaviour
     private bool doubleAttack = false;
     private int numFire = 0;
     private float tempTime;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,24 +23,35 @@ public class DoubleAttack : MonoBehaviour
     {
         player = gm.GetComponent<GameManager>().CurrentPlayer;
         Debug.Log(player);
-        if (doubleAttack)
+        if (pickedUp)
         {
-            playerWithItem.enabled = true;
-            playerWithItem.turnOver = false;
-            gm.currentTurnTimeLeft = tempTime;
-        }
+            if (doubleAttack)
+            {
+                playerWithItem.enabled = true;
+                playerWithItem.turnOver = false;
+                gm.currentTurnTimeLeft = tempTime;
+            }
 
-        if (Input.GetButtonUp("Fire1")&&pickedUp&&player == playerWithItem && numFire <= 1)
-        {   
-            playerWithItem.enabled = true;
-            playerWithItem.turnOver = false;
-            text.gameObject.SetActive(false);
-            Destroy(this.gameObject,.2f);
-        }
-        if (Input.GetButtonUp("Fire1") && pickedUp && player == playerWithItem && numFire > 1)
-        {
-            doubleAttack = false;
-            Destroy(this.gameObject, .2f);
+            if (playerWithItem != player)
+            {
+                text.gameObject.SetActive(false);
+            }
+            
+
+            if (Input.GetButtonUp("Fire1") && pickedUp && player == playerWithItem && numFire <= 1)
+            {
+                playerWithItem.enabled = true;
+                playerWithItem.turnOver = false;
+                text.gameObject.SetActive(false);
+                Destroy(this.gameObject, .2f);
+            }
+
+            if (Input.GetButtonUp("Fire1") && pickedUp && player == playerWithItem && numFire > 1)
+            {
+                doubleAttack = false;
+                text.gameObject.SetActive(false);
+                Destroy(this.gameObject, .2f);
+            }
         }
     }
 

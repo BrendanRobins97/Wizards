@@ -14,7 +14,7 @@ public class AssetSpawner : MonoBehaviour
     private float angle;
     private float bestDistance = 5;
 
-    private float defaultY = 24.0f;
+    private float defaultY = 34.0f;
     private float finalX, finalZ = 0;
     private int numCandidates = 10;
     private RaycastHit hitInfo;
