@@ -7,12 +7,12 @@ public class Hitstuff : MonoBehaviour {
     public GameObject hit;
     public GameObject Instance;
 
-	void OnTriggerEnter(Collider col)
+	void OnCollisionEnter(Collision collision)
     {
         Instance = Instantiate(hit);
         Instance.transform.position = transform.position;
         Instance.transform.rotation = transform.rotation;
         Instance.SetActive(true);
-        Destroy(Instance, 2f);
+        Destroy(Instance, 3f);
     }
 }

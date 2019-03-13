@@ -29,6 +29,6 @@ Material:
     - Vector1_AAEF753D: 4
     - Vector1_FBEB9A80: 0
     m_Colors:
-    - Color_DCDFF37: {r: 0.04479649, g: 0.032707367, b: 0.14150941, a: 0}
+    - Color_DCDFF37: {r: 0.021259785, g: 0.01588643, b: 0.066037714, a: 0}
     - Vector2_BCDEE352: {r: 0, g: -0.2, b: 0, a: 0}
     - Vector2_D7B8EEB5: {r: -0.1, g: -0.2, b: 0, a: 0}

@@ -395,7 +395,7 @@ MonoBehaviour:
   mainProjectile: {fileID: 0}
   projectile1: {fileID: 3526736743482236972, guid: 515e43b9a1a0e4ebcbd5123399a94d26,
     type: 3}
-  projectile2: {fileID: 1818683746701590525, guid: ab7d63f9e1690437cb3add8e0f059841,
+  projectile2: {fileID: 1101230289879478464, guid: 117b28d95956f42daade758afdecad5a,
     type: 3}
   particle1: {fileID: 0}
   particle2: {fileID: 0}
