@@ -61,7 +61,7 @@ public class SpeedBoost : MonoBehaviour
             text.gameObject.SetActive(true);
             text.text = "Speed Boost";
             Debug.Log("SpeedBoost");
-            player.GetComponent<Player>().movementSpeed *= 2;
+            player.GetComponent<Player>().movementSpeed = 4;
             tempStamina = player.GetComponent<Player>().stamina;
         }
     }
