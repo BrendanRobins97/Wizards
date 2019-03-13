@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Dynamic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -27,10 +28,14 @@ public class SwapPositions : MonoBehaviour
     {
         player = gm.GetComponent<GameManager>().CurrentPlayer;
         Debug.Log(player);
-        
+        if (gm.numPlayersLeft != players.Length)
+        {
+            players = FindObjectsOfType<Player>();
+        }
             if (Input.GetKeyDown(KeyCode.E) && canSwap && player == playerWithItem)
             {
                 index++;
+               
                 if (canSwap && player == playerWithItem)
                 {
                     if (index >= players.Length)
@@ -75,8 +80,8 @@ public class SwapPositions : MonoBehaviour
                // swapPositionsText.text = "Press E to Show Players." +
                                         // "Right Click to Swap.";
             }
-
-            if (!playersFound)
+            
+        if (!playersFound)
             {
                 players = FindObjectsOfType<Player>();
                 for (int i = 0; i < players.Length; i++)
@@ -88,7 +93,13 @@ public class SwapPositions : MonoBehaviour
             }
         
     }
-
+    public static void RemoveAt<T>(ref T[] arr, int index)
+    {
+        // replace the element at index with the last element
+        arr[index] = arr[arr.Length - 1];
+        // finally, let's decrement Array's size by one
+        System.Array.Resize(ref arr, arr.Length - 1);
+    }
     void OnTriggerEnter(Collider col)
     {
         if (col.tag == "Player")
@@ -108,7 +119,7 @@ public class SwapPositions : MonoBehaviour
     {
         for (int i = 0; i < players.Length; i++)
         {
-            if (players[i].name != playerWithItem.name)
+            if (players[i].name != playerWithItem.name && players[i] != null)
             {
                 print(players[i] + " index " + i);
                 
