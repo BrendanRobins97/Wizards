@@ -102,7 +102,7 @@ Transform:
   m_GameObject: {fileID: 442030587000971058}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_LocalScale: {x: 4, y: 4.5, z: 4}
   m_Children:
   - {fileID: 442030587000865552}
   - {fileID: 442030587000865558}
@@ -213,7 +213,7 @@ Transform:
   m_GameObject: {fileID: 442030587087528552}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 442030588739722475}
   m_RootOrder: 3
@@ -1051,7 +1051,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 8
+      scalar: 4
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -2812,7 +2812,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
   NoiseModule:
-    enabled: 0
+    enabled: 1
     strength:
       serializedVersion: 2
       minMaxState: 0
@@ -2973,7 +2973,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     separateAxes: 0
-    frequency: 0.5
+    frequency: 0.25
     damping: 1
     octaves: 1
     octaveMultiplier: 0.5
@@ -9924,7 +9924,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.75
+      scalar: 1.75
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -14365,7 +14365,7 @@ Transform:
   m_GameObject: {fileID: 442030588274050694}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 442030588739722475}
   m_RootOrder: 2
@@ -15203,7 +15203,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 8
+      scalar: 4
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -16964,7 +16964,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
   NoiseModule:
-    enabled: 0
+    enabled: 1
     strength:
       serializedVersion: 2
       minMaxState: 0
@@ -17125,7 +17125,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     separateAxes: 0
-    frequency: 0.5
+    frequency: 0.25
     damping: 1
     octaves: 1
     octaveMultiplier: 0.5
@@ -23951,7 +23951,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 442030588739722475}
-  - component: {fileID: 6050332358099239067}
   - component: {fileID: 3906971548063981266}
   m_Layer: 0
   m_Name: Fireball Projectile
@@ -23969,7 +23968,7 @@ Transform:
   m_GameObject: {fileID: 442030588739722474}
   m_LocalRotation: {x: -0.032956872, y: -0.03295686, z: -0.70633835, w: 0.70633835}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.75, z: 1.5}
+  m_LocalScale: {x: 2, y: 3, z: 2}
   m_Children:
   - {fileID: 442030588751392946}
   - {fileID: 442030588339095502}
@@ -23985,20 +23984,6 @@ Transform:
   m_Father: {fileID: 9112150418677081623}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -5.3430004, y: 0, z: -90.00001}
---- !u!114 &6050332358099239067
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 442030588739722474}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05d436275573d4b24a0d7440b565b2e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hit: {fileID: 8311680600813020574, guid: 83f4a0744268f4f42b6cb1420a1b25dc, type: 3}
-  Instance: {fileID: 0}
 --- !u!95 &3906971548063981266
 Animator:
   serializedVersion: 3
@@ -28953,8 +28938,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1829953024565938782}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.05, z: -0}
-  m_LocalScale: {x: 4.75, y: 4.75, z: 4.75}
+  m_LocalPosition: {x: 0, y: 0.2, z: -0}
+  m_LocalScale: {x: 5, y: 6, z: 5}
   m_Children:
   - {fileID: 1829953024565450364}
   - {fileID: 1829953024565450362}
@@ -29030,7 +29015,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.2
+  m_Time: 0.15
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -29080,7 +29065,7 @@ TrailRenderer:
       m_NumAlphaKeys: 2
     numCornerVertices: 0
     numCapVertices: 0
-    alignment: 0
+    alignment: 1
     textureMode: 0
     shadowBias: 0.5
     generateLightingData: 0
@@ -29156,7 +29141,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.2
+  m_Time: 0.15
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -34050,6 +34035,7 @@ GameObject:
   - component: {fileID: 2433431875226831774}
   - component: {fileID: 1498122517351397101}
   - component: {fileID: 8627637389754969580}
+  - component: {fileID: 2581549025485767978}
   m_Layer: 18
   m_Name: Fireball
   m_TagString: FireSpell
@@ -34123,3 +34109,17 @@ MonoBehaviour:
   smallExplosiveShot: {fileID: 6996181480485081848, guid: f295441d6e87fac4eb7ff47959e8d3c3,
     type: 3}
   numSmallExplosions: 6
+--- !u!114 &2581549025485767978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6781941085712876607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05d436275573d4b24a0d7440b565b2e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hit: {fileID: 8311680600813020574, guid: 83f4a0744268f4f42b6cb1420a1b25dc, type: 3}
+  Instance: {fileID: 0}
