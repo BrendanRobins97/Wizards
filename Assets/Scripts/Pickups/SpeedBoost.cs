@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
+
 public class SpeedBoost : MonoBehaviour
 {   
     [SerializeField]
     private float speedUpTime;
     [SerializeField] private TextMeshProUGUI text;
+    [SerializeField] private RawImage image;
     private float tempStamina;
     private GameManager gm;
     private Player player, playerWithItem;
@@ -26,13 +29,15 @@ public class SpeedBoost : MonoBehaviour
         {
             if (playerWithItem != player)
             {
-                text.gameObject.SetActive(false);
+                //text.gameObject.SetActive(false);
+                image.gameObject.SetActive(false);
             }
 
             if (playerWithItem == player)
             {
-                text.gameObject.SetActive(true);
-                text.text = "Speed Boost";
+                //text.gameObject.SetActive(true);
+                //text.text = "Speed Boost";
+                image.gameObject.SetActive(true);
             }
 
             if (pickedUp)
@@ -43,7 +48,8 @@ public class SpeedBoost : MonoBehaviour
                 {
                     player.movementSpeed = 2;
                     Debug.Log("Speed normal");
-                    text.gameObject.SetActive(false);
+                    //text.gameObject.SetActive(false);
+                    image.gameObject.SetActive(false);
                     Destroy(this.gameObject, 0.05f);
                 }
             }
@@ -58,8 +64,9 @@ public class SpeedBoost : MonoBehaviour
             pickedUp = true;
             this.GetComponent<MeshRenderer>().enabled = false;
             this.GetComponent<BoxCollider>().enabled = false;
-            text.gameObject.SetActive(true);
-            text.text = "Speed Boost";
+            //text.gameObject.SetActive(true);
+            //text.text = "Speed Boost";
+            image.gameObject.SetActive(true);
             Debug.Log("SpeedBoost");
             player.GetComponent<Player>().movementSpeed = 4;
             tempStamina = player.GetComponent<Player>().stamina;

@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
+
 public class ResetTimeLimit : MonoBehaviour
 {
     private Player player;
     [SerializeField] private TextMeshProUGUI text;
+    [SerializeField] private RawImage image;
     private GameManager gm;
 
     private bool pickedUp = false;
@@ -26,7 +29,8 @@ public class ResetTimeLimit : MonoBehaviour
         {
             if (displayTime <= 0 && pickedUp)
             {
-                text.gameObject.SetActive(false);
+                //text.gameObject.SetActive(false);
+                image.gameObject.SetActive(false);
                 Destroy(this.gameObject);
             }
 
@@ -43,8 +47,9 @@ public class ResetTimeLimit : MonoBehaviour
             if (col.tag == "Player")
             {
                 gm.currentTurnTimeLeft = 20f;
-                text.gameObject.SetActive(true);
-                text.text = "Time Reset";
+                //text.gameObject.SetActive(true);
+                //text.text = "Time Reset";
+                image.gameObject.SetActive(true);
                 pickedUp = true;
                 displayTime = 2f;
                 this.GetComponent<MeshRenderer>().enabled = false;

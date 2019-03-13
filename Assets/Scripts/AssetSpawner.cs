@@ -27,6 +27,7 @@ public class AssetSpawner : MonoBehaviour
         Random.InitState(randomSequence.GetHashCode());
         for (int i = 0; i < numItemsToSpawn; i++)
         {
+            Random.InitState(i);
             bestDistance = 10;
             Vector3 position = new Vector3(Random.Range(min, max), defaultY, Random.Range(min, max));
             for (int k = 0; k < usedPoints.Count; k++)

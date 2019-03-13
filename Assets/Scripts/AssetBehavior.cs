@@ -24,11 +24,13 @@ public class AssetBehavior : MonoBehaviour
             Destroy(this.gameObject);
         }
 
+        //float randScale = Random.Range(0.0f, 1f);
+        //this.transform.localScale = new Vector3(randScale,randScale,randScale);
         for (int i = 0; i < assetList.Length; i++)
         {
             if (Mathf.Abs(Vector3.Distance(assetList[i].transform.position, this.transform.position)) < 8)
             {
-                this.gameObject.transform.position = new Vector3(Random.Range(spawner.min,spawner.max), 24, Random.Range(spawner.min, spawner.max));
+                this.gameObject.transform.position = new Vector3(Random.Range(spawner.min,spawner.max), 34, Random.Range(spawner.min, spawner.max));
             }
             Random randomSequence = new Random();
             Random.InitState(randomSequence.GetHashCode());
@@ -46,13 +48,20 @@ public class AssetBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+       /* if (this.transform.localScale.x < 1)
+        {
+            this.transform.localScale += new Vector3(0.001f,0.001f,0.001f);
+        }*/
     }
 
     void OnTriggerEnter(Collider col)
     {
         if (col.tag == "FireSpell" || col.tag == "Spell")
         {
+            if (col.tag == "Tree")
+            {
+                Destroy(this.gameObject);
+            }
             Debug.Log("unfreezing");
             this.gameObject.GetComponent<Rigidbody>().constraints &= RigidbodyConstraints.FreezePositionX;
             this.gameObject.GetComponent<Rigidbody>().constraints &= RigidbodyConstraints.FreezePositionZ;

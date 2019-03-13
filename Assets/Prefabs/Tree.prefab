@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 211076120905592342}
   m_Layer: 0
   m_Name: Tree
-  m_TagString: Untagged
+  m_TagString: Tree
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31,7 +31,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5502511869987978858}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -42474.906, y: 24, z: -41297}
+  m_LocalPosition: {x: -45759.906, y: 24, z: -45537}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6467551303011331628}
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025c80e176d48ec4785924fb5ecd9ca5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxGroundAngle: 20
+  maxGroundAngle: 8
 --- !u!65 &211076120905592342
 BoxCollider:
   m_ObjectHideFlags: 0

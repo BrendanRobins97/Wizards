@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
+
 public class HealthBoost : MonoBehaviour
 {
     [SerializeField] private int healthBoost = 20;
     private Player player, playerWithItem;
     [SerializeField] private TextMeshProUGUI text;
+    [SerializeField] private RawImage image;
     private bool pickedUp = false;
     private float displayTime;
     private GameManager gm;
@@ -25,13 +28,15 @@ public class HealthBoost : MonoBehaviour
         {
             if (displayTime <= 0 && pickedUp)
             {
-                text.gameObject.SetActive(false);
+                //text.gameObject.SetActive(false);
+                image.gameObject.SetActive(false);
                 Destroy(this.gameObject);
             }
 
             if (playerWithItem != player)
             {
-                text.gameObject.SetActive(false);
+                //text.gameObject.SetActive(false);
+                image.gameObject.SetActive(false);
             }
 
             if (player == null)
@@ -48,8 +53,9 @@ public class HealthBoost : MonoBehaviour
             playerWithItem = player;
             Debug.Log("HealthBoost");
             player.GetComponent<Player>().health = player.GetComponent<Player>().health + healthBoost;
-            text.gameObject.SetActive(true);
-            text.text = "Health Boost";
+            //text.gameObject.SetActive(true);
+            //text.text = "Health Boost";
+            image.gameObject.SetActive(true);
             pickedUp = true;
             displayTime = 2f;
             this.GetComponent<MeshRenderer>().enabled = false;
