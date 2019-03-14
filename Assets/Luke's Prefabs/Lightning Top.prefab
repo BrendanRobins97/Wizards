@@ -4767,7 +4767,7 @@ GameObject:
   - component: {fileID: 5764722914744177360}
   - component: {fileID: 5553162716261556096}
   - component: {fileID: 8091020350284030907}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Lightning
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8493,7 +8493,7 @@ ParticleSystem:
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 4294967295
+      m_Bits: 196919
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
@@ -9522,13 +9522,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4354260085832532703}
-  - component: {fileID: 4846966511428092921}
   - component: {fileID: 2663541897428936693}
-  - component: {fileID: 3526736743482236973}
-  - component: {fileID: 3526736743482236978}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Lightning Top
-  m_TagString: Untagged
+  m_TagString: Spell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9548,19 +9545,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &4846966511428092921
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3526736743482236972}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &2663541897428936693
 Animator:
   serializedVersion: 3
@@ -9580,33 +9564,3 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!54 &3526736743482236973
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3526736743482236972}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &3526736743482236978
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3526736743482236972}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6491c447c296b4da3bcef058260f4ece, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hit: {fileID: 3010577142948056070, guid: e04e98bc6567d476eb9531d0938c2fec, type: 3}
-  Instance: {fileID: 0}

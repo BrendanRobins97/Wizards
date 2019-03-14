@@ -19,6 +19,7 @@ public class Spell : MonoBehaviour {
     public    float        damageRadius = 5f;
     public float explosionDampen = .75f;
     public float knockBackForce;
+    public GameObject explosion;
 
     protected List<Player> playersHit   = new List<Player>();
     protected bool collisions = true;
@@ -27,20 +28,12 @@ public class Spell : MonoBehaviour {
 
     #region Methods
 
-    // Start is called before the first frame update
     protected void Start() {
         Destroy(gameObject, 10);
         rigidbody = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
-    protected void Update() {
-        if (rigidbody) {
-            transform.right = -rigidbody.velocity;
-        }
-    }
-
-    public void ThrowSpell(Vector3 direction, float charge) {
+    public virtual void ThrowSpell(Vector3 direction, float charge) {
         if (!affectedByCharge) { charge = 1; }
         GetComponent<Rigidbody>().velocity = direction * charge * speed;
         transform.forward = direction;
@@ -56,7 +49,7 @@ public class Spell : MonoBehaviour {
             return;
         }
         DestroyComponents();
-        
+        if (explosion) { Destroy(Instantiate(explosion, transform.position, Quaternion.identity), 3f); }
         TerrainManager2.instance.Circle(Mathf.RoundToInt(transform.position.x)
             , Mathf.RoundToInt(transform.position.y)
             , Mathf.RoundToInt(transform.position.z),

@@ -16,6 +16,12 @@ public class ExplosiveShot : Spell {
 
     #region Methods
 
+    protected void Update() {
+        if (rigidbody) {
+            transform.right = -rigidbody.velocity;
+        }
+    }
+
     protected override void OnCollisionEnter(Collision collision) {
         base.OnCollisionEnter(collision);
 
