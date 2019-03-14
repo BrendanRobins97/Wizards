@@ -202,7 +202,47 @@ ModelImporter:
     13700006: Petal Wand
     13700008: TopLayer
     13700010: Tricorn
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: InnerPetals
+    second: {fileID: 2100000, guid: ddcc7d1c7660c4dd2af822e61e818646, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: InnerPud
+    second: {fileID: 2100000, guid: 8a270ee0ca9f54f4ea8130adf2201016, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: 80f0d8fdae79e4b1884434c689246189, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.002
+    second: {fileID: 2100000, guid: 55b171b58d6df4cdb9a5d0cd4b315da8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: OuterPetals
+    second: {fileID: 2100000, guid: ddcc7d1c7660c4dd2af822e61e818646, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stem
+    second: {fileID: 2100000, guid: 06bed67eb8442470bae73926e02410fd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tabarro
+    second: {fileID: 2100000, guid: a2b88c0f7ac4e4fc8ac9fb1490d0d903, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: default
+    second: {fileID: 2100000, guid: 924d8d2ef9d91429bb3980d3317b228a, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
