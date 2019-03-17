@@ -292,6 +292,7 @@ MonoBehaviour:
   - {fileID: 8940775995591046101, guid: 8d19e0c9eca232d4593c90673c2014ca, type: 3}
   - {fileID: 8627637389754969580, guid: 478ac01ad88806c4eb7de68098f1efc4, type: 3}
   - {fileID: 1991271422628986824, guid: 508f936bd647a33458ffc34e83f73d0b, type: 3}
+  - {fileID: 8542161095733398487, guid: cf6b827d152e9c84684f64cf75e7f0ee, type: 3}
   feetPosition: {fileID: 3265819485150037938}
   PS_ElectricOrbPrefab: {fileID: 9200029078089606267}
   rigidbody: {fileID: 0}
@@ -563,6 +564,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6192484289127879051}
     m_Modifications:
+    - target: {fileID: 8378359628801686899, guid: 0fbeedaa264d8c443aabdb351b2c3df0,
+        type: 3}
+      propertyPath: m_Name
+      value: PS_ElectricOrb
+      objectReference: {fileID: 0}
+    - target: {fileID: 8378359628801686899, guid: 0fbeedaa264d8c443aabdb351b2c3df0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8378359628801686908, guid: 0fbeedaa264d8c443aabdb351b2c3df0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -617,16 +628,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8378359628801686899, guid: 0fbeedaa264d8c443aabdb351b2c3df0,
-        type: 3}
-      propertyPath: m_Name
-      value: PS_ElectricOrb
-      objectReference: {fileID: 0}
-    - target: {fileID: 8378359628801686899, guid: 0fbeedaa264d8c443aabdb351b2c3df0,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0fbeedaa264d8c443aabdb351b2c3df0, type: 3}

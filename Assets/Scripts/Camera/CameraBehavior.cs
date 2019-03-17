@@ -5,17 +5,19 @@ using UnityEngine;
 public class CameraBehavior : MonoBehaviour
 {
     private Player player;
-    [SerializeField] private GameObject spell, fireSpell;
+    [SerializeField] private GameObject spell, fireSpell, deathRainSpell;
     //[SerializeField] private Animator anim;
     private float xpos, zpos;
     private float tempY = 7;
-    
+    private bool positionSet = false;
+    private DeathRainSpellCamera drc;
     public Camera spellCamera;
 
     public float speed = 1f;
     // Start is called before the first frame update
     void Start()
     {
+        //drc = FindObjectOfType<DeathRainSpellCamera>();
         //anim = FindObjectOfType<Animator>();
         spellCamera.enabled = false;
         //anim.enabled = false;
@@ -31,26 +33,37 @@ public class CameraBehavior : MonoBehaviour
         zpos = player.transform.position.z;
         spell = GameObject.FindGameObjectWithTag("Spell");
         fireSpell = GameObject.FindGameObjectWithTag("FireSpell");
-        if ((spell == null && fireSpell == null) || GameManager.instance.currentTurnTimeLeft > GameManager.instance.timeAfterSpellCast)
+        deathRainSpell = GameObject.FindGameObjectWithTag("DeathRainSpell");
+        /*if (drc.camera.enabled)
+        {
+            ChangeToRainSpellCamera();
+        }*/
+        if ((spell == null && fireSpell == null && deathRainSpell == null) || GameManager.instance.currentTurnTimeLeft > GameManager.instance.timeAfterSpellCast)
         {
             spellCamera.enabled = false;
             Destroy(spell, GameManager.instance.timeAfterSpellCast);
+            positionSet = false;
             Debug.Log("Spell Cam = disabled.");
         }
         if (spell != null && GameManager.instance.currentTurnTimeLeft <= GameManager.instance.timeAfterSpellCast)
         {
             ChangeToSpellCamera();
         }
-        if ( (spell == null && fireSpell == null) || GameManager.instance.currentTurnTimeLeft > GameManager.instance.timeAfterSpellCast)
+        if ( (spell == null && fireSpell == null && deathRainSpell == null) || GameManager.instance.currentTurnTimeLeft > GameManager.instance.timeAfterSpellCast)
         {
             spellCamera.enabled = false;
             Destroy(fireSpell, GameManager.instance.timeAfterSpellCast);
             tempY = 7;
+            positionSet = false;
             Debug.Log("Fireball Cam = disabled.");
         }
         if (fireSpell != null && GameManager.instance.currentTurnTimeLeft <= GameManager.instance.timeAfterSpellCast)
         {
             ChangeToFireballCamera();
+        }
+        if (deathRainSpell != null && GameManager.instance.currentTurnTimeLeft <= GameManager.instance.timeAfterSpellCast)
+        {
+            ChangeToDeathRainCamera();
         }
     }
 
@@ -83,5 +96,25 @@ public class CameraBehavior : MonoBehaviour
                 spell.transform.position.z - 6), Quaternion.identity);
         //fireBallCamera.transform.position = new Vector3(spell.transform.position.x + 1, spell.transform.position.y + 2,
         //  spell.transform.position.z - 6);
+    }
+
+    public void ChangeToDeathRainCamera()
+    {
+        Debug.Log("RainSpellCam");
+        spellCamera.enabled = true;
+        float x, z, finalX, finalZ;
+        x = (xpos + (deathRainSpell.transform.position.x + 2)) / 2.0f;
+        z = (zpos + (deathRainSpell.transform.position.z - 2)) / 2.0f;
+        //finalX = (x + deathRainSpell.transform.position.x + 2) / 2.0f;
+        //finalZ = (z + deathRainSpell.transform.position.z - 2) / 2.0f;
+        if (positionSet == false)
+        {
+            spellCamera.transform.position = new Vector3(x, deathRainSpell.transform.position.y -2, z);
+            spellCamera.transform.LookAt(new Vector3(deathRainSpell.transform.position.x,deathRainSpell.transform.position.y - 2, deathRainSpell.transform.position.z));
+            positionSet = true;           
+        }
+
+        spellCamera.transform.position = Vector3.MoveTowards(spellCamera.transform.position,new Vector3(player.transform.position.x, player.transform.position.y + 2, player.transform.position.z),  speed*Time.deltaTime);
+
     }
 }

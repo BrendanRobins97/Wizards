@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 844738351872716877}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -4.170256, y: -2.4889158e-16, z: 11.20908}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4336067359848236566}
@@ -91,11 +91,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 844738351872716874}
     m_Modifications:
-    - target: {fileID: 3526736743482236972, guid: 515e43b9a1a0e4ebcbd5123399a94d26,
-        type: 3}
-      propertyPath: m_Name
-      value: Lightning Top
-      objectReference: {fileID: 0}
     - target: {fileID: 4354260085832532703, guid: 515e43b9a1a0e4ebcbd5123399a94d26,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -150,6 +145,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3526736743482236972, guid: 515e43b9a1a0e4ebcbd5123399a94d26,
+        type: 3}
+      propertyPath: m_Name
+      value: Lightning Top
       objectReference: {fileID: 0}
     - target: {fileID: 2663541897428936693, guid: 515e43b9a1a0e4ebcbd5123399a94d26,
         type: 3}

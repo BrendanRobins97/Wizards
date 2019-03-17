@@ -24,8 +24,8 @@ public class AssetBehavior : MonoBehaviour
             Destroy(this.gameObject);
         }
 
-        //float randScale = Random.Range(0.0f, 1f);
-        //this.transform.localScale = new Vector3(randScale,randScale,randScale);
+        float randScale = Random.Range(0.0f, 0.1f);
+        this.transform.localScale = new Vector3(randScale,randScale,randScale);
         for (int i = 0; i < assetList.Length; i++)
         {
             if (Mathf.Abs(Vector3.Distance(assetList[i].transform.position, this.transform.position)) < 8)
@@ -48,10 +48,10 @@ public class AssetBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       /* if (this.transform.localScale.x < 1)
+        if (this.transform.localScale.x < 1)
         {
             this.transform.localScale += new Vector3(0.001f,0.001f,0.001f);
-        }*/
+        }
     }
 
     void OnTriggerEnter(Collider col)

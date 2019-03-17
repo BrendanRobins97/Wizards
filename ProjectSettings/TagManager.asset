@@ -8,6 +8,7 @@ TagManager:
   - FireSpell
   - pickup
   - Tree
+  - DeathRainSpell
   layers:
   - Default
   - TransparentFX

@@ -31,7 +31,7 @@ public class Player : MonoBehaviour {
 
     [HideInInspector] public float       movementSpeed = 8f;
     [HideInInspector] public bool        enabled       = true;
-    [SerializeField] private Camera      playerCamera;
+    [SerializeField] public Camera      playerCamera;
     [SerializeField] private int         maxHealth = 100;
     [SerializeField] private List<Spell> spells;
     [SerializeField] private Transform feetPosition;
