@@ -53,6 +53,7 @@ public class Player : MonoBehaviour {
     private int     currentSpellIndex;
     private Vector3 prevPosition;
     private DeathRainSpellCamera drsc;
+    private float originalFOV = 0f;
     public bool special = false;
     #endregion
 
@@ -67,6 +68,7 @@ public class Player : MonoBehaviour {
         Cursor.lockState = CursorLockMode.Locked;
         drsc = FindObjectOfType<DeathRainSpellCamera>();
         special = false;
+        originalFOV = playerCamera.fieldOfView;
     }
 
     private void Update() {
@@ -138,7 +140,6 @@ public class Player : MonoBehaviour {
             else
             {
                 special = false;
-
                 // Fire spell when mouse is released
                 Vector3 spellStart =
                     transform.TransformPoint(new Vector3(cameraXOffset, cameraYOffset, 0.5f));
@@ -149,7 +150,16 @@ public class Player : MonoBehaviour {
             }
         }
         // Handle charge for spell
-        if (Input.GetButton("Fire1")) { chargeAmount += Time.deltaTime * chargeRate; }
+        if (Input.GetButton("Fire1"))
+        {
+            float scroll = Input.GetAxis("Mouse ScrollWheel");
+            scroll = 1;
+            chargeAmount += Time.deltaTime * chargeRate;
+            if (chargeAmount > .5f && chargeAmount < chargeMax)
+            {
+                playerCamera.fieldOfView -= scroll * .5f;
+            }
+        }
         else
         {   
             chargeAmount = 0;
@@ -166,9 +176,11 @@ public class Player : MonoBehaviour {
         chargeAmount = 0;
         stamina = startingStamina;
         prevPosition = transform.position;
+        playerCamera.fieldOfView = originalFOV;
     }
 
-    public void Disable() {
+    public void Disable()
+    {
         turnOver = true;
         enabled = false;
         if (playerCamera) { playerCamera.enabled = false; }
