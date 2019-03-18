@@ -49,10 +49,11 @@ public class Player : MonoBehaviour {
     private readonly float cameraDistFromPlayer = 6f;
     private readonly float cameraYOffset        = 2f;
     private readonly float cameraXOffset        = 1f;
-
+    private int specialCount = 0;
     private int     currentSpellIndex;
     private Vector3 prevPosition;
-
+    private DeathRainSpellCamera drsc;
+    public bool special = false;
     #endregion
 
     #region Methods
@@ -64,7 +65,8 @@ public class Player : MonoBehaviour {
         //locks the cursor to the bounds of the screen. Press 'esc' to unlock.
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-
+        drsc = FindObjectOfType<DeathRainSpellCamera>();
+        special = false;
     }
 
     private void Update() {
@@ -128,16 +130,30 @@ public class Player : MonoBehaviour {
         GameManager.instance.UpdateSpellImage(currentSpellIndex);
 
         if (Input.GetButtonUp("Fire1")) {
-            // Fire spell when mouse is released
-            Vector3 spellStart =
-                transform.TransformPoint(new Vector3(cameraXOffset, cameraYOffset, 0.5f));
-            Instantiate(spells[currentSpellIndex], spellStart, Quaternion.identity).ThrowSpell(playerCamera.transform.forward, chargePercent);
-            enabled = false; // Disable movement
-            turnOver = true; // Signal that their turn is over
+            if (currentSpellIndex == 3 && !special)
+            {
+                    drsc.Activate();
+                    special = true;
+            }
+            else
+            {
+                special = false;
+
+                // Fire spell when mouse is released
+                Vector3 spellStart =
+                    transform.TransformPoint(new Vector3(cameraXOffset, cameraYOffset, 0.5f));
+                Instantiate(spells[currentSpellIndex], spellStart, Quaternion.identity)
+                    .ThrowSpell(playerCamera.transform.forward, chargePercent);
+                enabled = false; // Disable movement
+                turnOver = true; // Signal that their turn is over
+            }
         }
         // Handle charge for spell
         if (Input.GetButton("Fire1")) { chargeAmount += Time.deltaTime * chargeRate; }
-        else { chargeAmount = 0; }
+        else
+        {   
+            chargeAmount = 0;
+        }
 
         chargeAmount = Mathf.Clamp(chargeAmount, 0, chargeMax);
         chargePercent = chargeAmount / chargeMax;

@@ -14,7 +14,7 @@ public class DeathRainSpellCamera : MonoBehaviour
     [HideInInspector] public Vector3 lightPos;
     [SerializeField] private GameObject spellHitPointIndicator;
     private GameObject currentSpell;
-
+    public bool canShoot = false;
     private Vector3 forward;
     // Start is called before the first frame update
     void Start()
@@ -30,26 +30,6 @@ public class DeathRainSpellCamera : MonoBehaviour
     {
         player = GameManager.instance.CurrentPlayer;
         
-
-        if (Input.GetKey(KeyCode.R))
-        {
-            player.playerCamera.enabled = false;
-            player.enabled = false;
-            transform.position = new Vector3(player.playerCamera.transform.position.x, player.playerCamera.transform.position.y + 8, player.playerCamera.transform.position.z);
-            forward = transform.position - new Vector3(player.transform.position.x, player.playerCamera.transform.position.y + 8,player.transform.position.z);
-            transform.forward = forward;
-            spellCamera.transform.LookAt(player.transform);
-            startPos = transform.position;
-            maxX = startPos.x + 3;
-            minX = startPos.x - 3;
-            maxZ = startPos.z + 3;
-            minZ = startPos.z - 3;
-            maxDistanceFromPlayer = 15;
-            //this.gameObject.SetActive(true);
-            //Cursor.lockState = CursorLockMode.None;
-            spellCamera.enabled = true;
-            //spellHitPointIndicator.SetActive(true);
-        }
         if (spellHitPointIndicator != null)
         {
             if (spellCamera.enabled)
@@ -64,34 +44,46 @@ public class DeathRainSpellCamera : MonoBehaviour
         Vector3 movZ = transform.forward * zVelocity;
 
         Vector3 velocity = (movX + movZ) * speed * Time.deltaTime;
-        this.transform.position = transform.position - velocity;
-        /* if (Input.GetKey(KeyCode.A) && Mathf.Abs(Vector3.Distance(player.transform.position,transform.position))<=maxDistanceFromPlayer)
-         {
-             Vector3 position = this.transform.position;
-             position += transform.right * Time.deltaTime * speed;
-             this.transform.position = position;
-         }
-         if (Input.GetKey(KeyCode.D) && Mathf.Abs(Vector3.Distance(player.transform.position, transform.position)) <= maxDistanceFromPlayer)
-         {
-             Vector3 position = this.transform.position;
-             position -= transform.right * Time.deltaTime * speed;
-             this.transform.position = position;
-         }
-         if (Input.GetKey(KeyCode.W) && Mathf.Abs(Vector3.Distance(player.transform.position, transform.position)) <= maxDistanceFromPlayer)
-         {
-             Vector3 position = this.transform.position;
-             position -= transform.forward * Time.deltaTime * speed;
-             this.transform.position = position;
-         }
-         if (Input.GetKey(KeyCode.S) && Mathf.Abs(Vector3.Distance(player.transform.position, transform.position)) <= maxDistanceFromPlayer)
-         {
-             Vector3 position = this.transform.position;
-             position += transform.forward * Time.deltaTime * speed;
-             this.transform.position = position;
-         }*/
+        if (Mathf.Abs(Vector3.Distance(transform.position, player.transform.position)) < maxDistanceFromPlayer)
+        {
+            this.transform.position = transform.position - velocity;
+        }
+        else
+        {
+            this.transform.position = Vector3.MoveTowards(transform.position, new Vector3(player.transform.position.x, player.playerCamera.transform.position.y + 8, player.transform.position.z), 1 * Time.deltaTime);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            player.playerCamera.enabled = true;
+            player.enabled = true;
+            spellHitPointIndicator.SetActive(false);
+            spellCamera.enabled = false;
+            player.special = false;
+        }
 
     }
 
+    public void Activate()
+    {
+        player.playerCamera.enabled = false;
+        player.enabled = false;
+        transform.position = new Vector3(player.playerCamera.transform.position.x, player.playerCamera.transform.position.y + 8, player.playerCamera.transform.position.z);
+        forward = transform.position - new Vector3(player.transform.position.x, player.playerCamera.transform.position.y + 8, player.transform.position.z);
+        transform.forward = forward;
+        spellCamera.transform.LookAt(player.transform);
+        startPos = transform.position;
+        maxX = startPos.x + 3;
+        minX = startPos.x - 3;
+        maxZ = startPos.z + 3;
+        minZ = startPos.z - 3;
+        maxDistanceFromPlayer = 15;
+        //this.gameObject.SetActive(true);
+        //Cursor.lockState = CursorLockMode.None;
+        canShoot = true;
+        spellCamera.enabled = true;
+        //spellHitPointIndicator.SetActive(true);
+    }
     private void MoveSpellIndicatorToMouse()
     {
         
@@ -108,7 +100,9 @@ public class DeathRainSpellCamera : MonoBehaviour
             {
                 //this.gameObject.SetActive(false);
                 Cursor.lockState = CursorLockMode.Locked;
-                //player.playerCamera.enabled = true;
+                //DeathRainSpell drs = new DeathRainSpell();
+                //drs.ThrowSpell(lightPos, 1);
+                player.playerCamera.enabled = true;
                 //spellCamera.enabled = false;
                 player.enabled = true;
                 spellHitPointIndicator.SetActive(false);
