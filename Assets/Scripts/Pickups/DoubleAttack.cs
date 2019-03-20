@@ -42,6 +42,7 @@ public class DoubleAttack : MonoBehaviour
             {
                 playerWithItem.enabled = true;
                 playerWithItem.turnOver = false;
+                playerWithItem.playerCamera.fieldOfView = playerWithItem.originalFOV;
                 text.gameObject.SetActive(false);
                 Destroy(this.gameObject, .2f);
             }

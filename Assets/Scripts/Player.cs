@@ -53,7 +53,7 @@ public class Player : MonoBehaviour {
     private int     currentSpellIndex;
     private Vector3 prevPosition;
     private DeathRainSpellCamera drsc;
-    private float originalFOV = 0f;
+    [HideInInspector] public float originalFOV = 0f;
     public bool special = false;
     #endregion
 

@@ -50,7 +50,7 @@ public class DeathRainSpellCamera : MonoBehaviour
         }
         else
         {
-            this.transform.position = Vector3.MoveTowards(transform.position, new Vector3(player.transform.position.x, player.playerCamera.transform.position.y + 8, player.transform.position.z), 1 * Time.deltaTime);
+            this.transform.position = Vector3.MoveTowards(transform.position, new Vector3(player.transform.position.x, player.playerCamera.transform.position.y + 8, player.transform.position.z), .500f * Time.deltaTime);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Alpha3))
@@ -82,7 +82,7 @@ public class DeathRainSpellCamera : MonoBehaviour
         //Cursor.lockState = CursorLockMode.None;
         canShoot = true;
         spellCamera.enabled = true;
-        //spellHitPointIndicator.SetActive(true);
+        spellHitPointIndicator.SetActive(true);
     }
     private void MoveSpellIndicatorToMouse()
     {
@@ -92,8 +92,8 @@ public class DeathRainSpellCamera : MonoBehaviour
         if (Physics.Raycast(ray, out hitInfo))
         {
             lightPos = hitInfo.point;
-            lightPos.y += 5;
-            lightPos.z += 1;
+            lightPos.y += 1;
+            //lightPos.z -= 1;
             spellHitPointIndicator.transform.position = lightPos;
             //prefab.transform.position = hitInfo.point;
             if (Input.GetButton("Fire1") && spellCamera.enabled == true)

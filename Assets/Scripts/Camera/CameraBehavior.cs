@@ -111,11 +111,11 @@ public class CameraBehavior : MonoBehaviour
         {
             //spellCamera.transform.position = new Vector3(x, deathRainSpell.transform.position.y -2, z);
             spellCamera.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 5, player.transform.position.z);
-            spellCamera.transform.LookAt(new Vector3(deathRainSpell.transform.position.x,deathRainSpell.transform.position.y, deathRainSpell.transform.position.z));
+            spellCamera.transform.LookAt(new Vector3(deathRainSpell.transform.position.x,deathRainSpell.transform.position.y-2, deathRainSpell.transform.position.z));
             positionSet = true;           
         }
 
-        spellCamera.transform.position = Vector3.MoveTowards(spellCamera.transform.position,new Vector3(spellCamera.transform.position.x+3, spellCamera.transform.position.y, spellCamera.transform.position.z-3),  speed*Time.deltaTime);
+        spellCamera.transform.position = Vector3.MoveTowards(spellCamera.transform.position,new Vector3(player.transform.localPosition.x, spellCamera.transform.position.y+2, player.transform.localPosition.z-3),  speed*Time.deltaTime);
 
     }
 }

@@ -25,8 +25,10 @@ public class DeathRainSpell : Spell
         CameraBehavior cam = FindObjectOfType<CameraBehavior>();
         if(cam.enabled == true)
         { drc.spellCamera.enabled = false;}
-        direction = drc.lightPos;
+        direction = new Vector3(drc.lightPos.x, drc.lightPos.y+5,drc.lightPos.z);
         transform.position = direction;
         Disable(duration);
     }
+
+    
 }
