@@ -54,6 +54,9 @@ public class GameManager : MonoBehaviour {
     }
 
     private void Start() {
+        //mainMenu mm = FindObjectOfType<mainMenu>();
+        //numPlayers = mm.NumPlayers();
+        currentTurnTimeLeft = gameStartTime;
         for (int i = 0; i < numPlayers; i++) {
             PlayerInfo newPlayerInfo;
             Player player = Instantiate(playerPrefabs[i], spawnLocations[i].position, spawnLocations[i].rotation,
@@ -70,7 +73,6 @@ public class GameManager : MonoBehaviour {
         
         playerTurn = 0;
         numPlayersLeft = numPlayers;
-        currentTurnTimeLeft = gameStartTime;
     }
 
     private void Update() {
