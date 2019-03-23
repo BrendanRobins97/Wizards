@@ -292,10 +292,12 @@ MonoBehaviour:
   - {fileID: 8940775995591046101, guid: 8d19e0c9eca232d4593c90673c2014ca, type: 3}
   - {fileID: 8627637389754969580, guid: 478ac01ad88806c4eb7de68098f1efc4, type: 3}
   - {fileID: 1991271422628986824, guid: 508f936bd647a33458ffc34e83f73d0b, type: 3}
-  - {fileID: 8542161095733398487, guid: cf6b827d152e9c84684f64cf75e7f0ee, type: 3}
+  - {fileID: 5445266672334248905, guid: 24bd975c5f966ab44a2dda673a870377, type: 3}
   feetPosition: {fileID: 3265819485150037938}
   PS_ElectricOrbPrefab: {fileID: 9200029078089606267}
   rigidbody: {fileID: 0}
+  originalFOV: 0
+  special: 0
 --- !u!1 &4524869613454635231
 GameObject:
   m_ObjectHideFlags: 0

@@ -129,6 +129,7 @@ MonoBehaviour:
   damageRadius: 7
   explosionDampen: 0.5
   knockBackForce: 75
+  explosion: {fileID: 0}
   smallExplosiveShot: {fileID: 6996181480485081848, guid: f295441d6e87fac4eb7ff47959e8d3c3,
     type: 3}
   numSmallExplosions: 6
