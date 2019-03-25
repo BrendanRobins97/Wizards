@@ -14,10 +14,14 @@ public class SpeedBoost : MonoBehaviour
     private GameManager gm;
     private Player player, playerWithItem;
     private bool pickedUp = false;
+
+    public Canvas canvas;
     // Start is called before the first frame update
     void Start()
     {
         gm = FindObjectOfType<GameManager>();
+        canvas = FindObjectOfType<Canvas>();
+        //canvas.GetComponent<RawImage>().gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -30,11 +34,13 @@ public class SpeedBoost : MonoBehaviour
             if (playerWithItem != player)
             {
                 //text.gameObject.SetActive(false);
+                //canvas.GetComponent<RawImage>().gameObject.SetActive(false);
                 image.gameObject.SetActive(false);
             }
 
             if (playerWithItem == player)
             {
+                //canvas.GetComponent<RawImage>().gameObject.SetActive(true);
                 //text.gameObject.SetActive(true);
                 //text.text = "Speed Boost";
                 image.gameObject.SetActive(true);
@@ -58,7 +64,7 @@ public class SpeedBoost : MonoBehaviour
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.tag == "Player")
+        if (col.tag == "Player" && player == gm.GetComponent<GameManager>().CurrentPlayer)
         {
             playerWithItem = player;
             pickedUp = true;

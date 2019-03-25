@@ -7,7 +7,7 @@ public class DoubleAttack : MonoBehaviour
     [SerializeField] private GameManager gm;
     [SerializeField] private TextMeshProUGUI text;
     private Player player, playerWithItem;
-    private bool pickedUp;
+    private bool pickedUp = false;
     private bool doubleAttack = false;
     private int numFire = 0;
     private float tempTime;
@@ -31,26 +31,25 @@ public class DoubleAttack : MonoBehaviour
                 playerWithItem.turnOver = false;
                 gm.currentTurnTimeLeft = tempTime;
             }
-
+            Debug.Log("fire num ererere " + numFire + player);
             if (playerWithItem != player)
             {
                 text.gameObject.SetActive(false);
             }
-            
-
             if (Input.GetButtonUp("Fire1") && pickedUp && player == playerWithItem && numFire <= 1)
             {
                 playerWithItem.enabled = true;
                 playerWithItem.turnOver = false;
                 playerWithItem.playerCamera.fieldOfView = playerWithItem.originalFOV;
                 text.gameObject.SetActive(false);
-                Destroy(this.gameObject, .2f);
+                Destroy(this.gameObject,.1f);
             }
 
             if (Input.GetButtonUp("Fire1") && pickedUp && player == playerWithItem && numFire > 1)
             {
                 doubleAttack = false;
                 text.gameObject.SetActive(false);
+                Debug.Log("ShouldReset");
                 Destroy(this.gameObject, .2f);
             }
         }
@@ -58,7 +57,7 @@ public class DoubleAttack : MonoBehaviour
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.tag == "Player")
+        if (col.tag == "Player" && player == gm.GetComponent<GameManager>().CurrentPlayer)
         {
             tempTime = gm.currentTurnTimeLeft;
             playerWithItem = player;

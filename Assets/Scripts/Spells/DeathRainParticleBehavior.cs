@@ -29,13 +29,10 @@ public class DeathRainParticleBehavior : MonoBehaviour
             (2 * Random.value - 1));
         randNormal.Normalize();
         Spell smallExplosion = Instantiate(smallExplosiveShot, transform.position, Quaternion.identity);
-        Spell smallExplosion2 = Instantiate(smallExplosiveShot, collision.transform.position, Quaternion.identity);
-        
+        smallExplosion.speed = Random.Range(2, 9);
         smallExplosion.ThrowSpell(randNormal, 1);
-        smallExplosion2.ThrowSpell(randNormal, 1);
         // Disable collisions to start so it doesn't instantly collide with who it hit.
         smallExplosion.DisableCollisions(0.25f);
-        smallExplosion2.DisableCollisions(0.25f);
     }
 
     // Update is called once per frame

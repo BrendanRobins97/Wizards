@@ -48,7 +48,7 @@ public class HealthBoost : MonoBehaviour
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.tag == "Player")
+        if (col.tag == "Player" && player == gm.GetComponent<GameManager>().CurrentPlayer)
         {
             playerWithItem = player;
             Debug.Log("HealthBoost");

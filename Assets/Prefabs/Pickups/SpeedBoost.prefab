@@ -5014,5 +5014,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedUpTime: 2
-  text: {fileID: 0}
+  text: {fileID: 1306857241995966864, guid: 061a7a13ddccdf9408aed4f54bc24216, type: 3}
   image: {fileID: 0}
+  canvas: {fileID: 0}

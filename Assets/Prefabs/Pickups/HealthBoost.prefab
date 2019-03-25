@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBoost: 20
-  text: {fileID: 0}
+  text: {fileID: 1306857241995966864, guid: 061a7a13ddccdf9408aed4f54bc24216, type: 3}
   image: {fileID: 0}
 --- !u!1 &3837992331025577662
 GameObject:
