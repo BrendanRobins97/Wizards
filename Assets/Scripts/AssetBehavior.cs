@@ -18,14 +18,15 @@ public class AssetBehavior : MonoBehaviour
         maxGroundAngle = spawner.maxGroundAngle;
         Physics.Raycast(this.transform.position, -Vector3.up, out hitInfo);
         angle = Vector3.Angle(hitInfo.normal, this.transform.forward);
-        Debug.Log("Angle " + angle + " hit info normal " + hitInfo.normal);
+        //Debug.Log("Angle " + angle + " hit info normal " + hitInfo.normal);
         if (angle >= maxGroundAngle)
         {
             Destroy(this.gameObject);
         }
 
         float randScale = Random.Range(0.0f, 0.1f);
-        this.transform.localScale = new Vector3(randScale,randScale,randScale);
+        if(this.gameObject.tag == "Tree")
+        { this.transform.localScale = new Vector3(randScale,randScale,randScale);}
         for (int i = 0; i < assetList.Length; i++)
         {
             if (Mathf.Abs(Vector3.Distance(assetList[i].transform.position, this.transform.position)) < 8)
@@ -58,14 +59,14 @@ public class AssetBehavior : MonoBehaviour
     {
         if (col.tag == "FireSpell" || col.tag == "Spell")
         {
-            if (col.tag == "Tree")
-            {
-                Destroy(this.gameObject);
-            }
-            Debug.Log("unfreezing");
+            //Debug.Log("unfreezing");
             this.gameObject.GetComponent<Rigidbody>().constraints &= RigidbodyConstraints.FreezePositionX;
             this.gameObject.GetComponent<Rigidbody>().constraints &= RigidbodyConstraints.FreezePositionZ;
             this.gameObject.GetComponent<Rigidbody>().constraints &= RigidbodyConstraints.FreezePositionY;
+        }
+        if (col.tag == "Tree")
+        {
+            Destroy(this.gameObject);
         }
     }
 }

@@ -44,7 +44,7 @@ public class StaminaBoost : MonoBehaviour
     {
         if (player != null)
         {
-            if (col.tag == "Player")
+            if (col.tag == "Player" && player == gm.GetComponent<GameManager>().CurrentPlayer)
             {
                 playerWithItem = player;
                 text.gameObject.SetActive(true);

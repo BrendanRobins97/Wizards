@@ -27,72 +27,70 @@ public class SwapPositions : MonoBehaviour
     void Update()
     {
         player = gm.GetComponent<GameManager>().CurrentPlayer;
+        if (!playersFound)
+        {
+            players = FindObjectsOfType<Player>();
+            for (int i = 0; i < players.Length; i++)
+            {
+                print(players[i]);
+            }
+
+            playersFound = true;
+        }
+        if (pickedUp) { 
         Debug.Log(player);
         if (gm.numPlayersLeft != players.Length)
         {
+            Debug.Log("PlayerDied");
             players = FindObjectsOfType<Player>();
+            //playersFound = false;
         }
-            if (Input.GetKeyDown(KeyCode.E) && canSwap && player == playerWithItem)
+
+        if (Input.GetKeyDown(KeyCode.E) && canSwap && player == playerWithItem)
+        {
+            index++;
+            if (index >= players.Length)
+            {
+                index = 0;
+            }
+
+            if (playerWithItem.name == players[index].name)
             {
                 index++;
-               
-                if (canSwap && player == playerWithItem)
+                if (index >= players.Length || players[index] == null)
                 {
-                    if (index >= players.Length)
-                    {
-                        index = 0;
-                    }
-
-                    if (playerWithItem.name == players[index].name)
-                    {
-                        index++;
-                        if (index > players.Length)
-                        {
-                            index = 0;
-                        }
-                    }
-
-                    swapPositionsText.text = players[index].name;
-                    ShowPlayers();
-
+                    index = 0;
                 }
             }
 
-            if (Input.GetMouseButtonDown(1) && canSwap && player == playerWithItem)
-            {
-                Vector3 tempPos = player.transform.position;
-                player.transform.position = players[index].transform.position;
-                players[index].transform.position = tempPos;
-                Debug.Log(player.name + " swapped with " + players[index].name);
-                swapPositionsText.gameObject.SetActive(false);
-                canSwap = false;
-                Destroy(this.gameObject,.2f);
-            }
+            swapPositionsText.text = players[index].name;
+            //ShowPlayers();
+        }
 
-            if (playerWithItem != player)
-            {
-                swapPositionsText.text = "";
-            }
+        if (Input.GetMouseButtonDown(1) && canSwap && player == playerWithItem)
+        {
+            Vector3 tempPos = player.transform.position;
+            player.transform.position = players[index].transform.position;
+            players[index].transform.position = tempPos;
+            Debug.Log(player.name + " swapped with " + players[index].name);
+            swapPositionsText.gameObject.SetActive(false);
+            canSwap = false;
+            Destroy(this.gameObject, .2f);
+        }
 
-            if (playerWithItem == player && canSwap)
-            {
-                swapPositionsText.gameObject.SetActive(true);
-               // swapPositionsText.text = "Press E to Show Players." +
-                                        // "Right Click to Swap.";
-            }
-            
-        if (!playersFound)
-            {
-                players = FindObjectsOfType<Player>();
-                for (int i = 0; i < players.Length; i++)
-                {
-                    print(players[i]);
-                }
+        if (playerWithItem != player)
+        {
+            swapPositionsText.text = "";
+        }
 
-                playersFound = true;
-            }
-        
+        if (playerWithItem == player && canSwap)
+        {
+            swapPositionsText.gameObject.SetActive(true);
+            //swapPositionsText.text = "Press E to Show Players." +
+                                     //"Right Click to Swap.";
+        }
     }
+}
     public static void RemoveAt<T>(ref T[] arr, int index)
     {
         // replace the element at index with the last element
@@ -102,7 +100,7 @@ public class SwapPositions : MonoBehaviour
     }
     void OnTriggerEnter(Collider col)
     {
-        if (col.tag == "Player")
+        if (col.tag == "Player" && player == gm.GetComponent<GameManager>().CurrentPlayer)
         {
             playerWithItem = player;
             pickedUp = true;

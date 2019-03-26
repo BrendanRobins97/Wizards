@@ -9,8 +9,11 @@ public class mainMenu : MonoBehaviour
     Animator myAnimator;
     int state;
     bool teams;
-    int numPlayers;
+    public static int numPlayers;
     float timer;
+    private bool startGame = true;
+    public static mainMenu instance = null;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +23,28 @@ public class mainMenu : MonoBehaviour
         //myCamera.GetComponent<Animation>().Play("p1");
         myAnimator.Play("part1");
     }
+
+    void Awake()
+    {
+        //Check if instance already exists
+        if (instance == null)
+
+            //if not, set instance to this
+            instance = this;
+
+        //If instance already exists and it's not this:
+        else if (instance != this)
+
+            //Then destroy this. This enforces our singleton pattern, meaning there can only ever be one instance of a GameManager.
+            Destroy(gameObject);
+
+        DontDestroyOnLoad(gameObject);
+    }
+
+    public int NumPlayers()
+    {
+        return numPlayers;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -27,9 +52,10 @@ public class mainMenu : MonoBehaviour
         {
             timer += Time.deltaTime;
         }
-        if(timer >= 6.0f)
+        if(timer >= 6.0f && startGame)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            startGame = false;
         }
         if (myAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
         {
