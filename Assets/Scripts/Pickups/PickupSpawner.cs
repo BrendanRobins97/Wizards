@@ -25,7 +25,8 @@ public class PickupSpawner : MonoBehaviour
         for (int i = 0; i < pickupList.Length; i++)
         {
             Vector3 position = new Vector3(Random.Range(spawner.min, spawner.max), 34, Random.Range(spawner.min, spawner.max));
-            Instantiate(pickupList[i], position, transform.rotation);
+            pickupList[i].transform.position = position;
+            pickupList[i].transform.rotation = pickupList[i].transform.rotation;
         }
     }
 }

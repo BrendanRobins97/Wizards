@@ -86,8 +86,8 @@ public class SwapPositions : MonoBehaviour
         if (playerWithItem == player && canSwap)
         {
             swapPositionsText.gameObject.SetActive(true);
-            swapPositionsText.text = "Press E to Show Players." +
-                                     "Right Click to Swap.";
+            //swapPositionsText.text = "Press E to Show Players." +
+                                     //"Right Click to Swap.";
         }
     }
 }
