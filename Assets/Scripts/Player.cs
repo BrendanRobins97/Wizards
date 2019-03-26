@@ -69,6 +69,8 @@ public class Player : MonoBehaviour {
         drsc = FindObjectOfType<DeathRainSpellCamera>();
         special = false;
         originalFOV = playerCamera.fieldOfView;
+        Enable();
+        
     }
 
     private void Update() {
@@ -129,7 +131,7 @@ public class Player : MonoBehaviour {
 
         currentSpellIndex = Mathf.Clamp(currentSpellIndex, 0, spells.Count - 1);
 
-        GameManager.instance.UpdateSpellImage(currentSpellIndex);
+        GameManager.instance?.UpdateSpellImage(currentSpellIndex);
 
         if (Input.GetButtonUp("Fire1")) {
             if (currentSpellIndex == 3 && !special)
