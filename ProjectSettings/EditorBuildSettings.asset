@@ -17,10 +17,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Miguel's Test.unity
     guid: 34969b67f791ecb458250d48119584c8
-  - enabled: 1
-    path: Assets/Scenes/MutliplayerLobby.unity
-    guid: 409e86c82c1cc7843915b58b51a68648
-  - enabled: 1
-    path: Assets/Scenes/MutliplayerTestMenu.unity
-    guid: 322fb8b6f60ce1f45ad1de58e1cb450f
   m_configObjects: {}
