@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 4668288317997548819}
   m_Layer: 0
   m_Name: Bauta_Rigged 1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -183,6 +183,7 @@ MonoBehaviour:
   - {fileID: 8940775995591046101, guid: 8d19e0c9eca232d4593c90673c2014ca, type: 3}
   - {fileID: 8627637389754969580, guid: 478ac01ad88806c4eb7de68098f1efc4, type: 3}
   - {fileID: 1991271422628986824, guid: 508f936bd647a33458ffc34e83f73d0b, type: 3}
+  - {fileID: 5445266672334248905, guid: 24bd975c5f966ab44a2dda673a870377, type: 3}
   feetPosition: {fileID: 367964565352773159}
   PS_ElectricOrbPrefab: {fileID: 0}
 --- !u!54 &4895131066808789059
@@ -1771,7 +1772,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a2b88c0f7ac4e4fc8ac9fb1490d0d903, type: 2}
+  - {fileID: 2100000, guid: fe3fe89188d33a84285cc29460832e5b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2319,7 +2320,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a2b88c0f7ac4e4fc8ac9fb1490d0d903, type: 2}
+  - {fileID: 2100000, guid: fe3fe89188d33a84285cc29460832e5b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
