@@ -201,6 +201,7 @@ GameObject:
   - component: {fileID: 1307248864818803246}
   - component: {fileID: 8620352584475075566}
   - component: {fileID: 4163205028047680382}
+  - component: {fileID: 8447037566863540845}
   m_Layer: 16
   m_Name: Wizard1
   m_TagString: Player
