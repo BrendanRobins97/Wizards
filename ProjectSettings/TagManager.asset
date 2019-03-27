@@ -9,6 +9,7 @@ TagManager:
   - pickup
   - Tree
   - DeathRainSpell
+  - IceSpell
   layers:
   - Default
   - TransparentFX

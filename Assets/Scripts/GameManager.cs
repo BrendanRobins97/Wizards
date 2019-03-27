@@ -54,9 +54,17 @@ public class GameManager : MonoBehaviour {
     }
 
     private void Start() {
-        mainMenu mm = FindObjectOfType<mainMenu>();
-        numPlayers = mm.NumPlayers();
-        Destroy(mm.gameObject);
+        //mainMenu mm = FindObjectOfType<mainMenu>();
+        /*if (mm == null)
+        {
+            numPlayers = 4;
+        }
+        else
+        {
+            numPlayers = mm.NumPlayers();
+        }*/
+
+        //Destroy(mm.gameObject);
         currentTurnTimeLeft = gameStartTime;
         for (int i = 0; i < numPlayers; i++) {
             PlayerInfo newPlayerInfo;

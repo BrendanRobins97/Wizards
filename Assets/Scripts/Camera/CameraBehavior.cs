@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraBehavior : MonoBehaviour
 {
     private Player player;
-    [SerializeField] private GameObject spell, fireSpell, deathRainSpell;
+    [SerializeField] private GameObject spell, fireSpell, deathRainSpell, iceSpell;
     //[SerializeField] private Animator anim;
     private float xpos, zpos;
     private float tempY = 7;
@@ -34,6 +34,7 @@ public class CameraBehavior : MonoBehaviour
         spell = GameObject.FindGameObjectWithTag("Spell");
         fireSpell = GameObject.FindGameObjectWithTag("FireSpell");
         deathRainSpell = GameObject.FindGameObjectWithTag("DeathRainSpell");
+        iceSpell = GameObject.FindGameObjectWithTag("IceSpell");
         /*if (drc.camera.enabled)
         {
             ChangeToRainSpellCamera();
@@ -49,10 +50,11 @@ public class CameraBehavior : MonoBehaviour
         {
             ChangeToSpellCamera();
         }
-        if ( (spell == null && fireSpell == null && deathRainSpell == null) || GameManager.instance.currentTurnTimeLeft > GameManager.instance.timeAfterSpellCast)
+        if ( (spell == null && fireSpell == null && deathRainSpell == null && iceSpell == null) || GameManager.instance.currentTurnTimeLeft > GameManager.instance.timeAfterSpellCast)
         {
             spellCamera.enabled = false;
             Destroy(fireSpell, GameManager.instance.timeAfterSpellCast);
+            Destroy(iceSpell, GameManager.instance.timeAfterSpellCast);
             tempY = 7;
             positionSet = false;
             Debug.Log("Fireball Cam = disabled.");
@@ -64,6 +66,10 @@ public class CameraBehavior : MonoBehaviour
         if (deathRainSpell != null && GameManager.instance.currentTurnTimeLeft <= GameManager.instance.timeAfterSpellCast)
         {
             ChangeToDeathRainCamera();
+        }
+        if (iceSpell != null && GameManager.instance.currentTurnTimeLeft <= GameManager.instance.timeAfterSpellCast)
+        {
+            ChangeToIceSpellCamera();
         }
     }
 
@@ -98,6 +104,22 @@ public class CameraBehavior : MonoBehaviour
         //  spell.transform.position.z - 6);
     }
 
+    public void ChangeToIceSpellCamera()
+    {
+        spellCamera.enabled = true;
+        
+        if (positionSet == false)
+        {
+            //spellCamera.transform.forward = player.transform.position - player.playerCamera.transform.position;
+            spellCamera.transform.position = new Vector3(iceSpell.transform.position.x + 6, iceSpell.transform.position.y + 2,
+                iceSpell.transform.position.z + 1);
+            spellCamera.transform.LookAt(iceSpell.transform);
+            positionSet = true;
+        }
+        spellCamera.transform.position = Vector3.MoveTowards(spellCamera.transform.position, iceSpell.transform.position, speed * Time.deltaTime);
+        
+    }
+
     public void ChangeToDeathRainCamera()
     {
         Debug.Log("RainSpellCam");
@@ -116,6 +138,6 @@ public class CameraBehavior : MonoBehaviour
         }
 
         spellCamera.transform.position = Vector3.MoveTowards(spellCamera.transform.position,new Vector3(player.transform.localPosition.x, spellCamera.transform.position.y+2, player.transform.localPosition.z-3),  speed*Time.deltaTime);
-
+        spellCamera.transform.LookAt(new Vector3(deathRainSpell.transform.position.x, deathRainSpell.transform.position.y - 2, deathRainSpell.transform.position.z));
     }
 }
