@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -9214,9 +9214,9 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.15
-  m_Height: 0.46
-  m_Direction: 0
+  m_Radius: 0.17
+  m_Height: 0.47
+  m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1105613060
 PrefabInstance:
@@ -9228,6 +9228,34 @@ PrefabInstance:
     - target: {fileID: 100006, guid: f8e00e2a956969542aeb205e80e29d7b, type: 3}
       propertyPath: m_Name
       value: Bauta_Rigged 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100022, guid: f8e00e2a956969542aeb205e80e29d7b, type: 3}
+      propertyPath: m_Name
+      value: ForearmL
+      objectReference: {fileID: 0}
+    - target: {fileID: 100024, guid: f8e00e2a956969542aeb205e80e29d7b, type: 3}
+      propertyPath: m_Name
+      value: ForearmR
+      objectReference: {fileID: 0}
+    - target: {fileID: 100088, guid: f8e00e2a956969542aeb205e80e29d7b, type: 3}
+      propertyPath: m_Name
+      value: Waist
+      objectReference: {fileID: 0}
+    - target: {fileID: 100090, guid: f8e00e2a956969542aeb205e80e29d7b, type: 3}
+      propertyPath: m_Name
+      value: ShoulderL
+      objectReference: {fileID: 0}
+    - target: {fileID: 100092, guid: f8e00e2a956969542aeb205e80e29d7b, type: 3}
+      propertyPath: m_Name
+      value: ShoulderR
+      objectReference: {fileID: 0}
+    - target: {fileID: 100094, guid: f8e00e2a956969542aeb205e80e29d7b, type: 3}
+      propertyPath: m_Name
+      value: Chest
+      objectReference: {fileID: 0}
+    - target: {fileID: 100096, guid: f8e00e2a956969542aeb205e80e29d7b, type: 3}
+      propertyPath: m_Name
+      value: NeckBase
       objectReference: {fileID: 0}
     - target: {fileID: 100172, guid: f8e00e2a956969542aeb205e80e29d7b, type: 3}
       propertyPath: m_IsActive
@@ -9277,6 +9305,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 400038, guid: f8e00e2a956969542aeb205e80e29d7b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.0031924658
+      objectReference: {fileID: 0}
+    - target: {fileID: 400038, guid: f8e00e2a956969542aeb205e80e29d7b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.063304245
+      objectReference: {fileID: 0}
+    - target: {fileID: 400116, guid: f8e00e2a956969542aeb205e80e29d7b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.10935596
+      objectReference: {fileID: 0}
+    - target: {fileID: 400116, guid: f8e00e2a956969542aeb205e80e29d7b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.0107793035
+      objectReference: {fileID: 0}
+    - target: {fileID: 400124, guid: f8e00e2a956969542aeb205e80e29d7b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.0000000857865
+      objectReference: {fileID: 0}
+    - target: {fileID: 400124, guid: f8e00e2a956969542aeb205e80e29d7b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.00014095573
+      objectReference: {fileID: 0}
     - target: {fileID: 9500000, guid: f8e00e2a956969542aeb205e80e29d7b, type: 3}
       propertyPath: m_Controller
       value: 
@@ -9304,58 +9356,6 @@ PrefabInstance:
     - target: {fileID: 13700008, guid: f8e00e2a956969542aeb205e80e29d7b, type: 3}
       propertyPath: m_AABB.m_Extent.z
       value: 0.54673725
-      objectReference: {fileID: 0}
-    - target: {fileID: 100088, guid: f8e00e2a956969542aeb205e80e29d7b, type: 3}
-      propertyPath: m_Name
-      value: Waist
-      objectReference: {fileID: 0}
-    - target: {fileID: 400038, guid: f8e00e2a956969542aeb205e80e29d7b, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.0031924658
-      objectReference: {fileID: 0}
-    - target: {fileID: 400038, guid: f8e00e2a956969542aeb205e80e29d7b, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.063304245
-      objectReference: {fileID: 0}
-    - target: {fileID: 400116, guid: f8e00e2a956969542aeb205e80e29d7b, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.10935596
-      objectReference: {fileID: 0}
-    - target: {fileID: 400116, guid: f8e00e2a956969542aeb205e80e29d7b, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.0107793035
-      objectReference: {fileID: 0}
-    - target: {fileID: 400124, guid: f8e00e2a956969542aeb205e80e29d7b, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.0000000857865
-      objectReference: {fileID: 0}
-    - target: {fileID: 400124, guid: f8e00e2a956969542aeb205e80e29d7b, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.00014095573
-      objectReference: {fileID: 0}
-    - target: {fileID: 100094, guid: f8e00e2a956969542aeb205e80e29d7b, type: 3}
-      propertyPath: m_Name
-      value: Chest
-      objectReference: {fileID: 0}
-    - target: {fileID: 100096, guid: f8e00e2a956969542aeb205e80e29d7b, type: 3}
-      propertyPath: m_Name
-      value: NeckBase
-      objectReference: {fileID: 0}
-    - target: {fileID: 100090, guid: f8e00e2a956969542aeb205e80e29d7b, type: 3}
-      propertyPath: m_Name
-      value: ShoulderL
-      objectReference: {fileID: 0}
-    - target: {fileID: 100092, guid: f8e00e2a956969542aeb205e80e29d7b, type: 3}
-      propertyPath: m_Name
-      value: ShoulderR
-      objectReference: {fileID: 0}
-    - target: {fileID: 100022, guid: f8e00e2a956969542aeb205e80e29d7b, type: 3}
-      propertyPath: m_Name
-      value: ForearmL
-      objectReference: {fileID: 0}
-    - target: {fileID: 100024, guid: f8e00e2a956969542aeb205e80e29d7b, type: 3}
-      propertyPath: m_Name
-      value: ForearmR
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8e00e2a956969542aeb205e80e29d7b, type: 3}
