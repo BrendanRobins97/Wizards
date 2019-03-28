@@ -58,6 +58,7 @@ public class GameManager : MonoBehaviour {
         if (mm) {
             numPlayers = mm.NumPlayers();
             Destroy(mm.gameObject);
+
         }
         currentTurnTimeLeft = gameStartTime;
         for (int i = 0; i < numPlayers; i++) {

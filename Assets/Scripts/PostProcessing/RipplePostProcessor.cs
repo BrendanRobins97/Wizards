@@ -20,7 +20,7 @@
  *    THE SOFTWARE.
  */
 
-//using UnityEditor.Experimental.Rendering.LightweightPipeline;
+using UnityEditor.Experimental.Rendering.LightweightPipeline;
 using UnityEngine;
 
 public class RipplePostProcessor : MonoBehaviour

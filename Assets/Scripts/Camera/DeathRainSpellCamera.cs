@@ -16,8 +16,6 @@ public class DeathRainSpellCamera : MonoBehaviour
     private GameObject currentSpell;
     public bool canShoot = false;
     private Vector3 forward;
-
-    private Vector3 position;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,10 +29,7 @@ public class DeathRainSpellCamera : MonoBehaviour
     void Update()
     {
         player = GameManager.instance.CurrentPlayer;
-        if (GameManager.instance.currentTurnTimeLeft < .1f)
-        {
-            spellHitPointIndicator.SetActive(false);
-        }
+        
         if (spellHitPointIndicator != null)
         {
             if (spellCamera.enabled)
@@ -49,13 +44,13 @@ public class DeathRainSpellCamera : MonoBehaviour
         Vector3 movZ = transform.forward * zVelocity;
 
         Vector3 velocity = (movX + movZ) * speed * Time.deltaTime;
-        if (Mathf.Abs(Vector3.Distance(transform.position-velocity, player.transform.position)) < maxDistanceFromPlayer)
+        if (Mathf.Abs(Vector3.Distance(transform.position, player.transform.position)) < maxDistanceFromPlayer)
         {
             this.transform.position = transform.position - velocity;
         }
         else
         {
-            //this.transform.position = Vector3.MoveTowards(transform.position, new Vector3(player.transform.position.x, player.playerCamera.transform.position.y + 8, player.transform.position.z), .500f * Time.deltaTime);
+            this.transform.position = Vector3.MoveTowards(transform.position, new Vector3(player.transform.position.x, player.playerCamera.transform.position.y + 8, player.transform.position.z), .500f * Time.deltaTime);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Alpha3))
@@ -96,12 +91,9 @@ public class DeathRainSpellCamera : MonoBehaviour
         RaycastHit hitInfo;
         if (Physics.Raycast(ray, out hitInfo))
         {
-            position = transform.position;
-            position.y = spellHitPointIndicator.transform.position.y + 15;
             lightPos = hitInfo.point;
-            lightPos.y += 5;
-            //lightPos.z -= 5;
-
+            lightPos.y += 1;
+            //lightPos.z -= 1;
             spellHitPointIndicator.transform.position = lightPos;
             //prefab.transform.position = hitInfo.point;
             if (Input.GetButton("Fire1") && spellCamera.enabled == true)
