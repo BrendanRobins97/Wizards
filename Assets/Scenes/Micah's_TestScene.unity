@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.1802837, g: 0.22571404, b: 0.30692273, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2804,10 +2804,10 @@ MonoBehaviour:
   timeAfterSpellCast: 3
   gameStartTime: 3
   playerPrefabs:
-  - {fileID: 2084653656752078091, guid: e9fae5cebcc610e44b82bb21f3535509, type: 3}
-  - {fileID: 7924062787272586797, guid: e9aae025a0dcf9745bc877634fb309ee, type: 3}
-  - {fileID: 7924062787272586797, guid: 882aa0be371c51f438401ad418acc7a3, type: 3}
-  - {fileID: 7924062787272586797, guid: 82575ff37f1a1f04cba52bca4fb93098, type: 3}
+  - {fileID: 4088739267935619923, guid: ddebc06a6a43c93479e861341313b537, type: 3}
+  - {fileID: 5354976916770763173, guid: 7e370553ca15ab146aaf023afed96f2c, type: 3}
+  - {fileID: 5060357612499765487, guid: 9c7bb63818ccf754c9430c932bdf0644, type: 3}
+  - {fileID: 3208229803421341722, guid: 70654a830dd878e45ba62d1ba94f3c82, type: 3}
   spellImages:
   - {fileID: 2084032489}
   - {fileID: 431379283}
@@ -3012,7 +3012,7 @@ PrefabInstance:
     - target: {fileID: 3248026788221861072, guid: 1137aab39e78710469877f21ed9e48c8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 33.6
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 3248026788221861072, guid: 1137aab39e78710469877f21ed9e48c8,
         type: 3}
@@ -3133,10 +3133,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1355538629, guid: afbca4fa8a5a40546803826007722218, type: 3}
-      propertyPath: ScannerOrigin
+    - target: {fileID: 7242976114015326540, guid: afbca4fa8a5a40546803826007722218,
+        type: 3}
+      propertyPath: prefab
       value: 
-      objectReference: {fileID: 95173543}
+      objectReference: {fileID: 0}
+    - target: {fileID: 348840644, guid: afbca4fa8a5a40546803826007722218, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b7849e32888fb4424a8c499775c9646d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afbca4fa8a5a40546803826007722218, type: 3}
 --- !u!1 &1597915642
