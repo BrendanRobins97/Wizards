@@ -44,13 +44,13 @@ public class DeathRainSpellCamera : MonoBehaviour
         Vector3 movZ = transform.forward * zVelocity;
 
         Vector3 velocity = (movX + movZ) * speed * Time.deltaTime;
-        if (Mathf.Abs(Vector3.Distance(transform.position, player.transform.position)) < maxDistanceFromPlayer)
+        if (Mathf.Abs(Vector3.Distance(transform.position - velocity, player.transform.position)) < maxDistanceFromPlayer)
         {
             this.transform.position = transform.position - velocity;
         }
         else
         {
-            this.transform.position = Vector3.MoveTowards(transform.position, new Vector3(player.transform.position.x, player.playerCamera.transform.position.y + 8, player.transform.position.z), .500f * Time.deltaTime);
+            //this.transform.position = Vector3.MoveTowards(transform.position, new Vector3(player.transform.position.x, player.playerCamera.transform.position.y + 8, player.transform.position.z), .500f * Time.deltaTime);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Alpha3))
@@ -92,7 +92,7 @@ public class DeathRainSpellCamera : MonoBehaviour
         if (Physics.Raycast(ray, out hitInfo))
         {
             lightPos = hitInfo.point;
-            lightPos.y += 1;
+            lightPos.y += 5;
             //lightPos.z -= 1;
             spellHitPointIndicator.transform.position = lightPos;
             //prefab.transform.position = hitInfo.point;

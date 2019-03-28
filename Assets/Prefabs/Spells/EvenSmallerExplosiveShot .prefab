@@ -24709,7 +24709,7 @@ MonoBehaviour:
   contactDamage: 2
   affectedByCharge: 0
   duration: 10
-  damageRadius: 2
+  damageRadius: 1.75
   explosionDampen: 0.75
   knockBackForce: 3
   explosion: {fileID: 0}

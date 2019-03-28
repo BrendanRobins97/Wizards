@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 5853803436034732327}
   m_Layer: 0
   m_Name: Bauta_Rigged 1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ca155e1e3fa98846baa0f3469b25946, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0.09411766, g: 0.40000004, b: 0.10980393, a: 1}
+  color: {r: 0.07878354, g: 0.028034877, b: 0.6603774, a: 1}
   chargeAmount: 2
   stamina: 0
   jumpForce: 500
@@ -178,9 +178,12 @@ MonoBehaviour:
   - {fileID: 8940775995591046101, guid: 8d19e0c9eca232d4593c90673c2014ca, type: 3}
   - {fileID: 8627637389754969580, guid: 478ac01ad88806c4eb7de68098f1efc4, type: 3}
   - {fileID: 1991271422628986824, guid: 508f936bd647a33458ffc34e83f73d0b, type: 3}
+  - {fileID: 5445266672334248905, guid: 24bd975c5f966ab44a2dda673a870377, type: 3}
   feetPosition: {fileID: 367964565352773159}
   PS_ElectricOrbPrefab: {fileID: 0}
   rigidbody: {fileID: 0}
+  originalFOV: 0
+  special: 0
 --- !u!54 &4895131066808789059
 Rigidbody:
   m_ObjectHideFlags: 0
