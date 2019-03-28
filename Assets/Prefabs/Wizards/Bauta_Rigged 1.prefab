@@ -95,8 +95,6 @@ GameObject:
   - component: {fileID: 6953849962777815231}
   - component: {fileID: 4895131066808789059}
   - component: {fileID: 5853803436034732327}
-  - component: {fileID: 8863654723214420977}
-  - component: {fileID: 4668288317997548819}
   m_Layer: 0
   m_Name: Bauta_Rigged 1
   m_TagString: Untagged
@@ -168,16 +166,13 @@ MonoBehaviour:
   chargeAmount: 2
   stamina: 0
   jumpForce: 500
-  special: 0
   health: 0
   chargePercent: 0
   turnOver: 0
+  sensitivity: 1
   movementSpeed: 2
   enabled: 1
   playerCamera: {fileID: 992627434685616699}
-  rigidbody: {fileID: 0}
-  originalFOV: 0
-  sensitivity: 1
   maxHealth: 100
   spells:
   - {fileID: 8940775995591046101, guid: 8d19e0c9eca232d4593c90673c2014ca, type: 3}
@@ -185,6 +180,7 @@ MonoBehaviour:
   - {fileID: 1991271422628986824, guid: 508f936bd647a33458ffc34e83f73d0b, type: 3}
   feetPosition: {fileID: 367964565352773159}
   PS_ElectricOrbPrefab: {fileID: 0}
+  rigidbody: {fileID: 0}
 --- !u!54 &4895131066808789059
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -215,61 +211,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &8863654723214420977
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2084653656752078091}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 0
-    i1: 0
-    i2: 0
-    i3: 0
-    i4: 0
-    i5: 0
-    i6: 0
-    i7: 0
-    i8: 0
-    i9: 0
-    i10: 0
-    i11: 0
-    i12: 0
-    i13: 0
-    i14: 0
-    i15: 0
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
---- !u!114 &4668288317997548819
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2084653656752078091}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TransformSyncMode: 3
-  m_SendInterval: 0.07692308
-  m_SyncRotationAxis: 7
-  m_RotationSyncCompression: 0
-  m_SyncSpin: 0
-  m_MovementTheshold: 0.001
-  m_VelocityThreshold: 0.0001
-  m_SnapThreshold: 5
-  m_InterpolateRotation: 1
-  m_InterpolateMovement: 1
 --- !u!1 &2715593028342244993
 GameObject:
   m_ObjectHideFlags: 0

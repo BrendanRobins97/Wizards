@@ -1,13 +1,12 @@
 ﻿// File: Player.cs
-// Contributors: Brendan Robinson
-// Date Created: 03/26/2019
-// Date Last Modified: 03/26/2019
+// Author: Brendan Robinson
+// Date Created: 02/19/2019
+// Date Last Modified: 02/28/2019
 
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
 
-public class Player : NetworkBehaviour {
+public class Player : MonoBehaviour {
 
     #region Constants
 
@@ -23,39 +22,39 @@ public class Player : NetworkBehaviour {
     public float chargeAmount;
 
     public                   float stamina;
-    public                   float jumpForce = 400;
-    public                   bool  special;
+    public float jumpForce = 400;
     [HideInInspector] public int   health;
     [HideInInspector] public float chargePercent;
     [HideInInspector] public bool  turnOver;
 
-    [HideInInspector] public float     movementSpeed = 8f;
-    [HideInInspector] public bool      enabled       = true;
-    [SerializeField]  public Camera    playerCamera;
-    [HideInInspector] public Rigidbody rigidbody;
-    [HideInInspector] public float     originalFOV;
+    [SerializeField] private float sensitivity = 1f;
 
-    [SerializeField] private float       sensitivity = 1f;
-    [SerializeField] private int         maxHealth   = 100;
+    [HideInInspector] public float       movementSpeed = 8f;
+    [HideInInspector] public bool        enabled       = true;
+    [SerializeField] public Camera      playerCamera;
+    [SerializeField] private int         maxHealth = 100;
     [SerializeField] private List<Spell> spells;
-    [SerializeField] private Transform   feetPosition;
+    [SerializeField] private Transform feetPosition;
+
 
     [SerializeField] private GameObject PS_ElectricOrbPrefab;
+    [HideInInspector] public Rigidbody rigidbody;
 
     //private Rigidbody   rigidbody;
+
 
     private          float currentCameraRotationX;
     private readonly float cameraRotationLimit = 80f;
 
-    private readonly float                cameraDistFromPlayer = 6f;
-    private readonly float                cameraYOffset        = 2f;
-    private readonly float                cameraXOffset        = 1f;
-    private          int                  specialCount         = 0;
-    private          int                  currentSpellIndex;
-    private bool inLobby = true;
-    private          Vector3              prevPosition;
-    private          DeathRainSpellCamera drsc;
-
+    private readonly float cameraDistFromPlayer = 6f;
+    private readonly float cameraYOffset        = 2f;
+    private readonly float cameraXOffset        = 1f;
+    private int specialCount = 0;
+    private int     currentSpellIndex;
+    private Vector3 prevPosition;
+    private DeathRainSpellCamera drsc;
+    [HideInInspector] public float originalFOV = 0f;
+    public bool special = false;
     #endregion
 
     #region Methods
@@ -63,20 +62,16 @@ public class Player : NetworkBehaviour {
     private void Awake() {
         health = maxHealth;
         rigidbody = GetComponent<Rigidbody>();
+        Disable();
         //locks the cursor to the bounds of the screen. Press 'esc' to unlock.
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         drsc = FindObjectOfType<DeathRainSpellCamera>();
         special = false;
         originalFOV = playerCamera.fieldOfView;
-        inLobby = true; // start in lobby
-        Disable();
-
-        Enable();
     }
 
     private void Update() {
-        if (!isLocalPlayer) { return; }
         if (!enabled) { return; }
 
         // Vertical rotation calculations
@@ -106,8 +101,7 @@ public class Player : NetworkBehaviour {
         stamina -= (transform.position - prevPosition).magnitude;
         prevPosition = transform.position;
 
-        // Don't worry about stamina if in lobby
-        if (inLobby || stamina > 0) {
+        if (stamina > 0) {
             // Movement Calculations
             float xVelocity = Input.GetAxis("Horizontal") * movementSpeed;
             float zVelocity = Input.GetAxis("Vertical") * movementSpeed;
@@ -118,12 +112,11 @@ public class Player : NetworkBehaviour {
             Vector3 velocity = (movX + movZ) * movementSpeed * Time.deltaTime;
 
             rigidbody.MovePosition(rigidbody.position + velocity);
-
-            // Check if feet are within small distance to ground
             if (Input.GetButtonDown("Jump") && Physics.Raycast(feetPosition.position, Vector3.down, 0.5f)) {
                 rigidbody.AddForce(0, jumpForce, 0);
             }
         }
+
 
         if (Input.GetKeyDown(KeyCode.Alpha1)) { currentSpellIndex = 0; }
 
@@ -131,45 +124,45 @@ public class Player : NetworkBehaviour {
 
         if (Input.GetKeyDown(KeyCode.Alpha3)) { currentSpellIndex = 2; }
 
+
         if (Input.GetKeyDown(KeyCode.Alpha4)) { currentSpellIndex = 3; }
 
         currentSpellIndex = Mathf.Clamp(currentSpellIndex, 0, spells.Count - 1);
 
-        GameManager.instance?.UpdateSpellImage(currentSpellIndex);
+        GameManager.instance.UpdateSpellImage(currentSpellIndex);
 
         if (Input.GetButtonUp("Fire1")) {
-            if (currentSpellIndex == 3 && !special) {
-                drsc.Activate();
-                special = true;
+            if (currentSpellIndex == 3 && !special)
+            {
+                    drsc.Activate();
+                    special = true;
             }
-            else {
+            else
+            {
                 special = false;
                 // Fire spell when mouse is released
                 Vector3 spellStart =
                     transform.TransformPoint(new Vector3(cameraXOffset, cameraYOffset, 0.5f));
-                Spell spell = Instantiate(spells[currentSpellIndex], spellStart, Quaternion.identity);
-                spell.ThrowSpell(playerCamera.transform.forward, chargePercent);
-                NetworkServer.Spawn(spell.gameObject);
-
-                if (!inLobby) {
-                    enabled = false; // Disable movement
-                    turnOver = true; // Signal that their turn is over
-                }
+                Instantiate(spells[currentSpellIndex], spellStart, Quaternion.identity)
+                    .ThrowSpell(playerCamera.transform.forward, chargePercent);
+                enabled = false; // Disable movement
+                turnOver = true; // Signal that their turn is over
             }
         }
         // Handle charge for spell
-        if (Input.GetButton("Fire1")) {
+        if (Input.GetButton("Fire1"))
+        {
             float scroll = Input.GetAxis("Mouse ScrollWheel");
             scroll = 1;
             chargeAmount += Time.deltaTime * chargeRate;
-            if (chargeAmount > .5f && chargeAmount < chargeMax) {
+            if (chargeAmount > .5f && chargeAmount < chargeMax)
+            {
                 playerCamera.fieldOfView -= scroll * .5f;
             }
         }
-        else {
+        else
+        {   
             chargeAmount = 0;
-            playerCamera.fieldOfView = originalFOV;
-
         }
 
         chargeAmount = Mathf.Clamp(chargeAmount, 0, chargeMax);
@@ -186,7 +179,8 @@ public class Player : NetworkBehaviour {
         playerCamera.fieldOfView = originalFOV;
     }
 
-    public void Disable() {
+    public void Disable()
+    {
         turnOver = true;
         enabled = false;
         if (playerCamera) { playerCamera.enabled = false; }
@@ -198,12 +192,11 @@ public class Player : NetworkBehaviour {
 
     public float HealthPercent() { return (float) health / maxHealth; }
 
-    public float StaminaPercent() { return stamina / startingStamina; }
-
-    public void StartGame() {
-        inLobby = false;
-        Disable();
+    public float StaminaPercent()
+    {
+        return (float) stamina / startingStamina;
     }
+
     #endregion
 
 }
