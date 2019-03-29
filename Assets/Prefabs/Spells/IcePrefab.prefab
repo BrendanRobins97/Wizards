@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1991271422628986824}
   m_Layer: 0
   m_Name: IcePrefab
-  m_TagString: Spell
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -95,6 +95,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ice Sword
       objectReference: {fileID: 0}
+    - target: {fileID: 1101230289879478464, guid: 117b28d95956f42daade758afdecad5a,
+        type: 3}
+      propertyPath: m_TagString
+      value: IceSpell
+      objectReference: {fileID: 0}
     - target: {fileID: 1101230289879478466, guid: 117b28d95956f42daade758afdecad5a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -150,15 +155,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1101230289879478465, guid: 117b28d95956f42daade758afdecad5a,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7144400581879461879, guid: 117b28d95956f42daade758afdecad5a,
         type: 3}
       propertyPath: m_IsTrigger
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1101230289879478465, guid: 117b28d95956f42daade758afdecad5a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3627137018424936329, guid: 117b28d95956f42daade758afdecad5a, type: 3}

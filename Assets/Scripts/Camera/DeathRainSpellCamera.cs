@@ -12,7 +12,7 @@ public class DeathRainSpellCamera : MonoBehaviour
     public float speed;
     public GameObject prefab;
     [HideInInspector] public Vector3 lightPos;
-    [SerializeField] private GameObject spellHitPointIndicator;
+    [SerializeField] public Light spellHitPointIndicator;
     private GameObject currentSpell;
     public bool canShoot = false;
     private Vector3 forward;
@@ -21,7 +21,7 @@ public class DeathRainSpellCamera : MonoBehaviour
     {
         spellCamera = GetComponentInChildren<Camera>();
         //this.gameObject.SetActive(false);
-        spellHitPointIndicator.SetActive(false);
+        spellHitPointIndicator.enabled = false;
         spellCamera.enabled = false;
     }
     
@@ -44,20 +44,20 @@ public class DeathRainSpellCamera : MonoBehaviour
         Vector3 movZ = transform.forward * zVelocity;
 
         Vector3 velocity = (movX + movZ) * speed * Time.deltaTime;
-        if (Mathf.Abs(Vector3.Distance(transform.position, player.transform.position)) < maxDistanceFromPlayer)
+        if (Mathf.Abs(Vector3.Distance(transform.position - velocity, player.transform.position)) < maxDistanceFromPlayer)
         {
             this.transform.position = transform.position - velocity;
         }
         else
         {
-            this.transform.position = Vector3.MoveTowards(transform.position, new Vector3(player.transform.position.x, player.playerCamera.transform.position.y + 8, player.transform.position.z), .500f * Time.deltaTime);
+            //this.transform.position = Vector3.MoveTowards(transform.position, new Vector3(player.transform.position.x, player.playerCamera.transform.position.y + 8, player.transform.position.z), .500f * Time.deltaTime);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Alpha3))
         {
             player.playerCamera.enabled = true;
             player.enabled = true;
-            spellHitPointIndicator.SetActive(false);
+            spellHitPointIndicator.enabled = false;
             spellCamera.enabled = false;
             player.special = false;
         }
@@ -82,7 +82,7 @@ public class DeathRainSpellCamera : MonoBehaviour
         //Cursor.lockState = CursorLockMode.None;
         canShoot = true;
         spellCamera.enabled = true;
-        spellHitPointIndicator.SetActive(true);
+        spellHitPointIndicator.enabled = true;
     }
     private void MoveSpellIndicatorToMouse()
     {
@@ -92,7 +92,7 @@ public class DeathRainSpellCamera : MonoBehaviour
         if (Physics.Raycast(ray, out hitInfo))
         {
             lightPos = hitInfo.point;
-            lightPos.y += 1;
+            lightPos.y += 5;
             //lightPos.z -= 1;
             spellHitPointIndicator.transform.position = lightPos;
             //prefab.transform.position = hitInfo.point;
@@ -100,12 +100,11 @@ public class DeathRainSpellCamera : MonoBehaviour
             {
                 //this.gameObject.SetActive(false);
                 Cursor.lockState = CursorLockMode.Locked;
-                //DeathRainSpell drs = new DeathRainSpell();
-                //drs.ThrowSpell(lightPos, 1);
-                player.playerCamera.enabled = true;
+                spellHitPointIndicator.enabled = false;
+                //player.playerCamera.enabled = true;
                 //spellCamera.enabled = false;
                 player.enabled = true;
-                spellHitPointIndicator.SetActive(false);
+                
             }
         }
     }
