@@ -9,8 +9,12 @@ public class DeathRainSpell : Spell
     {
         DeathRainSpellCamera drc = FindObjectOfType<DeathRainSpellCamera>();
         CameraBehavior cam = FindObjectOfType<CameraBehavior>();
-        if(cam.enabled == true)
-        { drc.spellCamera.enabled = false;}
+        if (cam.enabled == true)
+        {
+            drc.spellCamera.enabled = false;
+        }
+
+        drc.spellHitPointIndicator.enabled = false;
         direction = new Vector3(drc.lightPos.x, drc.lightPos.y+5,drc.lightPos.z);
         transform.position = direction;
         this.transform.Rotate(-90,0,0,0);

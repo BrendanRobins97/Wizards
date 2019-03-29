@@ -2969,7 +2969,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1414293006}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fc5b8559b016b254e8a8619be8cf7bf5, type: 3}
   m_Name: 
@@ -2978,9 +2978,7 @@ MonoBehaviour:
   min: 10
   max: 124
   assetPrefab:
-  - {fileID: 5502511869987978858, guid: 3263b2ebe69482e48a58f42a269712f9, type: 3}
-  - {fileID: 6390948617176731910, guid: 3e5105d79cd028340b259d0404766229, type: 3}
-  - {fileID: 5502511869987978858, guid: 3263b2ebe69482e48a58f42a269712f9, type: 3}
+  - {fileID: 0}
   maxGroundAngle: 8.64
 --- !u!114 &1414293011
 MonoBehaviour:
@@ -3201,6 +3199,10 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 392278080, guid: afbca4fa8a5a40546803826007722218, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afbca4fa8a5a40546803826007722218, type: 3}

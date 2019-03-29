@@ -25,6 +25,7 @@ public class Player : MonoBehaviour {
     public float jumpForce = 400;
     [HideInInspector] public int   health;
     [HideInInspector] public float chargePercent;
+    [HideInInspector] public float tempChargeAmount;
     [HideInInspector] public bool  turnOver;
 
     [SerializeField] private float sensitivity = 1f;
@@ -36,7 +37,7 @@ public class Player : MonoBehaviour {
     [SerializeField] private List<Spell> spells;
     [SerializeField] private Transform feetPosition;
 
-
+    [SerializeField] private Animator animator;
     [SerializeField] private GameObject PS_ElectricOrbPrefab;
     [HideInInspector] public Rigidbody rigidbody;
 
@@ -100,8 +101,9 @@ public class Player : MonoBehaviour {
 
         stamina -= (transform.position - prevPosition).magnitude;
         prevPosition = transform.position;
-
+        animator.SetFloat("Forward Amount", 0.0f);
         if (stamina > 0) {
+            
             // Movement Calculations
             float xVelocity = Input.GetAxis("Horizontal") * movementSpeed;
             float zVelocity = Input.GetAxis("Vertical") * movementSpeed;
@@ -112,6 +114,7 @@ public class Player : MonoBehaviour {
             Vector3 velocity = (movX + movZ) * movementSpeed * Time.deltaTime;
 
             rigidbody.MovePosition(rigidbody.position + velocity);
+            animator.SetFloat("Forward Amount", Mathf.Abs(xVelocity + zVelocity));
             if (Input.GetButtonDown("Jump") && Physics.Raycast(feetPosition.position, Vector3.down, 0.5f)) {
                 rigidbody.AddForce(0, jumpForce, 0);
             }
@@ -132,12 +135,19 @@ public class Player : MonoBehaviour {
         GameManager.instance.UpdateSpellImage(currentSpellIndex);
 
         if (Input.GetButtonUp("Fire1")) {
+            animator.ResetTrigger("Charge");
+            animator.SetTrigger("Cast");
+            if (currentSpellIndex == 3 && special)
+            {
+                Cast();
+                special = false;
+            }
             if (currentSpellIndex == 3 && !special)
             {
                     drsc.Activate();
                     special = true;
             }
-            else
+            /*else
             {
                 special = false;
                 // Fire spell when mouse is released
@@ -147,28 +157,56 @@ public class Player : MonoBehaviour {
                     .ThrowSpell(playerCamera.transform.forward, chargePercent);
                 enabled = false; // Disable movement
                 turnOver = true; // Signal that their turn is over
-            }
+            }*/
+            //Cast();
         }
         // Handle charge for spell
         if (Input.GetButton("Fire1"))
         {
+            if (currentSpellIndex != 3)
+            {
+                animator.SetTrigger("Charge");
+            }
+
             float scroll = Input.GetAxis("Mouse ScrollWheel");
             scroll = 1;
             chargeAmount += Time.deltaTime * chargeRate;
             if (chargeAmount > .5f && chargeAmount < chargeMax)
             {
+                tempChargeAmount = chargeAmount;
                 playerCamera.fieldOfView -= scroll * .5f;
             }
         }
         else
-        {   
+        {;
             chargeAmount = 0;
         }
-
+        
         chargeAmount = Mathf.Clamp(chargeAmount, 0, chargeMax);
         chargePercent = chargeAmount / chargeMax;
     }
 
+    public void Cast()
+    {
+        /*if (currentSpellIndex == 3 && !special)
+        {
+            drsc.Activate();
+            special = true;
+        }
+        else*/
+        {
+            chargePercent = tempChargeAmount / chargeMax;
+            special = false;
+            // Fire spell when mouse is released
+            Vector3 spellStart =
+                transform.TransformPoint(new Vector3(cameraXOffset, cameraYOffset, 0.5f));
+            Instantiate(spells[currentSpellIndex], spellStart, Quaternion.identity)
+                .ThrowSpell(playerCamera.transform.forward, chargePercent);
+            animator.SetFloat("Forward Amount", 0);
+            enabled = false; // Disable movement
+            turnOver = true; // Signal that their turn is over
+        }
+    }
     public void Enable() {
         turnOver = false;
         enabled = true;
@@ -183,6 +221,7 @@ public class Player : MonoBehaviour {
     {
         turnOver = true;
         enabled = false;
+        animator.SetFloat("Forward Amount", 0);
         if (playerCamera) { playerCamera.enabled = false; }
     }
 

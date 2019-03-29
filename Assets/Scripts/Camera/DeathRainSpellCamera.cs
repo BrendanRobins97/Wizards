@@ -12,7 +12,7 @@ public class DeathRainSpellCamera : MonoBehaviour
     public float speed;
     public GameObject prefab;
     [HideInInspector] public Vector3 lightPos;
-    [SerializeField] private GameObject spellHitPointIndicator;
+    [SerializeField] public Light spellHitPointIndicator;
     private GameObject currentSpell;
     public bool canShoot = false;
     private Vector3 forward;
@@ -21,7 +21,7 @@ public class DeathRainSpellCamera : MonoBehaviour
     {
         spellCamera = GetComponentInChildren<Camera>();
         //this.gameObject.SetActive(false);
-        spellHitPointIndicator.SetActive(false);
+        spellHitPointIndicator.enabled = false;
         spellCamera.enabled = false;
     }
     
@@ -57,7 +57,7 @@ public class DeathRainSpellCamera : MonoBehaviour
         {
             player.playerCamera.enabled = true;
             player.enabled = true;
-            spellHitPointIndicator.SetActive(false);
+            spellHitPointIndicator.enabled = false;
             spellCamera.enabled = false;
             player.special = false;
         }
@@ -82,7 +82,7 @@ public class DeathRainSpellCamera : MonoBehaviour
         //Cursor.lockState = CursorLockMode.None;
         canShoot = true;
         spellCamera.enabled = true;
-        spellHitPointIndicator.SetActive(true);
+        spellHitPointIndicator.enabled = true;
     }
     private void MoveSpellIndicatorToMouse()
     {
@@ -100,12 +100,11 @@ public class DeathRainSpellCamera : MonoBehaviour
             {
                 //this.gameObject.SetActive(false);
                 Cursor.lockState = CursorLockMode.Locked;
-                //DeathRainSpell drs = new DeathRainSpell();
-                //drs.ThrowSpell(lightPos, 1);
-                player.playerCamera.enabled = true;
+                spellHitPointIndicator.enabled = false;
+                //player.playerCamera.enabled = true;
                 //spellCamera.enabled = false;
                 player.enabled = true;
-                spellHitPointIndicator.SetActive(false);
+                
             }
         }
     }
