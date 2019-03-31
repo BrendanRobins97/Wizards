@@ -55,7 +55,9 @@ public class Player : MonoBehaviour {
     private Vector3 prevPosition;
     private DeathRainSpellCamera drsc;
     [HideInInspector] public float originalFOV = 0f;
-    public bool special = false;
+    private bool usedSpecial = false;
+    [HideInInspector] public bool casting = false;
+    [HideInInspector]public bool special = false;
     #endregion
 
     #region Methods
@@ -114,7 +116,8 @@ public class Player : MonoBehaviour {
             Vector3 velocity = (movX + movZ) * movementSpeed * Time.deltaTime;
 
             rigidbody.MovePosition(rigidbody.position + velocity);
-            animator.SetFloat("Forward Amount", Mathf.Abs(xVelocity + zVelocity));
+
+            animator.SetFloat("Forward Amount", Mathf.Abs(xVelocity/2.0f + zVelocity/2.0f));
             if (Input.GetButtonDown("Jump") && Physics.Raycast(feetPosition.position, Vector3.down, 0.5f)) {
                 rigidbody.AddForce(0, jumpForce, 0);
             }
@@ -128,8 +131,12 @@ public class Player : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Alpha3)) { currentSpellIndex = 2; }
 
 
-        if (Input.GetKeyDown(KeyCode.Alpha4)) { currentSpellIndex = 3; }
+        if (Input.GetKeyDown(KeyCode.Alpha4) && !usedSpecial) { currentSpellIndex = 3; }
 
+        if (currentSpellIndex == 3 && usedSpecial)
+        {
+            currentSpellIndex = 0;
+        }
         currentSpellIndex = Mathf.Clamp(currentSpellIndex, 0, spells.Count - 1);
 
         GameManager.instance.UpdateSpellImage(currentSpellIndex);
@@ -139,32 +146,24 @@ public class Player : MonoBehaviour {
             animator.SetTrigger("Cast");
             if (currentSpellIndex == 3 && special)
             {
-                Cast();
                 special = false;
+                usedSpecial = true;
+                Cast();
+                
             }
             if (currentSpellIndex == 3 && !special)
             {
                     drsc.Activate();
                     special = true;
             }
-            /*else
-            {
-                special = false;
-                // Fire spell when mouse is released
-                Vector3 spellStart =
-                    transform.TransformPoint(new Vector3(cameraXOffset, cameraYOffset, 0.5f));
-                Instantiate(spells[currentSpellIndex], spellStart, Quaternion.identity)
-                    .ThrowSpell(playerCamera.transform.forward, chargePercent);
-                enabled = false; // Disable movement
-                turnOver = true; // Signal that their turn is over
-            }*/
-            //Cast();
+            
         }
         // Handle charge for spell
         if (Input.GetButton("Fire1"))
         {
             if (currentSpellIndex != 3)
             {
+                animator.ResetTrigger("Idle");
                 animator.SetTrigger("Charge");
             }
 
@@ -195,6 +194,7 @@ public class Player : MonoBehaviour {
         }
         else*/
         {
+            casting = true;
             chargePercent = tempChargeAmount / chargeMax;
             special = false;
             // Fire spell when mouse is released
@@ -203,6 +203,9 @@ public class Player : MonoBehaviour {
             Instantiate(spells[currentSpellIndex], spellStart, Quaternion.identity)
                 .ThrowSpell(playerCamera.transform.forward, chargePercent);
             animator.SetFloat("Forward Amount", 0);
+            animator.ResetTrigger("Charge");
+            animator.ResetTrigger("Idle");
+            drsc.spellHitPointIndicator.enabled = false;
             enabled = false; // Disable movement
             turnOver = true; // Signal that their turn is over
         }
@@ -219,9 +222,12 @@ public class Player : MonoBehaviour {
 
     public void Disable()
     {
+        casting = false;
         turnOver = true;
         enabled = false;
+        animator.ResetTrigger("Charge");
         animator.SetFloat("Forward Amount", 0);
+        animator.SetTrigger("Idle");
         if (playerCamera) { playerCamera.enabled = false; }
     }
 

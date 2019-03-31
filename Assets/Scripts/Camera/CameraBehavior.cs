@@ -47,6 +47,13 @@ public class CameraBehavior : MonoBehaviour
         {
             ChangeToRainSpellCamera();
         }*/
+        if (player.casting)
+        {
+            Debug.Log("Casting");
+            spellCamera.enabled = true;
+            spellCamera.transform.position = new Vector3(xpos+5,5,zpos+5);
+            spellCamera.transform.LookAt(player.transform);
+        }
         if ((spell == null && fireSpell == null && deathRainSpell == null ) || GameManager.instance.currentTurnTimeLeft > GameManager.instance.timeAfterSpellCast)
         {
             spellCamera.enabled = false;

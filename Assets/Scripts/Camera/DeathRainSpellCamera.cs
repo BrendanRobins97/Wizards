@@ -21,7 +21,7 @@ public class DeathRainSpellCamera : MonoBehaviour
     {
         spellCamera = GetComponentInChildren<Camera>();
         //this.gameObject.SetActive(false);
-        spellHitPointIndicator.enabled = false;
+        spellHitPointIndicator.GetComponent<Light>().enabled = false;
         spellCamera.enabled = false;
     }
     
@@ -73,10 +73,7 @@ public class DeathRainSpellCamera : MonoBehaviour
         transform.forward = forward;
         spellCamera.transform.LookAt(player.transform);
         startPos = transform.position;
-        maxX = startPos.x + 3;
-        minX = startPos.x - 3;
-        maxZ = startPos.z + 3;
-        minZ = startPos.z - 3;
+        
         maxDistanceFromPlayer = 15;
         //this.gameObject.SetActive(true);
         //Cursor.lockState = CursorLockMode.None;
@@ -104,7 +101,6 @@ public class DeathRainSpellCamera : MonoBehaviour
                 //player.playerCamera.enabled = true;
                 //spellCamera.enabled = false;
                 player.enabled = true;
-                
             }
         }
     }

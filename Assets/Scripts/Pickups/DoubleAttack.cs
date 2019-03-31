@@ -7,7 +7,7 @@ public class DoubleAttack : MonoBehaviour
     [SerializeField] private GameManager gm;
     [SerializeField] private TextMeshProUGUI text;
     private Player player, playerWithItem;
-    private bool pickedUp = false;
+    [HideInInspector]public bool pickedUp = false;
     private bool doubleAttack = false;
     private int numFire = 0;
     private float tempTime;
