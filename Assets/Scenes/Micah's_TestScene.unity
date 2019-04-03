@@ -1069,7 +1069,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519377501
 GameObject:
@@ -1373,7 +1373,7 @@ Transform:
   - {fileID: 149003121}
   - {fileID: 202394725}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &612444699
 GameObject:
@@ -1796,7 +1796,7 @@ RectTransform:
   - {fileID: 1917680138}
   - {fileID: 742948565}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2097,7 +2097,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: dc82548537dfa4503a267c793180a944, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: dc82548537dfa4503a267c793180a944, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2863,7 +2863,9 @@ MonoBehaviour:
     type: 3}
   mainCamera: {fileID: 669687616}
   playerContainer: {fileID: 2141200333}
-  numPlayers: 4
+  giantFireball: {fileID: 3065805226639967745, guid: 77fe15f06d6feba4d8a21b5dfcf4ef8d,
+    type: 3}
+  numPlayers: 2
   spawnLocations:
   - {fileID: 699662579}
   - {fileID: 927715569}
@@ -2886,6 +2888,8 @@ MonoBehaviour:
   playerTurn: 0
   currentTurnTimeLeft: 0
   numPlayersLeft: 0
+  roundNumber: 0
+  mapShrinkNumber: 0
 --- !u!4 &1414293008
 Transform:
   m_ObjectHideFlags: 0
@@ -2962,6 +2966,8 @@ MonoBehaviour:
     m_RotationOrder: 4
   chunkPrefab: {fileID: 5892459545411116954, guid: 87476e45e1965ed4b8ed67ffecbb3430,
     type: 3}
+  width: 128
+  length: 128
 --- !u!114 &1414293010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3183,7 +3189,7 @@ PrefabInstance:
     - target: {fileID: 7242976114015326543, guid: afbca4fa8a5a40546803826007722218,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7242976114015326543, guid: afbca4fa8a5a40546803826007722218,
         type: 3}
@@ -4892,7 +4898,7 @@ PrefabInstance:
     - target: {fileID: 2682453482512982689, guid: 40867d9e11c6ef14eb5d0a908c945237,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2682453482512982689, guid: 40867d9e11c6ef14eb5d0a908c945237,
         type: 3}

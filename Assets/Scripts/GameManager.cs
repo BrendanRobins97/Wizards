@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private PlayerUI         playerUIPrefab;
     [SerializeField] private Camera           mainCamera;
     [SerializeField] private GameObject       playerContainer;
+    [SerializeField] private GameObject giantFireball;
     [SerializeField] private int              numPlayers = 2;
     [SerializeField] private List<Transform>  spawnLocations;
     [SerializeField] private float            turnTime           = 20f;
@@ -37,10 +38,10 @@ public class GameManager : MonoBehaviour {
     private List<PlayerInfo> players = new List<PlayerInfo>();
     [HideInInspector] public int              playerTurn;
     public float            currentTurnTimeLeft;
-    private bool             endOfTurn;
+    private bool             endOfTurn, newRound;
     private bool gameStarted = false;
-
-   [HideInInspector] public int              numPlayersLeft;
+    private float xBoundsMax,xBoundsMin, zBoundsMin, zBoundsMax;
+   [HideInInspector] public int              numPlayersLeft,roundNumber,mapShrinkNumber;
 
     #endregion
 
@@ -58,8 +59,12 @@ public class GameManager : MonoBehaviour {
         if (mm) {
             numPlayers = mm.NumPlayers();
             Destroy(mm.gameObject);
-
         }
+        mapShrinkNumber = 2;
+        xBoundsMax = GameObject.FindObjectOfType<TerrainManager2>().length;
+        xBoundsMin = 0;
+        zBoundsMin = 0;
+        zBoundsMax = GameObject.FindObjectOfType<TerrainManager2>().width;
         currentTurnTimeLeft = gameStartTime;
         for (int i = 0; i < numPlayers; i++) {
             PlayerInfo newPlayerInfo;
@@ -74,7 +79,7 @@ public class GameManager : MonoBehaviour {
             players.Add(newPlayerInfo);
         }
         gameOverText.gameObject.SetActive(false);
-        
+        roundNumber = 0;
         playerTurn = 0;
         numPlayersLeft = numPlayers;
     }
@@ -85,9 +90,18 @@ public class GameManager : MonoBehaviour {
         currentTurnTimeLeft -= Time.deltaTime;
         currentTurnTimeLeft = Mathf.Clamp(currentTurnTimeLeft, -0.9f, turnTime);
         turnText.text = "Time Left: " + (int)(currentTurnTimeLeft + 1);
-
+        if (playerTurn == 0 && newRound && roundNumber/numPlayers > mapShrinkNumber)
+        {
+            MapShrink();
+            newRound = false;
+            mapShrinkNumber += 2;
+        }
+        if (playerTurn > 0)
+        {
+            newRound = true;
+        }
         if (!gameStarted) { // Handle game start behavior
-
+            
             // Start game when initial timer hits 0
             if (currentTurnTimeLeft < 0) {
                 CurrentPlayer.Enable();
@@ -153,7 +167,7 @@ public class GameManager : MonoBehaviour {
     private void NextPlayerTurn() {
         // Disable current player
         CurrentPlayer.Disable();
-
+        roundNumber++;
         // Find the next available player
         int count = 0;
         do {
@@ -165,6 +179,30 @@ public class GameManager : MonoBehaviour {
         CurrentPlayer?.Enable();
     }
 
+    public void MapShrink()
+    {
+        for (int x = (int)xBoundsMin; x < xBoundsMax; x += 7)
+        {
+            Instantiate(giantFireball,new Vector3(x,45,zBoundsMin), transform.rotation);
+        }
+        for (int x = (int)xBoundsMin; x < xBoundsMax; x += 7)
+        {
+            Instantiate(giantFireball, new Vector3(x, 45, zBoundsMax), transform.rotation);
+        }
+        for (int z = (int)zBoundsMin; z < zBoundsMax; z += 7)
+        {
+            Instantiate(giantFireball, new Vector3(xBoundsMin, 45, z), transform.rotation);
+        }
+        for (int z = (int)zBoundsMin; z < zBoundsMax; z += 7)
+        {
+            Instantiate(giantFireball, new Vector3(xBoundsMax, 45, z), transform.rotation);
+        }
+
+        zBoundsMin += 12;
+        xBoundsMin += 12;
+        zBoundsMax -= 12;
+        xBoundsMax -= 12;
+    }
     #endregion
 
 }
