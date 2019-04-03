@@ -49,9 +49,11 @@ public class SpeedBoost : MonoBehaviour
             if (pickedUp)
             {
                 speedUpTime -= Time.deltaTime;
+                //player.GetComponent<Animator>().speed = 2.0f;
                 player.GetComponent<Player>().stamina = tempStamina;
                 if (speedUpTime <= 0 || gm.currentTurnTimeLeft <= 0)
                 {
+                    player.GetComponent<Animator>().speed = 1.0f;
                     player.movementSpeed = 2;
                     Debug.Log("Speed normal");
                     //text.gameObject.SetActive(false);

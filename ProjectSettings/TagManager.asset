@@ -10,6 +10,7 @@ TagManager:
   - Tree
   - DeathRainSpell
   - IceSpell
+  - Chunk
   layers:
   - Default
   - TransparentFX

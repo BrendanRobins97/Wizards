@@ -117,7 +117,7 @@ public class Player : MonoBehaviour {
 
             rigidbody.MovePosition(rigidbody.position + velocity);
 
-            animator.SetFloat("Forward Amount", Mathf.Abs(xVelocity/2.0f + zVelocity/2.0f));
+            animator.SetFloat("Forward Amount", Mathf.Abs(zVelocity/2.0f));
             if (Input.GetButtonDown("Jump") && Physics.Raycast(feetPosition.position, Vector3.down, 0.5f)) {
                 rigidbody.AddForce(0, jumpForce, 0);
             }

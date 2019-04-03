@@ -30,8 +30,8 @@ public class TerrainManager2 : MonoBehaviour {
     [SerializeField] private AnimationCurve  heightMap;
     [SerializeField] private Chunk2          chunkPrefab;
     private                  Cell[,,]        grid;
-    private                  int             width     = 128;
-    private                  int             length    = 128;
+    [HideInInspector] public int             width     = 128;
+    [HideInInspector] public int             length    = 128;
     private                  int             height    = 64;
     private                  int             chunkSize = 16;
     private                  Vector3Int      numChunks;
