@@ -10,8 +10,8 @@ public class Player : MonoBehaviour {
 
     #region Constants
 
-    private const                   float chargeMax       = 2f;
-    private const                   float chargeRate      = 1f;
+    private const float chargeMax = 2f;
+    private const float chargeRate = 1f;
     [HideInInspector] private const float startingStamina = 30f;
 
     #endregion
@@ -21,19 +21,19 @@ public class Player : MonoBehaviour {
     public Color color;
     public float chargeAmount;
 
-    public                   float stamina;
+    public float stamina;
     public float jumpForce = 400;
-    [HideInInspector] public int   health;
+    [HideInInspector] public int health;
     [HideInInspector] public float chargePercent;
     [HideInInspector] public float tempChargeAmount;
-    [HideInInspector] public bool  turnOver;
+    [HideInInspector] public bool turnOver;
 
     [SerializeField] private float sensitivity = 1f;
 
-    [HideInInspector] public float       movementSpeed = 8f;
-    [HideInInspector] public bool        enabled       = true;
-    [SerializeField] public Camera      playerCamera;
-    [SerializeField] private int         maxHealth = 100;
+    [HideInInspector] public float movementSpeed = 8f;
+    [HideInInspector] public bool enabled = true;
+    [SerializeField] public Camera playerCamera;
+    [SerializeField] private int maxHealth = 100;
     [SerializeField] private List<Spell> spells;
     [SerializeField] private Transform feetPosition;
 
@@ -44,20 +44,20 @@ public class Player : MonoBehaviour {
     //private Rigidbody   rigidbody;
 
 
-    private          float currentCameraRotationX;
+    private float currentCameraRotationX;
     private readonly float cameraRotationLimit = 80f;
 
     private readonly float cameraDistFromPlayer = 6f;
-    private readonly float cameraYOffset        = 2f;
-    private readonly float cameraXOffset        = 1f;
+    private readonly float cameraYOffset = 2f;
+    private readonly float cameraXOffset = 1f;
     private int specialCount = 0;
-    private int     currentSpellIndex;
+    private int currentSpellIndex;
     private Vector3 prevPosition;
     private DeathRainSpellCamera drsc;
     [HideInInspector] public float originalFOV = 0f;
     private bool usedSpecial = false;
     [HideInInspector] public bool casting = false;
-    [HideInInspector]public bool special = false;
+    [HideInInspector] public bool special = false;
     #endregion
 
     #region Methods
@@ -105,7 +105,7 @@ public class Player : MonoBehaviour {
         prevPosition = transform.position;
         animator.SetFloat("Forward Amount", 0.0f);
         if (stamina > 0) {
-            
+
             // Movement Calculations
             float xVelocity = Input.GetAxis("Horizontal") * movementSpeed;
             float zVelocity = Input.GetAxis("Vertical") * movementSpeed;
@@ -117,20 +117,21 @@ public class Player : MonoBehaviour {
 
             rigidbody.MovePosition(rigidbody.position + velocity);
 
-            animator.SetFloat("Forward Amount", Mathf.Abs(zVelocity/2.0f));
+            animator.SetFloat("Forward Amount", Mathf.Abs(zVelocity / 2.0f));
             if (Input.GetButtonDown("Jump") && Physics.Raycast(feetPosition.position, Vector3.down, 0.5f)) {
                 rigidbody.AddForce(0, jumpForce, 0);
             }
         }
 
 
-        if (Input.GetKeyDown(KeyCode.Alpha1)) { currentSpellIndex = 0; }
+        if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetAxis("spell1") == -1) { currentSpellIndex = 0; }
 
-        if (Input.GetKeyDown(KeyCode.Alpha2)) { currentSpellIndex = 1; }
+        if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetAxis("spell2") == 1) { currentSpellIndex = 1; }
 
-        if (Input.GetKeyDown(KeyCode.Alpha3)) { currentSpellIndex = 2; }
+        if (Input.GetKeyDown(KeyCode.Alpha3) || Input.GetAxis("spell1") == 1) { currentSpellIndex = 2; }
 
-        if (Input.GetKeyDown(KeyCode.Alpha4) && !usedSpecial) { currentSpellIndex = 3; }
+        if ((Input.GetKeyDown(KeyCode.Alpha4) && !usedSpecial) || (Input.GetAxis("spell2") == -1 && !usedSpecial)) { currentSpellIndex = 3; }
+
 
         if (currentSpellIndex == 3 && usedSpecial)
         {
