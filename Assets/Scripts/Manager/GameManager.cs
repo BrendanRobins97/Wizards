@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour {
             numPlayers = mm.NumPlayers();
             Destroy(mm.gameObject);
         }
-        mapShrinkNumber = 2;
+        mapShrinkNumber = 1;
         xBoundsMax = GameObject.FindObjectOfType<TerrainManager2>().length;
         xBoundsMin = 0;
         zBoundsMin = 0;
@@ -68,7 +68,9 @@ public class GameManager : MonoBehaviour {
         currentTurnTimeLeft = gameStartTime;
         for (int i = 0; i < numPlayers; i++) {
             PlayerInfo newPlayerInfo;
-            Player player = Instantiate(playerPrefabs[i], spawnLocations[i].position, spawnLocations[i].rotation,
+            Ray ray = new Ray(spawnLocations[i].position, Vector3.down);
+            Physics.Raycast(ray, out RaycastHit rayHit);
+            Player player = Instantiate(playerPrefabs[i], rayHit.point, spawnLocations[i].rotation,
                     transform)
                 .GetComponent<Player>();
             PlayerUI playerUI = Instantiate(playerUIPrefab, playerInfoContainer).GetComponent<PlayerUI>();

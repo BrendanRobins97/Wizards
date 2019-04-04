@@ -29,6 +29,20 @@ public static class Utilities {
         }
     }
 
+    public static T GetComponentOnObject<T>(this GameObject GO) {
+        T component;
+        component = GO.GetComponent<T>();
+        if (component != null) { return component; }
+        component = GO.GetComponentInChildren<T>();
+        if (component != null) { return component; }
+        component = GO.GetComponentInParent<T>();
+        if (component != null) { return component; }
+        return default(T);
+    }
+
+    public static float DistToSphereSurface(float x, float y, float z, float radius) {
+        return x * x + y * y + z * z - radius * radius;
+    }
     #endregion
 
 }

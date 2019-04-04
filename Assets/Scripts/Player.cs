@@ -130,7 +130,6 @@ public class Player : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.Alpha3)) { currentSpellIndex = 2; }
 
-
         if (Input.GetKeyDown(KeyCode.Alpha4) && !usedSpecial) { currentSpellIndex = 3; }
 
         if (currentSpellIndex == 3 && usedSpecial)
@@ -177,7 +176,7 @@ public class Player : MonoBehaviour {
             }
         }
         else
-        {;
+        {
             chargeAmount = 0;
         }
         
@@ -231,7 +230,10 @@ public class Player : MonoBehaviour {
         if (playerCamera) { playerCamera.enabled = false; }
     }
 
-    public void Damage(int amount) { health -= amount; }
+    public void Damage(int amount) {
+        health -= amount; 
+        FloatingTextManager.instance.SpawnDamageText(transform.position + Vector3.up, amount);
+    }
 
     public void Kill() { health = 0; }
 

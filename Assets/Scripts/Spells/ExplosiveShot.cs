@@ -26,7 +26,7 @@ public class ExplosiveShot : Spell {
         base.OnCollisionEnter(collision);
 
         // Instantiate smaller explosions on contact;
-        Vector3 normal = collision.GetContact(0).normal;
+        
         for (int i = 0; i < numSmallExplosions; i++) {
             // Jitter start direction based on normal
             Vector3 randNormal = new Vector3((2 * Random.value - 1), 1,
@@ -37,6 +37,7 @@ public class ExplosiveShot : Spell {
             // Disable collisions to start so it doesn't instantly collide with who it hit.
             smallExplosion.DisableCollisions(0.25f);
         }
+        
     }
 
     #endregion

@@ -1,7 +1,7 @@
 ﻿// File: Spell.cs
-// Author: Brendan Robinson
-// Date Created: 02/19/2019
-// Date Last Modified: 03/01/2019
+// Contributors: Brendan Robinson
+// Date Created: 03/28/2019
+// Date Last Modified: 04/03/2019
 
 using System.Collections;
 using System.Collections.Generic;
@@ -12,28 +12,32 @@ public class Spell : MonoBehaviour {
 
     #region Fields
 
-    public    float        speed;
-    public    int          contactDamage;
-    public    bool         affectedByCharge;
-    public    float        duration     = 10f;
-    public    float        damageRadius = 5f;
-    public float explosionDampen = .75f;
-    public float knockBackForce;
+    public float      speed;
+    public int        contactDamage;
+    public bool       affectedByCharge;
+    public float      duration        = 10f;
+    public float      damageRadius    = 5f;
+    public float      explosionDampen = .75f;
+    public float      knockBackForce;
     public GameObject explosion;
 
-    protected List<Player> playersHit   = new List<Player>();
-    protected bool collisions = true;
-    protected Rigidbody rigidbody;
+    protected List<Player> playersHit = new List<Player>();
+    protected bool         collisions = true;
+    protected Rigidbody    rigidbody;
+
     #endregion
 
     #region Methods
 
     protected void Start() {
-        Destroy(gameObject, 10);
+        Destroy(gameObject, duration);
         rigidbody = GetComponent<Rigidbody>();
     }
 
     public virtual void ThrowSpell(Vector3 direction, float charge) {
+        // Disable collisions for a millisecond after casting so
+        // it doesn't instantly collide with player throwing spell
+        DisableCollisions(0.25f);
         if (!affectedByCharge) { charge = 1; }
         GetComponent<Rigidbody>().velocity = direction * charge * speed;
         transform.forward = direction;
@@ -45,17 +49,15 @@ public class Spell : MonoBehaviour {
     public void DisableCollisions(float time) { StartCoroutine("DisableCollisionsRoutine", time); }
 
     protected virtual void OnCollisionEnter(Collision collision) {
-        if (!collisions) {
-            return;
-        }
+        if (!collisions) { return; }
         DestroyComponents();
         if (explosion) { Destroy(Instantiate(explosion, transform.position, Quaternion.identity), 3f); }
         TerrainManager2.instance.Circle(Mathf.RoundToInt(transform.position.x)
             , Mathf.RoundToInt(transform.position.y)
             , Mathf.RoundToInt(transform.position.z),
-            (int)damageRadius, explosionDampen);
+            (int) damageRadius, explosionDampen);
         Player[] players = FindObjectsOfType<Player>();
-        
+
         for (int i = 0; i < players.Length; i++) {
             Player player = players[i];
             Vector3 playerDirection = players[i].transform.position - collision.GetContact(0).point;
@@ -64,7 +66,8 @@ public class Spell : MonoBehaviour {
                 player.Damage(contactDamage);
                 player.GetComponent<Rigidbody>().Sleep();
                 playerDirection.Normalize();
-                player.rigidbody.AddForce(playerDirection.x * knockBackForce, (playerDirection.y + 1) * knockBackForce, playerDirection.z * knockBackForce);
+                player.rigidbody.AddForce(playerDirection.x * knockBackForce, (playerDirection.y + 1) * knockBackForce,
+                    playerDirection.z * knockBackForce);
                 playersHit.Add(players[i]);
             }
         }
@@ -86,6 +89,7 @@ public class Spell : MonoBehaviour {
         yield return new WaitForSeconds(time);
         collisions = true;
     }
+
     #endregion
 
 }

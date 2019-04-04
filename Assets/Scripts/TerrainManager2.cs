@@ -1,12 +1,10 @@
 ﻿// File: TerrainManager2.cs
-// Author: Brendan Robinson
-// Date Created: 03/05/2019
-// Date Last Modified: 03/05/2019
+// Contributors: Brendan Robinson
+// Date Created: 04/03/2019
+// Date Last Modified: 04/03/2019
 
-using System;
 using System.Collections.Generic;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class TerrainManager2 : MonoBehaviour {
 
@@ -20,6 +18,9 @@ public class TerrainManager2 : MonoBehaviour {
 
     #region Fields
 
+    [HideInInspector] public int width  = 128;
+    [HideInInspector] public int length = 128;
+
     [SerializeField] private float octaves         = 5;
     [SerializeField] private float smoothness      = 50f;
     [SerializeField] private float scale           = 25f;
@@ -30,8 +31,6 @@ public class TerrainManager2 : MonoBehaviour {
     [SerializeField] private AnimationCurve  heightMap;
     [SerializeField] private Chunk2          chunkPrefab;
     private                  Cell[,,]        grid;
-    [HideInInspector] public int             width     = 128;
-    [HideInInspector] public int             length    = 128;
     private                  int             height    = 64;
     private                  int             chunkSize = 16;
     private                  Vector3Int      numChunks;
@@ -46,9 +45,7 @@ public class TerrainManager2 : MonoBehaviour {
     private void Awake() {
         if (instance != null) { Destroy(this); }
         else { instance = this; }
-    }
 
-    private void Start() {
         seed = Random.Range(-1000f, 1000f);
         grid = new Cell[width + 1, height + 1, length + 1];
 
@@ -61,6 +58,10 @@ public class TerrainManager2 : MonoBehaviour {
                 for (int y = 0; y <= height; y++) {
                     grid[x, y, z].Point = new Vector3(x * voxelSize, y * voxelSize, z * voxelSize);
                     grid[x, y, z].Density = y - yCoordinate;
+                    // This makes a sphere...
+                    float dist = Utilities.DistToSphereSurface(x - width / 2f, z - length / 2f, y - height / 2f,
+                        width / 2f);
+                    if ( dist > 0) { grid[x, y, z].Density = dist; }
                 }
             }
         }
@@ -78,6 +79,8 @@ public class TerrainManager2 : MonoBehaviour {
             }
         }
     }
+
+    private void Start() { }
 
     private void Update() {
         // Update all chunks that need to be updated
@@ -115,11 +118,11 @@ public class TerrainManager2 : MonoBehaviour {
     }
 
     public void Circle(int x, int y, int z, int radius, float heightDampen = 1) {
-
         for (int i = -radius; i <= radius; i++) {
             for (int j = -radius; j <= radius; j++) {
                 for (int k = -radius; k <= radius; k++) {
-                    float density =  Mathf.Max(0, -(i * i + j * j / heightDampen + k * k - radius * radius) / (float)(radius * radius / 2f));
+                    float density = Mathf.Max(0,
+                        -(i * i + j * j / heightDampen + k * k - radius * radius) / (radius * radius / 2f));
                     UpdatePosition(new Vector3(x + i, y + j, z + k), density + SampleDensity(x + i, y + j, z + k));
                 }
             }
@@ -127,11 +130,11 @@ public class TerrainManager2 : MonoBehaviour {
     }
 
     public void AntiCircle(int x, int y, int z, int radius, float heightDampen = 1) {
-
         for (int i = -radius; i <= radius; i++) {
             for (int j = -radius; j <= radius; j++) {
                 for (int k = -radius; k <= radius; k++) {
-                    float density = -Mathf.Max(0, -(i * i + j * j / heightDampen + k * k - radius * radius) / (float)(radius * radius / 2f));
+                    float density = -Mathf.Max(0,
+                        -(i * i + j * j / heightDampen + k * k - radius * radius) / (radius * radius / 2f));
                     UpdatePosition(new Vector3(x + i, y + j, z + k), density + SampleDensity(x + i, y + j, z + k));
                 }
             }
