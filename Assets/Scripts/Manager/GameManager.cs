@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour {
     private List<PlayerInfo> players = new List<PlayerInfo>();
     [HideInInspector] public int              playerTurn;
     public float            currentTurnTimeLeft;
-    private bool             endOfTurn, newRound;
+    private bool             endOfTurn, newRound, meteorShower;
     private bool gameStarted = false;
     private float circleRadius;
     private Vector3 circleCenter;
@@ -91,16 +91,31 @@ public class GameManager : MonoBehaviour {
         currentTurnTimeLeft -= Time.deltaTime;
         currentTurnTimeLeft = Mathf.Clamp(currentTurnTimeLeft, -0.9f, turnTime);
         turnText.text = "Time Left: " + (int)(currentTurnTimeLeft + 1);
-        if (playerTurn == 0 && newRound && roundNumber/numPlayers > mapShrinkNumber)
+        if (playerTurn == 0 && newRound && roundNumber/numPlayers > mapShrinkNumber )
         {
-            MapShrink();
-            newRound = false;
-            mapShrinkNumber += 2;
+            if (meteorShower == false)
+            {
+                turnTime += 5f;
+                currentTurnTimeLeft = turnTime;
+                meteorShower = true;
+                mainCamera.enabled = true;
+                MapShrink();
+            }
+            
+            if (currentTurnTimeLeft <= 20.7f)
+            {
+                mapShrinkNumber += 2;
+                turnTime = 20;
+                mainCamera.enabled = false;
+                meteorShower = false;
+                newRound = false;
+            }
         }
         if (playerTurn > 0)
         {
             newRound = true;
         }
+
         if (!gameStarted) { // Handle game start behavior
             
             // Start game when initial timer hits 0
