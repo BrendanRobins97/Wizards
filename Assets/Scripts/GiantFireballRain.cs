@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class GiantFireballRain : MonoBehaviour
 {
-    //[SerializeField] private Spell explostiveShot;
+    [SerializeField] private Spell explosiveShot;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,10 +27,10 @@ public class GiantFireballRain : MonoBehaviour
 
         if (col.tag == "Chunk")
         {
-            col.gameObject.SetActive(false);
-            //Instantiate(explostiveShot, col.transform.position, transform.rotation);
+            //col.gameObject.SetActive(false);
+            Instantiate(explosiveShot, transform.position, transform.rotation);
+            Destroy(this.gameObject,.2f);
         }
-
         
     }
 }

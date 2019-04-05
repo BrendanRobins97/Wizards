@@ -40,7 +40,8 @@ public class GameManager : MonoBehaviour {
     public float            currentTurnTimeLeft;
     private bool             endOfTurn, newRound;
     private bool gameStarted = false;
-    private float xBoundsMax,xBoundsMin, zBoundsMin, zBoundsMax;
+    private float circleRadius;
+    private Vector3 circleCenter;
    [HideInInspector] public int              numPlayersLeft,roundNumber,mapShrinkNumber;
 
     #endregion
@@ -61,10 +62,8 @@ public class GameManager : MonoBehaviour {
             Destroy(mm.gameObject);
         }
         mapShrinkNumber = 1;
-        xBoundsMax = GameObject.FindObjectOfType<TerrainManager2>().length;
-        xBoundsMin = 0;
-        zBoundsMin = 0;
-        zBoundsMax = GameObject.FindObjectOfType<TerrainManager2>().width;
+        circleCenter = new Vector3(TerrainManager2.instance.width/2.0f,0,TerrainManager2.instance.length/2.0f);
+        circleRadius = (TerrainManager2.instance.width / 2.0f) - 5.0f;
         currentTurnTimeLeft = gameStartTime;
         for (int i = 0; i < numPlayers; i++) {
             PlayerInfo newPlayerInfo;
@@ -178,32 +177,24 @@ public class GameManager : MonoBehaviour {
         }
         while (CurrentPlayer == null && count <= numPlayers);
 
+        FindObjectOfType<DeathRainSpellCamera>().spellHitPointIndicator.enabled = false;
         CurrentPlayer?.Enable();
     }
 
     public void MapShrink()
     {
-        for (int x = (int)xBoundsMin; x < xBoundsMax; x += 7)
+        for (int i = 0; i < 25; i++)
         {
-            Instantiate(giantFireball,new Vector3(x,45,zBoundsMin), transform.rotation);
-        }
-        for (int x = (int)xBoundsMin; x < xBoundsMax; x += 7)
-        {
-            Instantiate(giantFireball, new Vector3(x, 45, zBoundsMax), transform.rotation);
-        }
-        for (int z = (int)zBoundsMin; z < zBoundsMax; z += 7)
-        {
-            Instantiate(giantFireball, new Vector3(xBoundsMin, 45, z), transform.rotation);
-        }
-        for (int z = (int)zBoundsMin; z < zBoundsMax; z += 7)
-        {
-            Instantiate(giantFireball, new Vector3(xBoundsMax, 45, z), transform.rotation);
+            int randomY = Random.Range(23, 70);
+            float ang = Random.value * 360;
+            Vector3 pos;
+            pos.x = circleCenter.x + circleRadius * Mathf.Sin(ang * Mathf.Deg2Rad);
+            pos.z = circleCenter.z + circleRadius * Mathf.Cos(ang * Mathf.Deg2Rad);
+            pos.y = circleCenter.y + randomY;
+            Instantiate(giantFireball, pos, Quaternion.identity);
         }
 
-        zBoundsMin += 12;
-        xBoundsMin += 12;
-        zBoundsMax -= 12;
-        xBoundsMax -= 12;
+        circleRadius -= 7f;
     }
     #endregion
 

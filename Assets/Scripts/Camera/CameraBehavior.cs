@@ -17,7 +17,7 @@ public class CameraBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //drc = FindObjectOfType<DeathRainSpellCamera>();
+        drc = FindObjectOfType<DeathRainSpellCamera>();
         //anim = FindObjectOfType<Animator>();
         spellCamera.enabled = false;
         canvas = FindObjectOfType<Canvas>();
