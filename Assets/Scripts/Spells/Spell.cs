@@ -52,7 +52,7 @@ public class Spell : MonoBehaviour {
         if (!collisions) { return; }
         DestroyComponents();
         if (explosion) { Destroy(Instantiate(explosion, transform.position, Quaternion.identity), 3f); }
-        TerrainManager2.instance.Circle(Mathf.RoundToInt(transform.position.x)
+        TerrainManager.instance.Circle(Mathf.RoundToInt(transform.position.x)
             , Mathf.RoundToInt(transform.position.y)
             , Mathf.RoundToInt(transform.position.z),
             (int) damageRadius, explosionDampen);

@@ -62,8 +62,8 @@ public class GameManager : MonoBehaviour {
             Destroy(mm.gameObject);
         }
         mapShrinkNumber = 1;
-        circleCenter = new Vector3(TerrainManager2.instance.width/2.0f,0,TerrainManager2.instance.length/2.0f);
-        circleRadius = (TerrainManager2.instance.width / 2.0f) - 5.0f;
+        circleCenter = new Vector3(TerrainManager.instance.width/2.0f,0,TerrainManager.instance.length/2.0f);
+        circleRadius = (TerrainManager.instance.width / 2.0f) - 5.0f;
         currentTurnTimeLeft = gameStartTime;
         for (int i = 0; i < numPlayers; i++) {
             PlayerInfo newPlayerInfo;
