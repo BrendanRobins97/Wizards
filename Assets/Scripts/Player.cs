@@ -55,6 +55,7 @@ public class Player : MonoBehaviour {
     private Vector3 prevPosition;
     private DeathRainSpellCamera drsc;
     [HideInInspector] public float originalFOV = 0f;
+    [HideInInspector] public int numberOfAttacks = 1;
     private bool usedSpecial = false;
     [HideInInspector] public bool casting = false;
     [HideInInspector] public bool special = false;
@@ -151,7 +152,7 @@ public class Player : MonoBehaviour {
                 Cast();
                 
             }
-            if (currentSpellIndex == 3 && !special)
+            if (currentSpellIndex == 3 && !special && numberOfAttacks > 0)
             {
                     drsc.Activate();
                     special = true;
@@ -194,6 +195,7 @@ public class Player : MonoBehaviour {
         }
         else*/
         {
+            numberOfAttacks--;
             casting = true;
             chargePercent = tempChargeAmount / chargeMax;
             special = false;
@@ -206,13 +208,17 @@ public class Player : MonoBehaviour {
             animator.ResetTrigger("Charge");
             animator.ResetTrigger("Idle");
             drsc.spellHitPointIndicator.enabled = false;
-            enabled = false; // Disable movement
-            turnOver = true; // Signal that their turn is over
+            if (numberOfAttacks <= 0)
+            {
+                enabled = false; // Disable movement
+                turnOver = true; // Signal that their turn is over
+            }
         }
     }
     public void Enable() {
         turnOver = false;
         enabled = true;
+        numberOfAttacks = 1;
         playerCamera.enabled = true;
         chargeAmount = 0;
         stamina = startingStamina;

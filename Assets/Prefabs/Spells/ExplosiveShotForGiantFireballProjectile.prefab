@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2351335973517202517
 Transform:
   m_ObjectHideFlags: 0
@@ -9773,7 +9773,7 @@ GameObject:
   - component: {fileID: 643527235706247650}
   - component: {fileID: 6323742977396666018}
   m_Layer: 18
-  m_Name: EvenSmallerExplosiveShot  1
+  m_Name: ExplosiveShotForGiantFireballProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9884,7 +9884,7 @@ MonoBehaviour:
   contactDamage: 2
   affectedByCharge: 0
   duration: 10
-  damageRadius: 11.75
+  damageRadius: 14
   explosionDampen: 0.75
   knockBackForce: 3
   explosion: {fileID: 0}
@@ -10119,7 +10119,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &878414341515689152
 Transform:
   m_ObjectHideFlags: 0
@@ -24439,7 +24439,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3607263404682310589
 Transform:
   m_ObjectHideFlags: 0
@@ -24507,7 +24507,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2241586592741608640
 Transform:
   m_ObjectHideFlags: 0

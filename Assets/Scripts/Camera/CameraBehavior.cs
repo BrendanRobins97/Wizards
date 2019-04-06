@@ -64,6 +64,11 @@ public class CameraBehavior : MonoBehaviour
         if (spell != null && GameManager.instance.currentTurnTimeLeft <= GameManager.instance.timeAfterSpellCast)
         {
             ChangeToSpellCamera();
+            if (Mathf.Abs(transform.position.x) > 150.0f || Mathf.Abs(transform.position.y) > 70.0f ||
+                Mathf.Abs(transform.position.z) > 150.0f)
+            {
+                Destroy(spell);
+            }
         }
         if ( (spell == null && fireSpell == null && deathRainSpell == null && iceSpell == null) || GameManager.instance.currentTurnTimeLeft > GameManager.instance.timeAfterSpellCast)
         {
@@ -77,6 +82,11 @@ public class CameraBehavior : MonoBehaviour
         if (fireSpell != null && GameManager.instance.currentTurnTimeLeft <= GameManager.instance.timeAfterSpellCast)
         {
             ChangeToFireballCamera();
+            if (Mathf.Abs(transform.position.x) > 150.0f || Mathf.Abs(transform.position.y) > 70.0f ||
+                Mathf.Abs(transform.position.z) > 150.0f)
+            {
+                Destroy(fireSpell);
+            }
         }
         if (deathRainSpell != null && GameManager.instance.currentTurnTimeLeft <= GameManager.instance.timeAfterSpellCast)
         {

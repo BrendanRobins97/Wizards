@@ -4,14 +4,20 @@ using UnityEngine;
 
 public class DeathRainSpell : Spell
 {
-    
+    private float disableTime = .2f;
     public override void ThrowSpell(Vector3 direction, float charge)
     {
         DeathRainSpellCamera drc = FindObjectOfType<DeathRainSpellCamera>();
         CameraBehavior cam = FindObjectOfType<CameraBehavior>();
+        cam.enabled = true;
         if (cam.enabled == true)
         {
-            drc.spellCamera.enabled = false;
+            disableTime -= Time.deltaTime;
+            if (disableTime <= 0)
+            {
+                drc.spellCamera.enabled = false;
+            }
+            
         }
 
         drc.spellHitPointIndicator.enabled = false;
