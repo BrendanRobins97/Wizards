@@ -56,7 +56,7 @@ public class Player : MonoBehaviour {
     private DeathRainSpellCamera drsc;
     [HideInInspector] public float originalFOV = 0f;
     [HideInInspector] public int numberOfAttacks = 1;
-    private bool usedSpecial = false;
+    [HideInInspector] public bool usedSpecial = false;
     [HideInInspector] public bool casting = false;
     [HideInInspector] public bool special = false;
     #endregion
@@ -131,7 +131,12 @@ public class Player : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.Alpha3) || Input.GetAxis("spell1") == 1) { currentSpellIndex = 2; }
 
-        if ((Input.GetKeyDown(KeyCode.Alpha4) && !usedSpecial) || (Input.GetAxis("spell2") == -1 && !usedSpecial)) { currentSpellIndex = 3; }
+        if ((Input.GetKeyDown(KeyCode.Alpha4) && !usedSpecial) || (Input.GetAxis("spell2") == -1 && !usedSpecial))
+        {
+            currentSpellIndex = 3;
+            drsc.Activate();
+            special = true;
+        }
 
 
         if (currentSpellIndex == 3 && usedSpecial)
@@ -143,21 +148,24 @@ public class Player : MonoBehaviour {
         GameManager.instance.UpdateSpellImage(currentSpellIndex);
 
         if (Input.GetButtonUp("Fire1")) {
-            animator.ResetTrigger("Charge");
-            animator.SetTrigger("Cast");
+            
             if (currentSpellIndex == 3 && special)
             {
                 special = false;
                 usedSpecial = true;
-                Cast();
+                /*animator.ResetTrigger("Charge");
+                animator.SetTrigger("Cast");
+                Cast();*/
                 
             }
             if (currentSpellIndex == 3 && !special && numberOfAttacks > 0)
             {
-                    drsc.Activate();
-                    special = true;
+                //drsc.Activate();
+                special = true;
             }
-            
+            animator.ResetTrigger("Charge");
+            animator.SetTrigger("Cast");
+
         }
         // Handle charge for spell
         if (Input.GetButton("Fire1"))
@@ -167,7 +175,7 @@ public class Player : MonoBehaviour {
                 animator.ResetTrigger("Idle");
                 animator.SetTrigger("Charge");
             }
-
+            
             float scroll = Input.GetAxis("Mouse ScrollWheel");
             scroll = 1;
             chargeAmount += Time.deltaTime * chargeRate;
@@ -188,12 +196,6 @@ public class Player : MonoBehaviour {
 
     public void Cast()
     {
-        /*if (currentSpellIndex == 3 && !special)
-        {
-            drsc.Activate();
-            special = true;
-        }
-        else*/
         {
             numberOfAttacks--;
             casting = true;
@@ -205,8 +207,8 @@ public class Player : MonoBehaviour {
             Instantiate(spells[currentSpellIndex], spellStart, Quaternion.identity)
                 .ThrowSpell(playerCamera.transform.forward, chargePercent);
             animator.SetFloat("Forward Amount", 0);
-            animator.ResetTrigger("Charge");
-            animator.ResetTrigger("Idle");
+            //animator.ResetTrigger("Charge");
+            //animator.ResetTrigger("Idle");
             drsc.spellHitPointIndicator.enabled = false;
             if (numberOfAttacks <= 0)
             {
@@ -224,6 +226,7 @@ public class Player : MonoBehaviour {
         stamina = startingStamina;
         prevPosition = transform.position;
         playerCamera.fieldOfView = originalFOV;
+        Input.ResetInputAxes();
     }
 
     public void Disable()
@@ -234,6 +237,7 @@ public class Player : MonoBehaviour {
         animator.ResetTrigger("Charge");
         animator.SetFloat("Forward Amount", 0);
         animator.SetTrigger("Idle");
+        Input.ResetInputAxes();
         if (playerCamera) { playerCamera.enabled = false; }
     }
 

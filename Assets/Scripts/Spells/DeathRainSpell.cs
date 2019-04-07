@@ -7,6 +7,7 @@ public class DeathRainSpell : Spell
     private float disableTime = .2f;
     public override void ThrowSpell(Vector3 direction, float charge)
     {
+        charge = 0; 
         DeathRainSpellCamera drc = FindObjectOfType<DeathRainSpellCamera>();
         CameraBehavior cam = FindObjectOfType<CameraBehavior>();
         cam.enabled = true;
@@ -24,7 +25,7 @@ public class DeathRainSpell : Spell
         direction = new Vector3(drc.lightPos.x, drc.lightPos.y+5,drc.lightPos.z);
         transform.position = direction;
         this.transform.Rotate(-90,0,0,0);
-        Disable(duration);
+        Disable(3f);
     }
 
    /* void OnTriggerEnter(Collider col)
