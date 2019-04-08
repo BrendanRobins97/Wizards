@@ -104,6 +104,8 @@ public class GameManager : MonoBehaviour {
             
             if (currentTurnTimeLeft <= 20.7f)
             {
+                CurrentPlayer.enabled = true;
+                GameObject.FindObjectOfType<Canvas>().enabled = true;
                 mapShrinkNumber += 2;
                 turnTime = 20;
                 mainCamera.enabled = false;
@@ -117,13 +119,14 @@ public class GameManager : MonoBehaviour {
         }
 
         if (!gameStarted) { // Handle game start behavior
-            
+            GameObject.FindObjectOfType<Canvas>().enabled = false;
             // Start game when initial timer hits 0
             if (currentTurnTimeLeft < 0) {
                 CurrentPlayer.Enable();
                 StartTurn();
                 mainCamera.enabled = false;
                 gameStarted = true;
+                GameObject.FindObjectOfType<Canvas>().enabled = true;
             }
         }
         
@@ -209,6 +212,8 @@ public class GameManager : MonoBehaviour {
             Instantiate(giantFireball, pos, Quaternion.identity);
         }
 
+        CurrentPlayer.enabled = false;
+        GameObject.FindObjectOfType<Canvas>().enabled = false;
         circleRadius -= 7f;
     }
     #endregion

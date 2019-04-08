@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Image = UnityEngine.Experimental.UIElements.Image;
 
 public class CameraBehavior : MonoBehaviour
 {
@@ -16,6 +17,12 @@ public class CameraBehavior : MonoBehaviour
     public Camera spellCamera;
     private Canvas canvas;
     public float speed = 1f;
+
+    [SerializeField] private TextMeshProUGUI text;
+
+    [SerializeField] private Slider chargeBar;
+
+    [SerializeField] private UnityEngine.UI.Image crossHair;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,11 +40,17 @@ public class CameraBehavior : MonoBehaviour
         player = GameManager.instance.GetComponent<GameManager>().CurrentPlayer;
         if (spellCamera.enabled == true)
         {
-            canvas.enabled = false;
+            //canvas.enabled = false;
+            crossHair.enabled = false;
+            text.enabled = false;
+            chargeBar.gameObject.SetActive(false);
         }
         else
         {
-            canvas.enabled = true;
+            //canvas.enabled = true;
+            crossHair.enabled = true;
+            text.enabled = true;
+            chargeBar.gameObject.SetActive(true);
         }
         xpos = player.transform.position.x;
         zpos = player.transform.position.z;
