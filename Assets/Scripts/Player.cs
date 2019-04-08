@@ -20,7 +20,7 @@ public class Player : MonoBehaviour {
 
     public Color color;
     public float chargeAmount;
-
+    
     public float stamina;
     public float jumpForce = 400;
     [HideInInspector] public int health;
@@ -33,7 +33,7 @@ public class Player : MonoBehaviour {
     [HideInInspector] public float movementSpeed = 8f;
     [HideInInspector] public bool enabled = true;
     [SerializeField] public Camera playerCamera;
-    [SerializeField] private int maxHealth = 100;
+    [SerializeField] public int maxHealth = 100;
     [SerializeField] private List<Spell> spells;
     [SerializeField] private Transform feetPosition;
 
@@ -57,13 +57,17 @@ public class Player : MonoBehaviour {
     [HideInInspector] public float originalFOV = 0f;
     [HideInInspector] public int numberOfAttacks = 1;
     [HideInInspector] public bool usedSpecial = false;
+    [HideInInspector] public int numUlt = 1;
     [HideInInspector] public bool casting = false;
     [HideInInspector] public bool special = false;
+    private InputControl ic;
     #endregion
 
     #region Methods
 
-    private void Awake() {
+    private void Awake()
+    {
+        ic = FindObjectOfType<InputControl>();
         health = maxHealth;
         rigidbody = GetComponent<Rigidbody>();
         Disable();
@@ -81,7 +85,10 @@ public class Player : MonoBehaviour {
         // Vertical rotation calculations
         // Applies to Camera
         float xRot = Input.GetAxisRaw("Mouse Y");
-
+        if (GameManager.instance.isController)
+        {
+            xRot *= -1;
+        }
         float cameraRotationX = xRot * sensitivity;
 
         currentCameraRotationX -= cameraRotationX;
@@ -131,7 +138,7 @@ public class Player : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.Alpha3) || Input.GetAxis("spell1") == 1) { currentSpellIndex = 2; }
 
-        if ((Input.GetKeyDown(KeyCode.Alpha4) && !usedSpecial) || (Input.GetAxis("spell2") == -1 && !usedSpecial))
+        if ((Input.GetKeyDown(KeyCode.Alpha4) && !usedSpecial) || (Input.GetAxis("spell2") == -1 && numUlt > 0))
         {
             currentSpellIndex = 3;
             drsc.Activate();
@@ -152,6 +159,7 @@ public class Player : MonoBehaviour {
             if (currentSpellIndex == 3 && special)
             {
                 special = false;
+                numUlt--;
                 usedSpecial = true;
                 /*animator.ResetTrigger("Charge");
                 animator.SetTrigger("Cast");

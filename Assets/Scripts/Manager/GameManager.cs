@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private float            turnTime           = 20f;
     [SerializeField] public float            timeAfterSpellCast = 5f;
     [SerializeField] public float gameStartTime = 5f;
-
+    public bool isController = false;
     [SerializeField] private List<GameObject> playerPrefabs;
     [SerializeField] private List<Image>      spellImages;
 

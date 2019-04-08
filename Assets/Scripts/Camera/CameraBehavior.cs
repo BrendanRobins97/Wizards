@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CameraBehavior : MonoBehaviour
 {
@@ -64,8 +66,8 @@ public class CameraBehavior : MonoBehaviour
         if (spell != null && GameManager.instance.currentTurnTimeLeft <= GameManager.instance.timeAfterSpellCast)
         {
             ChangeToSpellCamera();
-            if (Mathf.Abs(transform.position.x) > 150.0f || Mathf.Abs(transform.position.y) > 70.0f ||
-                Mathf.Abs(transform.position.z) > 150.0f)
+            if (transform.position.x > 150.0f || Mathf.Abs(transform.position.y) > 65.0f ||
+                transform.position.z > 150.0f || transform.position.x < -20.0f || transform.position.z < - 20.0f)
             {
                 Destroy(spell);
             }
@@ -82,8 +84,8 @@ public class CameraBehavior : MonoBehaviour
         if (fireSpell != null && GameManager.instance.currentTurnTimeLeft <= GameManager.instance.timeAfterSpellCast)
         {
             ChangeToFireballCamera();
-            if (Mathf.Abs(transform.position.x) > 150.0f || Mathf.Abs(transform.position.y) > 70.0f ||
-                Mathf.Abs(transform.position.z) > 150.0f)
+            if (transform.position.x > 150.0f || Mathf.Abs(transform.position.y) > 65.0f ||
+                transform.position.z > 150.0f || transform.position.x < -20.0f || transform.position.z < -20.0f)
             {
                 Destroy(fireSpell);
             }

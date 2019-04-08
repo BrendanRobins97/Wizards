@@ -1650,7 +1650,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: Player 1 Wins!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 9e27b71ff015a4e3ba1f4eb720db4c14, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1731,7 +1731,7 @@ MonoBehaviour:
   m_spriteAnimator: {fileID: 0}
   m_isInputParsingRequired: 1
   m_inputSource: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_subTextObjects:
   - {fileID: 0}
   - {fileID: 0}
@@ -2976,6 +2976,7 @@ MonoBehaviour:
   turnTime: 20
   timeAfterSpellCast: 3
   gameStartTime: 3
+  isController: 0
   playerPrefabs:
   - {fileID: 2084653656752078091, guid: e9fae5cebcc610e44b82bb21f3535509, type: 3}
   - {fileID: 995849588744100572, guid: 07d62888f2961214199732f8b5319b9e, type: 3}
@@ -4703,11 +4704,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PosSwapText
-      objectReference: {fileID: 0}
-    - target: {fileID: 87411751977076962, guid: defa113a41a1cc94f852231de4dd3244,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 87411751977076961, guid: defa113a41a1cc94f852231de4dd3244,
         type: 3}

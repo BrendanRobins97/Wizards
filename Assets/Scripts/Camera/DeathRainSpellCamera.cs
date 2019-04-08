@@ -85,7 +85,15 @@ public class DeathRainSpellCamera : MonoBehaviour
     }
     private void MoveSpellIndicatorToMouse()
     {
-        
+        if (Input.GetAxis("Mouse ScrollWheel") > 0)
+        {
+            spellCamera.fieldOfView -= Input.GetAxis("Mouse ScrollWheel")*10;
+        }
+
+        if (Input.GetAxis("Mouse ScrollWheel") < 0)
+        {
+            spellCamera.fieldOfView -= Input.GetAxis("Mouse ScrollWheel") * 10;
+        }
         Ray ray = spellCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hitInfo;
         if (Physics.Raycast(ray, out hitInfo))
