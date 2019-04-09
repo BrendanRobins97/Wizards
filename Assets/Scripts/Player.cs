@@ -146,7 +146,7 @@ public class Player : MonoBehaviour {
         }
 
 
-        if (currentSpellIndex == 3 && usedSpecial)
+        if (currentSpellIndex == 3 && (usedSpecial || numUlt < 1))
         {
             currentSpellIndex = 0;
         }
@@ -161,6 +161,7 @@ public class Player : MonoBehaviour {
                 special = false;
                 numUlt--;
                 usedSpecial = true;
+                Debug.Log("num ult "+numUlt);
                 /*animator.ResetTrigger("Charge");
                 animator.SetTrigger("Cast");
                 Cast();*/
@@ -176,7 +177,7 @@ public class Player : MonoBehaviour {
 
         }
         // Handle charge for spell
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButton("Fire1") )
         {
             if (currentSpellIndex != 3)
             {

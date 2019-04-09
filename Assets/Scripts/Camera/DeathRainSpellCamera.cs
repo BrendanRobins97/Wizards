@@ -87,12 +87,12 @@ public class DeathRainSpellCamera : MonoBehaviour
     {
         if (Input.GetAxis("Mouse ScrollWheel") > 0)
         {
-            spellCamera.fieldOfView -= Input.GetAxis("Mouse ScrollWheel")*10;
+            spellCamera.fieldOfView -= Input.GetAxis("Mouse ScrollWheel")*500*Time.deltaTime;
         }
 
         if (Input.GetAxis("Mouse ScrollWheel") < 0)
         {
-            spellCamera.fieldOfView -= Input.GetAxis("Mouse ScrollWheel") * 10;
+            spellCamera.fieldOfView -= Input.GetAxis("Mouse ScrollWheel") * 500*Time.deltaTime;
         }
         Ray ray = spellCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hitInfo;
@@ -109,7 +109,7 @@ public class DeathRainSpellCamera : MonoBehaviour
                 float newZoom = Mathf.Lerp(defaultFov, defaultFov + 50, 5);
                 // spellCamera.fieldOfView = newZoom;
             }
-            if (Input.GetButtonUp("Fire1") && spellCamera.enabled == true)
+            if ((Input.GetButtonUp("Fire1")) && spellCamera.enabled == true)
             {
                 //this.gameObject.SetActive(false);
                 
@@ -120,6 +120,9 @@ public class DeathRainSpellCamera : MonoBehaviour
                 player.enabled = true;
                 player.special = false;
                 player.usedSpecial = true;
+                player.numUlt--;
+                if (player.numUlt < 0)
+                {player.numUlt = 0;}
                 player.Cast();
             }
         }
