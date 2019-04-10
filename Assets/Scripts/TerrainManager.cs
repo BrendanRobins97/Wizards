@@ -1,7 +1,7 @@
-﻿// File: TerrainManager2.cs
+﻿// File: TerrainManager.cs
 // Contributors: Brendan Robinson
 // Date Created: 04/03/2019
-// Date Last Modified: 04/03/2019
+// Date Last Modified: 04/10/2019
 
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,23 +21,38 @@ public class TerrainManager : MonoBehaviour {
     [HideInInspector] public int width  = 128;
     [HideInInspector] public int length = 128;
 
-    [SerializeField] private float octaves         = 5;
-    [SerializeField] private float smoothness      = 50f;
-    [SerializeField] private float scale           = 25f;
-    [SerializeField] private float persistence     = 0.5f;
-    [SerializeField] private float lacunarity      = 0.5f;
-    [SerializeField] private float groundThickness = 4f;
+    [Header("Terrain Settings")] [SerializeField]
+    private float octaves = 5;
+    [SerializeField] private float          smoothness      = 50f;
+    [SerializeField] private float          scale           = 25f;
+    [SerializeField] private float          persistence     = 0.5f;
+    [SerializeField] private float          lacunarity      = 0.5f;
+    [SerializeField] private float          groundThickness = 4f;
+    [SerializeField] private AnimationCurve heightMap;
 
-    [SerializeField] private AnimationCurve  heightMap;
-    [SerializeField] private Chunk          chunkPrefab;
-    private                  Cell[,,]        grid;
-    private                  int             height    = 64;
-    private                  int             chunkSize = 16;
-    private                  Vector3Int      numChunks;
-    private                  Chunk[,,]      chunks;
-    private                  HashSet<Chunk> chunksToUpdate = new HashSet<Chunk>();
-    private                  float           seed;
+    [Header("Environment Prefabs")] [SerializeField]
+    private GameObject boulder1;
+    [SerializeField] private GameObject boulder2;
+    [SerializeField] private GameObject boulder3;
+    [SerializeField] private GameObject boulder4;
+    [SerializeField] private GameObject boulder5;
+    [SerializeField] private GameObject tree1;
+    [SerializeField] private GameObject tree2;
+    [SerializeField] private GameObject tree3;
+    [SerializeField] private GameObject tree4;
 
+    [Space] [SerializeField] private Chunk chunkPrefab;
+
+    private Cell[,,]       grid;
+    private int            height    = 64;
+    private int            chunkSize = 16;
+    private Vector3Int     numChunks;
+    private Chunk[,,]      chunks;
+    private HashSet<Chunk> chunksToUpdate = new HashSet<Chunk>();
+    private float          seed;
+
+    private RandomArray<GameObject> boulders;
+    private RandomArray<GameObject> trees;
     #endregion
 
     #region Methods
@@ -46,7 +61,14 @@ public class TerrainManager : MonoBehaviour {
         if (instance != null) { Destroy(this); }
         else { instance = this; }
 
-        seed = Random.Range(-1000f, 1000f);
+        boulders = new RandomArray<GameObject>(
+                new[] {boulder1, boulder2, boulder3, boulder4, boulder5}, 
+                new[] {1f, 1f, 1f, 1f, 1f});
+        trees = new RandomArray<GameObject>(
+                new[] { tree1, tree2, tree3 },
+                new[] { 1f, 1f, 1f});
+
+        seed = Random.Range(-100f, 100f);
         grid = new Cell[width + 1, height + 1, length + 1];
 
         for (int x = 0; x <= width; x++) {
@@ -61,7 +83,7 @@ public class TerrainManager : MonoBehaviour {
                     // This makes a sphere...
                     float dist = Utilities.DistToSphereSurface(x - width / 2f, z - length / 2f, y - height / 2f,
                         width / 2f);
-                    if ( dist > 0) { grid[x, y, z].Density = dist; }
+                    if (dist > 0) { grid[x, y, z].Density = dist; }
                 }
             }
         }
@@ -80,7 +102,27 @@ public class TerrainManager : MonoBehaviour {
         }
     }
 
-    private void Start() { }
+    private void Start() {
+        for (int i = 0; i < 12;) {
+            const float bounds = 16f; // Bigger value means points will be closer to center
+            float randPointX = Random.Range(bounds, width - bounds);
+            float randPointZ = Random.Range(bounds, length - bounds);
+            RaycastHit hit = PeakPoint(randPointX, randPointZ);
+
+            if (hit.collider.tag == "Chunk" && hit.distance < height) {
+                Vector3 spawnPoint = hit.point;
+
+                if (hit.normal.y >= 0.92) {
+                    Instantiate(trees.RandomItem(), spawnPoint + new Vector3(0, -1f, 0), Quaternion.identity);
+                    i++;
+                }
+                else if (hit.normal.y >= 0.8) {
+                    Instantiate(boulders.RandomItem(), spawnPoint + new Vector3(0, -1f, 0), Quaternion.identity);
+                    i++;
+                }
+            }
+        }
+    }
 
     private void Update() {
         // Update all chunks that need to be updated
@@ -139,6 +181,12 @@ public class TerrainManager : MonoBehaviour {
                 }
             }
         }
+    }
+
+    public RaycastHit PeakPoint(float x, float z) {
+        Ray ray = new Ray(new Vector3(x, height, z), Vector3.down);
+        Physics.Raycast(ray, out RaycastHit rayHit);
+        return rayHit;
     }
 
     private float SampleDensity(int x, int y, int z) {
