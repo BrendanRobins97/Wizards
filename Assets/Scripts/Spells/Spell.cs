@@ -24,7 +24,7 @@ public class Spell : MonoBehaviour {
     protected List<Player> playersHit = new List<Player>();
     protected bool         collisions = true;
     protected Rigidbody    rigidbody;
-
+    public GameObject soundPlay;
     #endregion
 
     #region Methods
@@ -32,6 +32,12 @@ public class Spell : MonoBehaviour {
     protected void Start() {
         Destroy(gameObject, duration);
         rigidbody = GetComponent<Rigidbody>();
+        if (gameObject.name == "LightningPrefab(Clone)")
+        {
+            soundPlay = GameObject.Find("soundManager");
+            soundScript sound = soundPlay.GetComponent(typeof(soundScript)) as soundScript;
+            sound.playZap();
+        }
     }
 
     public virtual void ThrowSpell(Vector3 direction, float charge) {

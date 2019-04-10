@@ -11,12 +11,18 @@ public class ExplosiveShot : Spell {
 
     public Spell smallExplosiveShot;
     public int   numSmallExplosions = 4;
-
+    public GameObject soundPlay;
     #endregion
 
     #region Methods
-
-    protected void Update() {
+    protected void Start()
+    {
+        soundPlay = GameObject.Find("soundManager");
+        soundScript sound = soundPlay.GetComponent(typeof(soundScript)) as soundScript;
+        sound.playFireBallStart();
+        //soundPlay.GetComponent<soundScript>().playFireBall1();
+    }
+protected void Update() {
         if (rigidbody) {
             transform.right = -rigidbody.velocity;
         }
@@ -24,9 +30,11 @@ public class ExplosiveShot : Spell {
 
     protected override void OnCollisionEnter(Collision collision) {
         base.OnCollisionEnter(collision);
-
+        soundPlay = GameObject.Find("soundManager");
+        soundScript sound = soundPlay.GetComponent(typeof(soundScript)) as soundScript;
+        sound.playFireBallEnd();
         // Instantiate smaller explosions on contact;
-        
+
         for (int i = 0; i < numSmallExplosions; i++) {
             // Jitter start direction based on normal
             Vector3 randNormal = new Vector3((2 * Random.value - 1), 1,

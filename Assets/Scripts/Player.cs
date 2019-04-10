@@ -61,6 +61,7 @@ public class Player : MonoBehaviour {
     [HideInInspector] public bool casting = false;
     [HideInInspector] public bool special = false;
     private InputControl ic;
+    public GameObject soundPlay;
     #endregion
 
     #region Methods
@@ -236,6 +237,9 @@ public class Player : MonoBehaviour {
         prevPosition = transform.position;
         playerCamera.fieldOfView = originalFOV;
         Input.ResetInputAxes();
+        soundPlay = GameObject.Find("soundManager");
+        soundScript sound = soundPlay.GetComponent(typeof(soundScript)) as soundScript;
+        sound.playPlayerStart();
     }
 
     public void Disable()
@@ -253,6 +257,9 @@ public class Player : MonoBehaviour {
     public void Damage(int amount) {
         health -= amount; 
         FloatingTextManager.instance.SpawnDamageText(transform.position + Vector3.up, amount);
+        soundPlay = GameObject.Find("soundManager");
+        soundScript sound = soundPlay.GetComponent(typeof(soundScript)) as soundScript;
+        sound.playOof();
     }
 
     public void Kill() { health = 0; }

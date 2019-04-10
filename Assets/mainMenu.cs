@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class mainMenu : MonoBehaviour
 {
     GameObject myCamera;
@@ -13,14 +14,17 @@ public class mainMenu : MonoBehaviour
     float timer;
     private bool startGame = true;
     public static mainMenu instance = null;
-    
+    public AudioSource audioData;
+    public AudioClip mainTheme;
     // Start is called before the first frame update
     void Start()
     {
+        audioData.clip = mainTheme;
+        audioData.Play();
         state = 1;
         myCamera = GameObject.Find("Main Camera");
         myAnimator = myCamera.GetComponent<Animator>();
-        //myCamera.GetComponent<Animation>().Play("p1");
+        //myAnimator.Play("p1");
         myAnimator.Play("part1");
     }
 
@@ -52,7 +56,7 @@ public class mainMenu : MonoBehaviour
         {
             timer += Time.deltaTime;
         }
-        if(timer >= 6.0f && startGame)
+        if(timer >= 2.6f && startGame)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             startGame = false;
@@ -79,49 +83,49 @@ public class mainMenu : MonoBehaviour
             else if (state == 3 && Input.GetKeyDown("1"))
             {
                 numPlayers = 1;
-                myCamera.GetComponent<Animation>().Play("p4");
+                myAnimator.Play("part4");
                 state = 4;
             }
             else if (state == 3 && Input.GetKeyDown("2"))
             {
                 numPlayers = 2;
-                myCamera.GetComponent<Animation>().Play("p4");
+                myAnimator.Play("part4");
                 state = 4;
             }
             else if (state == 3 && Input.GetKeyDown("3"))
             {
                 numPlayers = 3;
-                myCamera.GetComponent<Animation>().Play("p4");
+                myAnimator.Play("part4");
                 state = 4;
             }
             else if (state == 3 && Input.GetKeyDown("4"))
             {
                 numPlayers = 4;
-                myCamera.GetComponent<Animation>().Play("p4");
+                myAnimator.Play("part4");
                 state = 4;
             }
             else if (state == 3 && Input.GetKeyDown("5"))
             {
                 numPlayers = 5;
-                myCamera.GetComponent<Animation>().Play("p4");
+                myAnimator.Play("part4");
                 state = 4;
             }
             else if (state == 3 && Input.GetKeyDown("6"))
             {
                 numPlayers = 6;
-                myCamera.GetComponent<Animation>().Play("p4");
+                myAnimator.Play("part4");
                 state = 4;
             }
             else if (state == 3 && Input.GetKeyDown("7"))
             {
                 numPlayers = 7;
-                myCamera.GetComponent<Animation>().Play("p4");
+                myAnimator.Play("part4");
                 state = 4;
             }
             else if (state == 3 && Input.GetKeyDown("8"))
             {
                 numPlayers = 8;
-                myCamera.GetComponent<Animation>().Play("p4");
+                myAnimator.Play("part4");
                 state = 4;
             }
         }
