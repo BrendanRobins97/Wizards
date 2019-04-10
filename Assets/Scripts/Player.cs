@@ -37,7 +37,7 @@ public class Player : MonoBehaviour {
     [SerializeField] private List<Spell> spells;
     [SerializeField] private Transform feetPosition;
 
-    [SerializeField] private Animator animator;
+    [SerializeField] public Animator animator;
     [SerializeField] private GameObject PS_ElectricOrbPrefab;
     [HideInInspector] public Rigidbody rigidbody;
 
@@ -113,6 +113,7 @@ public class Player : MonoBehaviour {
         stamina -= (transform.position - prevPosition).magnitude;
         prevPosition = transform.position;
         animator.SetFloat("Forward Amount", 0.0f);
+        animator.SetFloat("Strafe Amount", 0.0f);
         if (stamina > 0) {
 
             // Movement Calculations
@@ -125,7 +126,8 @@ public class Player : MonoBehaviour {
             Vector3 velocity = (movX + movZ) * movementSpeed * Time.deltaTime;
 
             rigidbody.MovePosition(rigidbody.position + velocity);
-
+            Debug.Log(xVelocity + " "+ zVelocity);
+            animator.SetFloat("Strafe Amount", xVelocity*2.0f);
             animator.SetFloat("Forward Amount", Mathf.Abs(zVelocity / 2.0f));
             if (Input.GetButtonDown("Jump") && Physics.Raycast(feetPosition.position, Vector3.down, 0.5f)) {
                 rigidbody.AddForce(0, jumpForce, 0);
@@ -146,7 +148,7 @@ public class Player : MonoBehaviour {
             special = true;
         }
 
-
+        animator.SetTrigger("Idle");
         if (currentSpellIndex == 3 && (usedSpecial || numUlt < 1))
         {
             currentSpellIndex = 0;
@@ -160,9 +162,10 @@ public class Player : MonoBehaviour {
             if (currentSpellIndex == 3 && special)
             {
                 special = false;
+                //animator.SetTrigger("Charge");
+                animator.SetTrigger("Cast3");
                 numUlt--;
                 usedSpecial = true;
-                Debug.Log("num ult "+numUlt);
                 /*animator.ResetTrigger("Charge");
                 animator.SetTrigger("Cast");
                 Cast();*/
@@ -171,16 +174,36 @@ public class Player : MonoBehaviour {
             if (currentSpellIndex == 3 && !special && numberOfAttacks > 0)
             {
                 //drsc.Activate();
+                animator.SetTrigger("Cast3");
                 special = true;
             }
-            animator.ResetTrigger("Charge");
-            animator.SetTrigger("Cast");
+            //animator.ResetTrigger("Charge");
+            animator.ResetTrigger("Idle");
+            if (currentSpellIndex == 0)
+            {
+                //animator.ResetTrigger("Charge");
+                animator.SetTrigger("Cast0");
+            }
 
+            if (currentSpellIndex == 1)
+            {
+                //animator.ResetTrigger("Charge");
+                animator.SetTrigger("Cast1");
+                //playerCamera.fieldOfView = originalFOV;
+            }
+
+            if (currentSpellIndex == 2)
+            {
+                //playerCamera.fieldOfView = originalFOV;
+                animator.ResetTrigger("Idle");
+                animator.SetTrigger("Cast2");
+            }
+            
         }
         // Handle charge for spell
         if (Input.GetButton("Fire1") )
         {
-            if (currentSpellIndex != 3)
+            if (currentSpellIndex != 3 || currentSpellIndex != 2)
             {
                 animator.ResetTrigger("Idle");
                 animator.SetTrigger("Charge");
@@ -217,7 +240,8 @@ public class Player : MonoBehaviour {
             Instantiate(spells[currentSpellIndex], spellStart, Quaternion.identity)
                 .ThrowSpell(playerCamera.transform.forward, chargePercent);
             animator.SetFloat("Forward Amount", 0);
-            //animator.ResetTrigger("Charge");
+            animator.SetFloat("Strafe Amount", 0.0f);
+
             //animator.ResetTrigger("Idle");
             drsc.spellHitPointIndicator.enabled = false;
             if (numberOfAttacks <= 0)
@@ -249,6 +273,7 @@ public class Player : MonoBehaviour {
         enabled = false;
         animator.ResetTrigger("Charge");
         animator.SetFloat("Forward Amount", 0);
+        animator.SetFloat("Strafe Amount", 0.0f);
         animator.SetTrigger("Idle");
         Input.ResetInputAxes();
         if (playerCamera) { playerCamera.enabled = false; }
@@ -258,11 +283,17 @@ public class Player : MonoBehaviour {
         health -= amount; 
         FloatingTextManager.instance.SpawnDamageText(transform.position + Vector3.up, amount);
         soundPlay = GameObject.Find("soundManager");
+        animator.SetTrigger("Hit");
+        animator.SetTrigger("Idle");
         soundScript sound = soundPlay.GetComponent(typeof(soundScript)) as soundScript;
         sound.playOof();
     }
 
-    public void Kill() { health = 0; }
+    public void Kill()
+    {
+        health = 0; 
+        animator.SetTrigger("Dead");
+    }
 
     public float HealthPercent() { return (float) health / maxHealth; }
 

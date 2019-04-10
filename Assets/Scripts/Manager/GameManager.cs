@@ -195,6 +195,7 @@ public class GameManager : MonoBehaviour {
         }
         while (CurrentPlayer == null && count <= numPlayers);
 
+        FindObjectOfType<Canvas>().enabled = true;
         FindObjectOfType<DeathRainSpellCamera>().spellHitPointIndicator.enabled = false;
         CurrentPlayer?.Enable();
     }

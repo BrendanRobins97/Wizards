@@ -22,7 +22,8 @@ public class GiantFireballRain : MonoBehaviour
     {
         if (col.tag =="Player")
         {
-            Destroy(col.gameObject);
+            //Destroy(col.gameObject);
+            col.GetComponent<Player>().Damage(100);
         }
 
         if (col.tag == "Chunk")
