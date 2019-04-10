@@ -3081,7 +3081,6 @@ MonoBehaviour:
   tree1: {fileID: 388544831178047143, guid: 1c7e1a8207de88b48a035653d5e0d620, type: 3}
   tree2: {fileID: 6174047063014812832, guid: a36c0de1c97b20e4b9bbb7a3045fb724, type: 3}
   tree3: {fileID: 506146042828796161, guid: 145a47aa9d2ba254d803eae7f1298d0b, type: 3}
-  tree4: {fileID: 0}
   chunkPrefab: {fileID: 5892459545411116954, guid: 87476e45e1965ed4b8ed67ffecbb3430,
     type: 3}
 --- !u!114 &1414293010
@@ -3339,6 +3338,10 @@ PrefabInstance:
     - target: {fileID: 392278080, guid: afbca4fa8a5a40546803826007722218, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 392278082, guid: afbca4fa8a5a40546803826007722218, type: 3}
+      propertyPath: m_SpotAngle
+      value: 106
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afbca4fa8a5a40546803826007722218, type: 3}

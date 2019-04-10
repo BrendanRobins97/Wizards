@@ -76,7 +76,7 @@ public class DeathRainSpellCamera : MonoBehaviour
         spellCamera.transform.LookAt(player.transform);
         startPos = transform.position;
         defaultFov = spellCamera.fieldOfView;
-        maxDistanceFromPlayer = 15;
+        maxDistanceFromPlayer = 40;
         //this.gameObject.SetActive(true);
         //Cursor.lockState = CursorLockMode.None;
         canShoot = true;

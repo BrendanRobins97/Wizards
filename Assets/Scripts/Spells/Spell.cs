@@ -72,7 +72,7 @@ public class Spell : MonoBehaviour {
                 player.Damage(contactDamage);
                 player.GetComponent<Rigidbody>().Sleep();
                 playerDirection.Normalize();
-                player.rigidbody.AddForce(playerDirection.x * knockBackForce, (playerDirection.y + 1) * knockBackForce,
+                player.rigidbody.AddForce(playerDirection.x * knockBackForce, (playerDirection.y/4f + 1f) * knockBackForce,
                     playerDirection.z * knockBackForce);
                 playersHit.Add(players[i]);
             }

@@ -122,13 +122,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5108f924abb79d54eb11c01d57bc46c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 8
-  contactDamage: 12
+  speed: 10
+  contactDamage: 10
   affectedByCharge: 1
   duration: 10
-  damageRadius: 4
+  damageRadius: 5
   explosionDampen: 0.5
-  knockBackForce: 100
+  knockBackForce: 250
   explosion: {fileID: 8311680600813020574, guid: 83f4a0744268f4f42b6cb1420a1b25dc,
     type: 3}
 --- !u!1 &4611785673648366682

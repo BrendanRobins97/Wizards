@@ -39,7 +39,6 @@ public class TerrainManager : MonoBehaviour {
     [SerializeField] private GameObject tree1;
     [SerializeField] private GameObject tree2;
     [SerializeField] private GameObject tree3;
-    [SerializeField] private GameObject tree4;
 
     [Space] [SerializeField] private Chunk chunkPrefab;
 
@@ -53,6 +52,7 @@ public class TerrainManager : MonoBehaviour {
 
     private RandomArray<GameObject> boulders;
     private RandomArray<GameObject> trees;
+
     #endregion
 
     #region Methods
@@ -62,11 +62,11 @@ public class TerrainManager : MonoBehaviour {
         else { instance = this; }
 
         boulders = new RandomArray<GameObject>(
-                new[] {boulder1, boulder2, boulder3, boulder4, boulder5}, 
-                new[] {1f, 1f, 1f, 1f, 1f});
+            new[] {boulder1, boulder2, boulder3, boulder4, boulder5},
+            new[] {1f, 1f, 1f, 1f, 1f});
         trees = new RandomArray<GameObject>(
-                new[] { tree1, tree2, tree3 },
-                new[] { 1f, 1f, 1f});
+            new[] {tree1, tree2, tree3},
+            new[] {1f, 1f, 1f});
 
         seed = Random.Range(-100f, 100f);
         grid = new Cell[width + 1, height + 1, length + 1];

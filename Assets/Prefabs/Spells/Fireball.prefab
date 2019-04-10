@@ -34102,13 +34102,11 @@ MonoBehaviour:
   contactDamage: 30
   affectedByCharge: 1
   duration: 10
-  damageRadius: 7
+  damageRadius: 8
   explosionDampen: 0.5
-  knockBackForce: 75
+  knockBackForce: 100
   explosion: {fileID: 8311680600813020574, guid: 83f4a0744268f4f42b6cb1420a1b25dc,
     type: 3}
-  soundPlay: {fileID: 0}
   smallExplosiveShot: {fileID: 6996181480485081848, guid: f295441d6e87fac4eb7ff47959e8d3c3,
     type: 3}
-  numSmallExplosions: 6
-  soundPlay: {fileID: 0}
+  numSmallExplosions: 8
