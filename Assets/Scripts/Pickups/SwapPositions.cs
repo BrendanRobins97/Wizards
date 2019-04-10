@@ -46,7 +46,7 @@ public class SwapPositions : MonoBehaviour
             //playersFound = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.E) && canSwap && player == playerWithItem)
+        if ((Input.GetKeyDown(KeyCode.E) || Input.GetButton("swap1")) && canSwap && player == playerWithItem)
         {
             index++;
             if (index >= players.Length)
@@ -67,7 +67,7 @@ public class SwapPositions : MonoBehaviour
             //ShowPlayers();
         }
 
-        if (Input.GetMouseButtonDown(1) && canSwap && player == playerWithItem)
+        if ((Input.GetMouseButtonDown(1) || Input.GetButton("swap2")) && canSwap && player == playerWithItem)
         {
             Vector3 tempPos = player.transform.position;
             player.transform.position = players[index].transform.position;
@@ -108,8 +108,8 @@ public class SwapPositions : MonoBehaviour
             this.GetComponent<MeshRenderer>().enabled = false;
             this.GetComponent<BoxCollider>().enabled = false;
             swapPositionsText.gameObject.SetActive(true);
-            swapPositionsText.text = "Press E to Show Players." +
-                                     "Right Click to Swap.";
+            swapPositionsText.text = "Press E/RB to Show Players." +
+                                     "Right Click/LB to Swap.";
         }
     }
 

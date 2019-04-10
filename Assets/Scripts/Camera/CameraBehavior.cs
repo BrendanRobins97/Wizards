@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+using Image = UnityEngine.Experimental.UIElements.Image;
 
 public class CameraBehavior : MonoBehaviour
 {
@@ -14,6 +17,12 @@ public class CameraBehavior : MonoBehaviour
     public Camera spellCamera;
     private Canvas canvas;
     public float speed = 1f;
+
+    [SerializeField] private TextMeshProUGUI text;
+
+    [SerializeField] private Slider chargeBar;
+
+    [SerializeField] private UnityEngine.UI.Image crossHair;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,11 +40,17 @@ public class CameraBehavior : MonoBehaviour
         player = GameManager.instance.GetComponent<GameManager>().CurrentPlayer;
         if (spellCamera.enabled == true)
         {
-            canvas.enabled = false;
+            //canvas.enabled = false;
+            crossHair.enabled = false;
+            text.enabled = false;
+            chargeBar.gameObject.SetActive(false);
         }
         else
         {
-            canvas.enabled = true;
+            //canvas.enabled = true;
+            crossHair.enabled = true;
+            text.enabled = true;
+            chargeBar.gameObject.SetActive(true);
         }
         xpos = player.transform.position.x;
         zpos = player.transform.position.z;
@@ -64,6 +79,11 @@ public class CameraBehavior : MonoBehaviour
         if (spell != null && GameManager.instance.currentTurnTimeLeft <= GameManager.instance.timeAfterSpellCast)
         {
             ChangeToSpellCamera();
+            if (transform.position.x > 150.0f || Mathf.Abs(transform.position.y) > 65.0f ||
+                transform.position.z > 150.0f || transform.position.x < -20.0f || transform.position.z < - 20.0f)
+            {
+                Destroy(spell);
+            }
         }
         if ( (spell == null && fireSpell == null && deathRainSpell == null && iceSpell == null) || GameManager.instance.currentTurnTimeLeft > GameManager.instance.timeAfterSpellCast)
         {
@@ -77,6 +97,11 @@ public class CameraBehavior : MonoBehaviour
         if (fireSpell != null && GameManager.instance.currentTurnTimeLeft <= GameManager.instance.timeAfterSpellCast)
         {
             ChangeToFireballCamera();
+            if (transform.position.x > 150.0f || Mathf.Abs(transform.position.y) > 65.0f ||
+                transform.position.z > 150.0f || transform.position.x < -20.0f || transform.position.z < -20.0f)
+            {
+                Destroy(fireSpell);
+            }
         }
         if (deathRainSpell != null && GameManager.instance.currentTurnTimeLeft <= GameManager.instance.timeAfterSpellCast)
         {

@@ -16,6 +16,8 @@ public class DeathRainSpellCamera : MonoBehaviour
     private GameObject currentSpell;
     public bool canShoot = false;
     private Vector3 forward;
+
+    private float defaultFov;
     // Start is called before the first frame update
     void Start()
     {
@@ -53,7 +55,7 @@ public class DeathRainSpellCamera : MonoBehaviour
             //this.transform.position = Vector3.MoveTowards(transform.position, new Vector3(player.transform.position.x, player.playerCamera.transform.position.y + 8, player.transform.position.z), .500f * Time.deltaTime);
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Alpha3))
+        if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Alpha3) || Input.GetAxis("spell1") == -1 || Input.GetAxis("spell2") == 1 || Input.GetAxis("spell1") == 1)
         {
             player.playerCamera.enabled = true;
             player.enabled = true;
@@ -73,7 +75,7 @@ public class DeathRainSpellCamera : MonoBehaviour
         transform.forward = forward;
         spellCamera.transform.LookAt(player.transform);
         startPos = transform.position;
-        
+        defaultFov = spellCamera.fieldOfView;
         maxDistanceFromPlayer = 15;
         //this.gameObject.SetActive(true);
         //Cursor.lockState = CursorLockMode.None;
@@ -83,7 +85,15 @@ public class DeathRainSpellCamera : MonoBehaviour
     }
     private void MoveSpellIndicatorToMouse()
     {
-        
+        if (Input.GetAxis("Mouse ScrollWheel") > 0)
+        {
+            spellCamera.fieldOfView -= Input.GetAxis("Mouse ScrollWheel")*500*Time.deltaTime;
+        }
+
+        if (Input.GetAxis("Mouse ScrollWheel") < 0)
+        {
+            spellCamera.fieldOfView -= Input.GetAxis("Mouse ScrollWheel") * 500*Time.deltaTime;
+        }
         Ray ray = spellCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hitInfo;
         if (Physics.Raycast(ray, out hitInfo))
@@ -93,14 +103,27 @@ public class DeathRainSpellCamera : MonoBehaviour
             //lightPos.z -= 1;
             spellHitPointIndicator.transform.position = lightPos;
             //prefab.transform.position = hitInfo.point;
-            if (Input.GetButton("Fire1") && spellCamera.enabled == true)
+            if (lightPos.y - hitInfo.point.y > 5)
+            {
+                Debug.Log("Too close to camera");
+                float newZoom = Mathf.Lerp(defaultFov, defaultFov + 50, 5);
+                // spellCamera.fieldOfView = newZoom;
+            }
+            if ((Input.GetButtonUp("Fire1")) && spellCamera.enabled == true)
             {
                 //this.gameObject.SetActive(false);
+                
                 Cursor.lockState = CursorLockMode.Locked;
                 spellHitPointIndicator.enabled = false;
                 //player.playerCamera.enabled = true;
                 //spellCamera.enabled = false;
                 player.enabled = true;
+                player.special = false;
+                player.usedSpecial = true;
+                player.numUlt--;
+                if (player.numUlt < 0)
+                {player.numUlt = 0;}
+                player.Cast();
             }
         }
     }

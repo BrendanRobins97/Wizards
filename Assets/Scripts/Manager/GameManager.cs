@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private float            turnTime           = 20f;
     [SerializeField] public float            timeAfterSpellCast = 5f;
     [SerializeField] public float gameStartTime = 5f;
-
+    public bool isController = false;
     [SerializeField] private List<GameObject> playerPrefabs;
     [SerializeField] private List<Image>      spellImages;
 
@@ -104,6 +104,8 @@ public class GameManager : MonoBehaviour {
             
             if (currentTurnTimeLeft <= 20.7f)
             {
+                CurrentPlayer.enabled = true;
+                GameObject.FindObjectOfType<Canvas>().enabled = true;
                 mapShrinkNumber += 2;
                 turnTime = 20;
                 mainCamera.enabled = false;
@@ -117,13 +119,14 @@ public class GameManager : MonoBehaviour {
         }
 
         if (!gameStarted) { // Handle game start behavior
-            
+            GameObject.FindObjectOfType<Canvas>().enabled = false;
             // Start game when initial timer hits 0
             if (currentTurnTimeLeft < 0) {
                 CurrentPlayer.Enable();
                 StartTurn();
                 mainCamera.enabled = false;
                 gameStarted = true;
+                GameObject.FindObjectOfType<Canvas>().enabled = true;
             }
         }
         
@@ -192,16 +195,17 @@ public class GameManager : MonoBehaviour {
         }
         while (CurrentPlayer == null && count <= numPlayers);
 
+        FindObjectOfType<Canvas>().enabled = true;
         FindObjectOfType<DeathRainSpellCamera>().spellHitPointIndicator.enabled = false;
         CurrentPlayer?.Enable();
     }
 
     public void MapShrink()
     {
-        for (int i = 0; i < 25; i++)
+        for (int i = 0; i < 360; i+=22)
         {
             int randomY = Random.Range(23, 70);
-            float ang = Random.value * 360;
+            float ang = i;//Random.value * 360;
             Vector3 pos;
             pos.x = circleCenter.x + circleRadius * Mathf.Sin(ang * Mathf.Deg2Rad);
             pos.z = circleCenter.z + circleRadius * Mathf.Cos(ang * Mathf.Deg2Rad);
@@ -209,6 +213,8 @@ public class GameManager : MonoBehaviour {
             Instantiate(giantFireball, pos, Quaternion.identity);
         }
 
+        CurrentPlayer.enabled = false;
+        GameObject.FindObjectOfType<Canvas>().enabled = false;
         circleRadius -= 7f;
     }
     #endregion

@@ -52,7 +52,11 @@ public class HealthBoost : MonoBehaviour
         {
             playerWithItem = player;
             Debug.Log("HealthBoost");
-            player.GetComponent<Player>().health = player.GetComponent<Player>().health + healthBoost;
+            player.GetComponent<Player>().health += player.GetComponent<Player>().maxHealth/2;
+            if (player.GetComponent<Player>().health > player.GetComponent<Player>().maxHealth)
+            {
+                player.GetComponent<Player>().health = player.GetComponent<Player>().maxHealth;
+            }
             //text.gameObject.SetActive(true);
             //text.text = "Health Boost";
             image.gameObject.SetActive(true);
