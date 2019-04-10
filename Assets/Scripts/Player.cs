@@ -81,7 +81,7 @@ public class Player : MonoBehaviour {
     }
 
     private void Update() {
-        if (!enabled) { return; }
+        if (!enabled || casting) { return; }
 
         // Vertical rotation calculations
         // Applies to Camera
@@ -158,7 +158,7 @@ public class Player : MonoBehaviour {
         GameManager.instance.UpdateSpellImage(currentSpellIndex);
 
         if (Input.GetButtonUp("Fire1")) {
-            
+            casting = true;
             if (currentSpellIndex == 3 && special)
             {
                 special = false;
@@ -209,13 +209,11 @@ public class Player : MonoBehaviour {
                 animator.SetTrigger("Charge");
             }
             
-            float scroll = Input.GetAxis("Mouse ScrollWheel");
-            scroll = 1;
             chargeAmount += Time.deltaTime * chargeRate;
             if (chargeAmount > .5f && chargeAmount < chargeMax)
             {
                 tempChargeAmount = chargeAmount;
-                playerCamera.fieldOfView -= scroll * .5f;
+                playerCamera.fieldOfView -= 30f * Time.deltaTime;
             }
         }
         else
@@ -229,26 +227,23 @@ public class Player : MonoBehaviour {
 
     public void Cast()
     {
-        {
-            numberOfAttacks--;
-            casting = true;
-            chargePercent = tempChargeAmount / chargeMax;
-            special = false;
-            // Fire spell when mouse is released
-            Vector3 spellStart =
-                transform.TransformPoint(new Vector3(cameraXOffset, cameraYOffset, 0.5f));
-            Instantiate(spells[currentSpellIndex], spellStart, Quaternion.identity)
-                .ThrowSpell(playerCamera.transform.forward, chargePercent);
-            animator.SetFloat("Forward Amount", 0);
-            animator.SetFloat("Strafe Amount", 0.0f);
+        numberOfAttacks--;
+        casting = true;
+        chargePercent = tempChargeAmount / chargeMax;
+        special = false;
+        // Fire spell when mouse is released
+        Vector3 spellStart =
+            transform.TransformPoint(new Vector3(cameraXOffset, cameraYOffset, 0.5f));
+        Instantiate(spells[currentSpellIndex], spellStart, Quaternion.identity)
+            .ThrowSpell(playerCamera.transform.forward, chargePercent);
+        animator.SetFloat("Forward Amount", 0);
+        animator.SetFloat("Strafe Amount", 0.0f);
 
-            //animator.ResetTrigger("Idle");
-            drsc.spellHitPointIndicator.enabled = false;
-            if (numberOfAttacks <= 0)
-            {
-                enabled = false; // Disable movement
-                turnOver = true; // Signal that their turn is over
-            }
+        //animator.ResetTrigger("Idle");
+        drsc.spellHitPointIndicator.enabled = false;
+        if (numberOfAttacks <= 0) {
+            enabled = false; // Disable movement
+            turnOver = true; // Signal that their turn is over
         }
     }
     public void Enable() {

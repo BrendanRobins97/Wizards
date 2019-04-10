@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 4895131066808789059}
   - component: {fileID: 5853803436034732327}
   m_Layer: 0
-  m_Name: Bauta_Rigged 1
+  m_Name: BlackSmithTemp 1
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -171,9 +171,9 @@ MonoBehaviour:
   maxHealth: 100
   spells:
   - {fileID: 8940775995591046101, guid: 8d19e0c9eca232d4593c90673c2014ca, type: 3}
-  - {fileID: 8627637389754969580, guid: 478ac01ad88806c4eb7de68098f1efc4, type: 3}
-  - {fileID: 1991271422628986824, guid: 508f936bd647a33458ffc34e83f73d0b, type: 3}
-  - {fileID: 5445266672334248905, guid: 24bd975c5f966ab44a2dda673a870377, type: 3}
+  - {fileID: 1154065597347731263, guid: cc785b8aead16a849b68bbcd9c978cb5, type: 3}
+  - {fileID: 886019029205924418, guid: 4257cf8021b160a4fb675f503a68ed1d, type: 3}
+  - {fileID: 886019029205924418, guid: 4257cf8021b160a4fb675f503a68ed1d, type: 3}
   feetPosition: {fileID: 367964565352773159}
   animator: {fileID: 8076080522134748702}
   PS_ElectricOrbPrefab: {fileID: 0}

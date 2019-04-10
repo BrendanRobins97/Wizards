@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 844738351872716872}
   - component: {fileID: 844738351872716879}
   - component: {fileID: 844738351872716878}
-  - component: {fileID: 6996181480485081848}
+  - component: {fileID: 8764879235604696749}
   m_Layer: 18
-  m_Name: SmallExplosiveShot
+  m_Name: HammerDustShots
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -110,7 +110,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
---- !u!114 &6996181480485081848
+--- !u!114 &8764879235604696749
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -119,16 +119,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 844738351872716877}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5108f924abb79d54eb11c01d57bc46c4, type: 3}
+  m_Script: {fileID: 11500000, guid: 15e3a2c003f57724fb220eeb68bb5cd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 8
+  speed: 12
   contactDamage: 12
   affectedByCharge: 1
   duration: 10
-  damageRadius: 4
-  explosionDampen: 0.5
-  knockBackForce: 100
+  damageRadius: 2
+  explosionDampen: 1.75
+  knockBackForce: 60
   explosion: {fileID: 8311680600813020574, guid: 83f4a0744268f4f42b6cb1420a1b25dc,
     type: 3}
 --- !u!1 &4611785673648366682

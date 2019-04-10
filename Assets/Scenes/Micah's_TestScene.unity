@@ -2978,7 +2978,7 @@ MonoBehaviour:
   gameStartTime: 3
   isController: 0
   playerPrefabs:
-  - {fileID: 2084653656752078091, guid: e9fae5cebcc610e44b82bb21f3535509, type: 3}
+  - {fileID: 100006, guid: f8e00e2a956969542aeb205e80e29d7b, type: 3}
   - {fileID: 995849588744100572, guid: 07d62888f2961214199732f8b5319b9e, type: 3}
   - {fileID: 6162136354065595572, guid: d547a959a498e9d49a2030d4e5672809, type: 3}
   - {fileID: 5907214007592426859, guid: 4c236a481cef2234e80a4d76c02149f3, type: 3}

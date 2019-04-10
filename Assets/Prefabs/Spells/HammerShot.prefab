@@ -34034,10 +34034,9 @@ GameObject:
   - component: {fileID: 9112150418677081623}
   - component: {fileID: 2433431875226831774}
   - component: {fileID: 1498122517351397101}
-  - component: {fileID: 8627637389754969580}
-  - component: {fileID: 2581549025485767978}
+  - component: {fileID: 1154065597347731263}
   m_Layer: 18
-  m_Name: Fireball
+  m_Name: HammerShot
   m_TagString: FireSpell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34087,7 +34086,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.75
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8627637389754969580
+--- !u!114 &1154065597347731263
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -34096,30 +34095,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 6781941085712876607}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0d1fb3bfa1f4f247b4db8f361b2e81d, type: 3}
+  m_Script: {fileID: 11500000, guid: 5c0442889af13fc4db4c5dbce0e5241d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 50
-  contactDamage: 30
+  contactDamage: 20
   affectedByCharge: 1
   duration: 10
-  damageRadius: 7
-  explosionDampen: 0.5
-  knockBackForce: 75
-  smallExplosiveShot: {fileID: 6996181480485081848, guid: f295441d6e87fac4eb7ff47959e8d3c3,
+  damageRadius: 5
+  explosionDampen: 0.75
+  knockBackForce: 0
+  explosion: {fileID: 8311680600813020574, guid: 83f4a0744268f4f42b6cb1420a1b25dc,
     type: 3}
-  numSmallExplosions: 6
---- !u!114 &2581549025485767978
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6781941085712876607}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05d436275573d4b24a0d7440b565b2e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hit: {fileID: 8311680600813020574, guid: 83f4a0744268f4f42b6cb1420a1b25dc, type: 3}
-  Instance: {fileID: 0}
+  smallExplosiveShot: {fileID: 8764879235604696749, guid: ae71b56101faf6f478e582e5fb4c8f98,
+    type: 3}
+  numSmallExplosions: 12

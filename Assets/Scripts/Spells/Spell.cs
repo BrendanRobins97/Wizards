@@ -1,7 +1,7 @@
 ﻿// File: Spell.cs
 // Contributors: Brendan Robinson
-// Date Created: 03/28/2019
-// Date Last Modified: 04/03/2019
+// Date Created: 04/10/2019
+// Date Last Modified: 04/10/2019
 
 using System.Collections;
 using System.Collections.Generic;
@@ -24,16 +24,16 @@ public class Spell : MonoBehaviour {
     protected List<Player> playersHit = new List<Player>();
     protected bool         collisions = true;
     protected Rigidbody    rigidbody;
-    public GameObject soundPlay;
+    protected GameObject   soundPlay;
+
     #endregion
 
     #region Methods
 
-    protected void Start() {
+    protected virtual void Start() {
         Destroy(gameObject, duration);
         rigidbody = GetComponent<Rigidbody>();
-        if (gameObject.name == "LightningPrefab(Clone)")
-        {
+        if (gameObject.name == "LightningPrefab(Clone)") {
             soundPlay = GameObject.Find("soundManager");
             soundScript sound = soundPlay.GetComponent(typeof(soundScript)) as soundScript;
             sound.playZap();

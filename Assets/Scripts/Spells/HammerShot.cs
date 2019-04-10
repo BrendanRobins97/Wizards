@@ -5,7 +5,7 @@
 
 using UnityEngine;
 
-public class ExplosiveShot : Spell {
+public class HammerShot : Spell {
 
     #region Fields
 
@@ -15,8 +15,7 @@ public class ExplosiveShot : Spell {
     #endregion
 
     #region Methods
-    protected override void Start()
-    {
+    protected override void Start() {
         base.Start();
         soundPlay = GameObject.Find("soundManager");
         soundScript sound = soundPlay.GetComponent(typeof(soundScript)) as soundScript;
@@ -38,6 +37,7 @@ public class ExplosiveShot : Spell {
 
         for (int i = 0; i < numSmallExplosions; i++) {
             // Jitter start direction based on normal
+            
             Vector3 randNormal = new Vector3((2 * Random.value - 1), 1,
                 (2 * Random.value - 1));
             randNormal.Normalize();
@@ -46,7 +46,7 @@ public class ExplosiveShot : Spell {
             // Disable collisions to start so it doesn't instantly collide with who it hit.
             smallExplosion.DisableCollisions(0.25f);
         }
-        
+
     }
 
     #endregion
