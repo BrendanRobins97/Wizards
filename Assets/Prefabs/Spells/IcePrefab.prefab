@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 844738351872716874}
   - component: {fileID: 844738351872716878}
-  - component: {fileID: 368405944238096615}
   - component: {fileID: 1991271422628986824}
   m_Layer: 0
   m_Name: IcePrefab
@@ -50,19 +49,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!65 &368405944238096615
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 844738351872716877}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 4, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1991271422628986824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81,7 +67,7 @@ MonoBehaviour:
   duration: 4
   damageRadius: 3
   explosionDampen: 0.75
-  knockBackForce: 600
+  knockBackForce: 1500
   explosion: {fileID: 0}
 --- !u!1001 &9115134602115982964
 PrefabInstance:
@@ -158,7 +144,7 @@ PrefabInstance:
     - target: {fileID: 7144400581879461879, guid: 117b28d95956f42daade758afdecad5a,
         type: 3}
       propertyPath: m_IsTrigger
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1101230289879478465, guid: 117b28d95956f42daade758afdecad5a,
         type: 3}
