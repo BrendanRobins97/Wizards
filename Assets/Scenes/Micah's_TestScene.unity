@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.12807566, g: 0.23806068, b: 0.649579, a: 1}
+  m_IndirectSpecularColor: {r: 0.12646218, g: 0.23645307, b: 0.6474477, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -89,7 +89,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -2127,12 +2127,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b75cc8f229872d4fa0138689608321d, type: 3}
---- !u!1 &763100331 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3248026788221861075, guid: 1137aab39e78710469877f21ed9e48c8,
-    type: 3}
-  m_PrefabInstance: {fileID: 1465809388}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &811226168
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2754,6 +2748,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b75cc8f229872d4fa0138689608321d, type: 3}
+--- !u!1 &1238662575 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3354523426955098007, guid: fc467f1a2aa26af4e9272a3d47c1cb98,
+    type: 3}
+  m_PrefabInstance: {fileID: 4136917230038013369}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1272571558
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2967,7 +2967,7 @@ MonoBehaviour:
   playerContainer: {fileID: 2141200333}
   giantFireball: {fileID: 3065805226639967745, guid: 77fe15f06d6feba4d8a21b5dfcf4ef8d,
     type: 3}
-  numPlayers: 2
+  numPlayers: 4
   spawnLocations:
   - {fileID: 699662579}
   - {fileID: 927715569}
@@ -2978,7 +2978,7 @@ MonoBehaviour:
   gameStartTime: 3
   isController: 0
   playerPrefabs:
-  - {fileID: 2084653656752078091, guid: e9fae5cebcc610e44b82bb21f3535509, type: 3}
+  - {fileID: 2084653656752078091, guid: 12810fc8a3257c14ea179c2cf53f2315, type: 3}
   - {fileID: 995849588744100572, guid: 07d62888f2961214199732f8b5319b9e, type: 3}
   - {fileID: 6162136354065595572, guid: d547a959a498e9d49a2030d4e5672809, type: 3}
   - {fileID: 5907214007592426859, guid: 4c236a481cef2234e80a4d76c02149f3, type: 3}
@@ -3016,56 +3016,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 1414293006}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45274552b7a4b0941ae15c70b2aa0888, type: 3}
+  m_Script: {fileID: 11500000, guid: cce1a318cf0925148a866c73b4238e6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   width: 128
   length: 128
   octaves: 5
-  smoothness: 120
-  scale: 100
-  persistence: 0.4
+  smoothness: 50
+  scale: 25
+  persistence: 0.5
   lacunarity: 0.5
-  groundThickness: 10
+  groundThickness: 4
   heightMap:
     serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0.0021514893
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.25
-      value: 0
-      inSlope: 0.03312989
-      outSlope: 0.03312989
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.12441746
-    - serializedVersion: 3
-      time: 0.68695253
-      value: 1.0622362
-      inSlope: 1.6404864
-      outSlope: 1.6404864
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.07068384
-    - serializedVersion: 3
-      time: 0.9978261
-      value: 1.1946748
-      inSlope: -0.1224249
-      outSlope: -0.1224249
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.14872745
-      outWeight: 0
+    m_Curve: []
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -3081,7 +3045,7 @@ MonoBehaviour:
   tree1: {fileID: 388544831178047143, guid: 1c7e1a8207de88b48a035653d5e0d620, type: 3}
   tree2: {fileID: 6174047063014812832, guid: a36c0de1c97b20e4b9bbb7a3045fb724, type: 3}
   tree3: {fileID: 506146042828796161, guid: 145a47aa9d2ba254d803eae7f1298d0b, type: 3}
-  chunkPrefab: {fileID: 5892459545411116954, guid: 87476e45e1965ed4b8ed67ffecbb3430,
+  chunkPrefab: {fileID: 5892459545411116954, guid: 9bf9346c025b8f14080ee2787e2ce483,
     type: 3}
 --- !u!114 &1414293010
 MonoBehaviour:
@@ -3114,8 +3078,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickupList:
-  - {fileID: 1653528565}
-  - {fileID: 763100331}
+  - {fileID: 1507126043}
+  - {fileID: 1238662575}
   - {fileID: 1286538737}
   - {fileID: 1786809262}
   - {fileID: 1520197256}
@@ -3205,6 +3169,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DoubleAttack (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3248026788221861075, guid: 1137aab39e78710469877f21ed9e48c8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3248026788221861072, guid: 1137aab39e78710469877f21ed9e48c8,
         type: 3}
@@ -3345,6 +3314,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afbca4fa8a5a40546803826007722218, type: 3}
+--- !u!1 &1507126043 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3837992331025577662, guid: 4be21a571a38326408efee87978d4d56,
+    type: 3}
+  m_PrefabInstance: {fileID: 1746727956}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1520197256 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3354523426955098007, guid: fc467f1a2aa26af4e9272a3d47c1cb98,
@@ -3499,12 +3474,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1609435438}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1653528565 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3248026788221861075, guid: 1137aab39e78710469877f21ed9e48c8,
-    type: 3}
-  m_PrefabInstance: {fileID: 8501809076271626897}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1694697077 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5605475320658540075, guid: 0b75cc8f229872d4fa0138689608321d,
@@ -6309,6 +6278,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DoubleAttack
+      objectReference: {fileID: 0}
+    - target: {fileID: 3248026788221861075, guid: 1137aab39e78710469877f21ed9e48c8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3248026788221861072, guid: 1137aab39e78710469877f21ed9e48c8,
         type: 3}

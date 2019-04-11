@@ -152,7 +152,8 @@ public class GameManager : MonoBehaviour {
             playerUI.staminaBar.value = player.StaminaPercent();
             if (player.health <= 0) {
                 player.Disable();
-                Destroy(player.gameObject);
+                player.animator.SetTrigger("Dead");
+                Destroy(player.gameObject,3f);
                 playerUI.playerImage.color = Color.gray;
                 numPlayersLeft--;
                 if (i == playerTurn) { currentTurnTimeLeft = 0; }
