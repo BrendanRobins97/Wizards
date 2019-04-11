@@ -57,6 +57,12 @@ public class Spell : MonoBehaviour {
     protected virtual void OnCollisionEnter(Collision collision) {
         if (!collisions) { return; }
         DestroyComponents();
+        if (gameObject.name == "SmallExplosiveShot(Clone)")
+        {
+            soundPlay = GameObject.Find("soundManager");
+            soundScript sound = soundPlay.GetComponent(typeof(soundScript)) as soundScript;
+            sound.playFireBallEnd();
+        }
         if (explosion) { Destroy(Instantiate(explosion, transform.position, Quaternion.identity), 3f); }
         TerrainManager.instance.Circle(Mathf.RoundToInt(transform.position.x)
             , Mathf.RoundToInt(transform.position.y)
