@@ -126,7 +126,6 @@ public class Player : MonoBehaviour {
             Vector3 velocity = (movX + movZ) * movementSpeed * Time.deltaTime;
 
             rigidbody.MovePosition(rigidbody.position + velocity);
-            Debug.Log(xVelocity + " "+ zVelocity);
             animator.SetFloat("Strafe Amount", xVelocity*2.0f);
             animator.SetFloat("Forward Amount", Mathf.Abs(zVelocity / 2.0f));
             if (Input.GetButtonDown("Jump") && Physics.Raycast(feetPosition.position, Vector3.down, 0.5f)) {
@@ -147,8 +146,6 @@ public class Player : MonoBehaviour {
             drsc.Activate();
             special = true;
         }
-
-        animator.SetTrigger("Idle");
         if (currentSpellIndex == 3 && (usedSpecial || numUlt < 1))
         {
             currentSpellIndex = 0;
@@ -162,40 +159,33 @@ public class Player : MonoBehaviour {
             if (currentSpellIndex == 3 && special)
             {
                 special = false;
-                //animator.SetTrigger("Charge");
+                //animator.ResetTrigger("Idle");
                 animator.SetTrigger("Cast3");
                 numUlt--;
-                usedSpecial = true;
-                /*animator.ResetTrigger("Charge");
-                animator.SetTrigger("Cast");
-                Cast();*/
-                
+                usedSpecial = true;    
             }
             if (currentSpellIndex == 3 && !special && numberOfAttacks > 0)
             {
                 //drsc.Activate();
-                animator.SetTrigger("Cast3");
                 special = true;
             }
-            //animator.ResetTrigger("Charge");
-            animator.ResetTrigger("Idle");
             if (currentSpellIndex == 0)
             {
-                //animator.ResetTrigger("Charge");
+                animator.ResetTrigger("Charge");
                 animator.SetTrigger("Cast0");
             }
 
             if (currentSpellIndex == 1)
             {
-                //animator.ResetTrigger("Charge");
+                //animator.ResetTrigger("Idle");
                 animator.SetTrigger("Cast1");
-                //playerCamera.fieldOfView = originalFOV;
+                playerCamera.fieldOfView = originalFOV;
             }
 
             if (currentSpellIndex == 2)
             {
-                //playerCamera.fieldOfView = originalFOV;
-                animator.ResetTrigger("Idle");
+                playerCamera.fieldOfView = originalFOV;
+                //animator.ResetTrigger("Idle");
                 animator.SetTrigger("Cast2");
             }
             
@@ -203,7 +193,7 @@ public class Player : MonoBehaviour {
         // Handle charge for spell
         if (Input.GetButton("Fire1") )
         {
-            if (currentSpellIndex != 3 || currentSpellIndex != 2)
+            if (currentSpellIndex == 0)
             {
                 animator.ResetTrigger("Idle");
                 animator.SetTrigger("Charge");
@@ -236,11 +226,13 @@ public class Player : MonoBehaviour {
             transform.TransformPoint(new Vector3(cameraXOffset, cameraYOffset, 0.5f));
         Instantiate(spells[currentSpellIndex], spellStart, Quaternion.identity)
             .ThrowSpell(playerCamera.transform.forward, chargePercent);
-        animator.SetFloat("Forward Amount", 0);
-        animator.SetFloat("Strafe Amount", 0.0f);
+        //animator.SetFloat("Forward Amount", 0);
+        //animator.SetFloat("Strafe Amount", 0.0f);
 
-        //animator.ResetTrigger("Idle");
+        animator.SetTrigger("Idle");
         drsc.spellHitPointIndicator.enabled = false;
+        Debug.Log("Num Attacks " + numberOfAttacks);
+        enabled = true;
         if (numberOfAttacks <= 0) {
             enabled = false; // Disable movement
             turnOver = true; // Signal that their turn is over
