@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DeathRainParticleBehavior : MonoBehaviour
-{
+public class DeathRainParticleBehavior : MonoBehaviour {
 
+    public float radius = 8f;
     public ParticleSystem ps;
     public Spell smallExplosiveShot;
     public Spell spell;
@@ -25,11 +25,12 @@ public class DeathRainParticleBehavior : MonoBehaviour
         }
 
         // Jitter start direction based on normal
-        Vector3 randNormal = new Vector3((2 * Random.value - 1), 1,
-            (2 * Random.value - 1));
-        randNormal.Normalize();
-        Spell smallExplosion = Instantiate(smallExplosiveShot, transform.position, Quaternion.identity);
-        smallExplosion.speed = Random.Range(2, 9);
+        Vector3 randNormal = new Vector3((2 * Random.value - 1) * 0.1f, -0.5f,
+            (2 * Random.value - 1) *0.1f);
+        Vector2 randCircle = Random.insideUnitCircle * radius;
+        Vector3 randPosition = transform.position + new Vector3(randCircle.x, 0, randCircle.y);
+        Spell smallExplosion = Instantiate(smallExplosiveShot, randPosition, Quaternion.identity);
+        smallExplosion.speed = Random.Range(2, 24);
         smallExplosion.ThrowSpell(randNormal, 1);
         // Disable collisions to start so it doesn't instantly collide with who it hit.
         smallExplosion.DisableCollisions(0.25f);

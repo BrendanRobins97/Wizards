@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 2084653656752078091, guid: e9fae5cebcc610e44b82bb21f3535509,
         type: 3}
       propertyPath: m_Name
-      value: Bauta_Rigged 3 new
+      value: Bauta_Rigged 3
       objectReference: {fileID: 0}
     - target: {fileID: 2162197637375990580, guid: e9fae5cebcc610e44b82bb21f3535509,
         type: 3}
@@ -82,6 +82,33 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 4142857949733093281}
+    - target: {fileID: 6953849962777815231, guid: e9fae5cebcc610e44b82bb21f3535509,
+        type: 3}
+      propertyPath: color.r
+      value: 0.65882355
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953849962777815231, guid: e9fae5cebcc610e44b82bb21f3535509,
+        type: 3}
+      propertyPath: color.g
+      value: 0.027450994
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953849962777815231, guid: e9fae5cebcc610e44b82bb21f3535509,
+        type: 3}
+      propertyPath: color.b
+      value: 0.064131476
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953849962777815231, guid: e9fae5cebcc610e44b82bb21f3535509,
+        type: 3}
+      propertyPath: spells.Array.data[2]
+      value: 
+      objectReference: {fileID: 1991271422628986824, guid: 508f936bd647a33458ffc34e83f73d0b,
+        type: 3}
+    - target: {fileID: 6953849962777815231, guid: e9fae5cebcc610e44b82bb21f3535509,
+        type: 3}
+      propertyPath: spells.Array.data[3]
+      value: 
+      objectReference: {fileID: 5445266672334248905, guid: 24bd975c5f966ab44a2dda673a870377,
+        type: 3}
     - target: {fileID: 2715593028328581669, guid: e9fae5cebcc610e44b82bb21f3535509,
         type: 3}
       propertyPath: m_Bones.Array.data[0]

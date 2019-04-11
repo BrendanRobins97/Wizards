@@ -49,7 +49,7 @@ public class SpeedBoost : MonoBehaviour
             if (pickedUp)
             {
                 speedUpTime -= Time.deltaTime;
-                //player.GetComponent<Animator>().speed = 2.0f;
+                player.GetComponent<Animator>().speed = 1.75f;
                 player.GetComponent<Player>().stamina = tempStamina;
                 if (speedUpTime <= 0 || gm.currentTurnTimeLeft <= 0)
                 {

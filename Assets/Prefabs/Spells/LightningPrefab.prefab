@@ -81,7 +81,7 @@ MonoBehaviour:
   duration: 10
   damageRadius: 5
   explosionDampen: 0.75
-  knockBackForce: 300
+  knockBackForce: 800
   explosion: {fileID: 3010577142948056070, guid: e04e98bc6567d476eb9531d0938c2fec,
     type: 3}
 --- !u!1001 &18504987833156809
@@ -91,6 +91,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 844738351872716874}
     m_Modifications:
+    - target: {fileID: 3526736743482236972, guid: 515e43b9a1a0e4ebcbd5123399a94d26,
+        type: 3}
+      propertyPath: m_Name
+      value: Lightning Top
+      objectReference: {fileID: 0}
     - target: {fileID: 4354260085832532703, guid: 515e43b9a1a0e4ebcbd5123399a94d26,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -145,11 +150,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3526736743482236972, guid: 515e43b9a1a0e4ebcbd5123399a94d26,
-        type: 3}
-      propertyPath: m_Name
-      value: Lightning Top
       objectReference: {fileID: 0}
     - target: {fileID: 2663541897428936693, guid: 515e43b9a1a0e4ebcbd5123399a94d26,
         type: 3}

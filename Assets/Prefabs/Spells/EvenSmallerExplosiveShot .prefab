@@ -14728,6 +14728,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hit: {fileID: 8311680600813020574, guid: 83f4a0744268f4f42b6cb1420a1b25dc, type: 3}
   Instance: {fileID: 0}
+  soundPlay: {fileID: 0}
 --- !u!95 &3340081633803175757
 Animator:
   serializedVersion: 3
@@ -24596,7 +24597,6 @@ GameObject:
   - component: {fileID: 8845407016575515173}
   - component: {fileID: 8845407016575515172}
   - component: {fileID: 1184237941275515026}
-  - component: {fileID: 5947033834237175492}
   m_Layer: 18
   m_Name: 'EvenSmallerExplosiveShot '
   m_TagString: Untagged
@@ -24705,25 +24705,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5108f924abb79d54eb11c01d57bc46c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 8
+  speed: 12
   contactDamage: 2
   affectedByCharge: 0
   duration: 10
-  damageRadius: 1.75
-  explosionDampen: 0.75
-  knockBackForce: 3
-  explosion: {fileID: 0}
---- !u!114 &5947033834237175492
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8845407016575515175}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05d436275573d4b24a0d7440b565b2e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hit: {fileID: 8311680600813020574, guid: 83f4a0744268f4f42b6cb1420a1b25dc, type: 3}
-  Instance: {fileID: 0}
+  damageRadius: 2
+  explosionDampen: 0.5
+  knockBackForce: 50
+  explosion: {fileID: 8311680600813020574, guid: 83f4a0744268f4f42b6cb1420a1b25dc,
+    type: 3}

@@ -65,6 +65,7 @@ public class DoubleAttack : MonoBehaviour
             doubleAttack = true;
             text.gameObject.SetActive(true);
             text.text = "Double Attack";
+            playerWithItem.numberOfAttacks++;
             this.GetComponent<MeshRenderer>().enabled = false;
             this.GetComponent<BoxCollider>().enabled = false;
         }

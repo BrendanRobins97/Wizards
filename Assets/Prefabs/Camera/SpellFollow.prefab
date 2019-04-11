@@ -46,8 +46,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spell: {fileID: 0}
   fireSpell: {fileID: 0}
+  deathRainSpell: {fileID: 0}
+  iceSpell: {fileID: 0}
   spellCamera: {fileID: 2682453482512982688}
-  speed: 9.04
+  speed: 2
+  text: {fileID: 0}
+  chargeBar: {fileID: 0}
+  crossHair: {fileID: 0}
 --- !u!20 &2682453482512982688
 Camera:
   m_ObjectHideFlags: 0

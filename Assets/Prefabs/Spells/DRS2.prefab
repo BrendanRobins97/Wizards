@@ -9431,6 +9431,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4889248acd6b054689189986715088e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  radius: 12
   ps: {fileID: 5445266672334248951}
   smallExplosiveShot: {fileID: 1184237941275515026, guid: 6e13f673234aeed4d98e6ab88bd3d0b4,
     type: 3}

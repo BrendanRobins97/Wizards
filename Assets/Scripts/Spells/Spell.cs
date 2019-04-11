@@ -1,7 +1,7 @@
 ﻿// File: Spell.cs
 // Contributors: Brendan Robinson
-// Date Created: 03/28/2019
-// Date Last Modified: 04/03/2019
+// Date Created: 04/10/2019
+// Date Last Modified: 04/10/2019
 
 using System.Collections;
 using System.Collections.Generic;
@@ -24,14 +24,20 @@ public class Spell : MonoBehaviour {
     protected List<Player> playersHit = new List<Player>();
     protected bool         collisions = true;
     protected Rigidbody    rigidbody;
+    protected GameObject   soundPlay;
 
     #endregion
 
     #region Methods
 
-    protected void Start() {
+    protected virtual void Start() {
         Destroy(gameObject, duration);
         rigidbody = GetComponent<Rigidbody>();
+        if (gameObject.name == "LightningPrefab(Clone)") {
+            soundPlay = GameObject.Find("soundManager");
+            soundScript sound = soundPlay.GetComponent(typeof(soundScript)) as soundScript;
+            sound.playZap();
+        }
     }
 
     public virtual void ThrowSpell(Vector3 direction, float charge) {
@@ -52,7 +58,7 @@ public class Spell : MonoBehaviour {
         if (!collisions) { return; }
         DestroyComponents();
         if (explosion) { Destroy(Instantiate(explosion, transform.position, Quaternion.identity), 3f); }
-        TerrainManager2.instance.Circle(Mathf.RoundToInt(transform.position.x)
+        TerrainManager.instance.Circle(Mathf.RoundToInt(transform.position.x)
             , Mathf.RoundToInt(transform.position.y)
             , Mathf.RoundToInt(transform.position.z),
             (int) damageRadius, explosionDampen);
@@ -66,7 +72,7 @@ public class Spell : MonoBehaviour {
                 player.Damage(contactDamage);
                 player.GetComponent<Rigidbody>().Sleep();
                 playerDirection.Normalize();
-                player.rigidbody.AddForce(playerDirection.x * knockBackForce, (playerDirection.y + 1) * knockBackForce,
+                player.rigidbody.AddForce(playerDirection.x * knockBackForce, (playerDirection.y/4f + 1f) * knockBackForce,
                     playerDirection.z * knockBackForce);
                 playersHit.Add(players[i]);
             }

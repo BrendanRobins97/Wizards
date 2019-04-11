@@ -31,16 +31,17 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private float            turnTime           = 20f;
     [SerializeField] public float            timeAfterSpellCast = 5f;
     [SerializeField] public float gameStartTime = 5f;
-
+    public bool isController = false;
     [SerializeField] private List<GameObject> playerPrefabs;
     [SerializeField] private List<Image>      spellImages;
 
     private List<PlayerInfo> players = new List<PlayerInfo>();
     [HideInInspector] public int              playerTurn;
     public float            currentTurnTimeLeft;
-    private bool             endOfTurn, newRound;
+    private bool             endOfTurn, newRound, meteorShower;
     private bool gameStarted = false;
-    private float xBoundsMax,xBoundsMin, zBoundsMin, zBoundsMax;
+    private float circleRadius;
+    private Vector3 circleCenter;
    [HideInInspector] public int              numPlayersLeft,roundNumber,mapShrinkNumber;
 
     #endregion
@@ -61,10 +62,8 @@ public class GameManager : MonoBehaviour {
             Destroy(mm.gameObject);
         }
         mapShrinkNumber = 1;
-        xBoundsMax = GameObject.FindObjectOfType<TerrainManager2>().length;
-        xBoundsMin = 0;
-        zBoundsMin = 0;
-        zBoundsMax = GameObject.FindObjectOfType<TerrainManager2>().width;
+        circleCenter = new Vector3(TerrainManager.instance.width/2.0f,0,TerrainManager.instance.length/2.0f);
+        circleRadius = (TerrainManager.instance.width / 2.0f) - 5.0f;
         currentTurnTimeLeft = gameStartTime;
         for (int i = 0; i < numPlayers; i++) {
             PlayerInfo newPlayerInfo;
@@ -92,24 +91,42 @@ public class GameManager : MonoBehaviour {
         currentTurnTimeLeft -= Time.deltaTime;
         currentTurnTimeLeft = Mathf.Clamp(currentTurnTimeLeft, -0.9f, turnTime);
         turnText.text = "Time Left: " + (int)(currentTurnTimeLeft + 1);
-        if (playerTurn == 0 && newRound && roundNumber/numPlayers > mapShrinkNumber)
+        if (playerTurn == 0 && newRound && roundNumber/numPlayers > mapShrinkNumber )
         {
-            MapShrink();
-            newRound = false;
-            mapShrinkNumber += 2;
+            if (meteorShower == false)
+            {
+                turnTime += 5f;
+                currentTurnTimeLeft = turnTime;
+                meteorShower = true;
+                mainCamera.enabled = true;
+                MapShrink();
+            }
+            
+            if (currentTurnTimeLeft <= 20.7f)
+            {
+                CurrentPlayer.enabled = true;
+                GameObject.FindObjectOfType<Canvas>().enabled = true;
+                mapShrinkNumber += 2;
+                turnTime = 20;
+                mainCamera.enabled = false;
+                meteorShower = false;
+                newRound = false;
+            }
         }
         if (playerTurn > 0)
         {
             newRound = true;
         }
+
         if (!gameStarted) { // Handle game start behavior
-            
+            GameObject.FindObjectOfType<Canvas>().enabled = false;
             // Start game when initial timer hits 0
             if (currentTurnTimeLeft < 0) {
                 CurrentPlayer.Enable();
                 StartTurn();
                 mainCamera.enabled = false;
                 gameStarted = true;
+                GameObject.FindObjectOfType<Canvas>().enabled = true;
             }
         }
         
@@ -178,32 +195,27 @@ public class GameManager : MonoBehaviour {
         }
         while (CurrentPlayer == null && count <= numPlayers);
 
+        FindObjectOfType<Canvas>().enabled = true;
+        FindObjectOfType<DeathRainSpellCamera>().spellHitPointIndicator.enabled = false;
         CurrentPlayer?.Enable();
     }
 
     public void MapShrink()
     {
-        for (int x = (int)xBoundsMin; x < xBoundsMax; x += 7)
+        for (int i = 0; i < 360; i+=22)
         {
-            Instantiate(giantFireball,new Vector3(x,45,zBoundsMin), transform.rotation);
-        }
-        for (int x = (int)xBoundsMin; x < xBoundsMax; x += 7)
-        {
-            Instantiate(giantFireball, new Vector3(x, 45, zBoundsMax), transform.rotation);
-        }
-        for (int z = (int)zBoundsMin; z < zBoundsMax; z += 7)
-        {
-            Instantiate(giantFireball, new Vector3(xBoundsMin, 45, z), transform.rotation);
-        }
-        for (int z = (int)zBoundsMin; z < zBoundsMax; z += 7)
-        {
-            Instantiate(giantFireball, new Vector3(xBoundsMax, 45, z), transform.rotation);
+            int randomY = Random.Range(23, 70);
+            float ang = i;//Random.value * 360;
+            Vector3 pos;
+            pos.x = circleCenter.x + circleRadius * Mathf.Sin(ang * Mathf.Deg2Rad);
+            pos.z = circleCenter.z + circleRadius * Mathf.Cos(ang * Mathf.Deg2Rad);
+            pos.y = circleCenter.y + randomY;
+            Instantiate(giantFireball, pos, Quaternion.identity);
         }
 
-        zBoundsMin += 12;
-        xBoundsMin += 12;
-        zBoundsMax -= 12;
-        xBoundsMax -= 12;
+        CurrentPlayer.enabled = false;
+        GameObject.FindObjectOfType<Canvas>().enabled = false;
+        circleRadius -= 7f;
     }
     #endregion
 

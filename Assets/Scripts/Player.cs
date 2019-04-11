@@ -10,8 +10,8 @@ public class Player : MonoBehaviour {
 
     #region Constants
 
-    private const                   float chargeMax       = 2f;
-    private const                   float chargeRate      = 1f;
+    private const float chargeMax = 2f;
+    private const float chargeRate = 1f;
     [HideInInspector] private const float startingStamina = 30f;
 
     #endregion
@@ -20,49 +20,55 @@ public class Player : MonoBehaviour {
 
     public Color color;
     public float chargeAmount;
-
-    public                   float stamina;
+    
+    public float stamina;
     public float jumpForce = 400;
-    [HideInInspector] public int   health;
+    [HideInInspector] public int health;
     [HideInInspector] public float chargePercent;
     [HideInInspector] public float tempChargeAmount;
-    [HideInInspector] public bool  turnOver;
+    [HideInInspector] public bool turnOver;
 
     [SerializeField] private float sensitivity = 1f;
 
-    [HideInInspector] public float       movementSpeed = 8f;
-    [HideInInspector] public bool        enabled       = true;
-    [SerializeField] public Camera      playerCamera;
-    [SerializeField] private int         maxHealth = 100;
+    [HideInInspector] public float movementSpeed = 8f;
+    [HideInInspector] public bool enabled = true;
+    [SerializeField] public Camera playerCamera;
+    [SerializeField] public int maxHealth = 100;
     [SerializeField] private List<Spell> spells;
     [SerializeField] private Transform feetPosition;
 
-    [SerializeField] private Animator animator;
+    [SerializeField] public Animator animator;
     [SerializeField] private GameObject PS_ElectricOrbPrefab;
     [HideInInspector] public Rigidbody rigidbody;
 
     //private Rigidbody   rigidbody;
 
 
-    private          float currentCameraRotationX;
+    private float currentCameraRotationX;
     private readonly float cameraRotationLimit = 80f;
 
     private readonly float cameraDistFromPlayer = 6f;
-    private readonly float cameraYOffset        = 2f;
-    private readonly float cameraXOffset        = 1f;
+    private readonly float cameraYOffset = 2f;
+    private readonly float cameraXOffset = 1f;
     private int specialCount = 0;
-    private int     currentSpellIndex;
+    private int currentSpellIndex;
     private Vector3 prevPosition;
     private DeathRainSpellCamera drsc;
     [HideInInspector] public float originalFOV = 0f;
-    private bool usedSpecial = false;
+    [HideInInspector] public int numberOfAttacks = 1;
+    [HideInInspector] public bool usedSpecial = false;
+    [HideInInspector] public int numUlt = 1;
     [HideInInspector] public bool casting = false;
-    [HideInInspector]public bool special = false;
+    [HideInInspector] public bool special = false;
+    private InputControl ic;
+    public GameObject soundPlay;
     #endregion
 
     #region Methods
 
-    private void Awake() {
+    private void Awake()
+    {
+        ic = FindObjectOfType<InputControl>();
         health = maxHealth;
         rigidbody = GetComponent<Rigidbody>();
         Disable();
@@ -75,12 +81,15 @@ public class Player : MonoBehaviour {
     }
 
     private void Update() {
-        if (!enabled) { return; }
+        if (!enabled || casting) { return; }
 
         // Vertical rotation calculations
         // Applies to Camera
         float xRot = Input.GetAxisRaw("Mouse Y");
-
+        if (GameManager.instance.isController)
+        {
+            xRot *= -1;
+        }
         float cameraRotationX = xRot * sensitivity;
 
         currentCameraRotationX -= cameraRotationX;
@@ -104,8 +113,9 @@ public class Player : MonoBehaviour {
         stamina -= (transform.position - prevPosition).magnitude;
         prevPosition = transform.position;
         animator.SetFloat("Forward Amount", 0.0f);
+        animator.SetFloat("Strafe Amount", 0.0f);
         if (stamina > 0) {
-            
+
             // Movement Calculations
             float xVelocity = Input.GetAxis("Horizontal") * movementSpeed;
             float zVelocity = Input.GetAxis("Vertical") * movementSpeed;
@@ -116,23 +126,30 @@ public class Player : MonoBehaviour {
             Vector3 velocity = (movX + movZ) * movementSpeed * Time.deltaTime;
 
             rigidbody.MovePosition(rigidbody.position + velocity);
-
-            animator.SetFloat("Forward Amount", Mathf.Abs(zVelocity/2.0f));
+            Debug.Log(xVelocity + " "+ zVelocity);
+            animator.SetFloat("Strafe Amount", xVelocity*2.0f);
+            animator.SetFloat("Forward Amount", Mathf.Abs(zVelocity / 2.0f));
             if (Input.GetButtonDown("Jump") && Physics.Raycast(feetPosition.position, Vector3.down, 0.5f)) {
                 rigidbody.AddForce(0, jumpForce, 0);
             }
         }
 
 
-        if (Input.GetKeyDown(KeyCode.Alpha1)) { currentSpellIndex = 0; }
+        if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetAxis("spell1") == -1) { currentSpellIndex = 0; }
 
-        if (Input.GetKeyDown(KeyCode.Alpha2)) { currentSpellIndex = 1; }
+        if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetAxis("spell2") == 1) { currentSpellIndex = 1; }
 
-        if (Input.GetKeyDown(KeyCode.Alpha3)) { currentSpellIndex = 2; }
+        if (Input.GetKeyDown(KeyCode.Alpha3) || Input.GetAxis("spell1") == 1) { currentSpellIndex = 2; }
 
-        if (Input.GetKeyDown(KeyCode.Alpha4) && !usedSpecial) { currentSpellIndex = 3; }
+        if ((Input.GetKeyDown(KeyCode.Alpha4) && !usedSpecial) || (Input.GetAxis("spell2") == -1 && numUlt > 0))
+        {
+            currentSpellIndex = 3;
+            drsc.Activate();
+            special = true;
+        }
 
-        if (currentSpellIndex == 3 && usedSpecial)
+        animator.SetTrigger("Idle");
+        if (currentSpellIndex == 3 && (usedSpecial || numUlt < 1))
         {
             currentSpellIndex = 0;
         }
@@ -141,38 +158,62 @@ public class Player : MonoBehaviour {
         GameManager.instance.UpdateSpellImage(currentSpellIndex);
 
         if (Input.GetButtonUp("Fire1")) {
-            animator.ResetTrigger("Charge");
-            animator.SetTrigger("Cast");
+            casting = true;
             if (currentSpellIndex == 3 && special)
             {
                 special = false;
+                //animator.SetTrigger("Charge");
+                animator.SetTrigger("Cast3");
+                numUlt--;
                 usedSpecial = true;
-                Cast();
+                /*animator.ResetTrigger("Charge");
+                animator.SetTrigger("Cast");
+                Cast();*/
                 
             }
-            if (currentSpellIndex == 3 && !special)
+            if (currentSpellIndex == 3 && !special && numberOfAttacks > 0)
             {
-                    drsc.Activate();
-                    special = true;
+                //drsc.Activate();
+                animator.SetTrigger("Cast3");
+                special = true;
+            }
+            //animator.ResetTrigger("Charge");
+            animator.ResetTrigger("Idle");
+            if (currentSpellIndex == 0)
+            {
+                //animator.ResetTrigger("Charge");
+                animator.SetTrigger("Cast0");
+            }
+
+            if (currentSpellIndex == 1)
+            {
+                //animator.ResetTrigger("Charge");
+                animator.SetTrigger("Cast1");
+                //playerCamera.fieldOfView = originalFOV;
+            }
+
+            if (currentSpellIndex == 2)
+            {
+                //playerCamera.fieldOfView = originalFOV;
+                animator.ResetTrigger("Idle");
+                animator.SetTrigger("Cast2");
             }
             
         }
         // Handle charge for spell
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButton("Fire1") )
         {
-            if (currentSpellIndex != 3)
+            if (currentSpellIndex != 3 || currentSpellIndex != 2)
             {
                 animator.ResetTrigger("Idle");
                 animator.SetTrigger("Charge");
             }
-
-            float scroll = Input.GetAxis("Mouse ScrollWheel");
-            scroll = 1;
+            
             chargeAmount += Time.deltaTime * chargeRate;
             if (chargeAmount > .5f && chargeAmount < chargeMax)
             {
                 tempChargeAmount = chargeAmount;
-                playerCamera.fieldOfView -= scroll * .5f;
+                playerCamera.fieldOfView -= 30f * Time.deltaTime;
             }
         }
         else
@@ -186,25 +227,21 @@ public class Player : MonoBehaviour {
 
     public void Cast()
     {
-        /*if (currentSpellIndex == 3 && !special)
-        {
-            drsc.Activate();
-            special = true;
-        }
-        else*/
-        {
-            casting = true;
-            chargePercent = tempChargeAmount / chargeMax;
-            special = false;
-            // Fire spell when mouse is released
-            Vector3 spellStart =
-                transform.TransformPoint(new Vector3(cameraXOffset, cameraYOffset, 0.5f));
-            Instantiate(spells[currentSpellIndex], spellStart, Quaternion.identity)
-                .ThrowSpell(playerCamera.transform.forward, chargePercent);
-            animator.SetFloat("Forward Amount", 0);
-            animator.ResetTrigger("Charge");
-            animator.ResetTrigger("Idle");
-            drsc.spellHitPointIndicator.enabled = false;
+        numberOfAttacks--;
+        casting = true;
+        chargePercent = tempChargeAmount / chargeMax;
+        special = false;
+        // Fire spell when mouse is released
+        Vector3 spellStart =
+            transform.TransformPoint(new Vector3(cameraXOffset, cameraYOffset, 0.5f));
+        Instantiate(spells[currentSpellIndex], spellStart, Quaternion.identity)
+            .ThrowSpell(playerCamera.transform.forward, chargePercent);
+        animator.SetFloat("Forward Amount", 0);
+        animator.SetFloat("Strafe Amount", 0.0f);
+
+        //animator.ResetTrigger("Idle");
+        drsc.spellHitPointIndicator.enabled = false;
+        if (numberOfAttacks <= 0) {
             enabled = false; // Disable movement
             turnOver = true; // Signal that their turn is over
         }
@@ -212,11 +249,16 @@ public class Player : MonoBehaviour {
     public void Enable() {
         turnOver = false;
         enabled = true;
+        numberOfAttacks = 1;
         playerCamera.enabled = true;
         chargeAmount = 0;
         stamina = startingStamina;
         prevPosition = transform.position;
         playerCamera.fieldOfView = originalFOV;
+        Input.ResetInputAxes();
+        soundPlay = GameObject.Find("soundManager");
+        soundScript sound = soundPlay.GetComponent(typeof(soundScript)) as soundScript;
+        sound.playPlayerStart();
     }
 
     public void Disable()
@@ -226,16 +268,27 @@ public class Player : MonoBehaviour {
         enabled = false;
         animator.ResetTrigger("Charge");
         animator.SetFloat("Forward Amount", 0);
+        animator.SetFloat("Strafe Amount", 0.0f);
         animator.SetTrigger("Idle");
+        Input.ResetInputAxes();
         if (playerCamera) { playerCamera.enabled = false; }
     }
 
     public void Damage(int amount) {
         health -= amount; 
         FloatingTextManager.instance.SpawnDamageText(transform.position + Vector3.up, amount);
+        soundPlay = GameObject.Find("soundManager");
+        animator.SetTrigger("Hit");
+        animator.SetTrigger("Idle");
+        soundScript sound = soundPlay.GetComponent(typeof(soundScript)) as soundScript;
+        sound.playOof();
     }
 
-    public void Kill() { health = 0; }
+    public void Kill()
+    {
+        health = 0; 
+        animator.SetTrigger("Dead");
+    }
 
     public float HealthPercent() { return (float) health / maxHealth; }
 
