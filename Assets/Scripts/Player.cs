@@ -60,7 +60,7 @@ public class Player : MonoBehaviour {
     [HideInInspector] public int numUlt = 1;
     [HideInInspector] public bool casting = false;
     [HideInInspector] public bool special = false;
-    private InputControl ic;
+    
     public GameObject soundPlay;
     #endregion
 
@@ -68,7 +68,6 @@ public class Player : MonoBehaviour {
 
     private void Awake()
     {
-        ic = FindObjectOfType<InputControl>();
         health = maxHealth;
         rigidbody = GetComponent<Rigidbody>();
         Disable();
@@ -153,9 +152,10 @@ public class Player : MonoBehaviour {
         currentSpellIndex = Mathf.Clamp(currentSpellIndex, 0, spells.Count - 1);
 
         GameManager.instance.UpdateSpellImage(currentSpellIndex);
-
+        
         if (Input.GetButtonUp("Fire1")) {
             casting = true;
+            
             if (currentSpellIndex == 3 && special)
             {
                 special = false;
@@ -180,6 +180,7 @@ public class Player : MonoBehaviour {
                 //animator.ResetTrigger("Idle");
                 animator.SetTrigger("Cast1");
                 playerCamera.fieldOfView = originalFOV;
+
             }
 
             if (currentSpellIndex == 2)
@@ -228,7 +229,10 @@ public class Player : MonoBehaviour {
             .ThrowSpell(playerCamera.transform.forward, chargePercent);
         //animator.SetFloat("Forward Amount", 0);
         //animator.SetFloat("Strafe Amount", 0.0f);
-
+        animator.ResetTrigger("Cast0");
+        animator.ResetTrigger("Cast1");
+        animator.ResetTrigger("Cast2");
+        animator.ResetTrigger("Cast3");
         animator.SetTrigger("Idle");
         drsc.spellHitPointIndicator.enabled = false;
         Debug.Log("Num Attacks " + numberOfAttacks);
@@ -248,6 +252,7 @@ public class Player : MonoBehaviour {
         prevPosition = transform.position;
         playerCamera.fieldOfView = originalFOV;
         Input.ResetInputAxes();
+        animator.SetTrigger("Idle");
         soundPlay = GameObject.Find("soundManager");
         soundScript sound = soundPlay.GetComponent(typeof(soundScript)) as soundScript;
         sound.playPlayerStart();
@@ -259,6 +264,7 @@ public class Player : MonoBehaviour {
         turnOver = true;
         enabled = false;
         animator.ResetTrigger("Charge");
+        animator.ResetTrigger("Hit");
         animator.SetFloat("Forward Amount", 0);
         animator.SetFloat("Strafe Amount", 0.0f);
         animator.SetTrigger("Idle");

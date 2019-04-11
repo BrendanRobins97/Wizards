@@ -89,7 +89,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -2967,7 +2967,7 @@ MonoBehaviour:
   playerContainer: {fileID: 2141200333}
   giantFireball: {fileID: 3065805226639967745, guid: 77fe15f06d6feba4d8a21b5dfcf4ef8d,
     type: 3}
-  numPlayers: 4
+  numPlayers: 2
   spawnLocations:
   - {fileID: 699662579}
   - {fileID: 927715569}

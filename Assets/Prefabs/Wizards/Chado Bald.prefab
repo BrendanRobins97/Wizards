@@ -1430,7 +1430,7 @@ GameObject:
   - component: {fileID: 754101793}
   m_Layer: 0
   m_Name: Chado Bald
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1516,7 +1516,11 @@ MonoBehaviour:
   enabled: 1
   playerCamera: {fileID: 1500247812}
   maxHealth: 100
-  spells: []
+  spells:
+  - {fileID: 1154065597347731263, guid: cc785b8aead16a849b68bbcd9c978cb5, type: 3}
+  - {fileID: 8764879235604696749, guid: ae71b56101faf6f478e582e5fb4c8f98, type: 3}
+  - {fileID: 886019029205924418, guid: 4257cf8021b160a4fb675f503a68ed1d, type: 3}
+  - {fileID: 5445266672334248905, guid: 24bd975c5f966ab44a2dda673a870377, type: 3}
   feetPosition: {fileID: 1902788763}
   animator: {fileID: 754101796}
   PS_ElectricOrbPrefab: {fileID: 0}
