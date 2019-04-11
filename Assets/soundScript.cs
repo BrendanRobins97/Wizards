@@ -16,6 +16,7 @@ public class soundScript : MonoBehaviour
     public AudioClip badMan;
     public AudioClip basicBitch;
     public AudioClip zap;
+    public AudioClip ice;
     public AudioClip Oof;
     public AudioClip myOof;
     public AudioClip YIIPE;
@@ -48,6 +49,12 @@ public class soundScript : MonoBehaviour
         audioData.Play();
         return;
     }
+    public void playIce()
+    {
+        audioData.clip = ice;
+        audioData.Play();
+        return;
+    }
     public void playOof()
     {
         int myint = Random.Range(0, 3);
@@ -72,7 +79,7 @@ public class soundScript : MonoBehaviour
     }
     public void playPlayerStart()
     {
-        int myint = Random.Range(0, 9);
+        int myint = Random.Range(0, 12);
         if (myint == 1 || myint == 7){
             audioData.clip = satanOn;
             audioData.Play();
@@ -107,6 +114,9 @@ public class soundScript : MonoBehaviour
             audioData.clip = basicBitch;
             audioData.Play();
             return;
+        }
+        if(myint >= 10){
+            return;//don't play a sound a 4th of the time
         }
     }
 }

@@ -33,7 +33,7 @@ public class Spell : MonoBehaviour {
     protected virtual void Start() {
         Destroy(gameObject, duration);
         rigidbody = GetComponent<Rigidbody>();
-        if (gameObject.name == "LightningPrefab(Clone)") {
+        if (gameObject.name == "LightningPrefab(Clone)") {//play a lightning sound effect if this is lightning
             soundPlay = GameObject.Find("soundManager");
             soundScript sound = soundPlay.GetComponent(typeof(soundScript)) as soundScript;
             sound.playZap();
