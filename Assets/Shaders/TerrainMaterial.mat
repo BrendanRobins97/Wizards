@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: TerrainMaterial
+  m_Shader: {fileID: 4800000, guid: 09f65d9680782944aa4e585d29dcb254, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_F163AA56:
+        m_Texture: {fileID: 2800000, guid: 67823aba86cae4877b3b4b7ec292ddff, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_7F2FEBBA: 12.5
+    m_Colors:
+    - Color_113CA323: {r: 0.0995016, g: 0.49056602, b: 0.13505287, a: 1}
+    - Color_7E40C224: {r: 0.6886792, g: 0.22358675, b: 0.15917587, a: 1}
+    - Color_9B08BA05: {r: 0.33962262, g: 0.16920255, b: 0, a: 0}
+    - Color_E9F94125: {r: 0.81960785, g: 0.7136449, b: 0.18823527, a: 1}

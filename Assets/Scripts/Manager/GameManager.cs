@@ -1,7 +1,7 @@
 ﻿// File: GameManager.cs
-// Author: Brendan Robinson
-// Date Created: 02/19/2019
-// Date Last Modified: 02/28/2019
+// Contributors: Brendan Robinson
+// Date Created: 04/11/2019
+// Date Last Modified: 04/11/2019
 
 using System.Collections.Generic;
 using TMPro;
@@ -18,31 +18,54 @@ public class GameManager : MonoBehaviour {
 
     #region Fields
 
-    [SerializeField] private TextMeshProUGUI  gameOverText;
-    [SerializeField] private Slider           chargeBar;
-    [SerializeField] private TextMeshProUGUI  turnText;
-    [SerializeField] private Transform        playerInfoContainer;
-    [SerializeField] private PlayerUI         playerUIPrefab;
-    [SerializeField] private Camera           mainCamera;
-    [SerializeField] private GameObject       playerContainer;
-    [SerializeField] private GameObject giantFireball;
-    [SerializeField] private int              numPlayers = 2;
-    [SerializeField] private List<Transform>  spawnLocations;
-    [SerializeField] private float            turnTime           = 20f;
-    [SerializeField] public float            timeAfterSpellCast = 5f;
-    [SerializeField] public float gameStartTime = 5f;
+    [HideInInspector]
+    public int playerTurn;
+    [HideInInspector]
+    public int numPlayersLeft, roundNumber, mapShrinkNumber;
+
+    [Header("UI Components")]
+    [SerializeField]
+    private TextMeshProUGUI gameOverText;
+    [SerializeField]
+    private Slider chargeBar;
+    [SerializeField]
+    private TextMeshProUGUI turnText;
+    [SerializeField]
+    private Transform playerInfoContainer;
+    [SerializeField]
+    private PlayerUI playerUIPrefab;
+
+    [Header("Prefabs")]
+    [SerializeField]
+    private List<GameObject> playerPrefabs;
+    [SerializeField]
+    private List<Image> spellImages;
+    [SerializeField]
+    private GameObject giantFireball;
+
+    [Header("Game Settings")]
+    public float currentTurnTimeLeft;
+    public float timeAfterSpellCast = 5f;
+    public float gameStartTime = 5f;
+    [SerializeField]
+    private float turnTime = 20f;
+    [SerializeField]
+    private int numPlayers = 2;
+    [SerializeField]
+    private List<Transform> spawnLocations;
+
+    [Space]
     public bool isController = false;
-    [SerializeField] private List<GameObject> playerPrefabs;
-    [SerializeField] private List<Image>      spellImages;
+    [SerializeField]
+    private Camera mainCamera;
+    [SerializeField]
+    private GameObject playerContainer;
 
     private List<PlayerInfo> players = new List<PlayerInfo>();
-    [HideInInspector] public int              playerTurn;
-    public float            currentTurnTimeLeft;
-    private bool             endOfTurn, newRound, meteorShower;
-    private bool gameStarted = false;
+    private bool endOfTurn, newRound, meteorShower;
+    private bool gameStarted;
     private float circleRadius;
     private Vector3 circleCenter;
-   [HideInInspector] public int              numPlayersLeft,roundNumber,mapShrinkNumber;
 
     #endregion
 
@@ -62,8 +85,8 @@ public class GameManager : MonoBehaviour {
             Destroy(mm.gameObject);
         }
         mapShrinkNumber = 1;
-        circleCenter = new Vector3(TerrainManager.instance.width/2.0f,0,TerrainManager.instance.length/2.0f);
-        circleRadius = (TerrainManager.instance.width / 2.0f) - 5.0f;
+        circleCenter = new Vector3(TerrainManager.instance.width / 2.0f, 0, TerrainManager.instance.length / 2.0f);
+        circleRadius = TerrainManager.instance.width / 2.0f - 5.0f;
         currentTurnTimeLeft = gameStartTime;
         for (int i = 0; i < numPlayers; i++) {
             PlayerInfo newPlayerInfo;
@@ -86,26 +109,22 @@ public class GameManager : MonoBehaviour {
     }
 
     private void Update() {
-
         // Update the current time left and update the timer text
         currentTurnTimeLeft -= Time.deltaTime;
         currentTurnTimeLeft = Mathf.Clamp(currentTurnTimeLeft, -0.9f, turnTime);
-        turnText.text = "Time Left: " + (int)(currentTurnTimeLeft + 1);
-        if (playerTurn == 0 && newRound && roundNumber/numPlayers > mapShrinkNumber )
-        {
-            if (meteorShower == false)
-            {
+        turnText.text = "Time Left: " + (int) (currentTurnTimeLeft + 1);
+        if (playerTurn == 0 && newRound && roundNumber / numPlayers > mapShrinkNumber) {
+            if (meteorShower == false) {
                 turnTime += 5f;
                 currentTurnTimeLeft = turnTime;
                 meteorShower = true;
                 mainCamera.enabled = true;
                 MapShrink();
             }
-            
-            if (currentTurnTimeLeft <= 20.7f)
-            {
+
+            if (currentTurnTimeLeft <= 20.7f) {
                 CurrentPlayer.enabled = true;
-                GameObject.FindObjectOfType<Canvas>().enabled = true;
+                FindObjectOfType<Canvas>().enabled = true;
                 mapShrinkNumber += 2;
                 turnTime = 20;
                 mainCamera.enabled = false;
@@ -113,26 +132,21 @@ public class GameManager : MonoBehaviour {
                 newRound = false;
             }
         }
-        if (playerTurn > 0)
-        {
-            newRound = true;
-        }
+        if (playerTurn > 0) { newRound = true; }
 
         if (!gameStarted) { // Handle game start behavior
-            GameObject.FindObjectOfType<Canvas>().enabled = false;
+            FindObjectOfType<Canvas>().enabled = false;
             // Start game when initial timer hits 0
             if (currentTurnTimeLeft < 0) {
                 CurrentPlayer.Enable();
                 StartTurn();
                 mainCamera.enabled = false;
                 gameStarted = true;
-                GameObject.FindObjectOfType<Canvas>().enabled = true;
+                FindObjectOfType<Canvas>().enabled = true;
             }
         }
-        
-        if (!gameStarted) {
-            return;
-        }
+
+        if (!gameStarted) { return; }
         chargeBar.value = CurrentPlayer.chargePercent;
         if (chargeBar.value <= 0) { chargeBar.enabled = false; }
         else { chargeBar.enabled = true; }
@@ -153,7 +167,7 @@ public class GameManager : MonoBehaviour {
             if (player.health <= 0) {
                 player.Disable();
                 player.animator.SetTrigger("Dead");
-                Destroy(player.gameObject,3f);
+                Destroy(player.gameObject, 3f);
                 playerUI.playerImage.color = Color.gray;
                 numPlayersLeft--;
                 if (i == playerTurn) { currentTurnTimeLeft = 0; }
@@ -184,6 +198,22 @@ public class GameManager : MonoBehaviour {
         currentTurnTimeLeft = turnTime;
     }
 
+    public void MapShrink() {
+        for (int i = 0; i < 360; i += 22) {
+            int randomY = Random.Range(23, 70);
+            float ang = i; //Random.value * 360;
+            Vector3 pos;
+            pos.x = circleCenter.x + circleRadius * Mathf.Sin(ang * Mathf.Deg2Rad);
+            pos.z = circleCenter.z + circleRadius * Mathf.Cos(ang * Mathf.Deg2Rad);
+            pos.y = circleCenter.y + randomY;
+            Instantiate(giantFireball, pos, Quaternion.identity);
+        }
+
+        CurrentPlayer.enabled = false;
+        FindObjectOfType<Canvas>().enabled = false;
+        circleRadius -= 7f;
+    }
+
     private void NextPlayerTurn() {
         // Disable current player
         CurrentPlayer.Disable();
@@ -201,31 +231,14 @@ public class GameManager : MonoBehaviour {
         CurrentPlayer?.Enable();
     }
 
-    public void MapShrink()
-    {
-        for (int i = 0; i < 360; i+=22)
-        {
-            int randomY = Random.Range(23, 70);
-            float ang = i;//Random.value * 360;
-            Vector3 pos;
-            pos.x = circleCenter.x + circleRadius * Mathf.Sin(ang * Mathf.Deg2Rad);
-            pos.z = circleCenter.z + circleRadius * Mathf.Cos(ang * Mathf.Deg2Rad);
-            pos.y = circleCenter.y + randomY;
-            Instantiate(giantFireball, pos, Quaternion.identity);
-        }
-
-        CurrentPlayer.enabled = false;
-        GameObject.FindObjectOfType<Canvas>().enabled = false;
-        circleRadius -= 7f;
-    }
     #endregion
 
 }
 
 public struct PlayerInfo {
 
-    public Player   player;
+    public Player player;
     public PlayerUI playerUI;
-    public bool     dead;
+    public bool dead;
 
 }
