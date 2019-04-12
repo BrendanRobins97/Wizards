@@ -1517,8 +1517,8 @@ MonoBehaviour:
   playerCamera: {fileID: 1500247812}
   maxHealth: 100
   spells:
+  - {fileID: 8940775995591046101, guid: 8d19e0c9eca232d4593c90673c2014ca, type: 3}
   - {fileID: 1154065597347731263, guid: cc785b8aead16a849b68bbcd9c978cb5, type: 3}
-  - {fileID: 8764879235604696749, guid: ae71b56101faf6f478e582e5fb4c8f98, type: 3}
   - {fileID: 886019029205924418, guid: 4257cf8021b160a4fb675f503a68ed1d, type: 3}
   - {fileID: 5445266672334248905, guid: 24bd975c5f966ab44a2dda673a870377, type: 3}
   feetPosition: {fileID: 1902788763}
@@ -1560,8 +1560,8 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  m_Constraints: 112
+  m_CollisionDetection: 1
 --- !u!1 &758053055
 GameObject:
   m_ObjectHideFlags: 0

@@ -80,7 +80,7 @@ public class Player : MonoBehaviour {
     }
 
     private void Update() {
-        if (!enabled || casting) { return; }
+        if (!enabled) { return; }
 
         // Vertical rotation calculations
         // Applies to Camera
@@ -132,7 +132,6 @@ public class Player : MonoBehaviour {
             }
         }
 
-
         if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetAxis("spell1") == -1) { currentSpellIndex = 0; }
 
         if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetAxis("spell2") == 1) { currentSpellIndex = 1; }
@@ -159,7 +158,6 @@ public class Player : MonoBehaviour {
             if (currentSpellIndex == 3 && special)
             {
                 special = false;
-                //animator.ResetTrigger("Idle");
                 animator.SetTrigger("Cast3");
                 numUlt--;
                 usedSpecial = true;    
@@ -177,7 +175,6 @@ public class Player : MonoBehaviour {
 
             if (currentSpellIndex == 1)
             {
-                //animator.ResetTrigger("Idle");
                 animator.SetTrigger("Cast1");
                 playerCamera.fieldOfView = originalFOV;
 
@@ -186,7 +183,6 @@ public class Player : MonoBehaviour {
             if (currentSpellIndex == 2)
             {
                 playerCamera.fieldOfView = originalFOV;
-                //animator.ResetTrigger("Idle");
                 animator.SetTrigger("Cast2");
             }
             
@@ -227,13 +223,7 @@ public class Player : MonoBehaviour {
             transform.TransformPoint(new Vector3(cameraXOffset, cameraYOffset, 0.5f));
         Instantiate(spells[currentSpellIndex], spellStart, Quaternion.identity)
             .ThrowSpell(playerCamera.transform.forward, chargePercent);
-        //animator.SetFloat("Forward Amount", 0);
-        //animator.SetFloat("Strafe Amount", 0.0f);
-        animator.ResetTrigger("Cast0");
-        animator.ResetTrigger("Cast1");
-        animator.ResetTrigger("Cast2");
-        animator.ResetTrigger("Cast3");
-        animator.SetTrigger("Idle");
+        AnimTriggerReset();
         drsc.spellHitPointIndicator.enabled = false;
         Debug.Log("Num Attacks " + numberOfAttacks);
         enabled = true;
@@ -252,7 +242,8 @@ public class Player : MonoBehaviour {
         prevPosition = transform.position;
         playerCamera.fieldOfView = originalFOV;
         Input.ResetInputAxes();
-        animator.SetTrigger("Idle");
+        AnimTriggerReset();
+        //animator.SetTrigger("Idle");
         soundPlay = GameObject.Find("soundManager");
         soundScript sound = soundPlay.GetComponent(typeof(soundScript)) as soundScript;
         sound.playPlayerStart();
@@ -263,11 +254,9 @@ public class Player : MonoBehaviour {
         casting = false;
         turnOver = true;
         enabled = false;
-        animator.ResetTrigger("Charge");
-        animator.ResetTrigger("Hit");
         animator.SetFloat("Forward Amount", 0);
         animator.SetFloat("Strafe Amount", 0.0f);
-        animator.SetTrigger("Idle");
+        AnimTriggerReset();
         Input.ResetInputAxes();
         if (playerCamera) { playerCamera.enabled = false; }
     }
@@ -277,15 +266,13 @@ public class Player : MonoBehaviour {
         FloatingTextManager.instance.SpawnDamageText(transform.position + Vector3.up, amount);
         soundPlay = GameObject.Find("soundManager");
         animator.SetTrigger("Hit");
-        animator.SetTrigger("Idle");
         soundScript sound = soundPlay.GetComponent(typeof(soundScript)) as soundScript;
         sound.playOof();
     }
 
     public void Kill()
     {
-        health = 0; 
-        animator.SetTrigger("Dead");
+        health = 0;
     }
 
     public float HealthPercent() { return (float) health / maxHealth; }
@@ -295,6 +282,15 @@ public class Player : MonoBehaviour {
         return (float) stamina / startingStamina;
     }
 
+    public void AnimTriggerReset()
+    {
+        animator.ResetTrigger("Cast0");
+        animator.ResetTrigger("Cast1");
+        animator.ResetTrigger("Cast2");
+        animator.ResetTrigger("Cast3");
+        animator.ResetTrigger("Hit");
+        animator.SetTrigger("Idle");
+    }
     #endregion
 
 }

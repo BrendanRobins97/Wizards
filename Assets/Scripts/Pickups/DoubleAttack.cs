@@ -31,21 +31,22 @@ public class DoubleAttack : MonoBehaviour
                 playerWithItem.turnOver = false;
                 gm.currentTurnTimeLeft = tempTime;
             }
-            Debug.Log("fire num ererere " + numFire + player);
             if (playerWithItem != player)
             {
                 text.gameObject.SetActive(false);
             }
-            if (Input.GetButtonUp("Fire1") && pickedUp && player == playerWithItem && numFire <= 1)
+            if (Input.GetButtonUp("Fire1") && pickedUp && player == playerWithItem && numFire < 1)
             {
                 playerWithItem.enabled = true;
                 playerWithItem.turnOver = false;
                 playerWithItem.playerCamera.fieldOfView = playerWithItem.originalFOV;
                 text.gameObject.SetActive(false);
-                Destroy(this.gameObject,.1f);
+                numFire++;
+                doubleAttack = false;
+                //Destroy(this.gameObject,5f);
             }
 
-            if (Input.GetButtonUp("Fire1") && pickedUp && player == playerWithItem && numFire > 1)
+            if (Input.GetButtonUp("Fire1") && pickedUp && player == playerWithItem && numFire >= 1)
             {
                 doubleAttack = false;
                 text.gameObject.SetActive(false);
