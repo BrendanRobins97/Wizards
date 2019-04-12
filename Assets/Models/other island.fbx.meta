@@ -1,35 +1,20 @@
 fileFormatVersion: 2
-guid: 4ef3212b08ceb924cb610b7f767203bb
+guid: 4a35f80f031474ed38104d33015ffd8f
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Empty
-    100002: Icosphere
-    100004: Plane
-    100006: //RootNode
-    100008: Icosphere_001
-    400000: Empty
-    400002: Icosphere
-    400004: Plane
-    400006: //RootNode
-    400008: Icosphere_001
-    2100000: Material
-    2100002: Material_003
-    2300000: Icosphere
-    2300002: Plane
-    2300004: Icosphere_001
-    3300000: Icosphere
-    3300002: Plane
-    3300004: Icosphere_001
-    4300000: Icosphere
-    4300002: Plane
-    4300004: Icosphere_001
-    6400000: Icosphere
-    6400002: Plane
-    6400004: Icosphere_001
-    7400000: Default Take
-    9500000: //RootNode
-  externalObjects: {}
+    100000: //RootNode
+    400000: //RootNode
+    2100000: lambert1
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: pCube1
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {fileID: 2100000, guid: dfbb9e79baaad4f3c82ba8eea08521cf, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -62,7 +47,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 1
+    addColliders: 0
     useSRGBMaterialColor: 1
     importVisibility: 1
     importBlendShapes: 1
@@ -82,7 +67,7 @@ ModelImporter:
     secondaryUVPackMargin: 4
     useFileScale: 1
     previousCalculatedGlobalScale: 1
-    hasPreviousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -109,7 +94,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
