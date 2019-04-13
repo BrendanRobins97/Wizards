@@ -28,7 +28,7 @@ public class SpeedBoost : MonoBehaviour
     void Update()
     {
         player = gm.GetComponent<GameManager>().CurrentPlayer;
-        Debug.Log(player.movementSpeed);
+        //Debug.Log(player.movementSpeed);
         if (pickedUp)
         {
             if (playerWithItem != player)

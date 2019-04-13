@@ -6,6 +6,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
@@ -50,10 +51,11 @@ public class GameManager : MonoBehaviour {
     [SerializeField]
     private float turnTime = 20f;
     [SerializeField]
-    private int numPlayers = 2;
+    private int numPlayers;
     [SerializeField]
     private List<Transform> spawnLocations;
 
+    private float resetGameTime = 7f;
     [Space]
     public bool isController = false;
     [SerializeField]
@@ -167,7 +169,7 @@ public class GameManager : MonoBehaviour {
             if (player.health <= 0) {
                 player.Disable();
                 player.animator.SetTrigger("Dead");
-                Destroy(player.gameObject, 5f);
+                Destroy(player.gameObject);
                 playerUI.playerImage.color = Color.gray;
                 numPlayersLeft--;
                 if (i == playerTurn) { currentTurnTimeLeft = 0; }
@@ -178,9 +180,15 @@ public class GameManager : MonoBehaviour {
             StartTurn();
         }
 
-        if (numPlayersLeft <= 1) {
+        if (numPlayersLeft <= 1) { 
             gameOverText.text = "Player " + (playerTurn + 1) + " Wins!";
             gameOverText.gameObject.SetActive(true);
+            resetGameTime -= Time.deltaTime;
+            if (resetGameTime <= 0)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+            }
+
         }
     }
 

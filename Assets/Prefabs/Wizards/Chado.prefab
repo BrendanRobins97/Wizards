@@ -1711,7 +1711,7 @@ MonoBehaviour:
   tempChargeAmount: 0
   turnOver: 0
   sensitivity: 1
-  movementSpeed: 8
+  movementSpeed: 2
   enabled: 1
   playerCamera: {fileID: 3643624089985440017}
   maxHealth: 100
@@ -1755,8 +1755,8 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  m_Constraints: 112
+  m_CollisionDetection: 1
 --- !u!1 &8039700003896960237
 GameObject:
   m_ObjectHideFlags: 0
