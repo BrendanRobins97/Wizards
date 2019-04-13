@@ -22,7 +22,7 @@ public class DoubleAttack : MonoBehaviour
     void Update()
     {
         player = gm.GetComponent<GameManager>().CurrentPlayer;
-        Debug.Log(player);
+        //Debug.Log(player);
         if (pickedUp)
         {
             if (doubleAttack)

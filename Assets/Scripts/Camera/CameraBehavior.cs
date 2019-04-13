@@ -64,7 +64,7 @@ public class CameraBehavior : MonoBehaviour
         }*/
         if (player.casting)
         {
-            Debug.Log("Casting");
+            //Debug.Log("Casting");
             spellCamera.enabled = true;
             //spellCamera.transform.position = new Vector3(xpos+5,5,zpos+5);
             //spellCamera.transform.LookAt(player.transform);
@@ -74,7 +74,7 @@ public class CameraBehavior : MonoBehaviour
             spellCamera.enabled = false;
             Destroy(spell, GameManager.instance.timeAfterSpellCast);
             positionSet = false;
-            Debug.Log("Spell Cam = disabled.");
+            //Debug.Log("Spell Cam = disabled.");
         }
         if (spell != null && GameManager.instance.currentTurnTimeLeft <= GameManager.instance.timeAfterSpellCast)
         {
@@ -92,7 +92,7 @@ public class CameraBehavior : MonoBehaviour
             Destroy(iceSpell, GameManager.instance.timeAfterSpellCast+1);
             tempY = 7;
             positionSet = false;
-            Debug.Log("Fireball Cam = disabled.");
+            ///Debug.Log("Fireball Cam = disabled.");
         }
         if (fireSpell != null && GameManager.instance.currentTurnTimeLeft <= GameManager.instance.timeAfterSpellCast)
         {
@@ -117,7 +117,7 @@ public class CameraBehavior : MonoBehaviour
     {
         tempY -= (Time.deltaTime * 1.5f);
         spellCamera.enabled = true;
-        Debug.Log("Fireball Cam = enabled.");
+        //Debug.Log("Fireball Cam = enabled.");
         float x, z, finalX, finalZ;
         x = (xpos + (fireSpell.transform.position.x+2))/2.0f;
         z = (zpos + (fireSpell.transform.position.z-2)) / 2.0f;
@@ -135,7 +135,7 @@ public class CameraBehavior : MonoBehaviour
 
     public void ChangeToSpellCamera()
     {
-        Debug.Log("Spell Cam = enabled.");
+       // Debug.Log("Spell Cam = enabled.");
         spellCamera.enabled = true;
         spellCamera.transform.SetPositionAndRotation(
             new Vector3(spell.transform.position.x + 1, spell.transform.position.y + 2,
@@ -146,7 +146,7 @@ public class CameraBehavior : MonoBehaviour
 
     public void ChangeToDeathRainCamera()
     {
-        Debug.Log("RainSpellCam");
+        //Debug.Log("RainSpellCam");
         spellCamera.enabled = true;
         float x, z, finalX, finalZ;
         x = (xpos + (deathRainSpell.transform.position.x + 2)) / 2.0f;

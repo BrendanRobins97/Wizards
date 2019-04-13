@@ -10,7 +10,7 @@ public class PickupSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        spawner = FindObjectOfType<AssetSpawner>();
+        //spawner = FindObjectOfType<AssetSpawner>();
         SpawnPickups();
     }
 
@@ -24,7 +24,7 @@ public class PickupSpawner : MonoBehaviour
     {
         for (int i = 0; i < pickupList.Length; i++)
         {
-            Vector3 position = new Vector3(Random.Range(spawner.min+20, spawner.max-20), 34, Random.Range(spawner.min, spawner.max));
+            Vector3 position = new Vector3(Random.Range(20, 100), 34, Random.Range(20, 100));
             pickupList[i].transform.position = position;
             pickupList[i].transform.rotation = pickupList[i].transform.rotation;
         }

@@ -15,7 +15,7 @@ public class SwapPositions : MonoBehaviour
     private Canvas canvas;
     private bool canSwap = false;
     private int index = 0;
-
+    private float disableTextTime = -2f;
     private bool pickedUp = false;
     // Start is called before the first frame update
     void Start()
@@ -30,18 +30,19 @@ public class SwapPositions : MonoBehaviour
         if (!playersFound)
         {
             players = FindObjectsOfType<Player>();
-            for (int i = 0; i < players.Length; i++)
-            {
-                print(players[i]);
-            }
-
+            
             playersFound = true;
+        }
+
+        disableTextTime -= Time.deltaTime;
+        if (disableTextTime < 0 && disableTextTime > -1)
+        {
+            swapPositionsText.gameObject.SetActive(false);
         }
         if (pickedUp) { 
         Debug.Log(player);
         if (gm.numPlayersLeft != players.Length)
         {
-            Debug.Log("PlayerDied");
             players = FindObjectsOfType<Player>();
             //playersFound = false;
         }
@@ -72,10 +73,11 @@ public class SwapPositions : MonoBehaviour
             Vector3 tempPos = player.transform.position;
             player.transform.position = players[index].transform.position;
             players[index].transform.position = tempPos;
-            Debug.Log(player.name + " swapped with " + players[index].name);
-            swapPositionsText.gameObject.SetActive(false);
+                //Debug.Log(player.name + " swapped with " + players[index].name);
+            swapPositionsText.text = "You Swapped With " + players[index].name;
+            disableTextTime = 3f;
             canSwap = false;
-            Destroy(this.gameObject, .2f);
+            Destroy(this.gameObject, 4f);
         }
 
         if (playerWithItem != player)

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.12807566, g: 0.23806068, b: 0.649579, a: 1}
+  m_IndirectSpecularColor: {r: 0.12646218, g: 0.23645307, b: 0.6474477, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4104,17 +4104,17 @@ MonoBehaviour:
   width: 128
   length: 128
   octaves: 5
-  smoothness: 50
-  scale: 25
-  persistence: 0.5
-  lacunarity: 0.5
-  groundThickness: 4
+  smoothness: 100
+  scale: 100
+  persistence: 0.41
+  lacunarity: 0.49
+  groundThickness: 10
   heightMap:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.0023498535
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -4122,8 +4122,26 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
+      time: 0.3152333
+      value: 0.10821557
+      inSlope: 1.4254915
+      outSlope: 1.4254915
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.5860144
+      value: 0.6369417
+      inSlope: 0.957921
+      outSlope: 0.957921
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
       time: 1
-      value: 1
+      value: 0.50022125
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -4142,9 +4160,9 @@ MonoBehaviour:
     type: 3}
   boulder5: {fileID: 8767875744407636962, guid: 10474c5de7bf4e440b31c0a15a91fe32,
     type: 3}
-  tree1: {fileID: 388544831178047143, guid: 1c7e1a8207de88b48a035653d5e0d620, type: 3}
-  tree2: {fileID: 6174047063014812832, guid: a36c0de1c97b20e4b9bbb7a3045fb724, type: 3}
-  tree3: {fileID: 506146042828796161, guid: 145a47aa9d2ba254d803eae7f1298d0b, type: 3}
+  tree1: {fileID: 7370733450921201432, guid: 1c7e1a8207de88b48a035653d5e0d620, type: 3}
+  tree2: {fileID: 3691860235321529662, guid: a36c0de1c97b20e4b9bbb7a3045fb724, type: 3}
+  tree3: {fileID: 5391149629394585644, guid: d1ae4a0cb7e9c4395b586312554f58d1, type: 3}
   chunkPrefab: {fileID: 1575979523389863926, guid: 9bf9346c025b8f14080ee2787e2ce483,
     type: 3}
 --- !u!114 &1414293011

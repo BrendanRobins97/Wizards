@@ -30,7 +30,7 @@ public class Player : MonoBehaviour {
 
     [SerializeField] private float sensitivity = 1f;
 
-    [HideInInspector] public float movementSpeed = 8f;
+    public float movementSpeed = 8f;
     [HideInInspector] public bool enabled = true;
     [SerializeField] public Camera playerCamera;
     [SerializeField] public int maxHealth = 100;
@@ -126,7 +126,7 @@ public class Player : MonoBehaviour {
 
             rigidbody.MovePosition(rigidbody.position + velocity);
             animator.SetFloat("Strafe Amount", xVelocity*2.0f);
-            animator.SetFloat("Forward Amount", Mathf.Abs(zVelocity / 2.0f));
+            animator.SetFloat("Forward Amount", zVelocity / 2.0f);
             if (Input.GetButtonDown("Jump") && Physics.Raycast(feetPosition.position, Vector3.down, 0.5f)) {
                 rigidbody.AddForce(0, jumpForce, 0);
             }
