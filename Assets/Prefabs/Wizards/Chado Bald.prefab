@@ -1426,8 +1426,8 @@ GameObject:
   - component: {fileID: 754101797}
   - component: {fileID: 754101796}
   - component: {fileID: 754101795}
-  - component: {fileID: 754101794}
   - component: {fileID: 754101793}
+  - component: {fileID: 754101794}
   m_Layer: 0
   m_Name: Chado Bald
   m_TagString: Player
@@ -1512,7 +1512,7 @@ MonoBehaviour:
   tempChargeAmount: 0
   turnOver: 0
   sensitivity: 1
-  movementSpeed: 8
+  movementSpeed: 2
   enabled: 1
   playerCamera: {fileID: 1500247812}
   maxHealth: 100
@@ -1532,20 +1532,6 @@ MonoBehaviour:
   casting: 0
   special: 0
   soundPlay: {fileID: 0}
---- !u!136 &754101794
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 754101792}
-  m_Material: {fileID: 13400000, guid: c87475ec2f708b2449209dc4ab946e25, type: 2}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2.11
-  m_Direction: 1
-  m_Center: {x: 0, y: 1.05, z: 0}
 --- !u!54 &754101793
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1562,6 +1548,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 1
+--- !u!136 &754101794
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 754101792}
+  m_Material: {fileID: 13400000, guid: c87475ec2f708b2449209dc4ab946e25, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2.11
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.05, z: 0}
 --- !u!1 &758053055
 GameObject:
   m_ObjectHideFlags: 0
@@ -2830,9 +2830,9 @@ GameObject:
   - component: {fileID: 1500247814}
   - component: {fileID: 1500247812}
   - component: {fileID: 1500247813}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Camera
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

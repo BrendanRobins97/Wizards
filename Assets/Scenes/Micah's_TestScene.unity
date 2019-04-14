@@ -4053,7 +4053,7 @@ MonoBehaviour:
   - {fileID: 2084653656752078091, guid: e9fae5cebcc610e44b82bb21f3535509, type: 3}
   - {fileID: 995849588744100572, guid: 07d62888f2961214199732f8b5319b9e, type: 3}
   - {fileID: 6162136354065595572, guid: d547a959a498e9d49a2030d4e5672809, type: 3}
-  - {fileID: 5907214007592426859, guid: 4c236a481cef2234e80a4d76c02149f3, type: 3}
+  - {fileID: 754101792, guid: a930d39fc6e28423596f49b7d06b603e, type: 3}
   spellImages:
   - {fileID: 2084032489}
   - {fileID: 431379283}
@@ -4066,7 +4066,7 @@ MonoBehaviour:
   timeAfterSpellCast: 3
   gameStartTime: 3
   turnTime: 20
-  numPlayers: 4
+  numPlayers: 2
   spawnLocations:
   - {fileID: 699662579}
   - {fileID: 927715569}

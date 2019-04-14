@@ -208,7 +208,7 @@ public class GameManager : MonoBehaviour {
 
     public void MapShrink() {
         for (int i = 0; i < 360; i += 22) {
-            int randomY = Random.Range(23, 70);
+            int randomY = Random.Range(30, 95);
             float ang = i; //Random.value * 360;
             Vector3 pos;
             pos.x = circleCenter.x + circleRadius * Mathf.Sin(ang * Mathf.Deg2Rad);

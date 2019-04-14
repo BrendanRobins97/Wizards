@@ -175,8 +175,9 @@ public class Player : MonoBehaviour {
 
             if (currentSpellIndex == 1)
             {
+                animator.ResetTrigger("Charge1");
                 animator.SetTrigger("Cast1");
-                playerCamera.fieldOfView = originalFOV;
+                //playerCamera.fieldOfView = originalFOV;
 
             }
 
@@ -195,12 +196,17 @@ public class Player : MonoBehaviour {
                 animator.ResetTrigger("Idle");
                 animator.SetTrigger("Charge");
             }
-            
+
+            if (currentSpellIndex == 1)
+            {
+                animator.ResetTrigger("Idle");
+                animator.SetTrigger("Charge1");
+            }
             chargeAmount += Time.deltaTime * chargeRate;
             if (chargeAmount > .5f && chargeAmount < chargeMax)
             {
                 tempChargeAmount = chargeAmount;
-                playerCamera.fieldOfView -= 30f * Time.deltaTime;
+                playerCamera.fieldOfView -= 25f * Time.deltaTime;
             }
         }
         else
