@@ -86,6 +86,12 @@ public class GameManager : MonoBehaviour {
             numPlayers = mm.NumPlayers();
             Destroy(mm.gameObject);
         }
+
+        PlayerSelect ps = FindObjectOfType<PlayerSelect>();
+        if (ps)
+        {
+
+        }
         mapShrinkNumber = 1;
         circleCenter = new Vector3(TerrainManager.instance.width / 2.0f, 0, TerrainManager.instance.length / 2.0f);
         circleRadius = TerrainManager.instance.width / 2.0f - 5.0f;
@@ -94,7 +100,7 @@ public class GameManager : MonoBehaviour {
             PlayerInfo newPlayerInfo;
             Ray ray = new Ray(spawnLocations[i].position, Vector3.down);
             Physics.Raycast(ray, out RaycastHit rayHit);
-            Player player = Instantiate(playerPrefabs[i], rayHit.point, spawnLocations[i].rotation,
+            Player player = Instantiate(playerPrefabs[ps.playersPicked[i]], rayHit.point, spawnLocations[i].rotation,
                     transform)
                 .GetComponent<Player>();
             PlayerUI playerUI = Instantiate(playerUIPrefab, playerInfoContainer).GetComponent<PlayerUI>();
@@ -108,6 +114,7 @@ public class GameManager : MonoBehaviour {
         roundNumber = 0;
         playerTurn = 0;
         numPlayersLeft = numPlayers;
+        Destroy(ps.gameObject);
     }
 
     private void Update() {
@@ -186,7 +193,7 @@ public class GameManager : MonoBehaviour {
             resetGameTime -= Time.deltaTime;
             if (resetGameTime <= 0)
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2);
             }
 
         }
