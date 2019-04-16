@@ -26,11 +26,18 @@ public class GiantFireballRain : MonoBehaviour
             col.GetComponent<Player>().Damage(100);
         }
 
-        if (col.tag == "Chunk" || col.tag == "Tree")
+        if (col.tag == "Chunk")
         {
             //col.gameObject.SetActive(false);
             Instantiate(explosiveShot, transform.position, transform.rotation);
             Destroy(this.gameObject,.2f);
+        }
+
+        if (col.tag == "Tree")
+        {
+            Instantiate(explosiveShot, transform.position, transform.rotation);
+            Destroy(this.gameObject, .2f);
+            Destroy(col.gameObject);
         }
         
     }

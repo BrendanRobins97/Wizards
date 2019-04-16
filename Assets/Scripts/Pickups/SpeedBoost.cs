@@ -33,16 +33,11 @@ public class SpeedBoost : MonoBehaviour
         {
             if (playerWithItem != player)
             {
-                //text.gameObject.SetActive(false);
-                //canvas.GetComponent<RawImage>().gameObject.SetActive(false);
                 image.gameObject.SetActive(false);
             }
 
             if (playerWithItem == player)
             {
-                //canvas.GetComponent<RawImage>().gameObject.SetActive(true);
-                //text.gameObject.SetActive(true);
-                //text.text = "Speed Boost";
                 image.gameObject.SetActive(true);
             }
 
@@ -55,8 +50,7 @@ public class SpeedBoost : MonoBehaviour
                 {
                     player.GetComponent<Animator>().speed = 1.0f;
                     player.movementSpeed = 2;
-                    Debug.Log("Speed normal");
-                    //text.gameObject.SetActive(false);
+                    //Debug.Log("Speed normal");
                     image.gameObject.SetActive(false);
                     Destroy(this.gameObject, 0.05f);
                 }
@@ -72,10 +66,8 @@ public class SpeedBoost : MonoBehaviour
             pickedUp = true;
             this.GetComponent<MeshRenderer>().enabled = false;
             this.GetComponent<BoxCollider>().enabled = false;
-            //text.gameObject.SetActive(true);
-            //text.text = "Speed Boost";
             image.gameObject.SetActive(true);
-            Debug.Log("SpeedBoost");
+            //Debug.Log("SpeedBoost");
             player.GetComponent<Player>().movementSpeed = 4;
             tempStamina = player.GetComponent<Player>().stamina;
         }

@@ -86,6 +86,12 @@ public class GameManager : MonoBehaviour {
             numPlayers = mm.NumPlayers();
             Destroy(mm.gameObject);
         }
+
+        PlayerSelect ps = FindObjectOfType<PlayerSelect>();
+        if (ps)
+        {
+            numPlayers = ps.numPlayers;
+        }
         mapShrinkNumber = 1;
         circleCenter = new Vector3(TerrainManager.instance.width / 2.0f, 0, TerrainManager.instance.length / 2.0f);
         circleRadius = TerrainManager.instance.width / 2.0f - 5.0f;
@@ -94,9 +100,22 @@ public class GameManager : MonoBehaviour {
             PlayerInfo newPlayerInfo;
             Ray ray = new Ray(spawnLocations[i].position, Vector3.down);
             Physics.Raycast(ray, out RaycastHit rayHit);
-            Player player = Instantiate(playerPrefabs[i], rayHit.point, spawnLocations[i].rotation,
-                    transform)
-                .GetComponent<Player>();
+            Player player;
+            if (ps)
+            {
+                player = Instantiate(playerPrefabs[ps.playersPicked[i]], rayHit.point,
+                        spawnLocations[i].rotation,
+                        transform)
+                    .GetComponent<Player>();
+            }
+            else
+            {
+                player = Instantiate(playerPrefabs[i], rayHit.point,
+                        spawnLocations[i].rotation,
+                        transform)
+                    .GetComponent<Player>();
+            }
+
             PlayerUI playerUI = Instantiate(playerUIPrefab, playerInfoContainer).GetComponent<PlayerUI>();
             playerUI.playerImage.color = player.color;
             newPlayerInfo.player = player;
@@ -108,6 +127,7 @@ public class GameManager : MonoBehaviour {
         roundNumber = 0;
         playerTurn = 0;
         numPlayersLeft = numPlayers;
+        Destroy(ps.gameObject);
     }
 
     private void Update() {
@@ -186,7 +206,7 @@ public class GameManager : MonoBehaviour {
             resetGameTime -= Time.deltaTime;
             if (resetGameTime <= 0)
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2);
             }
 
         }
@@ -208,7 +228,7 @@ public class GameManager : MonoBehaviour {
 
     public void MapShrink() {
         for (int i = 0; i < 360; i += 22) {
-            int randomY = Random.Range(23, 70);
+            int randomY = Random.Range(30, 95);
             float ang = i; //Random.value * 360;
             Vector3 pos;
             pos.x = circleCenter.x + circleRadius * Mathf.Sin(ang * Mathf.Deg2Rad);

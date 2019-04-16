@@ -1512,7 +1512,7 @@ MonoBehaviour:
   tempChargeAmount: 0
   turnOver: 0
   sensitivity: 1
-  movementSpeed: 8
+  movementSpeed: 2
   enabled: 1
   playerCamera: {fileID: 1500247812}
   maxHealth: 100

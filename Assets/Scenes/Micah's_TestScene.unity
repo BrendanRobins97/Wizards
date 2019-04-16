@@ -1589,6 +1589,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: other island (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 4a35f80f031474ed38104d33015ffd8f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4a35f80f031474ed38104d33015ffd8f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 680
@@ -2499,6 +2503,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: other island (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 4a35f80f031474ed38104d33015ffd8f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4a35f80f031474ed38104d33015ffd8f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -625
@@ -2940,6 +2948,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: other island (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 4a35f80f031474ed38104d33015ffd8f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4a35f80f031474ed38104d33015ffd8f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 829
@@ -3085,6 +3097,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 4a35f80f031474ed38104d33015ffd8f, type: 3}
       propertyPath: m_Name
       value: other island (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 4a35f80f031474ed38104d33015ffd8f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4a35f80f031474ed38104d33015ffd8f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3795,6 +3811,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: other island (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 4a35f80f031474ed38104d33015ffd8f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4a35f80f031474ed38104d33015ffd8f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -140.5
@@ -4052,8 +4072,8 @@ MonoBehaviour:
   playerPrefabs:
   - {fileID: 2084653656752078091, guid: e9fae5cebcc610e44b82bb21f3535509, type: 3}
   - {fileID: 995849588744100572, guid: 07d62888f2961214199732f8b5319b9e, type: 3}
-  - {fileID: 6162136354065595572, guid: d547a959a498e9d49a2030d4e5672809, type: 3}
   - {fileID: 5907214007592426859, guid: 4c236a481cef2234e80a4d76c02149f3, type: 3}
+  - {fileID: 6162136354065595572, guid: d547a959a498e9d49a2030d4e5672809, type: 3}
   spellImages:
   - {fileID: 2084032489}
   - {fileID: 431379283}
@@ -4066,7 +4086,7 @@ MonoBehaviour:
   timeAfterSpellCast: 3
   gameStartTime: 3
   turnTime: 20
-  numPlayers: 4
+  numPlayers: 3
   spawnLocations:
   - {fileID: 699662579}
   - {fileID: 927715569}
@@ -4430,6 +4450,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 4a35f80f031474ed38104d33015ffd8f, type: 3}
       propertyPath: m_Name
       value: other island (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 4a35f80f031474ed38104d33015ffd8f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4a35f80f031474ed38104d33015ffd8f, type: 3}
       propertyPath: m_LocalPosition.x
