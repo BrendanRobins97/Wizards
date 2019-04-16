@@ -1715,7 +1715,11 @@ MonoBehaviour:
   enabled: 1
   playerCamera: {fileID: 3643624089985440017}
   maxHealth: 100
-  spells: []
+  spells:
+  - {fileID: 8940775995591046101, guid: 8d19e0c9eca232d4593c90673c2014ca, type: 3}
+  - {fileID: 1154065597347731263, guid: cc785b8aead16a849b68bbcd9c978cb5, type: 3}
+  - {fileID: 1991271422628986824, guid: 508f936bd647a33458ffc34e83f73d0b, type: 3}
+  - {fileID: 5445266672334248905, guid: 24bd975c5f966ab44a2dda673a870377, type: 3}
   feetPosition: {fileID: 3643624091601237929}
   animator: {fileID: 8039700003887601463}
   PS_ElectricOrbPrefab: {fileID: 0}

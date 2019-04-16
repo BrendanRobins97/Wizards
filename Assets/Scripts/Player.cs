@@ -38,11 +38,7 @@ public class Player : MonoBehaviour {
     [SerializeField] private Transform feetPosition;
 
     [SerializeField] public Animator animator;
-    [SerializeField] private GameObject PS_ElectricOrbPrefab;
     [HideInInspector] public Rigidbody rigidbody;
-
-    //private Rigidbody   rigidbody;
-
 
     private float currentCameraRotationX;
     private readonly float cameraRotationLimit = 80f;
