@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,9 +10,11 @@ public class PlayerSelect : MonoBehaviour
     public Camera camera;
     public int currentIndex = 0;
     public List<Player> players;
-
+    public TextMeshProUGUI text;
     public int numPlayers = 3;
     private int playerPicking = 0;
+    private float gameStartTimer = -4;
+    private bool show = true;
     public List<int> playersPicked = new List<int>();
     // Start is called before the first frame update
     void Start()
@@ -45,11 +48,34 @@ public class PlayerSelect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        int playerDisplay = playerPicking + 1;
+        gameStartTimer -= Time.deltaTime;
+        if (gameStartTimer > 3 && gameStartTimer < 6)
+        {
+            text.text = "Player " + (playerDisplay-1) + " You Chose " + players[currentIndex].name;
+        }
+        if(gameStartTimer <= 3 && gameStartTimer > 0)
+        {
+            text.text = "Lets Play!";
+        }
+        if (gameStartTimer <= 0 && gameStartTimer >= -2)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
         Vector3 camPos = new Vector3(players[currentIndex].transform.position.x, players[currentIndex].transform.position.y+2, players[currentIndex].transform.position.z + 5);
         camera.transform.position = camPos;
         camera.transform.LookAt(players[currentIndex].transform.position);
-        if (Input.GetButtonDown("Jump"))
+        if (show)
         {
+            text.text = "Player " + playerDisplay + ": " +
+                        " Press Y/Space To Cycle " +
+                        " Press A/Left Click To Select";
+        }
+
+        if (Input.GetButtonDown("Jump")&& playerPicking < numPlayers)
+        {
+            show = true;
+            players[currentIndex].AnimTriggerReset();
             currentIndex++;
             if (currentIndex >= players.Count)
             {
@@ -59,13 +85,15 @@ public class PlayerSelect : MonoBehaviour
 
         if (Input.GetButtonUp("Fire1"))
         {
-            Debug.Log(playerPicking + " " + currentIndex + " " + numPlayers);
-           playersPicked.Add(currentIndex);
+            text.text = "Player " + playerDisplay + " You Chose " + players[currentIndex].name;
+            show = false;
+            playersPicked.Add(currentIndex);
             playerPicking++;
-            if (playerPicking >= numPlayers)
+            players[currentIndex].animator.SetTrigger("Hit");
+           if (playerPicking >= numPlayers)
             {
-                Debug.Log("All Players have chosen");
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                
+                gameStartTimer = 6f;
             }
         }
     }

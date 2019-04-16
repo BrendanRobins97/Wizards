@@ -90,7 +90,7 @@ public class GameManager : MonoBehaviour {
         PlayerSelect ps = FindObjectOfType<PlayerSelect>();
         if (ps)
         {
-
+            numPlayers = ps.numPlayers;
         }
         mapShrinkNumber = 1;
         circleCenter = new Vector3(TerrainManager.instance.width / 2.0f, 0, TerrainManager.instance.length / 2.0f);
@@ -100,9 +100,22 @@ public class GameManager : MonoBehaviour {
             PlayerInfo newPlayerInfo;
             Ray ray = new Ray(spawnLocations[i].position, Vector3.down);
             Physics.Raycast(ray, out RaycastHit rayHit);
-            Player player = Instantiate(playerPrefabs[ps.playersPicked[i]], rayHit.point, spawnLocations[i].rotation,
-                    transform)
-                .GetComponent<Player>();
+            Player player;
+            if (ps)
+            {
+                player = Instantiate(playerPrefabs[ps.playersPicked[i]], rayHit.point,
+                        spawnLocations[i].rotation,
+                        transform)
+                    .GetComponent<Player>();
+            }
+            else
+            {
+                player = Instantiate(playerPrefabs[i], rayHit.point,
+                        spawnLocations[i].rotation,
+                        transform)
+                    .GetComponent<Player>();
+            }
+
             PlayerUI playerUI = Instantiate(playerUIPrefab, playerInfoContainer).GetComponent<PlayerUI>();
             playerUI.playerImage.color = player.color;
             newPlayerInfo.player = player;
