@@ -109,6 +109,15 @@ public class Player : MonoBehaviour {
         prevPosition = transform.position;
         animator.SetFloat("Forward Amount", 0.0f);
         animator.SetFloat("Strafe Amount", 0.0f);
+        if (Input.GetAxis("Horizontal") > 0 || Input.GetAxis("Horizontal") < 0)
+        {
+            //animator.applyRootMotion = true;
+        }
+        else
+        {
+            //animator.applyRootMotion = false;
+
+        }
         if (stamina > 0) {
 
             // Movement Calculations
@@ -134,13 +143,13 @@ public class Player : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.Alpha3) || Input.GetAxis("spell1") == 1) { currentSpellIndex = 2; }
 
-        if ((Input.GetKeyDown(KeyCode.Alpha4) && !usedSpecial) || (Input.GetAxis("spell2") == -1 && numUlt > 0))
+        if ((Input.GetKeyDown(KeyCode.Alpha4) && numUlt > 0) || (Input.GetAxis("spell2") == -1 && numUlt > 0))
         {
             currentSpellIndex = 3;
             drsc.Activate();
             special = true;
         }
-        if (currentSpellIndex == 3 && (usedSpecial || numUlt < 1))
+        if (currentSpellIndex == 3 && (numUlt < 1))
         {
             currentSpellIndex = 0;
         }
@@ -151,7 +160,7 @@ public class Player : MonoBehaviour {
         if (Input.GetButtonUp("Fire1")) {
             casting = true;
             
-            if (currentSpellIndex == 3 && special)
+            if (currentSpellIndex == 3 && numUlt > 0)
             {
                 special = false;
                 animator.SetTrigger("Cast3");
