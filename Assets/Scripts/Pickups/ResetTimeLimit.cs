@@ -52,6 +52,7 @@ public class ResetTimeLimit : MonoBehaviour
                 image.gameObject.SetActive(true);
                 pickedUp = true;
                 displayTime = 2f;
+                player.numUlt++;
                 this.GetComponent<MeshRenderer>().enabled = false;
                 this.GetComponent<BoxCollider>().enabled = false;
             }

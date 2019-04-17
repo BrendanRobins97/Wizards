@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4005109079690639795}
   m_Layer: 0
   m_Name: ChadoTop
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -65,7 +65,6 @@ MonoBehaviour:
   - {fileID: 0}
   feetPosition: {fileID: 4904362423588859580}
   animator: {fileID: 1805323201485901346}
-  PS_ElectricOrbPrefab: {fileID: 0}
   rigidbody: {fileID: 0}
   originalFOV: 0
   numberOfAttacks: 1
@@ -111,10 +110,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7109836177978741880}
     m_Modifications:
-    - target: {fileID: 8039700003896960235, guid: 60b3f68e138ba4cac9398a13defd7b06,
+    - target: {fileID: 8039700003887601463, guid: 60b3f68e138ba4cac9398a13defd7b06,
         type: 3}
-      propertyPath: m_Name
-      value: Chado
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8039700003896932555, guid: 60b3f68e138ba4cac9398a13defd7b06,
         type: 3}
@@ -170,6 +169,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8039700003896960235, guid: 60b3f68e138ba4cac9398a13defd7b06,
+        type: 3}
+      propertyPath: m_Name
+      value: Chado
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8039700003896960224, guid: 60b3f68e138ba4cac9398a13defd7b06, type: 3}

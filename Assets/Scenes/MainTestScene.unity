@@ -2956,42 +2956,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cef9b2ba2b2328d42a8caa94c311d532, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerTurn: 0
+  numPlayersLeft: 0
+  roundNumber: 0
+  mapShrinkNumber: 0
   gameOverText: {fileID: 672014596}
   chargeBar: {fileID: 519377503}
   turnText: {fileID: 1766038083}
   playerInfoContainer: {fileID: 1450414816}
   playerUIPrefab: {fileID: 7197189187055512233, guid: c485d34f33b42334f95c2fa1607e4ba2,
     type: 3}
-  mainCamera: {fileID: 669687616}
-  playerContainer: {fileID: 2141200333}
-  giantFireball: {fileID: 3065805226639967745, guid: 77fe15f06d6feba4d8a21b5dfcf4ef8d,
-    type: 3}
-  numPlayers: 2
-  spawnLocations:
-  - {fileID: 699662579}
-  - {fileID: 927715569}
-  - {fileID: 149003121}
-  - {fileID: 202394725}
-  turnTime: 20
-  timeAfterSpellCast: 3
-  gameStartTime: 3
-  isController: 0
   playerPrefabs:
-  - {fileID: 2084653656752078091, guid: e9fae5cebcc610e44b82bb21f3535509, type: 3}
-  - {fileID: 995849588744100572, guid: 07d62888f2961214199732f8b5319b9e, type: 3}
-  - {fileID: 6162136354065595572, guid: d547a959a498e9d49a2030d4e5672809, type: 3}
-  - {fileID: 5907214007592426859, guid: 4c236a481cef2234e80a4d76c02149f3, type: 3}
+  - {fileID: 1128491446090099232, guid: 0056518ba368e6747b0e03ea965421ee, type: 3}
+  - {fileID: 1128491446090099232, guid: 0056518ba368e6747b0e03ea965421ee, type: 3}
+  - {fileID: 1128491446090099232, guid: 0056518ba368e6747b0e03ea965421ee, type: 3}
+  - {fileID: 1128491446090099232, guid: 0056518ba368e6747b0e03ea965421ee, type: 3}
   spellImages:
   - {fileID: 2084032489}
   - {fileID: 431379283}
   - {fileID: 2040768400}
   - {fileID: 1838843927}
   - {fileID: 863457270}
-  playerTurn: 0
+  giantFireball: {fileID: 3065805226639967745, guid: 77fe15f06d6feba4d8a21b5dfcf4ef8d,
+    type: 3}
   currentTurnTimeLeft: 0
-  numPlayersLeft: 0
-  roundNumber: 0
-  mapShrinkNumber: 0
+  timeAfterSpellCast: 3
+  gameStartTime: 3
+  turnTime: 20
+  numPlayers: 2
+  spawnLocations:
+  - {fileID: 699662579}
+  - {fileID: 927715569}
+  - {fileID: 149003121}
+  - {fileID: 202394725}
+  isController: 0
+  mainCamera: {fileID: 669687616}
+  playerContainer: {fileID: 2141200333}
 --- !u!4 &1414293008
 Transform:
   m_ObjectHideFlags: 0
@@ -3077,10 +3077,10 @@ MonoBehaviour:
     type: 3}
   boulder5: {fileID: 8767875744407636962, guid: 10474c5de7bf4e440b31c0a15a91fe32,
     type: 3}
-  tree1: {fileID: 388544831178047143, guid: 1c7e1a8207de88b48a035653d5e0d620, type: 3}
-  tree2: {fileID: 6174047063014812832, guid: a36c0de1c97b20e4b9bbb7a3045fb724, type: 3}
-  tree3: {fileID: 506146042828796161, guid: 145a47aa9d2ba254d803eae7f1298d0b, type: 3}
-  chunkPrefab: {fileID: 1575979523389863926, guid: 87476e45e1965ed4b8ed67ffecbb3430,
+  tree1: {fileID: 7370733450921201432, guid: 1c7e1a8207de88b48a035653d5e0d620, type: 3}
+  tree2: {fileID: 3691860235321529662, guid: a36c0de1c97b20e4b9bbb7a3045fb724, type: 3}
+  tree3: {fileID: 5391149629394585644, guid: d1ae4a0cb7e9c4395b586312554f58d1, type: 3}
+  chunkPrefab: {fileID: 3128124720035799015, guid: 87476e45e1965ed4b8ed67ffecbb3430,
     type: 3}
 --- !u!114 &1414293011
 MonoBehaviour:

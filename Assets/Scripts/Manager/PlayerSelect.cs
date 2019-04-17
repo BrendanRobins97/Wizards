@@ -83,7 +83,7 @@ public class PlayerSelect : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonUp("Fire1"))
+        if (Input.GetButtonUp("Fire1")&&playerPicking < numPlayers)
         {
             text.text = "Player " + playerDisplay + " You Chose " + players[currentIndex].name;
             show = false;

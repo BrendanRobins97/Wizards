@@ -127,7 +127,10 @@ public class GameManager : MonoBehaviour {
         roundNumber = 0;
         playerTurn = 0;
         numPlayersLeft = numPlayers;
-        Destroy(ps.gameObject);
+        if (ps)
+        {
+            Destroy(ps.gameObject);
+        }
     }
 
     private void Update() {
