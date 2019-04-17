@@ -1684,7 +1684,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 710d1c1e6b1154460a341f58228b03f8, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -1715,7 +1715,11 @@ MonoBehaviour:
   enabled: 1
   playerCamera: {fileID: 3643624089985440017}
   maxHealth: 100
-  spells: []
+  spells:
+  - {fileID: 8940775995591046101, guid: 8d19e0c9eca232d4593c90673c2014ca, type: 3}
+  - {fileID: 8627637389754969580, guid: 478ac01ad88806c4eb7de68098f1efc4, type: 3}
+  - {fileID: 1991271422628986824, guid: 508f936bd647a33458ffc34e83f73d0b, type: 3}
+  - {fileID: 0}
   feetPosition: {fileID: 3643624091601237929}
   animator: {fileID: 8039700003887601463}
   PS_ElectricOrbPrefab: {fileID: 0}

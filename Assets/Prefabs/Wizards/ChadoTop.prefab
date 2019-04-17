@@ -59,7 +59,10 @@ MonoBehaviour:
   enabled: 1
   playerCamera: {fileID: 4904362423048765444}
   maxHealth: 100
-  spells: []
+  spells:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   feetPosition: {fileID: 4904362423588859580}
   animator: {fileID: 1805323201485901346}
   PS_ElectricOrbPrefab: {fileID: 0}
