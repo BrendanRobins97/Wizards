@@ -1642,7 +1642,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8039700003896960235}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.0808632, y: -0.59, z: -0.03565735}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8039700003896932563}
@@ -1722,7 +1722,6 @@ MonoBehaviour:
   - {fileID: 5445266672334248905, guid: 24bd975c5f966ab44a2dda673a870377, type: 3}
   feetPosition: {fileID: 3643624091601237929}
   animator: {fileID: 8039700003887601463}
-  PS_ElectricOrbPrefab: {fileID: 0}
   rigidbody: {fileID: 0}
   originalFOV: 0
   numberOfAttacks: 1

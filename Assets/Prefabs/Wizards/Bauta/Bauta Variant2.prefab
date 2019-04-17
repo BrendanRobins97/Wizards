@@ -81,7 +81,7 @@ PrefabInstance:
         type: 3}
       propertyPath: animator
       value: 
-      objectReference: {fileID: 5602278690932152486}
+      objectReference: {fileID: 6010473283523108157}
     - target: {fileID: 2553089894544488853, guid: d14857bdaa2b77245a980f4cf27b3a73,
         type: 3}
       propertyPath: m_Bones.Array.data[0]
@@ -2524,15 +2524,15 @@ PrefabInstance:
       objectReference: {fileID: 2542595220959646716}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d14857bdaa2b77245a980f4cf27b3a73, type: 3}
---- !u!4 &2928254112462144471 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2919536263430437124, guid: d14857bdaa2b77245a980f4cf27b3a73,
+--- !u!20 &4023002763477935954 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 4031824375664745857, guid: d14857bdaa2b77245a980f4cf27b3a73,
     type: 3}
   m_PrefabInstance: {fileID: 11110954427644627}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &5602278690932152486 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 5591275644404507253, guid: d14857bdaa2b77245a980f4cf27b3a73,
+--- !u!4 &2928254112462144471 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2919536263430437124, guid: d14857bdaa2b77245a980f4cf27b3a73,
     type: 3}
   m_PrefabInstance: {fileID: 11110954427644627}
   m_PrefabAsset: {fileID: 0}
@@ -2896,9 +2896,9 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 11110954427644627}
   m_PrefabAsset: {fileID: 0}
---- !u!20 &4023002763477935954 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 4031824375664745857, guid: d14857bdaa2b77245a980f4cf27b3a73,
+--- !u!95 &6010473283523108157 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6002740584326408174, guid: d14857bdaa2b77245a980f4cf27b3a73,
     type: 3}
   m_PrefabInstance: {fileID: 11110954427644627}
   m_PrefabAsset: {fileID: 0}

@@ -2967,10 +2967,10 @@ MonoBehaviour:
   playerUIPrefab: {fileID: 7197189187055512233, guid: c485d34f33b42334f95c2fa1607e4ba2,
     type: 3}
   playerPrefabs:
-  - {fileID: 8039700003896960235, guid: 60b3f68e138ba4cac9398a13defd7b06, type: 3}
-  - {fileID: 8039700003896960235, guid: 60b3f68e138ba4cac9398a13defd7b06, type: 3}
-  - {fileID: 8039700003896960235, guid: 60b3f68e138ba4cac9398a13defd7b06, type: 3}
-  - {fileID: 8039700003896960235, guid: 60b3f68e138ba4cac9398a13defd7b06, type: 3}
+  - {fileID: 1128491446090099232, guid: 0056518ba368e6747b0e03ea965421ee, type: 3}
+  - {fileID: 1128491446090099232, guid: 0056518ba368e6747b0e03ea965421ee, type: 3}
+  - {fileID: 1128491446090099232, guid: 0056518ba368e6747b0e03ea965421ee, type: 3}
+  - {fileID: 1128491446090099232, guid: 0056518ba368e6747b0e03ea965421ee, type: 3}
   spellImages:
   - {fileID: 2084032489}
   - {fileID: 431379283}
