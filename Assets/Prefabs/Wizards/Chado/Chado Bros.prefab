@@ -1519,7 +1519,6 @@ MonoBehaviour:
   spells: []
   feetPosition: {fileID: 1902788763}
   animator: {fileID: 754101796}
-  PS_ElectricOrbPrefab: {fileID: 0}
   rigidbody: {fileID: 0}
   originalFOV: 0
   numberOfAttacks: 1
@@ -1556,7 +1555,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!1 &758053055
 GameObject:

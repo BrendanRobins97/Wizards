@@ -49,7 +49,7 @@ public class SpeedBoost : MonoBehaviour
                 if (speedUpTime <= 0 || gm.currentTurnTimeLeft <= 0)
                 {
                     player.GetComponent<Animator>().speed = 1.0f;
-                    player.movementSpeed = 2;
+                    player.movementSpeed = 1.5f;
                     //Debug.Log("Speed normal");
                     image.gameObject.SetActive(false);
                     Destroy(this.gameObject, 0.05f);
