@@ -232,7 +232,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0
+      - time: 0.49593496
         functionName: Cast
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 3ca155e1e3fa98846baa0f3469b25946,
@@ -243,7 +243,7 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+      additiveReferencePoseFrame: 1
     isReadable: 1
   meshes:
     lODScreenPercentages: []

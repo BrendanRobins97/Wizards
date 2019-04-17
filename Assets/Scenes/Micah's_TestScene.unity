@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.12807566, g: 0.23806068, b: 0.649579, a: 1}
+  m_IndirectSpecularColor: {r: 0.12646218, g: 0.23645307, b: 0.6474477, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4070,10 +4070,11 @@ MonoBehaviour:
   playerUIPrefab: {fileID: 7197189187055512233, guid: c485d34f33b42334f95c2fa1607e4ba2,
     type: 3}
   playerPrefabs:
-  - {fileID: 725863435433571074, guid: 1f542b19463054bbca3c0373160a2186, type: 3}
+  - {fileID: 2084653656752078091, guid: e9fae5cebcc610e44b82bb21f3535509, type: 3}
   - {fileID: 995849588744100572, guid: 07d62888f2961214199732f8b5319b9e, type: 3}
   - {fileID: 5907214007592426859, guid: 4c236a481cef2234e80a4d76c02149f3, type: 3}
   - {fileID: 6162136354065595572, guid: d547a959a498e9d49a2030d4e5672809, type: 3}
+  - {fileID: 5351095309044093891, guid: b6804276335798045ba45e28a453f108, type: 3}
   spellImages:
   - {fileID: 2084032489}
   - {fileID: 431379283}
@@ -4183,7 +4184,7 @@ MonoBehaviour:
   tree1: {fileID: 7370733450921201432, guid: 1c7e1a8207de88b48a035653d5e0d620, type: 3}
   tree2: {fileID: 3691860235321529662, guid: a36c0de1c97b20e4b9bbb7a3045fb724, type: 3}
   tree3: {fileID: 5391149629394585644, guid: d1ae4a0cb7e9c4395b586312554f58d1, type: 3}
-  chunkPrefab: {fileID: 1575979523389863926, guid: 9bf9346c025b8f14080ee2787e2ce483,
+  chunkPrefab: {fileID: 3128124720035799015, guid: 9bf9346c025b8f14080ee2787e2ce483,
     type: 3}
 --- !u!114 &1414293011
 MonoBehaviour:
