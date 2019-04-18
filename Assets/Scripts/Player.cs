@@ -254,7 +254,7 @@ public class Player : MonoBehaviour {
         playerCamera.fieldOfView = originalFOV;
         Input.ResetInputAxes();
         AnimTriggerReset();
-        //animator.SetTrigger("Idle");
+        animator.SetTrigger("Idle");
         soundPlay = GameObject.Find("soundManager");
         soundScript sound = soundPlay.GetComponent(typeof(soundScript)) as soundScript;
         sound.playPlayerStart();
