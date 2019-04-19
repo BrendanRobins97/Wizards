@@ -10,6 +10,7 @@ public class HammerHit : Spell
     {
         if (!affectedByCharge) { charge = 1; }
         transform.forward = direction;
+        hitPoint.transform.parent = GameManager.instance.CurrentPlayer.hitPoint;
         hitPoint.SetActive(false);
         Disable(duration);
     }
