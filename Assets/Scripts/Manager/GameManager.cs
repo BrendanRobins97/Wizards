@@ -136,6 +136,7 @@ public class GameManager : MonoBehaviour {
     private void Update() {
         // Update the current time left and update the timer text
         currentTurnTimeLeft -= Time.deltaTime;
+
         currentTurnTimeLeft = Mathf.Clamp(currentTurnTimeLeft, -0.9f, turnTime);
         turnText.text = "Time Left: " + (int) (currentTurnTimeLeft + 1);
         if (playerTurn == 0 && newRound && roundNumber / numPlayers > mapShrinkNumber) {
@@ -158,7 +159,7 @@ public class GameManager : MonoBehaviour {
             }
         }
         if (playerTurn > 0) { newRound = true; }
-
+        if(mainCamera.enabled == false) { FindObjectOfType<Canvas>().enabled = true; }
         if (!gameStarted) { // Handle game start behavior
             FindObjectOfType<Canvas>().enabled = false;
             // Start game when initial timer hits 0

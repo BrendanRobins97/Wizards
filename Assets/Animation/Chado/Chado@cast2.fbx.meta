@@ -203,8 +203,16 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.8085693
+      - time: 0
         functionName: Cast
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 3ca155e1e3fa98846baa0f3469b25946,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.5081301
+        functionName: EnableCollider
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 3ca155e1e3fa98846baa0f3469b25946,
           type: 3}

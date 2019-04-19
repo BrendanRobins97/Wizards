@@ -20,14 +20,14 @@ public class Player : MonoBehaviour {
 
     public Color color;
     public float chargeAmount;
-    
+    public Transform hitPoint;
     public float stamina;
     public float jumpForce = 400;
     [HideInInspector] public int health;
     [HideInInspector] public float chargePercent;
     [HideInInspector] public float tempChargeAmount;
     [HideInInspector] public bool turnOver;
-
+    
     [SerializeField] private float sensitivity = 1f;
 
     public float movementSpeed = 8f;
@@ -130,8 +130,8 @@ public class Player : MonoBehaviour {
             Vector3 velocity = (movX + movZ) * movementSpeed * Time.deltaTime;
 
             rigidbody.MovePosition(rigidbody.position + velocity);
-            animator.SetFloat("Strafe Amount", xVelocity*2.0f);
-            animator.SetFloat("Forward Amount", zVelocity / 2.0f);
+            animator.SetFloat("Strafe Amount", Input.GetAxis("Horizontal"));
+            animator.SetFloat("Forward Amount", Input.GetAxis("Vertical"));
             if (Input.GetButtonDown("Jump") && Physics.Raycast(feetPosition.position, Vector3.down, 0.5f)) {
                 rigidbody.AddForce(0, jumpForce, 0);
             }
@@ -254,7 +254,7 @@ public class Player : MonoBehaviour {
         playerCamera.fieldOfView = originalFOV;
         Input.ResetInputAxes();
         AnimTriggerReset();
-        //animator.SetTrigger("Idle");
+        animator.SetTrigger("Idle");
         soundPlay = GameObject.Find("soundManager");
         soundScript sound = soundPlay.GetComponent(typeof(soundScript)) as soundScript;
         sound.playPlayerStart();
@@ -301,6 +301,10 @@ public class Player : MonoBehaviour {
         animator.ResetTrigger("Cast3");
         animator.ResetTrigger("Hit");
         animator.SetTrigger("Idle");
+    }
+    public void EnableCollider()
+    {
+        FindObjectOfType<HammerHit>().EnableCollider();
     }
     #endregion
 
