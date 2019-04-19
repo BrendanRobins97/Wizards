@@ -159,7 +159,7 @@ public class GameManager : MonoBehaviour {
             }
         }
         if (playerTurn > 0) { newRound = true; }
-
+        if(mainCamera.enabled == false) { FindObjectOfType<Canvas>().enabled = true; }
         if (!gameStarted) { // Handle game start behavior
             FindObjectOfType<Canvas>().enabled = false;
             // Start game when initial timer hits 0

@@ -313,7 +313,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 754101792, guid: 31247f4fc2c1c4e3db9695dadf547d7b, type: 3}
       propertyPath: m_Name
-      value: Chado Bros_NA
+      value: Chado Bros
       objectReference: {fileID: 0}
     - target: {fileID: 754101797, guid: 31247f4fc2c1c4e3db9695dadf547d7b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -476,7 +476,7 @@ PrefabInstance:
     - target: {fileID: 1128491446090099232, guid: 0056518ba368e6747b0e03ea965421ee,
         type: 3}
       propertyPath: m_Name
-      value: ChadoBase
+      value: Chado
       objectReference: {fileID: 0}
     - target: {fileID: 8219405634012895745, guid: 0056518ba368e6747b0e03ea965421ee,
         type: 3}
@@ -894,7 +894,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 754101792, guid: cd4485d2a8c2d4ec9ab8e164cfbe863e, type: 3}
       propertyPath: m_Name
-      value: Chado Clean Shave_NA
+      value: Chado Clean Shave
       objectReference: {fileID: 0}
     - target: {fileID: 754101797, guid: cd4485d2a8c2d4ec9ab8e164cfbe863e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1248,7 +1248,7 @@ PrefabInstance:
     - target: {fileID: 5351095309044093891, guid: b6804276335798045ba45e28a453f108,
         type: 3}
       propertyPath: m_Name
-      value: Chado Bald_NA
+      value: Chado Bald
       objectReference: {fileID: 0}
     - target: {fileID: 5351095309044093894, guid: b6804276335798045ba45e28a453f108,
         type: 3}
@@ -1438,7 +1438,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 754101792, guid: a4ab92b3f95134a299694f9a94234bb0, type: 3}
       propertyPath: m_Name
-      value: Chado Underpants_NA
+      value: Chado Underpants
       objectReference: {fileID: 0}
     - target: {fileID: 754101797, guid: a4ab92b3f95134a299694f9a94234bb0, type: 3}
       propertyPath: m_LocalPosition.x

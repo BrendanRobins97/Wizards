@@ -4121,7 +4121,7 @@ PrefabInstance:
         type: 3}
       propertyPath: spells.Array.data[2]
       value: 
-      objectReference: {fileID: 886019029205924418, guid: 4257cf8021b160a4fb675f503a68ed1d,
+      objectReference: {fileID: 1721658845675797685, guid: 7fdebb3f5a163b340bb387e46d0c59ef,
         type: 3}
     - target: {fileID: 2429517294149507765, guid: 3f4a4251d79bb3740b1f004fcc81e315,
         type: 3}
@@ -4138,6 +4138,11 @@ PrefabInstance:
       propertyPath: color.b
       value: 0.0133944545
       objectReference: {fileID: 0}
+    - target: {fileID: 2429517294149507765, guid: 3f4a4251d79bb3740b1f004fcc81e315,
+        type: 3}
+      propertyPath: hitPoint
+      value: 
+      objectReference: {fileID: 7918638011009054289}
     - target: {fileID: 1032518970902120018, guid: 3f4a4251d79bb3740b1f004fcc81e315,
         type: 3}
       propertyPath: m_LocalPosition.x
