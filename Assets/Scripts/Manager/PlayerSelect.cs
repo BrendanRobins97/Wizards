@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerSelect : MonoBehaviour
 {
+    public Canvas canvas, tutorialCanvas;
     public static PlayerSelect instance;
     public Camera camera;
     public int currentIndex = 0;
@@ -15,6 +16,7 @@ public class PlayerSelect : MonoBehaviour
     private int playerPicking = 0;
     private float gameStartTimer = -4;
     private bool show = true;
+    private bool showTutorial = false;
     public List<int> playersPicked = new List<int>();
     // Start is called before the first frame update
     void Start()
@@ -27,6 +29,8 @@ public class PlayerSelect : MonoBehaviour
         {
             numPlayers = mm.NumPlayers();
         }
+
+        tutorialCanvas.enabled = false;
     }
 
     void Awake()
@@ -50,16 +54,24 @@ public class PlayerSelect : MonoBehaviour
     {
         int playerDisplay = playerPicking + 1;
         gameStartTimer -= Time.deltaTime;
-        if (gameStartTimer > 3 && gameStartTimer < 6)
+        if (showTutorial)
+        {
+            canvas.enabled = false;
+            tutorialCanvas.enabled = true;
+        }
+        if (gameStartTimer > 3 && gameStartTimer < 6 && !showTutorial)
         {
             text.text = "Player " + (playerDisplay-1) + " You Chose " + players[currentIndex].name;
         }
-        if(gameStartTimer <= 3 && gameStartTimer > 0)
+        if(gameStartTimer <= 3 && gameStartTimer > 0 && !showTutorial)
         {
             text.text = "Lets Play!";
+            gameStartTimer = 15f;
+            showTutorial = true;
         }
-        if (gameStartTimer <= 0 && gameStartTimer >= -2)
+        if (gameStartTimer <= 0 && gameStartTimer >= -2 || Input.GetButtonUp("Start"))
         {
+            Input.ResetInputAxes();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
         Vector3 camPos = new Vector3(players[currentIndex].transform.position.x, players[currentIndex].transform.position.y+2, players[currentIndex].transform.position.z + 5);
