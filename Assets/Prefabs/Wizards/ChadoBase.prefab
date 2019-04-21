@@ -4076,16 +4076,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8353116921814824563, guid: 3f4a4251d79bb3740b1f004fcc81e315,
-        type: 3}
-      propertyPath: m_Name
-      value: ChadoBase
-      objectReference: {fileID: 0}
-    - target: {fileID: 8353116921814824563, guid: 3f4a4251d79bb3740b1f004fcc81e315,
-        type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
     - target: {fileID: 6237877335634305161, guid: 3f4a4251d79bb3740b1f004fcc81e315,
         type: 3}
       propertyPath: m_Controller
@@ -4096,6 +4086,16 @@ PrefabInstance:
       propertyPath: m_Avatar
       value: 
       objectReference: {fileID: 9000000, guid: 78a6301ff7ec84672a63df5c9e1e269f, type: 3}
+    - target: {fileID: 8353116921814824563, guid: 3f4a4251d79bb3740b1f004fcc81e315,
+        type: 3}
+      propertyPath: m_Name
+      value: ChadoBase
+      objectReference: {fileID: 0}
+    - target: {fileID: 8353116921814824563, guid: 3f4a4251d79bb3740b1f004fcc81e315,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 2429517294149507765, guid: 3f4a4251d79bb3740b1f004fcc81e315,
         type: 3}
       propertyPath: playerCamera
@@ -4143,6 +4143,12 @@ PrefabInstance:
       propertyPath: hitPoint
       value: 
       objectReference: {fileID: 7918638011009054289}
+    - target: {fileID: 2429517294149507765, guid: 3f4a4251d79bb3740b1f004fcc81e315,
+        type: 3}
+      propertyPath: spells.Array.data[3]
+      value: 
+      objectReference: {fileID: 3725027258511359217, guid: cccadbcfc7cbb7c4c89a4a05875e20c1,
+        type: 3}
     - target: {fileID: 1032518970902120018, guid: 3f4a4251d79bb3740b1f004fcc81e315,
         type: 3}
       propertyPath: m_LocalPosition.x

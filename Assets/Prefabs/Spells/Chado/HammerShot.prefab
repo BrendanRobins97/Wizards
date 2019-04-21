@@ -34109,4 +34109,4 @@ MonoBehaviour:
     type: 3}
   smallExplosiveShot: {fileID: 8764879235604696749, guid: ae71b56101faf6f478e582e5fb4c8f98,
     type: 3}
-  numSmallExplosions: 12
+  numSmallExplosions: 16
