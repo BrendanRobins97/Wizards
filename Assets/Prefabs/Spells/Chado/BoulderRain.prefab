@@ -125,11 +125,14 @@ MonoBehaviour:
   speed: 0
   contactDamage: 15
   affectedByCharge: 0
-  duration: 10
+  duration: 6
   damageRadius: 5
   explosionDampen: 0.75
   knockBackForce: 0
   explosion: {fileID: 0}
+  spellImage: {fileID: 0}
+  spellImageColor: {r: 0, g: 0, b: 0, a: 0}
+  timeAfterSpellCast: 6
   sizeIncreaseRate: 8
   groundMask:
     serializedVersion: 2
@@ -147,7 +150,7 @@ GameObject:
   - component: {fileID: 4441342114762319180}
   m_Layer: 0
   m_Name: Boulder
-  m_TagString: Untagged
+  m_TagString: DeathRainSpell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -223,7 +226,7 @@ GameObject:
   - component: {fileID: 4441342114760419244}
   m_Layer: 0
   m_Name: Boulder
-  m_TagString: Untagged
+  m_TagString: DeathRainSpell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

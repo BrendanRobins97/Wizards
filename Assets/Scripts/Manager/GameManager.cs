@@ -49,6 +49,8 @@ public class GameManager : MonoBehaviour {
     public float timeAfterSpellCast = 5f;
     public float gameStartTime = 5f;
     [SerializeField]
+    private float spawnWidth = 40f;
+    [SerializeField]
     private float turnTime = 20f;
     [SerializeField]
     private int numPlayers;
@@ -98,24 +100,29 @@ public class GameManager : MonoBehaviour {
         currentTurnTimeLeft = gameStartTime;
         for (int i = 0; i < numPlayers; i++) {
             PlayerInfo newPlayerInfo;
-            Ray ray = new Ray(spawnLocations[i].position, Vector3.down);
+            float angle = i * 360f / numPlayers;
+            Vector3 spawnLocation = new Vector3(Mathf.Cos(Mathf.Deg2Rad * angle) * spawnWidth + circleCenter.x, TerrainManager.instance.height, Mathf.Sin(Mathf.Deg2Rad * angle) * spawnWidth + circleCenter.z);
+            Debug.Log(spawnLocation);
+            Ray ray = new Ray(spawnLocation, Vector3.down);
             Physics.Raycast(ray, out RaycastHit rayHit);
+            Debug.Log(rayHit.point);
+
             Player player;
             if (ps)
             {
                 player = Instantiate(playerPrefabs[ps.playersPicked[i]], rayHit.point,
-                        spawnLocations[i].rotation,
+                        Quaternion.identity,
                         transform)
                     .GetComponent<Player>();
             }
             else
             {
                 player = Instantiate(playerPrefabs[i], rayHit.point,
-                        spawnLocations[i].rotation,
+                        Quaternion.identity,
                         transform)
                     .GetComponent<Player>();
             }
-
+            player.transform.LookAt(new Vector3(TerrainManager.instance.width / 2f, rayHit.point.y, TerrainManager.instance.length / 2f));
             PlayerUI playerUI = Instantiate(playerUIPrefab, playerInfoContainer).GetComponent<PlayerUI>();
             playerUI.playerImage.color = player.color;
             newPlayerInfo.player = player;

@@ -16,7 +16,6 @@ public class DeathRainSpellCamera : MonoBehaviour
     private GameObject currentSpell;
     public bool canShoot = false;
     private Vector3 forward;
-    public Spell spell;
     private float defaultFov;
     // Start is called before the first frame update
     void Start()
@@ -32,7 +31,17 @@ public class DeathRainSpellCamera : MonoBehaviour
     void Update()
     {
         player = GameManager.instance.CurrentPlayer;
-        
+        if (GameManager.instance.CurrentPlayer.name == "Bauta Purple(Clone)" ||
+            GameManager.instance.CurrentPlayer.name == "Bauta Red(Clone)" ||
+            GameManager.instance.CurrentPlayer.name == "Bauta Green(Clone)" ||
+            GameManager.instance.CurrentPlayer.name == "Bauta Blue(Clone)")
+        {
+            spellHitPointIndicator.spotAngle = 100f;
+        }
+        else
+        {
+            spellHitPointIndicator.spotAngle = 20f;
+        }
         if (spellHitPointIndicator != null)
         {
             if (spellCamera.enabled)
