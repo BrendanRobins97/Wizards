@@ -87,21 +87,31 @@ public class DeathRainSpellCamera : MonoBehaviour
     {
         if (Input.GetAxis("Mouse ScrollWheel") > 0)
         {
-            spellCamera.fieldOfView -= Input.GetAxis("Mouse ScrollWheel")*700*Time.deltaTime;
+            Vector3 newY = new Vector3(transform.position.x, transform.position.y - Input.GetAxis("Mouse ScrollWheel")*Time.deltaTime * 120f, transform.position.z);
+            //spellCamera.fieldOfView -= Input.GetAxis("Mouse ScrollWheel")*700*Time.deltaTime;
+            transform.position = newY;
         }
 
         if (Input.GetAxis("Mouse ScrollWheel") < 0)
         {
-            spellCamera.fieldOfView -= Input.GetAxis("Mouse ScrollWheel") * 700*Time.deltaTime;
+            //spellCamera.fieldOfView -= Input.GetAxis("Mouse ScrollWheel") * 700*Time.deltaTime;
+            Vector3 newY = new Vector3(transform.position.x, transform.position.y - Input.GetAxis("Mouse ScrollWheel") * Time.deltaTime * 120f, transform.position.z);
+            transform.position = newY;
         }
 
         if (Input.GetAxis("Mouse Y") > 0)
         {
-            spellCamera.fieldOfView -= Input.GetAxis("Mouse Y")* 50 * Time.deltaTime;
+            //spellCamera.fieldOfView -= Input.GetAxis("Mouse Y")* 50 * Time.deltaTime;
+            Vector3 newY = new Vector3(transform.position.x, transform.position.y - Input.GetAxis("Mouse Y") * Time.deltaTime * 10f, transform.position.z);
+            if (Input.GetAxis("Mouse Y") > .3 || Input.GetAxis("Mouse Y") < -.3)
+                transform.position = newY;
         }
         if (Input.GetAxis("Mouse Y") < 0)
         {
-            spellCamera.fieldOfView -= Input.GetAxis("Mouse Y") * 50 * Time.deltaTime;
+            //spellCamera.fieldOfView -= Input.GetAxis("Mouse Y") * 50 * Time.deltaTime;
+            Vector3 newY = new Vector3(transform.position.x, transform.position.y - Input.GetAxis("Mouse Y") * Time.deltaTime * 10f, transform.position.z);
+            if (Input.GetAxis("Mouse Y") > .3 || Input.GetAxis("Mouse Y") < -.3)
+                transform.position = newY;
         }
         Ray ray = spellCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hitInfo;

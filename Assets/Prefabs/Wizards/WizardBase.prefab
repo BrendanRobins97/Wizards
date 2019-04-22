@@ -219,7 +219,7 @@ MonoBehaviour:
   chargePercent: 0
   tempChargeAmount: 0
   turnOver: 0
-  sensitivity: 1
+  sensitivity: 1.5
   movementSpeed: 2
   enabled: 1
   playerCamera: {fileID: 3615416653538122470}

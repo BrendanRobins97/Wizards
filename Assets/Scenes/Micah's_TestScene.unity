@@ -89,7 +89,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -4074,7 +4074,7 @@ MonoBehaviour:
   - {fileID: 8508463448609000391, guid: c204d48e834b30d42b16f9b89edb2500, type: 3}
   - {fileID: 1678527236190916213, guid: 2853e0140ddcf394cb469a3c0e5de2d1, type: 3}
   - {fileID: 4112836885094439841, guid: 8476688f8f08801458d3edaa28908d59, type: 3}
-  - {fileID: 8164900113966860278, guid: c53f292e28b114441ac3f66351167e2b, type: 3}
+  - {fileID: 8164900113966860278, guid: 400511c2ea5be2d4ab5dbc350d0a67d2, type: 3}
   - {fileID: 3733252538983089315, guid: 8edc07cf7fddcbf4195e9f250e865844, type: 3}
   - {fileID: 5167307751220271212, guid: 0265f18c5185fda47acd72d06f5102e4, type: 3}
   - {fileID: 6770501040285935883, guid: 4969f60ba4def4046a583c04820a972a, type: 3}
@@ -4128,6 +4128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 128
   length: 128
+  height: 64
   octaves: 5
   smoothness: 100
   scale: 100
@@ -4176,6 +4177,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  spawnAssets: 1
+  numAssets: 12
   boulder1: {fileID: 276405504282636540, guid: be35fefaff62a054a98415399370f9a7, type: 3}
   boulder2: {fileID: 1616062920238866603, guid: 24eb39694cf0fae42905e04553ce1a89,
     type: 3}
@@ -4188,7 +4191,7 @@ MonoBehaviour:
   tree1: {fileID: 7370733450921201432, guid: 1c7e1a8207de88b48a035653d5e0d620, type: 3}
   tree2: {fileID: 3691860235321529662, guid: a36c0de1c97b20e4b9bbb7a3045fb724, type: 3}
   tree3: {fileID: 5391149629394585644, guid: d1ae4a0cb7e9c4395b586312554f58d1, type: 3}
-  chunkPrefab: {fileID: 3128124720035799015, guid: 9bf9346c025b8f14080ee2787e2ce483,
+  chunkPrefab: {fileID: 8074238528476653214, guid: 9bf9346c025b8f14080ee2787e2ce483,
     type: 3}
 --- !u!114 &1414293011
 MonoBehaviour:
