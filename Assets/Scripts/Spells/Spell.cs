@@ -22,6 +22,7 @@ public class Spell : MonoBehaviour {
     public GameObject explosion;
     public Sprite spellImage;
     public Color spellImageColor;
+    public float timeAfterSpellCast = 3f;
 
     protected List<Player> playersHit = new List<Player>();
     protected bool         collisions = true;
@@ -45,7 +46,7 @@ public class Spell : MonoBehaviour {
     public virtual void ThrowSpell(Vector3 direction, float charge) {
         // Disable collisions for a millisecond after casting so
         // it doesn't instantly collide with player throwing spell
-        DisableCollisions(0.25f);
+        DisableCollisions(0.1f);
         if (!affectedByCharge) { charge = 1; }
         GetComponent<Rigidbody>().velocity = direction * charge * speed;
         transform.forward = direction;

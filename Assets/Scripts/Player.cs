@@ -58,6 +58,8 @@ public class Player : MonoBehaviour {
     [HideInInspector] public bool special = false;
     
     public GameObject soundPlay;
+
+    public Spell CurrentSpell { get { return spells[currentSpellIndex]; } }
     #endregion
 
     #region Methods

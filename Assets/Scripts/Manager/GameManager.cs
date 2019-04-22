@@ -183,7 +183,7 @@ public class GameManager : MonoBehaviour {
         else { chargeBar.enabled = true; }
 
         if (CurrentPlayer.turnOver && !endOfTurn) {
-            currentTurnTimeLeft = timeAfterSpellCast;
+            currentTurnTimeLeft = CurrentPlayer.CurrentSpell.timeAfterSpellCast;
             endOfTurn = true;
         }
 
