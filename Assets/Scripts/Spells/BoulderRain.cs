@@ -60,7 +60,7 @@ public class BoulderRain : Spell {
     protected override void OnCollisionEnter(Collision collision) {
         if (collision.gameObject.CompareTag("Player")) {
             Player player = collision.gameObject.GetComponent<Player>();
-            player.Damage(contactDamage);
+            player.Damage((int)(contactDamage * size));
         }
     }
 
