@@ -131,6 +131,11 @@ public class GameManager : MonoBehaviour {
         {
             Destroy(ps.gameObject);
         }
+        for (int i = 0; i < CurrentPlayer.spells.Count; i++) {
+            spellImages[i].sprite = CurrentPlayer.spells[i].spellImage;
+            spellImages[i].color = CurrentPlayer.spells[i].spellImageColor;
+
+        }
     }
 
     private void Update() {
@@ -260,7 +265,16 @@ public class GameManager : MonoBehaviour {
 
         FindObjectOfType<Canvas>().enabled = true;
         FindObjectOfType<DeathRainSpellCamera>().spellHitPointIndicator.enabled = false;
-        CurrentPlayer?.Enable();
+        if (CurrentPlayer) {
+            CurrentPlayer?.Enable();
+
+            for (int i = 0; i < CurrentPlayer.spells.Count; i++) {
+                spellImages[i].sprite = CurrentPlayer.spells[i].spellImage;
+                spellImages[i].color = CurrentPlayer.spells[i].spellImageColor;
+
+            }
+        }
+        
     }
 
     #endregion

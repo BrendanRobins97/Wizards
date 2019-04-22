@@ -34107,6 +34107,8 @@ MonoBehaviour:
   knockBackForce: 100
   explosion: {fileID: 8311680600813020574, guid: 83f4a0744268f4f42b6cb1420a1b25dc,
     type: 3}
+  spellImage: {fileID: 21300000, guid: 11dd7eb0fb6754393aaf91dae90f355f, type: 3}
+  spellImageColor: {r: 0.9056604, g: 0.16296366, b: 0.08116765, a: 1}
   smallExplosiveShot: {fileID: 6996181480485081848, guid: f295441d6e87fac4eb7ff47959e8d3c3,
     type: 3}
   numSmallExplosions: 8
