@@ -104,7 +104,7 @@ public class CameraBehavior : MonoBehaviour
                 Destroy(fireSpell);
             }
         }
-        if (deathRainSpell != null && GameManager.instance.currentTurnTimeLeft <= GameManager.instance.timeAfterSpellCast)
+        if (deathRainSpell != null && GameManager.instance.currentTurnTimeLeft <= 7f)//GameManager.instance.timeAfterSpellCast)
         {
             ChangeToDeathRainCamera();
         }

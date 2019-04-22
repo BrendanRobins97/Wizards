@@ -27,7 +27,7 @@ public class BoulderRain : Spell {
         prevPosition = Vector3.one;
     }
 
-    private void Update() {
+    private void FixedUpdate() {
         Vector3 dist = prevPosition - transform.position;
         prevPosition = transform.position;
         if (Physics.CheckSphere(transform.position, size + 0.25f, groundMask)) {
