@@ -88,6 +88,7 @@ public class CameraBehavior : MonoBehaviour
         if ( (spell == null && fireSpell == null && deathRainSpell == null && iceSpell == null) || GameManager.instance.currentTurnTimeLeft > GameManager.instance.timeAfterSpellCast)
         {
             spellCamera.enabled = false;
+            //player.playerCamera.rect = new Rect(0, 0, 1f, 1);
             Destroy(fireSpell, GameManager.instance.timeAfterSpellCast);
             Destroy(iceSpell, GameManager.instance.timeAfterSpellCast+1);
             tempY = 7;
@@ -117,6 +118,7 @@ public class CameraBehavior : MonoBehaviour
     {
         tempY -= (Time.deltaTime * 1.5f);
         spellCamera.enabled = true;
+        
         //Debug.Log("Fireball Cam = enabled.");
         float x, z, finalX, finalZ;
         x = (xpos + (fireSpell.transform.position.x+2))/2.0f;
@@ -148,6 +150,9 @@ public class CameraBehavior : MonoBehaviour
     {
         //Debug.Log("RainSpellCam");
         spellCamera.enabled = true;
+        //spellCamera.rect = new Rect(0, 0, 0.5f, 1);
+        //player.playerCamera.enabled = true;
+        //player.playerCamera.rect = new Rect(0,0,.5f,1);
         float x, z, finalX, finalZ;
         x = (xpos + (deathRainSpell.transform.position.x + 2)) / 2.0f;
         z = (zpos + (deathRainSpell.transform.position.z - 2)) / 2.0f;
@@ -162,7 +167,7 @@ public class CameraBehavior : MonoBehaviour
         }
         spellCamera.transform.LookAt(new Vector3(deathRainSpell.transform.position.x, deathRainSpell.transform.position.y - 2, deathRainSpell.transform.position.z));
         spellCamera.transform.position = Vector3.MoveTowards(spellCamera.transform.position,new Vector3(player.transform.localPosition.x, spellCamera.transform.position.y+2, player.transform.localPosition.z-3),  speed*Time.deltaTime);
-
+        //player.playerCamera.transform.LookAt(new Vector3(player.transform.position.x - 3, player.transform.position.y, player.transform.position.z));
     }
 
     public void ChangeToIceSpellCamera()

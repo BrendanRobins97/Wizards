@@ -76,7 +76,7 @@ public class DeathRainSpellCamera : MonoBehaviour
         spellCamera.transform.LookAt(player.transform);
         startPos = transform.position;
         defaultFov = spellCamera.fieldOfView;
-        maxDistanceFromPlayer = 40;
+        maxDistanceFromPlayer = 35;
         //this.gameObject.SetActive(true);
         //Cursor.lockState = CursorLockMode.None;
         canShoot = true;
@@ -87,12 +87,31 @@ public class DeathRainSpellCamera : MonoBehaviour
     {
         if (Input.GetAxis("Mouse ScrollWheel") > 0)
         {
-            spellCamera.fieldOfView -= Input.GetAxis("Mouse ScrollWheel")*500*Time.deltaTime;
+            Vector3 newY = new Vector3(transform.position.x, transform.position.y - Input.GetAxis("Mouse ScrollWheel")*Time.deltaTime * 120f, transform.position.z);
+            //spellCamera.fieldOfView -= Input.GetAxis("Mouse ScrollWheel")*700*Time.deltaTime;
+            transform.position = newY;
         }
 
         if (Input.GetAxis("Mouse ScrollWheel") < 0)
         {
-            spellCamera.fieldOfView -= Input.GetAxis("Mouse ScrollWheel") * 500*Time.deltaTime;
+            //spellCamera.fieldOfView -= Input.GetAxis("Mouse ScrollWheel") * 700*Time.deltaTime;
+            Vector3 newY = new Vector3(transform.position.x, transform.position.y - Input.GetAxis("Mouse ScrollWheel") * Time.deltaTime * 120f, transform.position.z);
+            transform.position = newY;
+        }
+
+        if (Input.GetAxis("Mouse Y") > 0)
+        {
+            //spellCamera.fieldOfView -= Input.GetAxis("Mouse Y")* 50 * Time.deltaTime;
+            Vector3 newY = new Vector3(transform.position.x, transform.position.y - Input.GetAxis("Mouse Y") * Time.deltaTime * 10f, transform.position.z);
+            if (Input.GetAxis("Mouse Y") > .3 || Input.GetAxis("Mouse Y") < -.3)
+                transform.position = newY;
+        }
+        if (Input.GetAxis("Mouse Y") < 0)
+        {
+            //spellCamera.fieldOfView -= Input.GetAxis("Mouse Y") * 50 * Time.deltaTime;
+            Vector3 newY = new Vector3(transform.position.x, transform.position.y - Input.GetAxis("Mouse Y") * Time.deltaTime * 10f, transform.position.z);
+            if (Input.GetAxis("Mouse Y") > .3 || Input.GetAxis("Mouse Y") < -.3)
+                transform.position = newY;
         }
         Ray ray = spellCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hitInfo;
@@ -105,19 +124,20 @@ public class DeathRainSpellCamera : MonoBehaviour
             //prefab.transform.position = hitInfo.point;
             if (lightPos.y - hitInfo.point.y > 5)
             {
-                Debug.Log("Too close to camera");
+                //Debug.Log("Too close to camera");
                 float newZoom = Mathf.Lerp(defaultFov, defaultFov + 50, 5);
                 // spellCamera.fieldOfView = newZoom;
             }
             if ((Input.GetButtonUp("Fire1")) && spellCamera.enabled == true)
             {
                 //this.gameObject.SetActive(false);
-                
+                player.animator.SetTrigger("Cast3");
                 Cursor.lockState = CursorLockMode.Locked;
                 spellHitPointIndicator.enabled = false;
-                //player.playerCamera.enabled = true;
-                //spellCamera.enabled = false;
+                player.playerCamera.enabled = true;
+                spellCamera.enabled = false;
                 player.enabled = true;
+                
                 player.special = false;
                 player.usedSpecial = true;
                 player.numUlt--;

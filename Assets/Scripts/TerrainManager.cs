@@ -18,17 +18,23 @@ public class TerrainManager : MonoBehaviour {
 
     #region Fields
 
-    [HideInInspector] public int width  = 128;
-    [HideInInspector] public int length = 128;
+    [Header("Terrain Settings")] 
 
-    [Header("Terrain Settings")] [SerializeField]
-    private float octaves = 5;
+    public int width = 128;
+    public int length = 128;
+    public int height = 64;
+    [Space]
+    [SerializeField] private float octaves = 5;
     [SerializeField] private float          smoothness      = 50f;
     [SerializeField] private float          scale           = 25f;
     [SerializeField] private float          persistence     = 0.5f;
     [SerializeField] private float          lacunarity      = 0.5f;
     [SerializeField] private float          groundThickness = 4f;
     [SerializeField] private AnimationCurve heightMap;
+    [SerializeField] private bool spawnAssets = true;
+    [SerializeField] private byte numAssets = 12;
+
+
 
     [Header("Environment Prefabs")] [SerializeField]
     private GameObject boulder1;
@@ -43,7 +49,7 @@ public class TerrainManager : MonoBehaviour {
     [Space] [SerializeField] private Chunk chunkPrefab;
 
     private Cell[,,]       grid;
-    private int            height    = 64;
+    
     private int            chunkSize = 16;
     private Vector3Int     numChunks;
     private Chunk[,,]      chunks;
@@ -61,6 +67,8 @@ public class TerrainManager : MonoBehaviour {
         if (instance != null) { Destroy(this); }
         else { instance = this; }
 
+        // Random array of assets to spawn
+        // All assets have an equal spawn chance
         boulders = new RandomArray<GameObject>(
             new[] {boulder1, boulder2, boulder3, boulder4, boulder5},
             new[] {1f, 1f, 1f, 1f, 1f});
@@ -103,25 +111,27 @@ public class TerrainManager : MonoBehaviour {
     }
 
     private void Start() {
-        for (int i = 0; i < 12;) {
-            const float bounds = 16f; // Bigger value means points will be closer to center
-            float randPointX = Random.Range(bounds, width - bounds);
-            float randPointZ = Random.Range(bounds, length - bounds);
-            RaycastHit hit = PeakPoint(randPointX, randPointZ);
+        if (spawnAssets) {
+            for (int i = 0; i < numAssets;) {
+                const float bounds = 16f; // Bigger value means points will be closer to center
+                float randPointX = Random.Range(bounds, width - bounds);
+                float randPointZ = Random.Range(bounds, length - bounds);
+                RaycastHit hit = PeakPoint(randPointX, randPointZ);
 
-            if (hit.collider.tag == "Chunk" && hit.distance < height) {
-                Vector3 spawnPoint = hit.point;
+                if (hit.collider.tag == "Chunk" && hit.distance < height) {
+                    Vector3 spawnPoint = hit.point;
 
-                if (hit.normal.y >= 0.92) {
-                    Instantiate(trees.RandomItem(), spawnPoint + new Vector3(0, -1f, 0), Quaternion.identity);
-                    i++;
-                }
-                else if (hit.normal.y >= 0.8) {
-                    Instantiate(boulders.RandomItem(), spawnPoint + new Vector3(0, -1f, 0), Quaternion.identity);
-                    i++;
+                    if (hit.normal.y >= 0.92) {
+                        Instantiate(trees.RandomItem(), spawnPoint + new Vector3(0, -1f, 0), Quaternion.identity);
+                        i++;
+                    } else if (hit.normal.y >= 0.8) {
+                        Instantiate(boulders.RandomItem(), spawnPoint + new Vector3(0, -1f, 0), Quaternion.identity);
+                        i++;
+                    }
                 }
             }
         }
+        
     }
 
     private void Update() {
@@ -183,6 +193,7 @@ public class TerrainManager : MonoBehaviour {
         }
     }
 
+    // Returns a raycast to the highest y value at a specified x, z
     public RaycastHit PeakPoint(float x, float z) {
         Ray ray = new Ray(new Vector3(x, height, z), Vector3.down);
         Physics.Raycast(ray, out RaycastHit rayHit);

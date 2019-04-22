@@ -122,12 +122,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15e3a2c003f57724fb220eeb68bb5cd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 12
+  speed: 14
   contactDamage: 12
   affectedByCharge: 1
-  duration: 10
-  damageRadius: 2
-  explosionDampen: 1.75
+  duration: 4
+  damageRadius: 2.5
+  explosionDampen: 1.5
   knockBackForce: 60
   explosion: {fileID: 8311680600813020574, guid: 83f4a0744268f4f42b6cb1420a1b25dc,
     type: 3}

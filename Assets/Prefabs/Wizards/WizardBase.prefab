@@ -212,13 +212,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   color: {r: 0.07878354, g: 0.028034877, b: 0.6603774, a: 1}
   chargeAmount: 2
+  hitPoint: {fileID: 0}
   stamina: 0
   jumpForce: 500
   health: 0
   chargePercent: 0
   tempChargeAmount: 0
   turnOver: 0
-  sensitivity: 1
+  sensitivity: 1.5
   movementSpeed: 2
   enabled: 1
   playerCamera: {fileID: 3615416653538122470}

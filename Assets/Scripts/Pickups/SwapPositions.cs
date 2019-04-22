@@ -47,7 +47,7 @@ public class SwapPositions : MonoBehaviour
             //playersFound = false;
         }
 
-        if ((Input.GetKeyDown(KeyCode.E) || Input.GetButton("swap1")) && canSwap && player == playerWithItem)
+        if ((Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("swap1")) && canSwap && player == playerWithItem)
         {
             index++;
             if (index >= players.Length)
@@ -64,7 +64,16 @@ public class SwapPositions : MonoBehaviour
                 }
             }
 
-            swapPositionsText.text = players[index].name;
+            if (Input.GetButtonDown("swap1"))
+            {
+                swapPositionsText.text = "Press LB To Swap With " + players[index].name;
+                }
+            else
+            {
+                swapPositionsText.text = "Right-Click To Swap With " + players[index].name;
+            }
+
+            //swapPositionsText.text = players[index].name;
             //ShowPlayers();
         }
 
