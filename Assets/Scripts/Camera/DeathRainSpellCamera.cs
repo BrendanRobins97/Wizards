@@ -16,7 +16,7 @@ public class DeathRainSpellCamera : MonoBehaviour
     private GameObject currentSpell;
     public bool canShoot = false;
     private Vector3 forward;
-
+    public Spell spell;
     private float defaultFov;
     // Start is called before the first frame update
     void Start()
@@ -25,6 +25,7 @@ public class DeathRainSpellCamera : MonoBehaviour
         //this.gameObject.SetActive(false);
         spellHitPointIndicator.GetComponent<Light>().enabled = false;
         spellCamera.enabled = false;
+
     }
     
     // Update is called once per frame

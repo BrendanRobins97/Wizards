@@ -619,7 +619,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1024026108}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5108f924abb79d54eb11c01d57bc46c4, type: 3}
+  m_Script: {fileID: 11500000, guid: 892a9d53e0bae9b4eb82dcca9b690d88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
@@ -2643,13 +2643,24 @@ PrefabInstance:
       propertyPath: m_UseGravity
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8889582121894644077, guid: 51d807e92cedc4bbea0aea5e110b7c02,
+        type: 3}
+      propertyPath: m_Mass
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8447053871582643636, guid: 51d807e92cedc4bbea0aea5e110b7c02,
         type: 3}
       propertyPath: hit
       value: 
       objectReference: {fileID: 7201041362218383478, guid: 67f3c0efcc21141cf868a73fea4b08f0,
         type: 3}
-    m_RemovedComponents: []
+    - target: {fileID: 4400139742120159425, guid: 51d807e92cedc4bbea0aea5e110b7c02,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 4400139742120159425, guid: 51d807e92cedc4bbea0aea5e110b7c02, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 51d807e92cedc4bbea0aea5e110b7c02, type: 3}
 --- !u!1001 &9070449468556781292
 PrefabInstance:

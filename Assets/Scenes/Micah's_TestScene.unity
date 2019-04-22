@@ -4440,6 +4440,12 @@ PrefabInstance:
       propertyPath: m_SpotAngle
       value: 106
       objectReference: {fileID: 0}
+    - target: {fileID: 7242976114015326540, guid: afbca4fa8a5a40546803826007722218,
+        type: 3}
+      propertyPath: spell
+      value: 
+      objectReference: {fileID: 3725027258511359217, guid: cccadbcfc7cbb7c4c89a4a05875e20c1,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afbca4fa8a5a40546803826007722218, type: 3}
 --- !u!1 &1507126043 stripped

@@ -140,7 +140,6 @@ GameObject:
   - component: {fileID: 8889582121894644075}
   - component: {fileID: 8889582121894644076}
   - component: {fileID: 8889582121894644077}
-  - component: {fileID: 8447053871582643636}
   m_Layer: 0
   m_Name: Boulder Top
   m_TagString: Untagged
@@ -192,18 +191,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
---- !u!114 &8447053871582643636
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8889582121894644079}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05d436275573d4b24a0d7440b565b2e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hit: {fileID: 0}
-  Instance: {fileID: 0}
-  soundPlay: {fileID: 0}
