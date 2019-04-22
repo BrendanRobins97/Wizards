@@ -69,9 +69,11 @@ MonoBehaviour:
   damageRadius: 3
   explosionDampen: 0.75
   knockBackForce: 1500
-  explosion: {fileID: 0}
+  explosion: {fileID: 1986826617688633447, guid: 7592a84bac4424dfc9400a8de3d6bf0d,
+    type: 3}
   spellImage: {fileID: 0}
   spellImageColor: {r: 0, g: 0, b: 0, a: 0}
+  timeAfterSpellCast: 3
   hitPoint: {fileID: 5544555019570703497}
 --- !u!95 &2265350957089437723
 Animator:
@@ -156,7 +158,9 @@ MonoBehaviour:
   damageRadius: 3
   explosionDampen: 0.75
   knockBackForce: 1500
-  explosion: {fileID: 0}
+  explosion: {fileID: 1986826617688633447, guid: 7592a84bac4424dfc9400a8de3d6bf0d,
+    type: 3}
   spellImage: {fileID: 0}
   spellImageColor: {r: 0, g: 0, b: 0, a: 0}
+  timeAfterSpellCast: 3
   hitPoint: {fileID: 5544555019570703497}
