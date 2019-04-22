@@ -20,6 +20,8 @@ public class Spell : MonoBehaviour {
     public float      explosionDampen = .75f;
     public float      knockBackForce;
     public GameObject explosion;
+    public Sprite spellImage;
+    public Color spellImageColor;
 
     protected List<Player> playersHit = new List<Player>();
     protected bool         collisions = true;

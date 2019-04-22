@@ -34,7 +34,7 @@ public class Player : MonoBehaviour {
     [HideInInspector] public bool enabled = true;
     [SerializeField] public Camera playerCamera;
     [SerializeField] public int maxHealth = 100;
-    [SerializeField] private List<Spell> spells;
+    [SerializeField] public List<Spell> spells;
     [SerializeField] private Transform feetPosition;
 
     [SerializeField] public Animator animator;

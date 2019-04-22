@@ -54,7 +54,7 @@ public class TerrainManager : MonoBehaviour {
     private Vector3Int     numChunks;
     private Chunk[,,]      chunks;
     private HashSet<Chunk> chunksToUpdate = new HashSet<Chunk>();
-    private float          seed;
+    public float          seed;
 
     private RandomArray<GameObject> boulders;
     private RandomArray<GameObject> trees;
@@ -76,7 +76,7 @@ public class TerrainManager : MonoBehaviour {
             new[] {tree1, tree2, tree3},
             new[] {1f, 1f, 1f});
 
-        seed = Random.Range(-100f, 100f);
+        //seed = Random.Range(-100f, 100f);
         grid = new Cell[width + 1, height + 1, length + 1];
 
         for (int x = 0; x <= width; x++) {
