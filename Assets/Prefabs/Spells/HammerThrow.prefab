@@ -82,7 +82,8 @@ MonoBehaviour:
   damageRadius: 5
   explosionDampen: 0.75
   knockBackForce: 800
-  explosion: {fileID: 0}
+  explosion: {fileID: 7201041362218383478, guid: 67f3c0efcc21141cf868a73fea4b08f0,
+    type: 3}
 --- !u!1001 &8547661290071951107
 PrefabInstance:
   m_ObjectHideFlags: 0
