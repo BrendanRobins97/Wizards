@@ -130,7 +130,7 @@ MonoBehaviour:
   explosionDampen: 0.75
   knockBackForce: 0
   explosion: {fileID: 0}
-  sizeIncreaseRate: 12
+  sizeIncreaseRate: 8
   groundMask:
     serializedVersion: 2
     m_Bits: 512
