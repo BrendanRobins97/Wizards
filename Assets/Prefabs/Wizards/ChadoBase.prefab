@@ -4155,6 +4155,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1522900991073116635, guid: 76a9818cabe89e84b931dcfe38c16da5,
         type: 3}
+    - target: {fileID: 2429517294149507765, guid: 3f4a4251d79bb3740b1f004fcc81e315,
+        type: 3}
+      propertyPath: icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 215ed95f909af494781d970a3bbe915c,
+        type: 3}
     - target: {fileID: 1032518970902120018, guid: 3f4a4251d79bb3740b1f004fcc81e315,
         type: 3}
       propertyPath: m_LocalPosition.x

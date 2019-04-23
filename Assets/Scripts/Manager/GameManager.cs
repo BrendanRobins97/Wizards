@@ -124,6 +124,7 @@ public class GameManager : MonoBehaviour {
             }
             player.transform.LookAt(new Vector3(TerrainManager.instance.width / 2f, rayHit.point.y, TerrainManager.instance.length / 2f));
             PlayerUI playerUI = Instantiate(playerUIPrefab, playerInfoContainer).GetComponent<PlayerUI>();
+            playerUI.playerImage.sprite = player.icon;
             playerUI.playerImage.color = player.color;
             newPlayerInfo.player = player;
             newPlayerInfo.playerUI = playerUI;
@@ -148,7 +149,7 @@ public class GameManager : MonoBehaviour {
     private void Update() {
         // Update the current time left and update the timer text
         currentTurnTimeLeft -= Time.deltaTime;
-
+        chargeBar.enabled = false;
         currentTurnTimeLeft = Mathf.Clamp(currentTurnTimeLeft, -0.9f, turnTime);
         turnText.text = "Time Left: " + (int) (currentTurnTimeLeft + 1);
         if (playerTurn == 0 && newRound && roundNumber / numPlayers > mapShrinkNumber) {
@@ -174,6 +175,7 @@ public class GameManager : MonoBehaviour {
         if(mainCamera.enabled == false) { FindObjectOfType<Canvas>().enabled = true; }
         if (!gameStarted) { // Handle game start behavior
             FindObjectOfType<Canvas>().enabled = false;
+            chargeBar.enabled = false;
             // Start game when initial timer hits 0
             if (currentTurnTimeLeft < 0) {
                 CurrentPlayer.Enable();
@@ -181,13 +183,14 @@ public class GameManager : MonoBehaviour {
                 mainCamera.enabled = false;
                 gameStarted = true;
                 FindObjectOfType<Canvas>().enabled = true;
+                chargeBar.enabled = false;
             }
         }
 
         if (!gameStarted) { return; }
         chargeBar.value = CurrentPlayer.chargePercent;
         if (chargeBar.value <= 0) { chargeBar.enabled = false; }
-        else { chargeBar.enabled = true; }
+        else { chargeBar.enabled = false; }
 
         if (CurrentPlayer.turnOver && !endOfTurn) {
             currentTurnTimeLeft = CurrentPlayer.CurrentSpell.timeAfterSpellCast;

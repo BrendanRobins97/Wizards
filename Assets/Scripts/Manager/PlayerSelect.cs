@@ -13,11 +13,13 @@ public class PlayerSelect : MonoBehaviour
     public List<Player> players;
     public TextMeshProUGUI text;
     public int numPlayers = 3;
+    private bool picked = false;
     private int playerPicking = 0;
     private float gameStartTimer = -4;
     private bool show = true;
     private bool showTutorial = false;
     public List<int> playersPicked = new List<int>();
+    private List<int> used = new List<int>();
     // Start is called before the first frame update
     void Start()
     {
@@ -62,6 +64,7 @@ public class PlayerSelect : MonoBehaviour
         if (gameStartTimer > 3 && gameStartTimer < 6 && !showTutorial)
         {
             text.text = "Player " + (playerDisplay-1) + " You Chose " + players[currentIndex].name;
+            //used.Add(currentIndex);
         }
         if(gameStartTimer <= 3 && gameStartTimer > 0 && !showTutorial)
         {
@@ -89,6 +92,13 @@ public class PlayerSelect : MonoBehaviour
             show = true;
             players[currentIndex].AnimTriggerReset();
             currentIndex++;
+            for (int i = 0; i < used.Count; i++)
+            {
+                if (currentIndex == used[i])
+                {
+                    //currentIndex++;
+                }
+            }
             if (currentIndex >= players.Count)
             {
                 currentIndex = 0;
@@ -97,15 +107,33 @@ public class PlayerSelect : MonoBehaviour
 
         if (Input.GetButtonUp("Fire1")&&playerPicking < numPlayers)
         {
-            text.text = "Player " + playerDisplay + " You Chose " + players[currentIndex].name;
-            show = false;
-            playersPicked.Add(currentIndex);
-            playerPicking++;
-            players[currentIndex].animator.SetTrigger("Hit");
-           if (playerPicking >= numPlayers)
+            for (int i = 0; i < used.Count; i++)
             {
-                
-                gameStartTimer = 6f;
+                if (currentIndex == used[i])
+                {
+                    picked = true;
+                }
+            }
+
+            if (!picked)
+            {
+                text.text = "Player " + playerDisplay + " You Chose " + players[currentIndex].name;
+                show = false;
+                playersPicked.Add(currentIndex);
+                used.Add(currentIndex);
+                playerPicking++;
+                //players[currentIndex].gameObject.SetActive(false);
+                players[currentIndex].animator.SetTrigger("Hit");
+                //currentIndex++;
+                if (playerPicking >= numPlayers)
+                {
+                    gameStartTimer = 6f;
+                }
+            }
+            else
+            {
+                text.text = "Player Already Chosen. Press Y/Space to Choose Another Player.";
+                picked = false;
             }
         }
     }

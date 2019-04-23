@@ -18,6 +18,7 @@ public class Player : MonoBehaviour {
 
     #region Fields
 
+    public Sprite icon;
     public Color color;
     public float chargeAmount;
     public Transform hitPoint;
