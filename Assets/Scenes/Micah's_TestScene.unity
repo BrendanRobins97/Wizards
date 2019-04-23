@@ -4090,6 +4090,7 @@ MonoBehaviour:
   currentTurnTimeLeft: 0
   timeAfterSpellCast: 3
   gameStartTime: 3
+  spawnWidth: 4
   turnTime: 20
   numPlayers: 3
   spawnLocations:
@@ -4193,6 +4194,7 @@ MonoBehaviour:
   tree3: {fileID: 5391149629394585644, guid: d1ae4a0cb7e9c4395b586312554f58d1, type: 3}
   chunkPrefab: {fileID: 8074238528476653214, guid: 9bf9346c025b8f14080ee2787e2ce483,
     type: 3}
+  seed: 0
 --- !u!114 &1414293011
 MonoBehaviour:
   m_ObjectHideFlags: 0
