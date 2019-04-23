@@ -84,6 +84,9 @@ MonoBehaviour:
   knockBackForce: 800
   explosion: {fileID: 7201041362218383478, guid: 67f3c0efcc21141cf868a73fea4b08f0,
     type: 3}
+  spellImage: {fileID: 21300000, guid: 9aa9ee05f03394131841e0d7beea021a, type: 3}
+  spellImageColor: {r: 0.3773585, g: 0.3506586, b: 0.3506586, a: 1}
+  timeAfterSpellCast: 3
 --- !u!1001 &8547661290071951107
 PrefabInstance:
   m_ObjectHideFlags: 0

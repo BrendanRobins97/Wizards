@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 1154065597347731263}
   - component: {fileID: 3564348973383774485}
   m_Layer: 18
-  m_Name: HammerShot
+  m_Name: AnvilToss
   m_TagString: FireSpell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -147,6 +147,9 @@ MonoBehaviour:
   explosionDampen: 0.75
   knockBackForce: 0
   explosion: {fileID: 419876400, guid: 5ff27bc51b8854b9183c893c95f2d189, type: 3}
+  spellImage: {fileID: 21300000, guid: 9d0f9c112f9274127987ee9aca1ce89d, type: 3}
+  spellImageColor: {r: 1, g: 1, b: 1, a: 1}
+  timeAfterSpellCast: 3
   smallExplosiveShot: {fileID: 8764879235604696749, guid: ae71b56101faf6f478e582e5fb4c8f98,
     type: 3}
   numSmallExplosions: 8

@@ -71,8 +71,8 @@ MonoBehaviour:
   knockBackForce: 1500
   explosion: {fileID: 1986826617688633447, guid: 7592a84bac4424dfc9400a8de3d6bf0d,
     type: 3}
-  spellImage: {fileID: 0}
-  spellImageColor: {r: 0, g: 0, b: 0, a: 0}
+  spellImage: {fileID: 21300000, guid: 3c6c064f55d8a4d459f4305ced1fc75a, type: 3}
+  spellImageColor: {r: 0.0102349585, g: 0.4339623, b: 0.36959696, a: 1}
   timeAfterSpellCast: 3
   hitPoint: {fileID: 5544555019570703497}
 --- !u!95 &2265350957089437723

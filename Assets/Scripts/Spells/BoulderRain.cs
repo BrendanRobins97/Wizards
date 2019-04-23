@@ -3,6 +3,7 @@
 // Date Created: 04/21/2019
 // Date Last Modified: 04/21/2019
 
+using System.Collections.Generic;
 using UnityEngine;
 
 public class BoulderRain : Spell {
@@ -17,6 +18,7 @@ public class BoulderRain : Spell {
     private Vector3 prevPosition;
     private Collider collider;
 
+    private List<Player> playersHit = new List<Player>();
     #endregion
 
     #region Methods
@@ -60,7 +62,11 @@ public class BoulderRain : Spell {
     protected override void OnCollisionEnter(Collision collision) {
         if (collision.gameObject.CompareTag("Player")) {
             Player player = collision.gameObject.GetComponent<Player>();
-            player.Damage((int)(contactDamage * size));
+            if (!playersHit.Contains(player))
+            {
+                player.Damage((int)(contactDamage * size));
+                playersHit.Add(player);
+            }
         }
     }
 
