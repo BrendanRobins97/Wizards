@@ -14,13 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Micah's_PlayerSelectScene.unity
     guid: 677c0f14b9bc3844a9196f3de1be8087
-  - enabled: 0
-    path: Assets/Scenes/TutorialScene.unity
-    guid: eca7edb4313e56e46927a0746cc4fbfb
   - enabled: 1
-    path: Assets/Scenes/Micah's_TestScene.unity
-    guid: 4c1b374104daee244877630b962a69a2
-  - enabled: 0
-    path: Assets/Scenes/Miguel's Test.unity
-    guid: 34969b67f791ecb458250d48119584c8
+    path: Assets/Scenes/MainTestScene.unity
+    guid: d96827611cc39ad47be2368b6e9c1dbe
   m_configObjects: {}

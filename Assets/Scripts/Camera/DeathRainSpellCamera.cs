@@ -99,6 +99,7 @@ public class DeathRainSpellCamera : MonoBehaviour
         {
             Vector3 newY = new Vector3(transform.position.x, transform.position.y - Input.GetAxis("Mouse ScrollWheel")*Time.deltaTime * 120f, transform.position.z);
             //spellCamera.fieldOfView -= Input.GetAxis("Mouse ScrollWheel")*700*Time.deltaTime;
+            if(newY.y < 45f && newY.y > 5f)
             transform.position = newY;
         }
 
@@ -106,6 +107,7 @@ public class DeathRainSpellCamera : MonoBehaviour
         {
             //spellCamera.fieldOfView -= Input.GetAxis("Mouse ScrollWheel") * 700*Time.deltaTime;
             Vector3 newY = new Vector3(transform.position.x, transform.position.y - Input.GetAxis("Mouse ScrollWheel") * Time.deltaTime * 120f, transform.position.z);
+            if(newY.y > 5f && newY.y < 45f)
             transform.position = newY;
         }
 
@@ -113,14 +115,14 @@ public class DeathRainSpellCamera : MonoBehaviour
         {
             //spellCamera.fieldOfView -= Input.GetAxis("Mouse Y")* 50 * Time.deltaTime;
             Vector3 newY = new Vector3(transform.position.x, transform.position.y - Input.GetAxis("Mouse Y") * Time.deltaTime * 10f, transform.position.z);
-            if (Input.GetAxis("Mouse Y") > .3 || Input.GetAxis("Mouse Y") < -.3)
+            if (Input.GetAxis("Mouse Y") > .3 || Input.GetAxis("Mouse Y") < -.3 && (newY.y < 45f && newY.y > 5f))
                 transform.position = newY;
         }
         if (Input.GetAxis("Mouse Y") < 0)
         {
             //spellCamera.fieldOfView -= Input.GetAxis("Mouse Y") * 50 * Time.deltaTime;
             Vector3 newY = new Vector3(transform.position.x, transform.position.y - Input.GetAxis("Mouse Y") * Time.deltaTime * 10f, transform.position.z);
-            if (Input.GetAxis("Mouse Y") > .3 || Input.GetAxis("Mouse Y") < -.3)
+            if (Input.GetAxis("Mouse Y") > .3 || Input.GetAxis("Mouse Y") < -.3 && (newY.y < 45f && newY.y > 5f))
                 transform.position = newY;
         }
         Ray ray = spellCamera.ScreenPointToRay(Input.mousePosition);

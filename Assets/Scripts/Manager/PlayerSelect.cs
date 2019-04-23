@@ -69,7 +69,7 @@ public class PlayerSelect : MonoBehaviour
             gameStartTimer = 15f;
             showTutorial = true;
         }
-        if (gameStartTimer <= 0 && gameStartTimer >= -2 || Input.GetButtonUp("Start"))
+        if (gameStartTimer <= 0 && gameStartTimer >= -2 || Input.GetButtonUp("Start")||Input.GetKeyDown(KeyCode.S))
         {
             Input.ResetInputAxes();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
