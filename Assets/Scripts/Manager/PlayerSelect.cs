@@ -18,6 +18,8 @@ public class PlayerSelect : MonoBehaviour
     private float gameStartTimer = -4;
     private bool show = true;
     private bool showTutorial = false;
+    private bool showPlayerPicked = false;
+    private float showPickedTime = 2f;
     public List<int> playersPicked = new List<int>();
     private List<int> used = new List<int>();
     // Start is called before the first frame update
@@ -56,6 +58,16 @@ public class PlayerSelect : MonoBehaviour
     {
         int playerDisplay = playerPicking + 1;
         gameStartTimer -= Time.deltaTime;
+        if (showPlayerPicked)
+        {
+            text.text = "Player Already Chosen. Press Y/Space to Choose Another Player.";
+            showPickedTime -= Time.deltaTime;
+            if (showPickedTime <= 0)
+            {
+                showPlayerPicked = false;
+                showPickedTime = 3f;
+            }
+        }
         if (showTutorial)
         {
             canvas.enabled = false;
@@ -80,7 +92,7 @@ public class PlayerSelect : MonoBehaviour
         Vector3 camPos = new Vector3(players[currentIndex].transform.position.x, players[currentIndex].transform.position.y+2, players[currentIndex].transform.position.z + 5);
         camera.transform.position = camPos;
         camera.transform.LookAt(players[currentIndex].transform.position);
-        if (show)
+        if (show && !showPlayerPicked)
         {
             text.text = "Player " + playerDisplay + ": " +
                         " Press Y/Space To Cycle " +
@@ -125,6 +137,7 @@ public class PlayerSelect : MonoBehaviour
                 //players[currentIndex].gameObject.SetActive(false);
                 players[currentIndex].animator.SetTrigger("Hit");
                 //currentIndex++;
+                showPlayerPicked = false;
                 if (playerPicking >= numPlayers)
                 {
                     gameStartTimer = 6f;
@@ -132,7 +145,7 @@ public class PlayerSelect : MonoBehaviour
             }
             else
             {
-                text.text = "Player Already Chosen. Press Y/Space to Choose Another Player.";
+                showPlayerPicked = true;
                 picked = false;
             }
         }
