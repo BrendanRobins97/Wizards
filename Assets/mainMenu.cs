@@ -162,7 +162,7 @@ public class mainMenu : MonoBehaviour
             {
                 if (Input.GetAxis("Horizontal") < -0.2)
                 {
-                    if (hoverNumPlayers > 1)
+                    if (hoverNumPlayers > 2)
                     {
                         hoverNumPlayers -= 1;
                         print(timer2 % .5);

@@ -10,16 +10,21 @@ public class PlayerSelect : MonoBehaviour
     public static PlayerSelect instance;
     public Camera camera;
     public int currentIndex = 0;
+    public int stage1Index = 0;
     public List<Player> players;
+    public List<Player> playerBases;
     public TextMeshProUGUI text;
     public int numPlayers = 3;
     private bool picked = false;
     private int playerPicking = 0;
+    private int baseIndex;
     private float gameStartTimer = -4;
     private bool show = true;
     private bool showTutorial = false;
     private bool showPlayerPicked = false;
+    private bool stage1, stage2 = false;
     private float showPickedTime = 2f;
+    private float axisCooldownTime = .33f;
     public List<int> playersPicked = new List<int>();
     private List<int> used = new List<int>();
     // Start is called before the first frame update
@@ -34,6 +39,7 @@ public class PlayerSelect : MonoBehaviour
             numPlayers = mm.NumPlayers();
         }
 
+        stage1 = true;
         tutorialCanvas.enabled = false;
     }
 
@@ -58,9 +64,10 @@ public class PlayerSelect : MonoBehaviour
     {
         int playerDisplay = playerPicking + 1;
         gameStartTimer -= Time.deltaTime;
+        axisCooldownTime -= Time.deltaTime;
         if (showPlayerPicked)
         {
-            text.text = "Player Already Chosen. Press Y/Space to Choose Another Player.";
+            text.text = "Player Already Chosen. Choose Another Player.";
             showPickedTime -= Time.deltaTime;
             if (showPickedTime <= 0)
             {
@@ -75,7 +82,7 @@ public class PlayerSelect : MonoBehaviour
         }
         if (gameStartTimer > 3 && gameStartTimer < 6 && !showTutorial)
         {
-            text.text = "Player " + (playerDisplay-1) + " You Chose " + players[currentIndex].name;
+            text.text = "Player " + (playerDisplay-1) + " You Chose " + players[stage1Index].name;
             //used.Add(currentIndex);
         }
         if(gameStartTimer <= 3 && gameStartTimer > 0 && !showTutorial)
@@ -89,64 +96,237 @@ public class PlayerSelect : MonoBehaviour
             Input.ResetInputAxes();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
-        Vector3 camPos = new Vector3(players[currentIndex].transform.position.x, players[currentIndex].transform.position.y+2, players[currentIndex].transform.position.z + 5);
-        camera.transform.position = camPos;
-        camera.transform.LookAt(players[currentIndex].transform.position);
-        if (show && !showPlayerPicked)
+        if (stage1)
         {
-            text.text = "Player " + playerDisplay + ": " +
-                        " Press Y/Space To Cycle " +
-                        " Press A/Left Click To Select";
+            Vector3 camPos = new Vector3(playerBases[stage1Index].transform.position.x, playerBases[stage1Index].transform.position.y+2, playerBases[stage1Index].transform.position.z + 5);
+            camera.transform.position = camPos;
+            camera.transform.LookAt(playerBases[stage1Index].transform.position);
+        
+            if (show && !showPlayerPicked)
+            {
+                text.text = "Player " + playerDisplay + ": " +
+                            " Press A/Left Click To Select a Character.";
+            }
+
+            //if (Input.GetButtonDown("Jump")&& playerPicking < numPlayers)
+            if (Input.GetAxis("Horizontal") > .2f && playerPicking < numPlayers && axisCooldownTime < 0)
+            {
+                show = true;
+                axisCooldownTime = .33f;
+                playerBases[stage1Index].AnimTriggerReset();
+                stage1Index++;
+                for (int i = 0; i < used.Count; i++)
+                {
+                    if (currentIndex == used[i])
+                    {
+                        //currentIndex++;
+                    }
+                }
+
+                if (stage1Index >= playerBases.Count)
+                {
+                    stage1Index = 0;
+                }
+            }
+
+            if (Input.GetAxis("Horizontal") < -.2f && playerPicking < numPlayers && axisCooldownTime < 0)
+            {
+                show = true;
+                axisCooldownTime = .33f;
+                playerBases[stage1Index].AnimTriggerReset();
+                stage1Index--;
+                for (int i = 0; i < used.Count; i++)
+                {
+                    if (stage1Index == used[i])
+                    {
+                        //currentIndex++;
+                    }
+                }
+
+                if (stage1Index < 0)
+                {
+                    stage1Index = playerBases.Count - 1;
+                }
+            }
+
+            if (Input.GetButtonUp("Fire1") && playerPicking < numPlayers)
+            {
+                axisCooldownTime = .3f;
+                stage1 = false;
+                stage2 = true;
+                if(stage1Index == 0)
+                currentIndex = stage1Index;
+                if (stage1Index == 1)
+                    currentIndex = 4;
+                if (stage1Index == 2)
+                    currentIndex = 9;
+            }
         }
 
-        if (Input.GetButtonDown("Jump")&& playerPicking < numPlayers)
+        if (stage2)
         {
-            show = true;
-            players[currentIndex].AnimTriggerReset();
-            currentIndex++;
-            for (int i = 0; i < used.Count; i++)
+            baseIndex = stage1Index;
+            Vector3 camPos = new Vector3(players[currentIndex].transform.position.x, players[currentIndex].transform.position.y + 2, players[currentIndex].transform.position.z + 5);
+            camera.transform.position = camPos;
+            camera.transform.LookAt(players[currentIndex].transform.position);
+            text.text = "Player " + playerDisplay + ": " + "Choose your skin.";
+            if (baseIndex == 0)
             {
-                if (currentIndex == used[i])
+                if (Input.GetButtonUp("Fire1") && playerPicking < numPlayers&& axisCooldownTime < 0)
                 {
-                    //currentIndex++;
-                }
-            }
-            if (currentIndex >= players.Count)
-            {
-                currentIndex = 0;
-            }
-        }
+                    stage1 = true;
+                    stage2 = false;
+                    for (int i = 0; i < used.Count; i++)
+                    {
+                        if (currentIndex == used[i])
+                        {
+                            picked = true;
+                        }
+                    }
 
-        if (Input.GetButtonUp("Fire1")&&playerPicking < numPlayers)
-        {
-            for (int i = 0; i < used.Count; i++)
-            {
-                if (currentIndex == used[i])
+                    if (!picked)
+                    {
+                        text.text = "Player " + playerDisplay + " You Chose " + players[currentIndex].name;
+                        show = false;
+                        playersPicked.Add(currentIndex);
+                        used.Add(currentIndex);
+                        playerPicking++;
+                        //players[currentIndex].gameObject.SetActive(false);
+                        players[currentIndex].animator.SetTrigger("Hit");
+                        //currentIndex++;
+                        showPlayerPicked = false;
+                        if (playerPicking >= numPlayers)
+                        {
+                            gameStartTimer = 6f;
+                        }
+                    }
+                    else
+                    {
+                        showPlayerPicked = true;
+                        picked = false;
+                    }
+                }
+
+                if (Input.GetAxis("Horizontal") > .2f && playerPicking < numPlayers && axisCooldownTime < 0)
                 {
-                    picked = true;
+                    show = true;
+                    axisCooldownTime = .33f;
+                    players[currentIndex].AnimTriggerReset();
+                    currentIndex++;
+                    for (int i = 0; i < used.Count; i++)
+                    {
+                        if (currentIndex == used[i])
+                        {
+                            //currentIndex++;
+                        }
+                    }
+
+                    if (currentIndex > 3)
+                    {
+                        currentIndex = 0;
+                    }
+                }
+                if (Input.GetAxis("Horizontal") < -.2f && playerPicking < numPlayers && axisCooldownTime < 0)
+                {
+                    show = true;
+                    axisCooldownTime = .33f;
+                    players[currentIndex].AnimTriggerReset();
+                    currentIndex--;
+                    for (int i = 0; i < used.Count; i++)
+                    {
+                        if (currentIndex == used[i])
+                        {
+                            //currentIndex++;
+                        }
+                    }
+
+                    if (currentIndex < 0)
+                    {
+                        currentIndex = 3;
+                    }
                 }
             }
 
-            if (!picked)
+            if (baseIndex == 1)
             {
-                text.text = "Player " + playerDisplay + " You Chose " + players[currentIndex].name;
-                show = false;
-                playersPicked.Add(currentIndex);
-                used.Add(currentIndex);
-                playerPicking++;
-                //players[currentIndex].gameObject.SetActive(false);
-                players[currentIndex].animator.SetTrigger("Hit");
-                //currentIndex++;
-                showPlayerPicked = false;
-                if (playerPicking >= numPlayers)
+                if (Input.GetButtonUp("Fire1") && playerPicking < numPlayers && axisCooldownTime < 0)
                 {
-                    gameStartTimer = 6f;
+                    stage1 = true;
+                    stage2 = false;
+                    for (int i = 0; i < used.Count; i++)
+                    {
+                        if (currentIndex == used[i])
+                        {
+                            picked = true;
+                        }
+                    }
+
+                    if (!picked)
+                    {
+                        text.text = "Player " + playerDisplay + " You Chose " + players[currentIndex].name;
+                        show = false;
+                        playersPicked.Add(currentIndex);
+                        used.Add(currentIndex);
+                        playerPicking++;
+                        //players[currentIndex].gameObject.SetActive(false);
+                        players[currentIndex].animator.SetTrigger("Hit");
+                        //currentIndex++;
+                        showPlayerPicked = false;
+                        if (playerPicking >= numPlayers)
+                        {
+                            gameStartTimer = 6f;
+                        }
+                    }
+                    else
+                    {
+                        showPlayerPicked = true;
+                        picked = false;
+                    }
+                }
+
+                if (Input.GetAxis("Horizontal") > .2f && playerPicking < numPlayers && axisCooldownTime < 0)
+                {
+                    show = true;
+                    axisCooldownTime = .33f;
+                    players[currentIndex].AnimTriggerReset();
+                    currentIndex++;
+                    for (int i = 0; i < used.Count; i++)
+                    {
+                        if (currentIndex == used[i])
+                        {
+                            //currentIndex++;
+                        }
+                    }
+
+                    if (currentIndex > 8)
+                    {
+                        currentIndex = 4;
+                    }
+                }
+                if (Input.GetAxis("Horizontal") < -.2f && playerPicking < numPlayers && axisCooldownTime < 0)
+                {
+                    show = true;
+                    axisCooldownTime = .33f;
+                    players[currentIndex].AnimTriggerReset();
+                    currentIndex--;
+                    for (int i = 0; i < used.Count; i++)
+                    {
+                        if (currentIndex == used[i])
+                        {
+                            //currentIndex++;
+                        }
+                    }
+
+                    if (currentIndex < 4)
+                    {
+                        currentIndex = 8;
+                    }
                 }
             }
-            else
+
+            if (baseIndex == 2)
             {
-                showPlayerPicked = true;
-                picked = false;
+
             }
         }
     }
