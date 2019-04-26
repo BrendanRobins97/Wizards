@@ -11,6 +11,7 @@ TagManager:
   - DeathRainSpell
   - IceSpell
   - Chunk
+  - Grass
   layers:
   - Default
   - TransparentFX
