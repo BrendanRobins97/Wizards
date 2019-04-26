@@ -89,7 +89,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -6044,7 +6044,7 @@ PrefabInstance:
     - target: {fileID: 87411751977076961, guid: defa113a41a1cc94f852231de4dd3244,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -254.2
+      value: -645
       objectReference: {fileID: 0}
     - target: {fileID: 87411751977076961, guid: defa113a41a1cc94f852231de4dd3244,
         type: 3}
@@ -6243,7 +6243,7 @@ PrefabInstance:
     - target: {fileID: 1306857241995966865, guid: 061a7a13ddccdf9408aed4f54bc24216,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -254.2
+      value: -645
       objectReference: {fileID: 0}
     - target: {fileID: 1306857241995966865, guid: 061a7a13ddccdf9408aed4f54bc24216,
         type: 3}
@@ -6692,7 +6692,7 @@ PrefabInstance:
     - target: {fileID: 4989636064026828067, guid: f964ffd62cd42814491403251215ae6d,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -142
+      value: -645
       objectReference: {fileID: 0}
     - target: {fileID: 4989636064026828067, guid: f964ffd62cd42814491403251215ae6d,
         type: 3}
@@ -6816,7 +6816,7 @@ PrefabInstance:
     - target: {fileID: 5486236039645316854, guid: 31a04c2e2292e0f4badb1b651a991378,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -142
+      value: -645
       objectReference: {fileID: 0}
     - target: {fileID: 5486236039645316854, guid: 31a04c2e2292e0f4badb1b651a991378,
         type: 3}
@@ -7263,7 +7263,7 @@ PrefabInstance:
     - target: {fileID: 7312464422716111923, guid: 63313b5fa005b854a8972d95db6277f6,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -142
+      value: -645
       objectReference: {fileID: 0}
     - target: {fileID: 7312464422716111923, guid: 63313b5fa005b854a8972d95db6277f6,
         type: 3}

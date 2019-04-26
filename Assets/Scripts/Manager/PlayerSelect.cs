@@ -82,7 +82,7 @@ public class PlayerSelect : MonoBehaviour
         }
         if (gameStartTimer > 3 && gameStartTimer < 6 && !showTutorial)
         {
-            text.text = "Player " + (playerDisplay-1) + " You Chose " + players[stage1Index].name;
+            text.text = "Player " + (playerDisplay-1) + " You Chose " + players[currentIndex].name;
             //used.Add(currentIndex);
         }
         if(gameStartTimer <= 3 && gameStartTimer > 0 && !showTutorial)
@@ -101,7 +101,12 @@ public class PlayerSelect : MonoBehaviour
             Vector3 camPos = new Vector3(playerBases[stage1Index].transform.position.x, playerBases[stage1Index].transform.position.y+2, playerBases[stage1Index].transform.position.z + 5);
             camera.transform.position = camPos;
             camera.transform.LookAt(playerBases[stage1Index].transform.position);
-        
+            for (int i = 0; i < players.Count; i++)
+            {
+                players[i].gameObject.SetActive(false);
+                players[i].animator.SetTrigger("Idle");
+                players[i].GetComponent<CapsuleCollider>().enabled = false;
+            }
             if (show && !showPlayerPicked)
             {
                 text.text = "Player " + playerDisplay + ": " +
@@ -172,6 +177,23 @@ public class PlayerSelect : MonoBehaviour
             text.text = "Player " + playerDisplay + ": " + "Choose your skin.";
             if (baseIndex == 0)
             {
+                for (int i = 0; i <= 3; i++)
+                {
+                    if (i == currentIndex)
+                    {
+                        players[currentIndex].animator.SetFloat("Forward Amount",0);
+                        players[currentIndex].gameObject.SetActive(true);
+                        players[currentIndex].AnimTriggerReset();
+                        players[currentIndex].animator.SetTrigger("Idle");
+                    }
+                    else
+                    {
+                        players[i].animator.SetFloat("Forward Amount", 0);
+                        players[i].gameObject.SetActive(false);
+                        players[i].AnimTriggerReset();
+                        players[i].animator.SetTrigger("Idle");
+                    }
+                }
                 if (Input.GetButtonUp("Fire1") && playerPicking < numPlayers&& axisCooldownTime < 0)
                 {
                     stage1 = true;
@@ -186,7 +208,8 @@ public class PlayerSelect : MonoBehaviour
 
                     if (!picked)
                     {
-                        text.text = "Player " + playerDisplay + " You Chose " + players[currentIndex].name;
+                        text.text = "Player " + playerDisplay + " You Chose " + players[currentIndex].name +
+                                    "\nPlayer " + (playerDisplay + 1) + " Choose Your Character.";
                         show = false;
                         playersPicked.Add(currentIndex);
                         used.Add(currentIndex);
@@ -249,6 +272,24 @@ public class PlayerSelect : MonoBehaviour
 
             if (baseIndex == 1)
             {
+                for (int i = 4; i <= 8; i++)
+                {
+                    if (i == currentIndex)
+                    {
+                        players[currentIndex].animator.SetFloat("Forward Amount", 0);
+                        players[currentIndex].gameObject.SetActive(true);
+                        players[currentIndex].AnimTriggerReset();
+                        players[currentIndex].animator.SetTrigger("Idle");
+                    }
+                    else
+                    {
+                        players[i].animator.SetFloat("Forward Amount", 0);
+                        players[i].gameObject.SetActive(false);
+                        players[i].AnimTriggerReset();
+                        players[i].animator.SetTrigger("Idle");
+                    }
+                }
+
                 if (Input.GetButtonUp("Fire1") && playerPicking < numPlayers && axisCooldownTime < 0)
                 {
                     stage1 = true;
@@ -263,7 +304,9 @@ public class PlayerSelect : MonoBehaviour
 
                     if (!picked)
                     {
-                        text.text = "Player " + playerDisplay + " You Chose " + players[currentIndex].name;
+                        text.text = "Player " + playerDisplay + " You Chose " + players[currentIndex].name +
+                                    "\nPlayer " + (playerDisplay+1) + " Choose Your Character.";
+                        
                         show = false;
                         playersPicked.Add(currentIndex);
                         used.Add(currentIndex);
