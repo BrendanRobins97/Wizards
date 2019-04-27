@@ -89,7 +89,7 @@ public class Player : MonoBehaviour {
             xRot *= -1;
         }
         float cameraRotationX = xRot * sensitivity;
-        if(xRot > .1 || xRot < -.1)
+        if(xRot > .06 || xRot < -.06)
         currentCameraRotationX -= cameraRotationX;
         currentCameraRotationX = Mathf.Clamp(currentCameraRotationX, -cameraRotationLimit, cameraRotationLimit);
 
@@ -105,22 +105,14 @@ public class Player : MonoBehaviour {
         float rot = Input.GetAxisRaw("Mouse X");
 
         Vector3 yRot = new Vector3(0f, rot, 0f) * sensitivity;
-        if(rot > .1 || rot < -.1)
+        if(rot > .06 || rot < -.06)
         rigidbody.MoveRotation(rigidbody.rotation * Quaternion.Euler(yRot));
 
         stamina -= (transform.position - prevPosition).magnitude;
         prevPosition = transform.position;
         animator.SetFloat("Forward Amount", 0.0f);
         animator.SetFloat("Strafe Amount", 0.0f);
-        if (Input.GetAxis("Horizontal") > 0 || Input.GetAxis("Horizontal") < 0)
-        {
-            //animator.applyRootMotion = true;
-        }
-        else
-        {
-            //animator.applyRootMotion = false;
-
-        }
+        
         if (stamina > 0) {
 
             // Movement Calculations

@@ -99,7 +99,8 @@ public class PlayerSelect : MonoBehaviour
         if (stage1)
         {
             Vector3 camPos = new Vector3(playerBases[stage1Index].transform.position.x, playerBases[stage1Index].transform.position.y+2, playerBases[stage1Index].transform.position.z + 5);
-            camera.transform.position = camPos;
+            //camera.transform.position = camPos;
+            camera.transform.position = Vector3.Lerp(camera.transform.position, camPos,Time.deltaTime * 2f);
             camera.transform.LookAt(playerBases[stage1Index].transform.position);
             for (int i = 0; i < players.Count; i++)
             {
@@ -137,7 +138,7 @@ public class PlayerSelect : MonoBehaviour
             if (Input.GetAxis("Horizontal") < -.2f && playerPicking < numPlayers && axisCooldownTime < 0)
             {
                 show = true;
-                axisCooldownTime = .33f;
+                axisCooldownTime = .3f;
                 playerBases[stage1Index].AnimTriggerReset();
                 stage1Index--;
                 for (int i = 0; i < used.Count; i++)
@@ -172,7 +173,8 @@ public class PlayerSelect : MonoBehaviour
         {
             baseIndex = stage1Index;
             Vector3 camPos = new Vector3(players[currentIndex].transform.position.x, players[currentIndex].transform.position.y + 2, players[currentIndex].transform.position.z + 5);
-            camera.transform.position = camPos;
+            //camera.transform.position = camPos;
+            camera.transform.position = Vector3.Lerp(camera.transform.position, camPos, Time.deltaTime * 2f);
             camera.transform.LookAt(players[currentIndex].transform.position);
             text.text = "Player " + playerDisplay + ": " + "Choose your skin.";
             if (baseIndex == 0)
@@ -233,7 +235,7 @@ public class PlayerSelect : MonoBehaviour
                 if (Input.GetAxis("Horizontal") > .2f && playerPicking < numPlayers && axisCooldownTime < 0)
                 {
                     show = true;
-                    axisCooldownTime = .33f;
+                    axisCooldownTime = .3f;
                     players[currentIndex].AnimTriggerReset();
                     currentIndex++;
                     for (int i = 0; i < used.Count; i++)
@@ -252,7 +254,7 @@ public class PlayerSelect : MonoBehaviour
                 if (Input.GetAxis("Horizontal") < -.2f && playerPicking < numPlayers && axisCooldownTime < 0)
                 {
                     show = true;
-                    axisCooldownTime = .33f;
+                    axisCooldownTime = .3f;
                     players[currentIndex].AnimTriggerReset();
                     currentIndex--;
                     for (int i = 0; i < used.Count; i++)

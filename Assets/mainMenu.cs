@@ -87,10 +87,10 @@ public class mainMenu : MonoBehaviour
         }
         if (myAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
         {
-            if (state == 1 && Input.GetAxisRaw("Submit") > 0)
+            if (state == 1 && Input.GetAxisRaw("Submit") > 0 || Input.GetButtonUp("Start"))
             {
-                myAnimator.Play("part2");
-                state = 2;
+                myAnimator.Play("part3");
+                state = 3;
             }
             else if (state == 2 && Input.GetAxisRaw("Cancel") > 0)
             {
