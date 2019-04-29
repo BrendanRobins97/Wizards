@@ -371,7 +371,99 @@ public class PlayerSelect : MonoBehaviour
 
             if (baseIndex == 2)
             {
+                for (int i = 9; i <= 9; i++)
+                {
+                    if (i == currentIndex)
+                    {
+                        players[currentIndex].animator.SetFloat("Forward Amount", 0);
+                        players[currentIndex].gameObject.SetActive(true);
+                        players[currentIndex].AnimTriggerReset();
+                        players[currentIndex].animator.SetTrigger("Idle");
+                    }
+                    else
+                    {
+                        players[i].animator.SetFloat("Forward Amount", 0);
+                        players[i].gameObject.SetActive(false);
+                        players[i].AnimTriggerReset();
+                        players[i].animator.SetTrigger("Idle");
+                    }
+                }
 
+                if (Input.GetButtonUp("Fire1") && playerPicking < numPlayers && axisCooldownTime < 0)
+                {
+                    stage1 = true;
+                    stage2 = false;
+                    for (int i = 0; i < used.Count; i++)
+                    {
+                        if (currentIndex == used[i])
+                        {
+                            picked = true;
+                        }
+                    }
+
+                    if (!picked)
+                    {
+                        text.text = "Player " + playerDisplay + " You Chose " + players[currentIndex].name +
+                                    "\nPlayer " + (playerDisplay + 1) + " Choose Your Character.";
+
+                        show = false;
+                        playersPicked.Add(currentIndex);
+                        used.Add(currentIndex);
+                        playerPicking++;
+                        //players[currentIndex].gameObject.SetActive(false);
+                        players[currentIndex].animator.SetTrigger("Hit");
+                        //currentIndex++;
+                        showPlayerPicked = false;
+                        if (playerPicking >= numPlayers)
+                        {
+                            gameStartTimer = 6f;
+                        }
+                    }
+                    else
+                    {
+                        showPlayerPicked = true;
+                        picked = false;
+                    }
+                }
+
+                if (Input.GetAxis("Horizontal") > .2f && playerPicking < numPlayers && axisCooldownTime < 0)
+                {
+                    show = true;
+                    axisCooldownTime = .33f;
+                    players[currentIndex].AnimTriggerReset();
+                    currentIndex++;
+                    for (int i = 0; i < used.Count; i++)
+                    {
+                        if (currentIndex == used[i])
+                        {
+                            //currentIndex++;
+                        }
+                    }
+
+                    if (currentIndex > 9)
+                    {
+                        currentIndex = 9;
+                    }
+                }
+                if (Input.GetAxis("Horizontal") < -.2f && playerPicking < numPlayers && axisCooldownTime < 0)
+                {
+                    show = true;
+                    axisCooldownTime = .33f;
+                    players[currentIndex].AnimTriggerReset();
+                    currentIndex--;
+                    for (int i = 0; i < used.Count; i++)
+                    {
+                        if (currentIndex == used[i])
+                        {
+                            //currentIndex++;
+                        }
+                    }
+
+                    if (currentIndex < 9)
+                    {
+                        currentIndex = 9;
+                    }
+                }
             }
         }
     }

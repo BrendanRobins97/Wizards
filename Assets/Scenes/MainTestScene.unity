@@ -3687,6 +3687,7 @@ MonoBehaviour:
   - {fileID: 5167307751220271212, guid: 0265f18c5185fda47acd72d06f5102e4, type: 3}
   - {fileID: 6770501040285935883, guid: 4969f60ba4def4046a583c04820a972a, type: 3}
   - {fileID: 2391146587931545960, guid: af0088ac34532ea42a6e30e982c171c1, type: 3}
+  - {fileID: 4499749861033504491, guid: a2cb320f2dadf4e4ea82bd1e49081789, type: 3}
   spellImages:
   - {fileID: 1522543005}
   - {fileID: 1607569539}
