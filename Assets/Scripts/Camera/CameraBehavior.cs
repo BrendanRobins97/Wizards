@@ -88,7 +88,8 @@ public class CameraBehavior : MonoBehaviour
         if ( (spell == null && fireSpell == null && deathRainSpell == null && iceSpell == null) || GameManager.instance.currentTurnTimeLeft > GameManager.instance.timeAfterSpellCast)
         {
             spellCamera.enabled = false;
-            //player.playerCamera.rect = new Rect(0, 0, 1f, 1);
+            player.playerCamera.rect = new Rect(0, 0, 1f, 1);
+            spellCamera.rect = new Rect(0, 0, 1f, 1);
             Destroy(fireSpell, GameManager.instance.timeAfterSpellCast);
             Destroy(iceSpell, GameManager.instance.timeAfterSpellCast+1);
             tempY = 7;
@@ -150,9 +151,10 @@ public class CameraBehavior : MonoBehaviour
     {
         //Debug.Log("RainSpellCam");
         spellCamera.enabled = true;
-        //spellCamera.rect = new Rect(0, 0, 0.5f, 1);
-        //player.playerCamera.enabled = true;
-        //player.playerCamera.rect = new Rect(0,0,.5f,1);
+        player.animator.SetTrigger("Cast3");
+        spellCamera.rect = new Rect(0, 0, 0.5f, 1);
+        player.playerCamera.enabled = true;
+        player.playerCamera.rect = new Rect(0.5f,0,.5f,1);
         float x, z, finalX, finalZ;
         x = (xpos + (deathRainSpell.transform.position.x + 2)) / 2.0f;
         z = (zpos + (deathRainSpell.transform.position.z - 2)) / 2.0f;

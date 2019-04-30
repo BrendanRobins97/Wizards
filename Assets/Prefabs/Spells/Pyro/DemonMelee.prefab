@@ -1,0 +1,389 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1904637606013217745
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7901797629481570586}
+  - component: {fileID: 8631829302583315471}
+  - component: {fileID: 5031086628318860800}
+  m_Layer: 0
+  m_Name: GameObject (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7901797629481570586
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904637606013217745}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1, y: -0.5, z: 1}
+  m_LocalScale: {x: 0.79, y: 0.79, z: 0.79}
+  m_Children: []
+  m_Father: {fileID: 4605058909520138996}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8631829302583315471
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904637606013217745}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.8642349, y: 0.8380827, z: 0.99999976}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5031086628318860800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904637606013217745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f254d8a687315340b9d27372681a960, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  contactDamage: 10
+  affectedByCharge: 0
+  duration: 3
+  damageRadius: 3
+  explosionDampen: 0.75
+  knockBackForce: 1500
+  explosion: {fileID: 0}
+  spellImage: {fileID: 0}
+  spellImageColor: {r: 0, g: 0, b: 0, a: 0}
+  timeAfterSpellCast: 3
+  hitPoint1: {fileID: 2697964521317061845}
+  hitPoint2: {fileID: 1904637606013217745}
+  hitPoint3: {fileID: 2793127584772925509}
+  hitPoint4: {fileID: 6128440049457172626}
+--- !u!1 &2697964521317061845
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5188496427943618743}
+  - component: {fileID: 4965604938250532949}
+  - component: {fileID: 2804048851726535720}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5188496427943618743
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2697964521317061845}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1, y: -0.5, z: 1}
+  m_LocalScale: {x: 0.79, y: 0.79, z: 0.79}
+  m_Children: []
+  m_Father: {fileID: 4605058909520138996}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &4965604938250532949
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2697964521317061845}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.8642349, y: 0.8380827, z: 0.99999976}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2804048851726535720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2697964521317061845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f254d8a687315340b9d27372681a960, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  contactDamage: 10
+  affectedByCharge: 0
+  duration: 3
+  damageRadius: 3
+  explosionDampen: 0.75
+  knockBackForce: 1500
+  explosion: {fileID: 0}
+  spellImage: {fileID: 0}
+  spellImageColor: {r: 0, g: 0, b: 0, a: 0}
+  timeAfterSpellCast: 3
+  hitPoint1: {fileID: 2697964521317061845}
+  hitPoint2: {fileID: 1904637606013217745}
+  hitPoint3: {fileID: 2793127584772925509}
+  hitPoint4: {fileID: 6128440049457172626}
+--- !u!1 &2793127584772925509
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4927263742527413537}
+  - component: {fileID: 2273043864942712046}
+  - component: {fileID: 7864617262697633835}
+  m_Layer: 0
+  m_Name: GameObject (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4927263742527413537
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2793127584772925509}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1, y: -0.5, z: 1}
+  m_LocalScale: {x: 0.79, y: 0.79, z: 0.79}
+  m_Children: []
+  m_Father: {fileID: 4605058909520138996}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2273043864942712046
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2793127584772925509}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.8642349, y: 0.8380827, z: 0.99999976}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7864617262697633835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2793127584772925509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f254d8a687315340b9d27372681a960, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  contactDamage: 10
+  affectedByCharge: 0
+  duration: 3
+  damageRadius: 3
+  explosionDampen: 0.75
+  knockBackForce: 1500
+  explosion: {fileID: 0}
+  spellImage: {fileID: 0}
+  spellImageColor: {r: 0, g: 0, b: 0, a: 0}
+  timeAfterSpellCast: 3
+  hitPoint1: {fileID: 2697964521317061845}
+  hitPoint2: {fileID: 1904637606013217745}
+  hitPoint3: {fileID: 2793127584772925509}
+  hitPoint4: {fileID: 6128440049457172626}
+--- !u!1 &5298618786097313201
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4605058909520138996}
+  - component: {fileID: 9078553701865391438}
+  - component: {fileID: 3216984746066089468}
+  - component: {fileID: 6044607485537151420}
+  m_Layer: 0
+  m_Name: DemonMelee
+  m_TagString: IceSpell
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4605058909520138996
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5298618786097313201}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.0013924, y: 4.0715113, z: 5.0734596}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 5188496427943618743}
+  - {fileID: 7901797629481570586}
+  - {fileID: 4927263742527413537}
+  - {fileID: 1110153105351420231}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &9078553701865391438
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5298618786097313201}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &3216984746066089468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5298618786097313201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f254d8a687315340b9d27372681a960, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  contactDamage: 45
+  affectedByCharge: 0
+  duration: 3
+  damageRadius: 3
+  explosionDampen: 0.75
+  knockBackForce: 1500
+  explosion: {fileID: 0}
+  spellImage: {fileID: 0}
+  spellImageColor: {r: 0.764151, g: 0.54241955, b: 0.05406728, a: 1}
+  timeAfterSpellCast: 3
+  hitPoint1: {fileID: 2697964521317061845}
+  hitPoint2: {fileID: 1904637606013217745}
+  hitPoint3: {fileID: 2793127584772925509}
+  hitPoint4: {fileID: 6128440049457172626}
+--- !u!95 &6044607485537151420
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5298618786097313201}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5e439e015af5e734e975c7a7b35101ea, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &6128440049457172626
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1110153105351420231}
+  - component: {fileID: 2542148128618883643}
+  - component: {fileID: 4869885448323618983}
+  m_Layer: 0
+  m_Name: GameObject (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1110153105351420231
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6128440049457172626}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1, y: -0.5, z: 1}
+  m_LocalScale: {x: 0.79, y: 0.79, z: 0.79}
+  m_Children: []
+  m_Father: {fileID: 4605058909520138996}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2542148128618883643
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6128440049457172626}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.8642349, y: 0.8380827, z: 0.99999976}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4869885448323618983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6128440049457172626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f254d8a687315340b9d27372681a960, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  contactDamage: 10
+  affectedByCharge: 0
+  duration: 3
+  damageRadius: 3
+  explosionDampen: 0.75
+  knockBackForce: 1500
+  explosion: {fileID: 0}
+  spellImage: {fileID: 0}
+  spellImageColor: {r: 0, g: 0, b: 0, a: 0}
+  timeAfterSpellCast: 3
+  hitPoint1: {fileID: 6128440049457172626}
+  hitPoint2: {fileID: 1904637606013217745}
+  hitPoint3: {fileID: 2793127584772925509}
+  hitPoint4: {fileID: 2793127584772925509}

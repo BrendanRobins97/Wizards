@@ -31,16 +31,17 @@ public class DeathRainSpellCamera : MonoBehaviour
     void Update()
     {
         player = GameManager.instance.CurrentPlayer;
-        if (GameManager.instance.CurrentPlayer.name == "Bauta Purple(Clone)" ||
-            GameManager.instance.CurrentPlayer.name == "Bauta Red(Clone)" ||
-            GameManager.instance.CurrentPlayer.name == "Bauta Green(Clone)" ||
-            GameManager.instance.CurrentPlayer.name == "Bauta Blue(Clone)")
+        if (GameManager.instance.CurrentPlayer.name == "Chado(Clone)" ||
+            GameManager.instance.CurrentPlayer.name == "Chado Bald(Clone)" ||
+            GameManager.instance.CurrentPlayer.name == "Chado Bros(Clone)" ||
+            GameManager.instance.CurrentPlayer.name == "Chado Clean Shave(Clone)" ||
+            GameManager.instance.CurrentPlayer.name == "Chado Underpants(Clone)")
         {
-            spellHitPointIndicator.spotAngle = 100f;
+            spellHitPointIndicator.spotAngle = 20f;
         }
         else
         {
-            spellHitPointIndicator.spotAngle = 20f;
+            spellHitPointIndicator.spotAngle = 100f;
         }
         if (spellHitPointIndicator != null)
         {

@@ -236,6 +236,14 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
+      - time: 0.65935326
+        functionName: EnableCollider
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 3ca155e1e3fa98846baa0f3469b25946,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       - time: 1
         functionName: AnimTriggerReset
         data: 

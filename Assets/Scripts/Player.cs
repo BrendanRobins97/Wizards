@@ -22,6 +22,7 @@ public class Player : MonoBehaviour {
     public Color color;
     public float chargeAmount;
     public Transform hitPoint;
+    public Transform demonHit1, demonHit2, demonHit3, demonHit4;
     public float stamina;
     public float jumpForce = 400;
     [HideInInspector] public int health;
@@ -57,7 +58,6 @@ public class Player : MonoBehaviour {
     [HideInInspector] public int numUlt = 1;
     [HideInInspector] public bool casting = false;
     [HideInInspector] public bool special = false;
-    
     public GameObject soundPlay;
 
     public Spell CurrentSpell { get { return spells[currentSpellIndex]; } }
@@ -76,11 +76,12 @@ public class Player : MonoBehaviour {
         drsc = FindObjectOfType<DeathRainSpellCamera>();
         special = false;
         originalFOV = playerCamera.fieldOfView;
+        
     }
 
     private void Update() {
         if (!enabled) { return; }
-
+        
         // Vertical rotation calculations
         // Applies to Camera
         float xRot = Input.GetAxisRaw("Mouse Y");
@@ -299,7 +300,7 @@ public class Player : MonoBehaviour {
     }
     public void EnableCollider()
     {
-        FindObjectOfType<HammerHit>().EnableCollider();
+        FindObjectOfType<DemonMelee>().EnableCollider();
     }
     #endregion
 
