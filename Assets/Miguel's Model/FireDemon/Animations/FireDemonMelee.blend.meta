@@ -237,7 +237,7 @@ ModelImporter:
         intParameter: 0
         messageOptions: 0
       - time: 0.65935326
-        functionName: EnableCollider
+        functionName: EnableCollider1
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 3ca155e1e3fa98846baa0f3469b25946,
           type: 3}

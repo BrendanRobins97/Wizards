@@ -300,6 +300,10 @@ public class Player : MonoBehaviour {
     }
     public void EnableCollider()
     {
+        FindObjectOfType<HammerHit>().EnableCollider();
+    }
+    public void EnableCollider1()
+    {
         FindObjectOfType<DemonMelee>().EnableCollider();
     }
     #endregion
