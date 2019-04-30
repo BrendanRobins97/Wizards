@@ -163,9 +163,9 @@ public class PlayerSelect : MonoBehaviour
                 if(stage1Index == 0)
                 currentIndex = stage1Index;
                 if (stage1Index == 1)
-                    currentIndex = 4;
+                    currentIndex = 5;
                 if (stage1Index == 2)
-                    currentIndex = 9;
+                    currentIndex = 6;
             }
         }
 
@@ -179,7 +179,7 @@ public class PlayerSelect : MonoBehaviour
             text.text = "Player " + playerDisplay + ": " + "Choose your skin.";
             if (baseIndex == 0)
             {
-                for (int i = 0; i <= 3; i++)
+                for (int i = 0; i <= 4; i++)
                 {
                     if (i == currentIndex)
                     {
@@ -246,7 +246,7 @@ public class PlayerSelect : MonoBehaviour
                         }
                     }
 
-                    if (currentIndex > 3)
+                    if (currentIndex > 4)
                     {
                         currentIndex = 0;
                     }
@@ -267,14 +267,14 @@ public class PlayerSelect : MonoBehaviour
 
                     if (currentIndex < 0)
                     {
-                        currentIndex = 3;
+                        currentIndex = 4;
                     }
                 }
             }
 
             if (baseIndex == 1)
             {
-                for (int i = 4; i <= 8; i++)
+                for (int i = 5; i <= 5; i++)
                 {
                     if (i == currentIndex)
                     {
@@ -343,9 +343,9 @@ public class PlayerSelect : MonoBehaviour
                         }
                     }
 
-                    if (currentIndex > 8)
+                    if (currentIndex > 5)
                     {
-                        currentIndex = 4;
+                        currentIndex = 5;
                     }
                 }
                 if (Input.GetAxis("Horizontal") < -.2f && playerPicking < numPlayers && axisCooldownTime < 0)
@@ -362,16 +362,16 @@ public class PlayerSelect : MonoBehaviour
                         }
                     }
 
-                    if (currentIndex < 4)
+                    if (currentIndex < 5)
                     {
-                        currentIndex = 8;
+                        currentIndex = 5;
                     }
                 }
             }
 
             if (baseIndex == 2)
             {
-                for (int i = 9; i <= 9; i++)
+                for (int i = 6; i <= 9; i++)
                 {
                     if (i == currentIndex)
                     {
@@ -442,7 +442,7 @@ public class PlayerSelect : MonoBehaviour
 
                     if (currentIndex > 9)
                     {
-                        currentIndex = 9;
+                        currentIndex = 6;
                     }
                 }
                 if (Input.GetAxis("Horizontal") < -.2f && playerPicking < numPlayers && axisCooldownTime < 0)
@@ -459,7 +459,7 @@ public class PlayerSelect : MonoBehaviour
                         }
                     }
 
-                    if (currentIndex < 9)
+                    if (currentIndex < 6)
                     {
                         currentIndex = 9;
                     }
