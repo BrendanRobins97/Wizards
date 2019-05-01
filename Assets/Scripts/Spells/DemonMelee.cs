@@ -4,33 +4,35 @@ using UnityEngine;
 
 public class DemonMelee : Spell
 {
-    public GameObject hitPoint1, hitPoint2, hitPoint3, hitPoint4;
+    public GameObject hitPoint1;//, hitPoint2, hitPoint3, hitPoint4;
 
     public override void ThrowSpell(Vector3 direction, float charge)
     {
         if (!affectedByCharge) { charge = 1; }
         transform.forward = direction;
         hitPoint1.transform.parent = GameManager.instance.CurrentPlayer.demonHit1;
-        hitPoint1.SetActive(false);
-        hitPoint2.transform.parent = GameManager.instance.CurrentPlayer.demonHit2;
-        hitPoint2.SetActive(false);
-        hitPoint3.transform.parent = GameManager.instance.CurrentPlayer.demonHit3;
-        hitPoint3.SetActive(false);
-        hitPoint4.transform.parent = GameManager.instance.CurrentPlayer.demonHit4;
-        hitPoint4.SetActive(false);
+        hitPoint1.GetComponent<BoxCollider>().enabled = false;
+        //hitPoint1.SetActive(false);
+        //hitPoint2.transform.parent = GameManager.instance.CurrentPlayer.demonHit2;
+        //hitPoint2.SetActive(false);
+        //hitPoint3.transform.parent = GameManager.instance.CurrentPlayer.demonHit3;
+        //hitPoint3.SetActive(false);
+        //hitPoint4.transform.parent = GameManager.instance.CurrentPlayer.demonHit4;
+        //hitPoint4.SetActive(false);
         Disable(duration);
     }
 
     void Update()
     {
-
+        
     }
     public void EnableCollider()
     {
-        hitPoint1.SetActive(true);
-        hitPoint2.SetActive(true);
-        hitPoint3.SetActive(true);
-        hitPoint4.SetActive(true);
+        hitPoint1.GetComponent<BoxCollider>().enabled = true;
+        //hitPoint2.SetActive(true);
+        //hitPoint3.SetActive(true);
+        //hitPoint4.SetActive(true);
+        Destroy(this.gameObject,4f);
     }
 
     protected void OnTriggerEnter(Collider other)

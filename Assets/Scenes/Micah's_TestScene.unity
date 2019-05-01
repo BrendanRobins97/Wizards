@@ -8385,6 +8385,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeLarge
       objectReference: {fileID: 0}
+    - target: {fileID: 6911166868430350896, guid: 5763afb0b2298734d8c3290fe90d7892,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6911166868430190096, guid: 5763afb0b2298734d8c3290fe90d7892,
         type: 3}
       propertyPath: m_LocalPosition.x

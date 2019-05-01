@@ -22,7 +22,7 @@ public class Player : MonoBehaviour {
     public Color color;
     public float chargeAmount;
     public Transform hitPoint;
-    public Transform demonHit1, demonHit2, demonHit3, demonHit4;
+    public Transform demonHit1;//, demonHit2, demonHit3, demonHit4;
     public float stamina;
     public float jumpForce = 400;
     [HideInInspector] public int health;
