@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 50
-  contactDamage: 20
+  contactDamage: 25
   affectedByCharge: 1
   duration: 10
   damageRadius: 5

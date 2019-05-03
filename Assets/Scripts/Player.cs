@@ -104,7 +104,6 @@ public class Player : MonoBehaviour {
         // Horizontal rotation calculations
         // Applies to character
         float rot = Input.GetAxisRaw("Mouse X");
-
         Vector3 yRot = new Vector3(0f, rot, 0f) * sensitivity;
         if(rot > .06 || rot < -.06)
         rigidbody.MoveRotation(rigidbody.rotation * Quaternion.Euler(yRot));
