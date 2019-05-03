@@ -4170,7 +4170,7 @@ PrefabInstance:
         type: 3}
       propertyPath: spells.Array.data[1]
       value: 
-      objectReference: {fileID: 4308376847585669215, guid: 93a2cf040e014b541ad8a4d933ef18f6,
+      objectReference: {fileID: 1154065597347731263, guid: cc785b8aead16a849b68bbcd9c978cb5,
         type: 3}
     - target: {fileID: 2429517294149507765, guid: 3f4a4251d79bb3740b1f004fcc81e315,
         type: 3}

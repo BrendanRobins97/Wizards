@@ -3495,27 +3495,6 @@ PrefabInstance:
       propertyPath: m_Avatar
       value: 
       objectReference: {fileID: 9000000, guid: f8e00e2a956969542aeb205e80e29d7b, type: 3}
-    - target: {fileID: 2429517294149507765, guid: 3f4a4251d79bb3740b1f004fcc81e315,
-        type: 3}
-      propertyPath: playerCamera
-      value: 
-      objectReference: {fileID: 4031824375664745857}
-    - target: {fileID: 2429517294149507765, guid: 3f4a4251d79bb3740b1f004fcc81e315,
-        type: 3}
-      propertyPath: feetPosition
-      value: 
-      objectReference: {fileID: 2919536263430437124}
-    - target: {fileID: 2429517294149507765, guid: 3f4a4251d79bb3740b1f004fcc81e315,
-        type: 3}
-      propertyPath: animator
-      value: 
-      objectReference: {fileID: 6002740584326408174}
-    - target: {fileID: 2429517294149507765, guid: 3f4a4251d79bb3740b1f004fcc81e315,
-        type: 3}
-      propertyPath: icon
-      value: 
-      objectReference: {fileID: 21300000, guid: cb3037cecb9ba4990a96be46e61c0141,
-        type: 3}
     - target: {fileID: 1032518970902120018, guid: 3f4a4251d79bb3740b1f004fcc81e315,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3571,6 +3550,39 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2429517294149507765, guid: 3f4a4251d79bb3740b1f004fcc81e315,
+        type: 3}
+      propertyPath: playerCamera
+      value: 
+      objectReference: {fileID: 4031824375664745857}
+    - target: {fileID: 2429517294149507765, guid: 3f4a4251d79bb3740b1f004fcc81e315,
+        type: 3}
+      propertyPath: feetPosition
+      value: 
+      objectReference: {fileID: 2919536263430437124}
+    - target: {fileID: 2429517294149507765, guid: 3f4a4251d79bb3740b1f004fcc81e315,
+        type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 6002740584326408174}
+    - target: {fileID: 2429517294149507765, guid: 3f4a4251d79bb3740b1f004fcc81e315,
+        type: 3}
+      propertyPath: icon
+      value: 
+      objectReference: {fileID: 21300000, guid: cb3037cecb9ba4990a96be46e61c0141,
+        type: 3}
+    - target: {fileID: 2429517294149507765, guid: 3f4a4251d79bb3740b1f004fcc81e315,
+        type: 3}
+      propertyPath: spells.Array.data[1]
+      value: 
+      objectReference: {fileID: 4308376847585669215, guid: 93a2cf040e014b541ad8a4d933ef18f6,
+        type: 3}
+    - target: {fileID: 2429517294149507765, guid: 3f4a4251d79bb3740b1f004fcc81e315,
+        type: 3}
+      propertyPath: spells.Array.data[3]
+      value: 
+      objectReference: {fileID: 3650499761255400870, guid: ef086f42c62361e489826023f82bc9d2,
+        type: 3}
     - target: {fileID: 6199747879406908630, guid: 3f4a4251d79bb3740b1f004fcc81e315,
         type: 3}
       propertyPath: m_Bones.Array.data[0]
