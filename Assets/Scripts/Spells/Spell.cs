@@ -48,6 +48,7 @@ public class Spell : MonoBehaviour {
         // it doesn't instantly collide with player throwing spell
         DisableCollisions(0.1f);
         if (!affectedByCharge) { charge = 1; }
+        charge = Mathf.Max(charge, 0.33f); // Min charge is 1/3rd
         GetComponent<Rigidbody>().velocity = direction * charge * speed;
         transform.forward = direction;
         Disable(duration);

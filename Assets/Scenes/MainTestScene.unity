@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.12646218, g: 0.23645307, b: 0.6474477, a: 1}
+  m_IndirectSpecularColor: {r: 0.12799105, g: 0.23792702, b: 0.6519228, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -89,7 +89,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -2978,6 +2978,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4430734208904692520, guid: 98227fd6e79aca7438c76dc3c6962638,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98227fd6e79aca7438c76dc3c6962638, type: 3}
 --- !u!1 &927715568
@@ -3740,10 +3745,10 @@ MonoBehaviour:
   length: 128
   height: 64
   octaves: 5
-  smoothness: 100
-  scale: 100
-  persistence: 0.41
-  lacunarity: 0.47
+  smoothness: 95
+  scale: 120
+  persistence: 0.42
+  lacunarity: 0.48
   groundThickness: 10
   heightMap:
     serializedVersion: 2
@@ -3758,8 +3763,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.25422278
-      value: 0.0014833882
+      time: 0.196453
+      value: -0.0002866313
       inSlope: 0.010621261
       outSlope: 0.010621261
       tangentMode: 0

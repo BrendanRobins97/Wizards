@@ -166,11 +166,15 @@ MonoBehaviour:
   duration: 5
   damageRadius: 5
   explosionDampen: 0.75
-  knockBackForce: 100
+  knockBackForce: 1600
   explosion: {fileID: 0}
   spellImage: {fileID: 21300000, guid: 399b9357a705b4cc6b6ff07f8500c76a, type: 3}
   spellImageColor: {r: 0.6886792, g: 0.385755, b: 0.055224285, a: 1}
   timeAfterSpellCast: 5
+  summonDuration: 2.5
+  startPositionHeightOffset: 16
+  collidersToEnable:
+  - {fileID: 6308899482197020430}
 --- !u!135 &6756154110117550798
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -182,8 +186,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 3.3329535
-  m_Center: {x: 0, y: 2.6146154, z: 0}
+  m_Radius: 3.65
+  m_Center: {x: 0, y: 4.88, z: 0}
 --- !u!1 &4193318279667890067
 GameObject:
   m_ObjectHideFlags: 0
@@ -432,8 +436,8 @@ MeshCollider:
   m_GameObject: {fileID: 8821133381336275082}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300002, guid: 35ca95a4d64446144aeccf7c71360726, type: 3}
