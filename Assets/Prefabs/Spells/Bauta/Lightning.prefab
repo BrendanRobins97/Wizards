@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 844738351872716877}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.170256, y: -2.4889158e-16, z: 11.20908}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4336067359848236566}
@@ -86,6 +86,7 @@ MonoBehaviour:
     type: 3}
   spellImage: {fileID: 21300000, guid: 5bedf1559ff4140698edd4bfde1b802c, type: 3}
   spellImageColor: {r: 0.1745283, g: 0.2917677, b: 1, a: 1}
+  timeAfterSpellCast: 3
 --- !u!1001 &18504987833156809
 PrefabInstance:
   m_ObjectHideFlags: 0
