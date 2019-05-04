@@ -193,7 +193,7 @@ BlendTree:
   - serializedVersion: 2
     m_Motion: {fileID: 7400000, guid: ba74faf5e5198da42a3e4bcea4ee7f5a, type: 3}
     m_Threshold: 0.02777778
-    m_Position: {x: 0, y: -1.25}
+    m_Position: {x: 0, y: -1}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: Strafe Amount

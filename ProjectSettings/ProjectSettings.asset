@@ -606,7 +606,7 @@ PlayerSettings:
       daydreamIconForeground: {fileID: 0}
       daydreamIconBackground: {fileID: 0}
   cloudServicesEnabled:
-    Collab: 1
+    Collab: 0
     UNet: 1
   luminIcon:
     m_Name: 
@@ -627,10 +627,10 @@ PlayerSettings:
   facebookXfbml: 0
   facebookFrictionlessRequests: 1
   apiCompatibilityLevel: 6
-  cloudProjectId: 77fcdfaa-2261-4a9a-b5aa-db612d2a5ac7
+  cloudProjectId: bce473bd-d4a0-4535-9eea-6fa72757b99a
   framebufferDepthMemorylessMode: 0
   projectName: Wizard Game
-  organizationId: flamboozle
+  organizationId: micahdebruno
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0

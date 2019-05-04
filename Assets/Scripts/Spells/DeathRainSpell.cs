@@ -25,7 +25,7 @@ public class DeathRainSpell : Spell
         direction = new Vector3(drc.lightPos.x, drc.lightPos.y+5,drc.lightPos.z);
         transform.position = direction;
         this.transform.Rotate(-90,0,0,0);
-        Disable(3f);
+        Disable(timeAfterSpellCast);
     }
 
    /* void OnTriggerEnter(Collider col)
