@@ -167,8 +167,7 @@ public class Player : MonoBehaviour {
         GameManager.instance.UpdateSpellImage(currentSpellIndex);
 
         if (Input.GetButtonUp("Fire1")) {
-            casting = true;
-
+            casting = false;
             if (currentSpellIndex == 3 && numUlt > 0) {
                 special = false;
                 animator.SetTrigger("Cast3");
@@ -198,6 +197,8 @@ public class Player : MonoBehaviour {
         // Handle charge for spell
         
         if (Input.GetButton("Fire1")) {
+            casting = true;
+
             if (currentSpellIndex == 0) {
                 animator.ResetTrigger("Idle");
                 animator.SetTrigger("Charge");

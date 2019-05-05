@@ -18,8 +18,11 @@ public class LaunchArc : MonoBehaviour {
     public float angle;
     [Range(1, 100)]
     public int resolution = 10;
-    [Range(1, 100)]
-    public float maxDistance = 30;
+
+    private float maxDistance = 30;
+
+    public Color startColor;
+    public Color endColor;
 
     private Mesh mesh;
     private float g;
@@ -43,6 +46,7 @@ public class LaunchArc : MonoBehaviour {
         mesh.Clear();
         Vector3[] vertices = new Vector3[(resolution + 1) * 2];
         int[] triangles = new int[resolution * 12];
+        Color[] colors = new Color[(resolution + 1) * 2];
 
         for (int i = 0; i <= resolution; i++) {
             // Make an arrow at the end
@@ -72,9 +76,13 @@ public class LaunchArc : MonoBehaviour {
                 triangles[i * 12 + 8] = triangles[i * 12 + 9] = i * 2 + 1;
                 triangles[i * 12 + 11] = (i + 1) * 2 + 1;
             }
+            
+            colors[i * 2] = Color.Lerp(startColor, endColor, (float)(i + resolution / 3f) / resolution);
+            colors[i * 2 + 1] = Color.Lerp(startColor, endColor, (float)(i + resolution / 3f) / resolution);
         }
         mesh.vertices = vertices;
         mesh.triangles = triangles;
+        mesh.colors = colors;
     }
 
     private Vector3[] CalculateArcArray() {
