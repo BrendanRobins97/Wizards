@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.12646218, g: 0.23645307, b: 0.6474477, a: 1}
+  m_IndirectSpecularColor: {r: 0.12807566, g: 0.23806068, b: 0.649579, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4419,9 +4419,9 @@ MonoBehaviour:
   playerUIPrefab: {fileID: 7197189187055512233, guid: c485d34f33b42334f95c2fa1607e4ba2,
     type: 3}
   playerPrefabs:
-  - {fileID: 4499749861033504491, guid: a2cb320f2dadf4e4ea82bd1e49081789, type: 3}
   - {fileID: 4812762877516463586, guid: 25aa8840adff846cead8e7d63bb9f1f3, type: 3}
-  - {fileID: 3733252538983089315, guid: 8edc07cf7fddcbf4195e9f250e865844, type: 3}
+  - {fileID: 4812762877516463586, guid: 851c58b32633f4669b0ef41b96b96003, type: 3}
+  - {fileID: 4812762877516463586, guid: eb49cf086d94349ed80c292d0a48dfc4, type: 3}
   - {fileID: 4812762877516463586, guid: 546c10dfdac434cc98059331ab5dbb3c, type: 3}
   - {fileID: 8164900113966860278, guid: 400511c2ea5be2d4ab5dbc350d0a67d2, type: 3}
   - {fileID: 3733252538983089315, guid: 8edc07cf7fddcbf4195e9f250e865844, type: 3}
