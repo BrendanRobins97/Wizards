@@ -4419,7 +4419,7 @@ MonoBehaviour:
   playerUIPrefab: {fileID: 7197189187055512233, guid: c485d34f33b42334f95c2fa1607e4ba2,
     type: 3}
   playerPrefabs:
-  - {fileID: 4812762877516463586, guid: 25aa8840adff846cead8e7d63bb9f1f3, type: 3}
+  - {fileID: 8164900113966860278, guid: 400511c2ea5be2d4ab5dbc350d0a67d2, type: 3}
   - {fileID: 4812762877516463586, guid: 851c58b32633f4669b0ef41b96b96003, type: 3}
   - {fileID: 4812762877516463586, guid: eb49cf086d94349ed80c292d0a48dfc4, type: 3}
   - {fileID: 4812762877516463586, guid: 546c10dfdac434cc98059331ab5dbb3c, type: 3}

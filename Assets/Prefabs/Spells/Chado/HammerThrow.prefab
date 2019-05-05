@@ -75,7 +75,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5108f924abb79d54eb11c01d57bc46c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 100
+  speed: 80
   contactDamage: 25
   affectedByCharge: 0
   duration: 10
@@ -94,11 +94,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2061551642739732017}
     m_Modifications:
-    - target: {fileID: 6144364145188797887, guid: 03daea65d75f24513be9ca5a097c5ada,
-        type: 3}
-      propertyPath: m_Name
-      value: Hammer Throw Top
-      objectReference: {fileID: 0}
     - target: {fileID: 3517655368474355034, guid: 03daea65d75f24513be9ca5a097c5ada,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -153,6 +148,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6144364145188797887, guid: 03daea65d75f24513be9ca5a097c5ada,
+        type: 3}
+      propertyPath: m_Name
+      value: Hammer Throw Top
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03daea65d75f24513be9ca5a097c5ada, type: 3}
