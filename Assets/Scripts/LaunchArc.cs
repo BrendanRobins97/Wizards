@@ -29,22 +29,13 @@ public class LaunchArc : MonoBehaviour {
 
     #region Methods
 
-    // Start is called before the first frame update
     private void Awake() {
         mesh = GetComponent<MeshFilter>().mesh;
         g = Mathf.Abs(Physics.gravity.y);
-        MakeArcMesh(velocity, g);
         angle = 0;
     }
 
-    // Update is called once per frame
-    private void Update() { }
-
-    private void OnValidate() {
-        if (mesh && Application.isPlaying) { MakeArcMesh(velocity, g); }
-    }
-
-    public void MakeArcMesh(float velocity, float gravity, float maxDistance = 30f) {
+    public void MakeArcMesh(float velocity, float gravity, float maxDistance = 25f) {
         g = gravity;
         this.velocity = velocity;
         this.maxDistance = maxDistance;
@@ -53,9 +44,23 @@ public class LaunchArc : MonoBehaviour {
         Vector3[] vertices = new Vector3[(resolution + 1) * 2];
         int[] triangles = new int[resolution * 12];
 
-        for (int i = 0; i <= resolution ; i++) {
-            vertices[i * 2] = new Vector3(meshWidth * 0.5f, arcVerts[i].y, arcVerts[i].x);
-            vertices[i * 2 + 1] = new Vector3(meshWidth * -0.5f, arcVerts[i].y, arcVerts[i].x);
+        for (int i = 0; i <= resolution; i++) {
+            // Make an arrow at the end
+            if (i == resolution) {
+                vertices[i * 2] = new Vector3(0, arcVerts[i].y, arcVerts[i].x);
+                vertices[i * 2 + 1] = new Vector3(0, arcVerts[i].y, arcVerts[i].x);
+            } else if (i == resolution - 1) {
+                vertices[i * 2] = new Vector3(meshWidth * 1.25f, arcVerts[i].y, arcVerts[i].x);
+                vertices[i * 2 + 1] = new Vector3(meshWidth * -2f, arcVerts[i].y, arcVerts[i].x);
+            } else if (i == resolution - 2) {
+                vertices[i * 2] = new Vector3(meshWidth * 2.5f, arcVerts[i].y, arcVerts[i].x);
+                vertices[i * 2 + 1] = new Vector3(meshWidth * -2.5f, arcVerts[i].y, arcVerts[i].x);
+            }
+            else {
+                vertices[i * 2] = new Vector3(meshWidth * 0.5f, arcVerts[i].y, arcVerts[i].x);
+                vertices[i * 2 + 1] = new Vector3(meshWidth * -0.5f, arcVerts[i].y, arcVerts[i].x);
+            }
+           
             if (i != resolution) {
                 triangles[i * 12] = i * 2;
                 triangles[i * 12 + 1] = triangles[i * 12 + 4] = i * 2 + 1;

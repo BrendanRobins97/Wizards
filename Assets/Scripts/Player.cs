@@ -100,6 +100,8 @@ public class Player : MonoBehaviour {
     }
 
     private void Update() {
+        launchArc.gameObject.SetActive(false);
+
         if (!enabled) { return; }
 
         // Vertical rotation calculations
@@ -194,8 +196,7 @@ public class Player : MonoBehaviour {
             }
         }
         // Handle charge for spell
-        launchArc.gameObject.SetActive(false);
-
+        
         if (Input.GetButton("Fire1")) {
             if (currentSpellIndex == 0) {
                 animator.ResetTrigger("Idle");
@@ -288,6 +289,8 @@ public class Player : MonoBehaviour {
         animator.SetFloat("Strafe Amount", 0.0f);
         AnimTriggerReset();
         Input.ResetInputAxes();
+        launchArc.gameObject.SetActive(false);
+
         if (playerCamera) { playerCamera.enabled = false; }
     }
 
