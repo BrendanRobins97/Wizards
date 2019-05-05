@@ -1,8 +1,9 @@
 ﻿// File: Player.cs
-// Author: Brendan Robinson
-// Date Created: 02/19/2019
-// Date Last Modified: 02/28/2019
+// Contributors: Brendan Robinson
+// Date Created: 05/03/2019
+// Date Last Modified: 05/05/2019
 
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,7 +13,8 @@ public class Player : MonoBehaviour {
 
     private const float chargeMax = 2f;
     private const float chargeRate = 1f;
-    [HideInInspector] private const float startingStamina = 30f;
+    [HideInInspector]
+    private const float startingStamina = 30f;
 
     #endregion
 
@@ -22,25 +24,38 @@ public class Player : MonoBehaviour {
     public Color color;
     public float chargeAmount;
     public Transform hitPoint;
-    public Transform demonHit1;//, demonHit2, demonHit3, demonHit4;
+    public Transform demonHit1; //, demonHit2, demonHit3, demonHit4;
     public float stamina;
     public float jumpForce = 400;
-    [HideInInspector] public int health;
-    [HideInInspector] public float chargePercent;
-    [HideInInspector] public float tempChargeAmount;
-    [HideInInspector] public bool turnOver;
-    
-    [SerializeField] private float sensitivity = 1f;
+    [HideInInspector]
+    public int health;
+    [HideInInspector]
+    public float chargePercent;
+    [HideInInspector]
+    public float tempChargeAmount;
+    [HideInInspector]
+    public bool turnOver;
+    public LayerMask groundMask;
+    [SerializeField]
+    private float sensitivity = 1f;
 
     public float movementSpeed = 8f;
-    [HideInInspector] public bool enabled = true;
-    [SerializeField] public Camera playerCamera;
-    [SerializeField] public int maxHealth = 100;
-    [SerializeField] public List<Spell> spells;
-    [SerializeField] private Transform feetPosition;
-
-    [SerializeField] public Animator animator;
-    [HideInInspector] public Rigidbody rigidbody;
+    [HideInInspector]
+    public bool enabled = true;
+    [SerializeField]
+    public Camera playerCamera;
+    [SerializeField]
+    public int maxHealth = 100;
+    [SerializeField]
+    public List<Spell> spells;
+    [SerializeField]
+    private Transform feetPosition;
+    [SerializeField]
+    private LaunchArc launchArc;
+    [SerializeField]
+    public Animator animator;
+    [HideInInspector]
+    public Rigidbody rigidbody;
 
     private float currentCameraRotationX;
     private readonly float cameraRotationLimit = 80f;
@@ -52,21 +67,27 @@ public class Player : MonoBehaviour {
     private int currentSpellIndex;
     private Vector3 prevPosition;
     private DeathRainSpellCamera drsc;
-    [HideInInspector] public float originalFOV = 0f;
-    [HideInInspector] public int numberOfAttacks = 1;
-    [HideInInspector] public bool usedSpecial = false;
-    [HideInInspector] public int numUlt = 1;
-    [HideInInspector] public bool casting = false;
-    [HideInInspector] public bool special = false;
+    [HideInInspector]
+    public float originalFOV;
+    [HideInInspector]
+    public int numberOfAttacks = 1;
+    [HideInInspector]
+    public bool usedSpecial;
+    [HideInInspector]
+    public int numUlt = 1;
+    [HideInInspector]
+    public bool casting;
+    [HideInInspector]
+    public bool special;
     public GameObject soundPlay;
 
-    public Spell CurrentSpell { get { return spells[currentSpellIndex]; } }
     #endregion
 
     #region Methods
 
-    private void Awake()
-    {
+    public Spell CurrentSpell => spells[currentSpellIndex];
+
+    private void Awake() {
         health = maxHealth;
         rigidbody = GetComponent<Rigidbody>();
         Disable();
@@ -76,22 +97,17 @@ public class Player : MonoBehaviour {
         drsc = FindObjectOfType<DeathRainSpellCamera>();
         special = false;
         originalFOV = playerCamera.fieldOfView;
-        
     }
 
     private void Update() {
         if (!enabled) { return; }
-        
+
         // Vertical rotation calculations
         // Applies to Camera
         float xRot = Input.GetAxisRaw("Mouse Y");
-        if (GameManager.instance.isController)
-        {
-            xRot *= -1;
-        }
+        if (GameManager.instance.isController) { xRot *= -1; }
         float cameraRotationX = xRot * sensitivity;
-        if(xRot > .06 || xRot < -.06)
-        currentCameraRotationX -= cameraRotationX;
+        if (xRot > .06 || xRot < -.06) { currentCameraRotationX -= cameraRotationX; }
         currentCameraRotationX = Mathf.Clamp(currentCameraRotationX, -cameraRotationLimit, cameraRotationLimit);
 
         float cameraOffsetZ = -cameraDistFromPlayer * Mathf.Cos(currentCameraRotationX * Mathf.Deg2Rad);
@@ -105,16 +121,14 @@ public class Player : MonoBehaviour {
         // Applies to character
         float rot = Input.GetAxisRaw("Mouse X");
         Vector3 yRot = new Vector3(0f, rot, 0f) * sensitivity;
-        if(rot > .06 || rot < -.06)
-        rigidbody.MoveRotation(rigidbody.rotation * Quaternion.Euler(yRot));
+        if (rot > .06 || rot < -.06) { rigidbody.MoveRotation(rigidbody.rotation * Quaternion.Euler(yRot)); }
 
         stamina -= (transform.position - prevPosition).magnitude;
         prevPosition = transform.position;
         animator.SetFloat("Forward Amount", 0.0f);
         animator.SetFloat("Strafe Amount", 0.0f);
-        
-        if (stamina > 0) {
 
+        if (stamina > 0) {
             // Movement Calculations
             float xVelocity = Input.GetAxis("Horizontal") * movementSpeed;
             float zVelocity = Input.GetAxis("Vertical") * movementSpeed;
@@ -131,95 +145,105 @@ public class Player : MonoBehaviour {
                 rigidbody.AddForce(0, jumpForce, 0);
             }
         }
+        if (!casting) { // Cant swap spells while casting
+            if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetAxis("spell1") == -1) { currentSpellIndex = 0; }
 
-        if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetAxis("spell1") == -1) { currentSpellIndex = 0; }
+            if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetAxis("spell2") == 1) { currentSpellIndex = 1; }
 
-        if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetAxis("spell2") == 1) { currentSpellIndex = 1; }
+            if (Input.GetKeyDown(KeyCode.Alpha3) || Input.GetAxis("spell1") == 1) { currentSpellIndex = 2; }
 
-        if (Input.GetKeyDown(KeyCode.Alpha3) || Input.GetAxis("spell1") == 1) { currentSpellIndex = 2; }
-
-        if ((Input.GetKeyDown(KeyCode.Alpha4) && numUlt > 0) || (Input.GetAxis("spell2") == -1 && numUlt > 0))
-        {
-            currentSpellIndex = 3;
-            drsc.Activate();
-            special = true;
+            if (Input.GetKeyDown(KeyCode.Alpha4) && numUlt > 0 || Input.GetAxis("spell2") == -1 && numUlt > 0) {
+                currentSpellIndex = 3;
+                drsc.Activate();
+                special = true;
+            }
         }
-        if (currentSpellIndex == 3 && (numUlt < 1))
-        {
-            currentSpellIndex = 0;
-        }
+        
+        if (currentSpellIndex == 3 && numUlt < 1) { currentSpellIndex = 0; }
         currentSpellIndex = Mathf.Clamp(currentSpellIndex, 0, spells.Count - 1);
 
         GameManager.instance.UpdateSpellImage(currentSpellIndex);
-        
+
         if (Input.GetButtonUp("Fire1")) {
             casting = true;
-            
-            if (currentSpellIndex == 3 && numUlt > 0)
-            {
+
+            if (currentSpellIndex == 3 && numUlt > 0) {
                 special = false;
                 animator.SetTrigger("Cast3");
                 numUlt--;
-                usedSpecial = true;    
+                usedSpecial = true;
             }
-            if (currentSpellIndex == 3 && !special && numberOfAttacks > 0)
-            {
+            if (currentSpellIndex == 3 && !special && numberOfAttacks > 0) {
                 //drsc.Activate();
                 special = true;
             }
-            if (currentSpellIndex == 0)
-            {
+            if (currentSpellIndex == 0) {
                 animator.ResetTrigger("Charge");
                 animator.SetTrigger("Cast0");
             }
 
-            if (currentSpellIndex == 1)
-            {
+            if (currentSpellIndex == 1) {
                 animator.ResetTrigger("Charge1");
                 animator.SetTrigger("Cast1");
                 //playerCamera.fieldOfView = originalFOV;
-
             }
 
-            if (currentSpellIndex == 2)
-            {
+            if (currentSpellIndex == 2) {
                 playerCamera.fieldOfView = originalFOV;
                 animator.SetTrigger("Cast2");
             }
-            
         }
         // Handle charge for spell
-        if (Input.GetButton("Fire1") )
-        {
-            if (currentSpellIndex == 0)
-            {
+        launchArc.gameObject.SetActive(false);
+
+        if (Input.GetButton("Fire1")) {
+            if (currentSpellIndex == 0) {
                 animator.ResetTrigger("Idle");
                 animator.SetTrigger("Charge");
             }
 
-            if (currentSpellIndex == 1)
-            {
+            if (currentSpellIndex == 1) {
                 animator.ResetTrigger("Idle");
                 animator.SetTrigger("Charge1");
             }
             chargeAmount += Time.deltaTime * chargeRate;
-            if (chargeAmount > .5f && chargeAmount < chargeMax)
-            {
+            if (currentSpellIndex == 0) {
+                launchArc.gameObject.SetActive(true);
+                launchArc.transform.forward = playerCamera.transform.forward;
+
+                Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
+                Physics.Raycast(ray, out RaycastHit rayHit, 100f, groundMask);
+
+                if (rayHit.collider != null) {
+                    launchArc.transform.forward = rayHit.point - launchArc.transform.position;
+                    launchArc.MakeArcMesh(Mathf.Clamp(chargeAmount, 0.01f, chargeMax) * CurrentSpell.speed, 0, rayHit.distance);
+
+                } else {
+                    launchArc.transform.forward = playerCamera.transform.TransformPoint(new Vector3(0, 0, 100f)) - launchArc.transform.position;
+                    launchArc.MakeArcMesh(Mathf.Clamp(chargeAmount, 0.01f, chargeMax) * CurrentSpell.speed,0,  100f);
+
+                }
+
+            }
+            if (currentSpellIndex == 1) {
+                launchArc.gameObject.SetActive(true);
+                launchArc.MakeArcMesh(Mathf.Clamp(chargeAmount, 0.01f, chargeMax) * CurrentSpell.speed, Mathf.Abs(Physics.gravity.y));
+                launchArc.transform.forward = new Vector3(playerCamera.transform.forward.x,
+                    playerCamera.transform.forward.y / 1.25f, playerCamera.transform.forward.z);
+            }
+            
+            if (chargeAmount > .5f && chargeAmount < chargeMax) {
                 tempChargeAmount = chargeAmount;
                 playerCamera.fieldOfView -= 25f * Time.deltaTime;
             }
         }
-        else
-        {
-            chargeAmount = 0;
-        }
-        
-        chargeAmount = Mathf.Clamp(chargeAmount, 0, chargeMax);
+        else { chargeAmount = 0; }
+
+        chargeAmount = Mathf.Clamp(chargeAmount, 0f, chargeMax);
         chargePercent = chargeAmount / chargeMax;
     }
 
-    public void Cast()
-    {
+    public void Cast() {
         numberOfAttacks--;
         casting = true;
         chargePercent = tempChargeAmount / chargeMax;
@@ -238,6 +262,7 @@ public class Player : MonoBehaviour {
             turnOver = true; // Signal that their turn is over
         }
     }
+
     public void Enable() {
         turnOver = false;
         enabled = true;
@@ -255,8 +280,7 @@ public class Player : MonoBehaviour {
         sound.playPlayerStart();
     }
 
-    public void Disable()
-    {
+    public void Disable() {
         casting = false;
         turnOver = true;
         enabled = false;
@@ -268,7 +292,7 @@ public class Player : MonoBehaviour {
     }
 
     public void Damage(int amount) {
-        health -= amount; 
+        health -= amount;
         FloatingTextManager.instance.SpawnDamageText(transform.position + Vector3.up, amount);
         soundPlay = GameObject.Find("soundManager");
         animator.SetTrigger("Hit");
@@ -276,20 +300,13 @@ public class Player : MonoBehaviour {
         sound.playOof();
     }
 
-    public void Kill()
-    {
-        health = 0;
-    }
+    public void Kill() { health = 0; }
 
     public float HealthPercent() { return (float) health / maxHealth; }
 
-    public float StaminaPercent()
-    {
-        return (float) stamina / startingStamina;
-    }
+    public float StaminaPercent() { return stamina / startingStamina; }
 
-    public void AnimTriggerReset()
-    {
+    public void AnimTriggerReset() {
         animator.ResetTrigger("Cast0");
         animator.ResetTrigger("Cast1");
         animator.ResetTrigger("Cast2");
@@ -297,14 +314,11 @@ public class Player : MonoBehaviour {
         animator.ResetTrigger("Hit");
         animator.SetTrigger("Idle");
     }
-    public void EnableCollider()
-    {
-        FindObjectOfType<HammerHit>().EnableCollider();
-    }
-    public void EnableCollider1()
-    {
-        FindObjectOfType<DemonMelee>().EnableCollider();
-    }
+
+    public void EnableCollider() { FindObjectOfType<HammerHit>().EnableCollider(); }
+
+    public void EnableCollider1() { FindObjectOfType<DemonMelee>().EnableCollider(); }
+
     #endregion
 
 }
