@@ -279,6 +279,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: phong3
+    second: {fileID: 2100000, guid: bdb4d734b8fbe4e0d87b4a7fb908f871, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: phong4
     second: {fileID: 2100000, guid: 5f99d4b8d0b76492eb1c52952bc8dcab, type: 2}
   - first:

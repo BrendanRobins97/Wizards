@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 8353116921814824563, guid: 3f4a4251d79bb3740b1f004fcc81e315,
         type: 3}
       propertyPath: m_Name
-      value: Frogizard
+      value: Frogman
       objectReference: {fileID: 0}
     - target: {fileID: 2429517294149507765, guid: 3f4a4251d79bb3740b1f004fcc81e315,
         type: 3}
@@ -216,22 +216,22 @@ PrefabInstance:
     - target: {fileID: 8460223572536191525, guid: bb7eb7b8328f6425a804809591d2c8a3,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8460223572536191533, guid: bb7eb7b8328f6425a804809591d2c8a3,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8460223572536191529, guid: bb7eb7b8328f6425a804809591d2c8a3,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8460223572536191599, guid: bb7eb7b8328f6425a804809591d2c8a3,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8460223572536191584, guid: bb7eb7b8328f6425a804809591d2c8a3,
         type: 3}
@@ -2741,27 +2741,27 @@ PrefabInstance:
     - target: {fileID: 8460223572536191547, guid: bb7eb7b8328f6425a804809591d2c8a3,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8460223572536191595, guid: bb7eb7b8328f6425a804809591d2c8a3,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8460223572536191977, guid: bb7eb7b8328f6425a804809591d2c8a3,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8460223572536191979, guid: bb7eb7b8328f6425a804809591d2c8a3,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8460223572536191985, guid: bb7eb7b8328f6425a804809591d2c8a3,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8460223572536191490, guid: bb7eb7b8328f6425a804809591d2c8a3, type: 3}
