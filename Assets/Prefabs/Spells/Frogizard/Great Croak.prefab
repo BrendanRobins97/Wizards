@@ -86,8 +86,8 @@ MonoBehaviour:
   explosionDampen: 0.75
   knockBackForce: 1600
   explosion: {fileID: 0}
-  spellImage: {fileID: 0}
-  spellImageColor: {r: 0.33010462, g: 0.8867924, b: 0.079476655, a: 0}
+  spellImage: {fileID: 21300000, guid: 18311a80fcc844690a7ff599740fa073, type: 3}
+  spellImageColor: {r: 0.92521524, g: 1, b: 0.8915094, a: 0}
   timeAfterSpellCast: 3
 --- !u!1 &2478462541082444398
 GameObject:
