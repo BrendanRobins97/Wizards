@@ -4185,7 +4185,7 @@ MonoBehaviour:
   giantFireball: {fileID: 3065805226639967745, guid: 77fe15f06d6feba4d8a21b5dfcf4ef8d,
     type: 3}
   currentTurnTimeLeft: 0
-  timeAfterSpellCast: 3
+  timeAfterSpellCast: 8
   gameStartTime: 3
   spawnWidth: 8
   turnTime: 20
