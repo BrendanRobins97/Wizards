@@ -100,13 +100,11 @@ public class Player : MonoBehaviour {
     }
 
     private void Start() {
-        CameraController.instance.RegisterCamera(playerCamera.transform);
+        //CameraController.instance.RegisterCamera(playerCamera.transform);
     }
     private void Update() {
         launchArc.gameObject.SetActive(false);
-
         if (!enabled) { return; }
-
         // Vertical rotation calculations
         // Applies to Camera
         float xRot = Input.GetAxisRaw("Mouse Y");
@@ -151,9 +149,13 @@ public class Player : MonoBehaviour {
             }
         }
         if (!casting) { // Cant swap spells while casting
-            if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetAxis("spell1") == -1) { currentSpellIndex = 0; }
+            if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetAxis("spell1") == -1) {
+                currentSpellIndex = 0;
+            }
 
-            if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetAxis("spell2") == 1) { currentSpellIndex = 1; }
+            if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetAxis("spell2") == 1) {
+                currentSpellIndex = 1;
+            }
 
             if (Input.GetKeyDown(KeyCode.Alpha3) || Input.GetAxis("spell1") == 1) { currentSpellIndex = 2; }
 
@@ -283,6 +285,13 @@ public class Player : MonoBehaviour {
         soundPlay = GameObject.Find("soundManager");
         soundScript sound = soundPlay.GetComponent(typeof(soundScript)) as soundScript;
         sound.playPlayerStart();
+    }
+
+    public void EnableCamera() {
+        playerCamera.enabled = true;
+        chargeAmount = 0;
+        stamina = startingStamina;
+        playerCamera.fieldOfView = originalFOV;
     }
 
     public void Disable() {
