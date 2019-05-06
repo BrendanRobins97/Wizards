@@ -32,7 +32,7 @@ public class ThornBall : Spell {
         soundScript sound = soundPlay.GetComponent(typeof(soundScript)) as soundScript;
         sound.playFireBallEnd();
         // Instantiate smaller explosions on contact;
-
+        
         for (int i = 0; i < numSmallExplosions; i++) {
             // Jitter start direction based on normal
             float angle = i * 360f / numSmallExplosions;

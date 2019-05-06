@@ -29,6 +29,10 @@ public class CameraController : MonoBehaviour {
     public void RegisterCamera(Transform camera) {
         cameras.Add(camera);
         originalPositions.Add(camera.transform.position);
+        for (int i = 0; i < cameras.Count; i++)
+        {
+            Debug.Log(cameras[i].name);
+        }
     }
 
     public void ScreenShakeAll(float shakeAmount = 0.5f, int numFrames = 25) {
