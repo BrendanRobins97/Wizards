@@ -68,7 +68,8 @@ public class GameManager : MonoBehaviour {
     private Camera mainCamera;
     [SerializeField]
     private GameObject playerContainer;
-    
+    [SerializeField]
+    private Transform[] cameras;
 
 
     private List<PlayerInfo> players = new List<PlayerInfo>();
@@ -152,6 +153,10 @@ public class GameManager : MonoBehaviour {
             spellImages[i].color = CurrentPlayer.spells[i].spellImageColor;
             spellDescriptions[i].text = CurrentPlayer.spells[i].description;
 
+        }
+        // Register camera containers for screen shake
+        foreach (Transform cam in cameras) {
+            CameraController.instance.RegisterCamera(cam);
         }
     }
 

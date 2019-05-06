@@ -74,6 +74,7 @@ public class Spell : MonoBehaviour {
             , Mathf.RoundToInt(transform.position.y)
             , Mathf.RoundToInt(transform.position.z),
             (int) damageRadius, explosionDampen);
+        CameraController.instance.ScreenShakeAll();
         Player[] players = FindObjectsOfType<Player>();
 
         for (int i = 0; i < players.Length; i++) {

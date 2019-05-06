@@ -99,6 +99,9 @@ public class Player : MonoBehaviour {
         originalFOV = playerCamera.fieldOfView;
     }
 
+    private void Start() {
+        CameraController.instance.RegisterCamera(playerCamera.transform);
+    }
     private void Update() {
         launchArc.gameObject.SetActive(false);
 
@@ -302,6 +305,7 @@ public class Player : MonoBehaviour {
         animator.SetTrigger("Hit");
         soundScript sound = soundPlay.GetComponent(typeof(soundScript)) as soundScript;
         sound.playOof();
+        //CameraController.instance.ScreenShake(playerCamera);
     }
 
     public void Kill() { health = 0; }
