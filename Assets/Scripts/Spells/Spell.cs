@@ -76,7 +76,7 @@ public class Spell : MonoBehaviour {
             (int) damageRadius, explosionDampen);
         CameraController.instance.ScreenShakeAll();
         Player[] players = FindObjectsOfType<Player>();
-
+        
         for (int i = 0; i < players.Length; i++) {
             Player player = players[i];
             Vector3 playerDirection = players[i].transform.position - collision.GetContact(0).point;

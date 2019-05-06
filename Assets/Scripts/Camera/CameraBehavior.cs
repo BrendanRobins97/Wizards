@@ -7,6 +7,8 @@ using Image = UnityEngine.Experimental.UIElements.Image;
 
 public class CameraBehavior : MonoBehaviour
 {
+    public static CameraBehavior instance;
+
     private Player player;
     [SerializeField] private GameObject spell, fireSpell, deathRainSpell, iceSpell;
     //[SerializeField] private Animator anim;
@@ -17,7 +19,8 @@ public class CameraBehavior : MonoBehaviour
     public Camera spellCamera;
     private Canvas canvas;
     public float speed = 1f;
-
+    private float shakeAmount;
+    private int shake;
     [SerializeField] private TextMeshProUGUI text;
 
     [SerializeField] private Slider chargeBar;
@@ -32,7 +35,7 @@ public class CameraBehavior : MonoBehaviour
         canvas = FindObjectOfType<Canvas>();
         //anim.enabled = false;
     }
-
+    private void Awake() { instance = this; }
     // Update is called once per frame
     void Update()
     {
@@ -75,6 +78,7 @@ public class CameraBehavior : MonoBehaviour
             Destroy(spell, GameManager.instance.timeAfterSpellCast);
             positionSet = false;
             //Debug.Log("Spell Cam = disabled.");
+            spellCamShake.instance.ScreenShake(spellCamera.transform, .5f, 25);
         }
         if (spell != null && GameManager.instance.currentTurnTimeLeft <= GameManager.instance.timeAfterSpellCast)
         {
@@ -94,7 +98,6 @@ public class CameraBehavior : MonoBehaviour
             Destroy(iceSpell, GameManager.instance.timeAfterSpellCast+1);
             tempY = 7;
             positionSet = false;
-            ///Debug.Log("Fireball Cam = disabled.");
         }
         if (fireSpell != null && GameManager.instance.currentTurnTimeLeft <= GameManager.instance.timeAfterSpellCast)
         {
@@ -131,20 +134,29 @@ public class CameraBehavior : MonoBehaviour
             if (fireSpell.isStatic)
             {
                 spellCamera.transform.position = Vector3.MoveTowards(spellCamera.transform.position, fireSpell.transform.position,speed*Time.deltaTime);
+                
             }
 
-            spellCamera.transform.LookAt(fireSpell.transform);
+            if (fireSpell.GetComponent<SphereCollider>() == null)
+            {
+                spellCamShake.instance.ScreenShake(spellCamera.transform, .3f, 5);
+        }
+        spellCamera.transform.LookAt(fireSpell.transform);
     }
 
     public void ChangeToSpellCamera()
     {
-       // Debug.Log("Spell Cam = enabled.");
+        // Debug.Log("Spell Cam = enabled.");
         spellCamera.enabled = true;
         spellCamera.transform.SetPositionAndRotation(
             new Vector3(spell.transform.position.x + 1, spell.transform.position.y + 2,
                 spell.transform.position.z - 6), Quaternion.identity);
         //fireBallCamera.transform.position = new Vector3(spell.transform.position.x + 1, spell.transform.position.y + 2,
         //  spell.transform.position.z - 6);
+        if (spell.GetComponent<SphereCollider>() == null)
+        {
+            spellCamShake.instance.ScreenShake(spellCamera.transform, .3f, 5);
+        }
     }
 
     public void ChangeToDeathRainCamera()
