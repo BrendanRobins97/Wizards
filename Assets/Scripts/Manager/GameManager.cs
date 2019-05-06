@@ -33,12 +33,18 @@ public class GameManager : MonoBehaviour {
     private Transform playerInfoContainer;
     [SerializeField]
     private PlayerUI playerUIPrefab;
+    [SerializeField]
+    private Animator spellBarAnimator;
+    [SerializeField]
+    private GameObject pressEnterText;
+    [SerializeField]
+    private List<Image> spellImages;
+    [SerializeField]
+    private List<TextMeshProUGUI> spellDescriptions;
 
     [Header("Prefabs")]
     [SerializeField]
     private List<GameObject> playerPrefabs;
-    [SerializeField]
-    private List<Image> spellImages;
     [SerializeField]
     private GameObject giantFireball;
 
@@ -62,12 +68,16 @@ public class GameManager : MonoBehaviour {
     private Camera mainCamera;
     [SerializeField]
     private GameObject playerContainer;
+    
+
 
     private List<PlayerInfo> players = new List<PlayerInfo>();
     private bool endOfTurn, newRound, meteorShower;
     private bool gameStarted;
     private float circleRadius;
     private Vector3 circleCenter;
+    private bool nextTurn = false;
+
 
     #endregion
 
@@ -140,11 +150,36 @@ public class GameManager : MonoBehaviour {
         for (int i = 0; i < CurrentPlayer.spells.Count; i++) {
             spellImages[i].sprite = CurrentPlayer.spells[i].spellImage;
             spellImages[i].color = CurrentPlayer.spells[i].spellImageColor;
+            spellDescriptions[i].text = CurrentPlayer.spells[i].description;
 
         }
     }
 
     private void Update() {
+
+        if (nextTurn) {
+            // Do nothing until player presses start
+            if (Input.GetButtonDown("Start") || Input.GetKeyDown(KeyCode.Return)) {
+                nextTurn = false;
+                spellBarAnimator.SetTrigger("HideInfo");
+                if (CurrentPlayer) {
+                    CurrentPlayer.playerCamera.enabled = true;
+                    CurrentPlayer?.Enable();
+
+                    for (int i = 0; i < CurrentPlayer.spells.Count; i++) {
+                        spellImages[i].sprite = CurrentPlayer.spells[i].spellImage;
+                        spellImages[i].color = CurrentPlayer.spells[i].spellImageColor;
+                        spellDescriptions[i].text= CurrentPlayer.spells[i].description;
+
+
+                    }
+                }
+                currentTurnTimeLeft = turnTime;
+                pressEnterText.SetActive(false);
+            }
+            return;
+        }
+
         // Update the current time left and update the timer text
         currentTurnTimeLeft -= Time.deltaTime;
         currentTurnTimeLeft = Mathf.Clamp(currentTurnTimeLeft, -0.9f, turnTime);
@@ -174,17 +209,19 @@ public class GameManager : MonoBehaviour {
             FindObjectOfType<Canvas>().enabled = false;
             // Start game when initial timer hits 0
             if (currentTurnTimeLeft < 0) {
-                CurrentPlayer.Enable();
+                CurrentPlayer.playerCamera.enabled = true;
                 StartTurn();
                 mainCamera.enabled = false;
                 gameStarted = true;
                 FindObjectOfType<Canvas>().enabled = true;
+                return;
             }
         }
 
         if (!gameStarted) { return; }
 
         if (CurrentPlayer.turnOver && !endOfTurn) {
+            Debug.Log("Swag");
             currentTurnTimeLeft = CurrentPlayer.CurrentSpell.timeAfterSpellCast;
             endOfTurn = true;
         }
@@ -235,6 +272,8 @@ public class GameManager : MonoBehaviour {
     private void StartTurn() {
         endOfTurn = false;
         currentTurnTimeLeft = turnTime;
+        nextTurn = true;
+        spellBarAnimator.SetTrigger("ShowInfo");
     }
 
     public void MapShrink() {
@@ -267,16 +306,17 @@ public class GameManager : MonoBehaviour {
 
         FindObjectOfType<Canvas>().enabled = true;
         FindObjectOfType<DeathRainSpellCamera>().spellHitPointIndicator.enabled = false;
-        if (CurrentPlayer) {
-            CurrentPlayer?.Enable();
 
-            for (int i = 0; i < CurrentPlayer.spells.Count; i++) {
-                spellImages[i].sprite = CurrentPlayer.spells[i].spellImage;
-                spellImages[i].color = CurrentPlayer.spells[i].spellImageColor;
 
-            }
+        // Bring up press start to start turn overlay
+        pressEnterText.SetActive(true);
+        nextTurn = true;
+        spellBarAnimator.SetTrigger("ShowInfo");
+        for (int i = 0; i < spellImages.Count; i++) {
+            spellImages[i].color =
+                new Color(spellImages[i].color.r, spellImages[i].color.g, spellImages[i].color.b, 1f);
         }
-        
+        CurrentPlayer.playerCamera.enabled = true;
     }
 
     #endregion

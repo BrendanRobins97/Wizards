@@ -23,6 +23,8 @@ public class Spell : MonoBehaviour {
     public Sprite spellImage;
     public Color spellImageColor;
     public float timeAfterSpellCast = 3f;
+    public string description = "";
+
 
     protected List<Player> playersHit = new List<Player>();
     protected bool         collisions = true;

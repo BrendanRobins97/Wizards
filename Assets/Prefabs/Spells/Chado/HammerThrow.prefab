@@ -87,6 +87,7 @@ MonoBehaviour:
   spellImage: {fileID: 21300000, guid: 9aa9ee05f03394131841e0d7beea021a, type: 3}
   spellImageColor: {r: 0.3773585, g: 0.3506586, b: 0.3506586, a: 1}
   timeAfterSpellCast: 3
+  description: 'Straight Shot: Throw a hammer'
 --- !u!1001 &8547661290071951107
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -94,6 +95,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2061551642739732017}
     m_Modifications:
+    - target: {fileID: 6144364145188797887, guid: 03daea65d75f24513be9ca5a097c5ada,
+        type: 3}
+      propertyPath: m_Name
+      value: Hammer Throw Top
+      objectReference: {fileID: 0}
     - target: {fileID: 3517655368474355034, guid: 03daea65d75f24513be9ca5a097c5ada,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -148,11 +154,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6144364145188797887, guid: 03daea65d75f24513be9ca5a097c5ada,
-        type: 3}
-      propertyPath: m_Name
-      value: Hammer Throw Top
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03daea65d75f24513be9ca5a097c5ada, type: 3}
