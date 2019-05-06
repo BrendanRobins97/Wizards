@@ -4188,7 +4188,7 @@ MonoBehaviour:
   currentTurnTimeLeft: 0
   timeAfterSpellCast: 3
   gameStartTime: 3
-  spawnWidth: 40
+  spawnWidth: 8
   turnTime: 20
   numPlayers: 2
   spawnLocations:

@@ -103,7 +103,7 @@ public class GameManager : MonoBehaviour {
         {
             numPlayers = ps.numPlayers;
         }
-        mapShrinkNumber = 1;
+        mapShrinkNumber = 0;
         circleCenter = new Vector3(TerrainManager.instance.width / 2.0f, 0, TerrainManager.instance.length / 2.0f);
         circleRadius = TerrainManager.instance.width / 2.0f - 5.0f;
         currentTurnTimeLeft = gameStartTime;
@@ -111,10 +111,8 @@ public class GameManager : MonoBehaviour {
             PlayerInfo newPlayerInfo;
             float angle = i * 360f / numPlayers;
             Vector3 spawnLocation = new Vector3(Mathf.Cos(Mathf.Deg2Rad * angle) * spawnWidth + circleCenter.x, TerrainManager.instance.height, Mathf.Sin(Mathf.Deg2Rad * angle) * spawnWidth + circleCenter.z);
-            Debug.Log(spawnLocation);
             Ray ray = new Ray(spawnLocation, Vector3.down);
             Physics.Raycast(ray, out RaycastHit rayHit);
-            Debug.Log(rayHit.point);
 
             Player player;
             if (ps)
@@ -162,6 +160,31 @@ public class GameManager : MonoBehaviour {
 
     private void Update() {
 
+        if (playerTurn == 0 && newRound && roundNumber / numPlayers > mapShrinkNumber) {
+            if (meteorShower == false) {
+                CurrentPlayer.playerCamera.enabled = false;
+                nextTurn = false;
+                currentTurnTimeLeft = turnTime + 5f;
+                meteorShower = true;
+                endOfTurn = true;
+                mainCamera.enabled = true;
+                MapShrink();
+                return;
+            }
+
+            if (currentTurnTimeLeft <= turnTime) {
+                CurrentPlayer.EnableCamera();
+                FindObjectOfType<Canvas>().enabled = true;
+                mapShrinkNumber += 2;
+                
+                mainCamera.enabled = false;
+                meteorShower = false;
+                newRound = false;
+                endOfTurn = false;
+                nextTurn = true;
+            }
+        }
+
         if (nextTurn) {
             // Do nothing until player presses start
             if (Input.GetButtonDown("Start") || Input.GetKeyDown(KeyCode.Return)) {
@@ -182,32 +205,17 @@ public class GameManager : MonoBehaviour {
                 currentTurnTimeLeft = turnTime;
                 pressEnterText.SetActive(false);
             }
+            turnText.text = "Time Left: " + (int)(currentTurnTimeLeft + 0.98f);
+
             return;
         }
 
         // Update the current time left and update the timer text
         currentTurnTimeLeft -= Time.deltaTime;
-        currentTurnTimeLeft = Mathf.Clamp(currentTurnTimeLeft, -0.9f, turnTime);
-        turnText.text = "Time Left: " + (int) (currentTurnTimeLeft + 1);
-        if (playerTurn == 0 && newRound && roundNumber / numPlayers > mapShrinkNumber) {
-            if (meteorShower == false) {
-                turnTime += 5f;
-                currentTurnTimeLeft = turnTime;
-                meteorShower = true;
-                mainCamera.enabled = true;
-                MapShrink();
-            }
+        currentTurnTimeLeft = Mathf.Clamp(currentTurnTimeLeft, -0.9f, Mathf.Infinity);
+        turnText.text = "Time Left: " + (int)(currentTurnTimeLeft + 0.98f);
 
-            if (currentTurnTimeLeft <= 20.7f) {
-                CurrentPlayer.enabled = true;
-                FindObjectOfType<Canvas>().enabled = true;
-                mapShrinkNumber += 2;
-                turnTime = 20;
-                mainCamera.enabled = false;
-                meteorShower = false;
-                newRound = false;
-            }
-        }
+        
         if (playerTurn > 0) { newRound = true; }
         if(mainCamera.enabled == false) { FindObjectOfType<Canvas>().enabled = true; }
         if (!gameStarted) { // Handle game start behavior
@@ -226,7 +234,6 @@ public class GameManager : MonoBehaviour {
         if (!gameStarted) { return; }
 
         if (CurrentPlayer.turnOver && !endOfTurn) {
-            Debug.Log("Swag");
             currentTurnTimeLeft = CurrentPlayer.CurrentSpell.timeAfterSpellCast;
             endOfTurn = true;
         }
@@ -321,7 +328,7 @@ public class GameManager : MonoBehaviour {
             spellImages[i].color =
                 new Color(spellImages[i].color.r, spellImages[i].color.g, spellImages[i].color.b, 1f);
         }
-        CurrentPlayer.playerCamera.enabled = true;
+        CurrentPlayer.EnableCamera();
     }
 
     #endregion

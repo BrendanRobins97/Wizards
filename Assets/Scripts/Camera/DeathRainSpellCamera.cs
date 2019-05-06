@@ -66,7 +66,7 @@ public class DeathRainSpellCamera : MonoBehaviour
             //this.transform.position = Vector3.MoveTowards(transform.position, new Vector3(player.transform.position.x, player.playerCamera.transform.position.y + 8, player.transform.position.z), .500f * Time.deltaTime);
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Alpha3) || Input.GetAxis("spell1") == -1 || Input.GetAxis("spell2") == 1 || Input.GetAxis("spell1") == 1)
+        if (!player.turnOver && (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Alpha3) || Input.GetAxis("spell1") == -1 || Input.GetAxis("spell2") == 1 || Input.GetAxis("spell1") == 1))
         {
             player.playerCamera.enabled = true;
             player.enabled = true;

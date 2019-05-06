@@ -35,11 +35,11 @@ public class CameraController : MonoBehaviour {
         }
     }
 
-    public void ScreenShakeAll(float shakeAmount = 0.5f, int numFrames = 25) {
+    public void ScreenShakeAll(float shakeAmount = 0.35f, int numFrames = 20) {
         for (int i = 0; i < cameras.Count; i++) { StartCoroutine(ScreenShakeCoroutine(i, shakeAmount, numFrames)); }
     }
 
-    public void ScreenShake(Transform camera, float shakeAmount = 0.5f, int numFrames = 25) {
+    public void ScreenShake(Transform camera, float shakeAmount = 0.35f, int numFrames = 20) {
         StartCoroutine(ScreenShakeCoroutine(cameras.IndexOf(camera), shakeAmount, numFrames));
     }
 
