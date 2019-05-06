@@ -12,79 +12,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: DemonBase
       objectReference: {fileID: 0}
-    - target: {fileID: 2429517294149507765, guid: 3f4a4251d79bb3740b1f004fcc81e315,
+    - target: {fileID: 6237877335634305161, guid: 3f4a4251d79bb3740b1f004fcc81e315,
         type: 3}
-      propertyPath: playerCamera
+      propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9201667091130450558}
-    - target: {fileID: 2429517294149507765, guid: 3f4a4251d79bb3740b1f004fcc81e315,
+      objectReference: {fileID: 9100000, guid: 5e439e015af5e734e975c7a7b35101ea, type: 2}
+    - target: {fileID: 6237877335634305161, guid: 3f4a4251d79bb3740b1f004fcc81e315,
         type: 3}
-      propertyPath: feetPosition
+      propertyPath: m_Avatar
       value: 
-      objectReference: {fileID: 6973066857206900475}
-    - target: {fileID: 2429517294149507765, guid: 3f4a4251d79bb3740b1f004fcc81e315,
-        type: 3}
-      propertyPath: animator
-      value: 
-      objectReference: {fileID: 1949791861453436945}
-    - target: {fileID: 2429517294149507765, guid: 3f4a4251d79bb3740b1f004fcc81e315,
-        type: 3}
-      propertyPath: spells.Array.data[0]
-      value: 
-      objectReference: {fileID: 1239190242252623508, guid: 226b56e08eef4064a94e320fc5dfed0e,
-        type: 3}
-    - target: {fileID: 2429517294149507765, guid: 3f4a4251d79bb3740b1f004fcc81e315,
-        type: 3}
-      propertyPath: demonHit1
-      value: 
-      objectReference: {fileID: 6232244268119718970}
-    - target: {fileID: 2429517294149507765, guid: 3f4a4251d79bb3740b1f004fcc81e315,
-        type: 3}
-      propertyPath: demonHit2
-      value: 
-      objectReference: {fileID: 6232244268119718956}
-    - target: {fileID: 2429517294149507765, guid: 3f4a4251d79bb3740b1f004fcc81e315,
-        type: 3}
-      propertyPath: demonHit3
-      value: 
-      objectReference: {fileID: 6232244268119718972}
-    - target: {fileID: 2429517294149507765, guid: 3f4a4251d79bb3740b1f004fcc81e315,
-        type: 3}
-      propertyPath: demonHit4
-      value: 
-      objectReference: {fileID: 6232244268119718970}
-    - target: {fileID: 2429517294149507765, guid: 3f4a4251d79bb3740b1f004fcc81e315,
-        type: 3}
-      propertyPath: spells.Array.data[2]
-      value: 
-      objectReference: {fileID: 3216984746066089468, guid: ed883588326b6c84295707cff6328e95,
-        type: 3}
-    - target: {fileID: 2429517294149507765, guid: 3f4a4251d79bb3740b1f004fcc81e315,
-        type: 3}
-      propertyPath: color.r
-      value: 0.8584906
-      objectReference: {fileID: 0}
-    - target: {fileID: 2429517294149507765, guid: 3f4a4251d79bb3740b1f004fcc81e315,
-        type: 3}
-      propertyPath: color.g
-      value: 0.23587556
-      objectReference: {fileID: 0}
-    - target: {fileID: 2429517294149507765, guid: 3f4a4251d79bb3740b1f004fcc81e315,
-        type: 3}
-      propertyPath: color.b
-      value: 0.044544328
-      objectReference: {fileID: 0}
-    - target: {fileID: 2429517294149507765, guid: 3f4a4251d79bb3740b1f004fcc81e315,
-        type: 3}
-      propertyPath: icon
-      value: 
-      objectReference: {fileID: 21300000, guid: 74177e372764b48d1944d75c50e716f0,
-        type: 3}
-    - target: {fileID: 2429517294149507765, guid: 3f4a4251d79bb3740b1f004fcc81e315,
-        type: 3}
-      propertyPath: launchArc
-      value: 
-      objectReference: {fileID: 8074759238621683129}
+      objectReference: {fileID: 9000000, guid: 99e30058164b91a459767a79e3e9a70c, type: 3}
     - target: {fileID: 1032518970902120018, guid: 3f4a4251d79bb3740b1f004fcc81e315,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -140,16 +77,79 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6237877335634305161, guid: 3f4a4251d79bb3740b1f004fcc81e315,
+    - target: {fileID: 2429517294149507765, guid: 3f4a4251d79bb3740b1f004fcc81e315,
         type: 3}
-      propertyPath: m_Controller
+      propertyPath: playerCamera
       value: 
-      objectReference: {fileID: 9100000, guid: 5e439e015af5e734e975c7a7b35101ea, type: 2}
-    - target: {fileID: 6237877335634305161, guid: 3f4a4251d79bb3740b1f004fcc81e315,
+      objectReference: {fileID: 9201667091130450558}
+    - target: {fileID: 2429517294149507765, guid: 3f4a4251d79bb3740b1f004fcc81e315,
         type: 3}
-      propertyPath: m_Avatar
+      propertyPath: feetPosition
       value: 
-      objectReference: {fileID: 9000000, guid: 99e30058164b91a459767a79e3e9a70c, type: 3}
+      objectReference: {fileID: 6973066857206900475}
+    - target: {fileID: 2429517294149507765, guid: 3f4a4251d79bb3740b1f004fcc81e315,
+        type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1949791861453436945}
+    - target: {fileID: 2429517294149507765, guid: 3f4a4251d79bb3740b1f004fcc81e315,
+        type: 3}
+      propertyPath: spells.Array.data[0]
+      value: 
+      objectReference: {fileID: 1239190242252623508, guid: 226b56e08eef4064a94e320fc5dfed0e,
+        type: 3}
+    - target: {fileID: 2429517294149507765, guid: 3f4a4251d79bb3740b1f004fcc81e315,
+        type: 3}
+      propertyPath: demonHit1
+      value: 
+      objectReference: {fileID: 6232244268119718970}
+    - target: {fileID: 2429517294149507765, guid: 3f4a4251d79bb3740b1f004fcc81e315,
+        type: 3}
+      propertyPath: demonHit2
+      value: 
+      objectReference: {fileID: 6232244268119718956}
+    - target: {fileID: 2429517294149507765, guid: 3f4a4251d79bb3740b1f004fcc81e315,
+        type: 3}
+      propertyPath: demonHit3
+      value: 
+      objectReference: {fileID: 6232244268119718972}
+    - target: {fileID: 2429517294149507765, guid: 3f4a4251d79bb3740b1f004fcc81e315,
+        type: 3}
+      propertyPath: demonHit4
+      value: 
+      objectReference: {fileID: 6232244268119718970}
+    - target: {fileID: 2429517294149507765, guid: 3f4a4251d79bb3740b1f004fcc81e315,
+        type: 3}
+      propertyPath: spells.Array.data[2]
+      value: 
+      objectReference: {fileID: 3216984746066089468, guid: ed883588326b6c84295707cff6328e95,
+        type: 3}
+    - target: {fileID: 2429517294149507765, guid: 3f4a4251d79bb3740b1f004fcc81e315,
+        type: 3}
+      propertyPath: color.r
+      value: 0.85882354
+      objectReference: {fileID: 0}
+    - target: {fileID: 2429517294149507765, guid: 3f4a4251d79bb3740b1f004fcc81e315,
+        type: 3}
+      propertyPath: color.g
+      value: 0.12612948
+      objectReference: {fileID: 0}
+    - target: {fileID: 2429517294149507765, guid: 3f4a4251d79bb3740b1f004fcc81e315,
+        type: 3}
+      propertyPath: color.b
+      value: 0.043137245
+      objectReference: {fileID: 0}
+    - target: {fileID: 2429517294149507765, guid: 3f4a4251d79bb3740b1f004fcc81e315,
+        type: 3}
+      propertyPath: icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 74177e372764b48d1944d75c50e716f0,
+        type: 3}
+    - target: {fileID: 2429517294149507765, guid: 3f4a4251d79bb3740b1f004fcc81e315,
+        type: 3}
+      propertyPath: launchArc
+      value: 
+      objectReference: {fileID: 8074759238621683129}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f4a4251d79bb3740b1f004fcc81e315, type: 3}
 --- !u!95 &1949791861453436945 stripped
