@@ -28,8 +28,6 @@ public class GameManager : MonoBehaviour {
     [SerializeField]
     private TextMeshProUGUI gameOverText;
     [SerializeField]
-    private Slider chargeBar;
-    [SerializeField]
     private TextMeshProUGUI turnText;
     [SerializeField]
     private Transform playerInfoContainer;
@@ -149,7 +147,6 @@ public class GameManager : MonoBehaviour {
     private void Update() {
         // Update the current time left and update the timer text
         currentTurnTimeLeft -= Time.deltaTime;
-        chargeBar.enabled = false;
         currentTurnTimeLeft = Mathf.Clamp(currentTurnTimeLeft, -0.9f, turnTime);
         turnText.text = "Time Left: " + (int) (currentTurnTimeLeft + 1);
         if (playerTurn == 0 && newRound && roundNumber / numPlayers > mapShrinkNumber) {
@@ -175,7 +172,6 @@ public class GameManager : MonoBehaviour {
         if(mainCamera.enabled == false) { FindObjectOfType<Canvas>().enabled = true; }
         if (!gameStarted) { // Handle game start behavior
             FindObjectOfType<Canvas>().enabled = false;
-            chargeBar.enabled = false;
             // Start game when initial timer hits 0
             if (currentTurnTimeLeft < 0) {
                 CurrentPlayer.Enable();
@@ -183,14 +179,10 @@ public class GameManager : MonoBehaviour {
                 mainCamera.enabled = false;
                 gameStarted = true;
                 FindObjectOfType<Canvas>().enabled = true;
-                chargeBar.enabled = false;
             }
         }
 
         if (!gameStarted) { return; }
-        chargeBar.value = CurrentPlayer.chargePercent;
-        if (chargeBar.value <= 0) { chargeBar.enabled = false; }
-        else { chargeBar.enabled = false; }
 
         if (CurrentPlayer.turnOver && !endOfTurn) {
             currentTurnTimeLeft = CurrentPlayer.CurrentSpell.timeAfterSpellCast;
