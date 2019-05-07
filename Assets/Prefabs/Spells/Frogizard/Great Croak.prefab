@@ -89,6 +89,7 @@ MonoBehaviour:
   spellImage: {fileID: 21300000, guid: 18311a80fcc844690a7ff599740fa073, type: 3}
   spellImageColor: {r: 0.92521524, g: 1, b: 0.8915094, a: 0}
   timeAfterSpellCast: 3
+  description: 'Melee: Knock Back Close Ranged Opponents With Croak'
 --- !u!1 &2478462541082444398
 GameObject:
   m_ObjectHideFlags: 0

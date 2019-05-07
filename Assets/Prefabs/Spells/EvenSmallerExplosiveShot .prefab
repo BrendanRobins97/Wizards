@@ -24705,12 +24705,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5108f924abb79d54eb11c01d57bc46c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 12
-  contactDamage: 2
+  speed: 30
+  contactDamage: 1
   affectedByCharge: 0
   duration: 10
-  damageRadius: 2
-  explosionDampen: 0.5
+  damageRadius: 3.312
+  explosionDampen: 0.25
   knockBackForce: 50
   explosion: {fileID: 8311680600813020574, guid: 83f4a0744268f4f42b6cb1420a1b25dc,
     type: 3}
+  spellImage: {fileID: 0}
+  spellImageColor: {r: 0, g: 0, b: 0, a: 0}
+  timeAfterSpellCast: 3
+  description: 

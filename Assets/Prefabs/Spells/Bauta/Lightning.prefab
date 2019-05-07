@@ -76,7 +76,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 100
-  contactDamage: 25
+  contactDamage: 20
   affectedByCharge: 0
   duration: 10
   damageRadius: 5
@@ -87,6 +87,7 @@ MonoBehaviour:
   spellImage: {fileID: 21300000, guid: 5bedf1559ff4140698edd4bfde1b802c, type: 3}
   spellImageColor: {r: 0.1745283, g: 0.2917677, b: 1, a: 1}
   timeAfterSpellCast: 3
+  description: 'Straight Shot: Cast Lightning Spell'
 --- !u!1001 &18504987833156809
 PrefabInstance:
   m_ObjectHideFlags: 0

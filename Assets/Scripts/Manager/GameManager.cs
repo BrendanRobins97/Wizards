@@ -196,13 +196,7 @@ public class GameManager : MonoBehaviour {
                     CurrentPlayer.playerCamera.enabled = true;
                     CurrentPlayer?.Enable();
 
-                    for (int i = 0; i < CurrentPlayer.spells.Count; i++) {
-                        spellImages[i].sprite = CurrentPlayer.spells[i].spellImage;
-                        spellImages[i].color = CurrentPlayer.spells[i].spellImageColor;
-                        spellDescriptions[i].text= CurrentPlayer.spells[i].description;
-
-
-                    }
+                    
                 }
                 currentTurnTimeLeft = turnTime;
                 pressEnterText.SetActive(false);
@@ -331,6 +325,12 @@ public class GameManager : MonoBehaviour {
         for (int i = 0; i < spellImages.Count; i++) {
             spellImages[i].color =
                 new Color(spellImages[i].color.r, spellImages[i].color.g, spellImages[i].color.b, 1f);
+        }
+        for (int i = 0; i < CurrentPlayer.spells.Count; i++)
+        {
+            spellImages[i].sprite = CurrentPlayer.spells[i].spellImage;
+            spellImages[i].color = CurrentPlayer.spells[i].spellImageColor;
+            spellDescriptions[i].text = CurrentPlayer.spells[i].description;
         }
         CurrentPlayer.EnableCamera();
     }
