@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.12799105, g: 0.23792702, b: 0.6519228, a: 1}
+  m_IndirectSpecularColor: {r: 0.12646218, g: 0.23645307, b: 0.6474477, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -89,7 +89,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -689,6 +689,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1597915643}
     m_Modifications:
+    - target: {fileID: 5605475320658540074, guid: 0b75cc8f229872d4fa0138689608321d,
+        type: 3}
+      propertyPath: m_Name
+      value: IceImage
+      objectReference: {fileID: 0}
     - target: {fileID: 2614728158053856001, guid: 0b75cc8f229872d4fa0138689608321d,
         type: 3}
       propertyPath: m_isInputParsingRequired
@@ -703,11 +708,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5605475320658540074, guid: 0b75cc8f229872d4fa0138689608321d,
-        type: 3}
-      propertyPath: m_Name
-      value: IceImage
       objectReference: {fileID: 0}
     - target: {fileID: 5605475320658540075, guid: 0b75cc8f229872d4fa0138689608321d,
         type: 3}
@@ -2858,6 +2858,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1597915643}
     m_Modifications:
+    - target: {fileID: 5605475320658540074, guid: 0b75cc8f229872d4fa0138689608321d,
+        type: 3}
+      propertyPath: m_Name
+      value: FireImage
+      objectReference: {fileID: 0}
     - target: {fileID: 2614728158053856001, guid: 0b75cc8f229872d4fa0138689608321d,
         type: 3}
       propertyPath: m_isInputParsingRequired
@@ -2872,11 +2877,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5605475320658540074, guid: 0b75cc8f229872d4fa0138689608321d,
-        type: 3}
-      propertyPath: m_Name
-      value: FireImage
       objectReference: {fileID: 0}
     - target: {fileID: 5605475320658540075, guid: 0b75cc8f229872d4fa0138689608321d,
         type: 3}
@@ -3651,6 +3651,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1597915643}
     m_Modifications:
+    - target: {fileID: 5605475320658540074, guid: 0b75cc8f229872d4fa0138689608321d,
+        type: 3}
+      propertyPath: m_Name
+      value: ShockImage
+      objectReference: {fileID: 0}
     - target: {fileID: 2614728158053856001, guid: 0b75cc8f229872d4fa0138689608321d,
         type: 3}
       propertyPath: m_isInputParsingRequired
@@ -3665,11 +3670,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5605475320658540074, guid: 0b75cc8f229872d4fa0138689608321d,
-        type: 3}
-      propertyPath: m_Name
-      value: ShockImage
       objectReference: {fileID: 0}
     - target: {fileID: 5605475320658540075, guid: 0b75cc8f229872d4fa0138689608321d,
         type: 3}
@@ -4175,6 +4175,9 @@ MonoBehaviour:
   - {fileID: 6770501040285935883, guid: 4969f60ba4def4046a583c04820a972a, type: 3}
   - {fileID: 2391146587931545960, guid: af0088ac34532ea42a6e30e982c171c1, type: 3}
   - {fileID: 4499749861033504491, guid: a2cb320f2dadf4e4ea82bd1e49081789, type: 3}
+  - {fileID: 4499749861033504491, guid: a52372b3823714d35ae1e94d0ca3519f, type: 3}
+  - {fileID: 4499749861033504491, guid: 3c1621cc7bb424c7291ff0af9e3463fd, type: 3}
+  - {fileID: 4499749861033504491, guid: b191f2659d1d24d19b78201551e459d6, type: 3}
   - {fileID: 4812762877516463586, guid: 546c10dfdac434cc98059331ab5dbb3c, type: 3}
   - {fileID: 4812762877516463586, guid: 25aa8840adff846cead8e7d63bb9f1f3, type: 3}
   - {fileID: 4812762877516463586, guid: eb49cf086d94349ed80c292d0a48dfc4, type: 3}
@@ -5980,6 +5983,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1597915643}
     m_Modifications:
+    - target: {fileID: 5605475320658540074, guid: 0b75cc8f229872d4fa0138689608321d,
+        type: 3}
+      propertyPath: m_Name
+      value: SpecialImage
+      objectReference: {fileID: 0}
     - target: {fileID: 2614728158053856001, guid: 0b75cc8f229872d4fa0138689608321d,
         type: 3}
       propertyPath: m_isInputParsingRequired
@@ -5994,11 +6002,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5605475320658540074, guid: 0b75cc8f229872d4fa0138689608321d,
-        type: 3}
-      propertyPath: m_Name
-      value: SpecialImage
       objectReference: {fileID: 0}
     - target: {fileID: 5605475320658540075, guid: 0b75cc8f229872d4fa0138689608321d,
         type: 3}

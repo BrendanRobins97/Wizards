@@ -172,14 +172,20 @@ public class PlayerSelect : MonoBehaviour
                 if (stage1Index == 1)
                     currentIndex = 5;
                 if (stage1Index == 2)
-                    currentIndex = 6;
+                    currentIndex = 9;
                 if (stage1Index == 3)
-                    currentIndex = 10;
+                    currentIndex = 13;
             }
         }
 
         if (stage2)
         {
+            if (Input.GetButtonUp("B")||Input.GetKeyUp(KeyCode.B))
+            {
+                stage1 = true;
+                stage2 = false;
+            }
+            Debug.Log("Looking at " + players[currentIndex].name + " at index " + currentIndex);
             baseIndex = stage1Index;
             Vector3 camPos = new Vector3(players[currentIndex].transform.position.x,
                 players[currentIndex].transform.position.y + 2, players[currentIndex].transform.position.z + 5);
@@ -286,20 +292,20 @@ public class PlayerSelect : MonoBehaviour
 
             if (baseIndex == 1)
             {
-                for (int i = 5; i <= 5; i++)
+                for (int i = 5; i <= 8; i++)
                 {
                     if (i == currentIndex)
                     {
                         players[currentIndex].animator.SetFloat("Forward Amount", 0);
                         players[currentIndex].gameObject.SetActive(true);
-                        players[currentIndex].AnimTriggerReset();
+                        //players[currentIndex].AnimTriggerReset();
                         players[currentIndex].animator.SetTrigger("Idle");
                     }
                     else
                     {
                         players[i].animator.SetFloat("Forward Amount", 0);
                         players[i].gameObject.SetActive(false);
-                        players[i].AnimTriggerReset();
+                        //players[i].AnimTriggerReset();
                         players[i].animator.SetTrigger("Idle");
                     }
                 }
@@ -355,7 +361,7 @@ public class PlayerSelect : MonoBehaviour
                         }
                     }
 
-                    if (currentIndex > 5)
+                    if (currentIndex > 8)
                     {
                         currentIndex = 5;
                     }
@@ -377,27 +383,27 @@ public class PlayerSelect : MonoBehaviour
 
                     if (currentIndex < 5)
                     {
-                        currentIndex = 5;
+                        currentIndex = 8;
                     }
                 }
             }
 
             if (baseIndex == 2)
             {
-                for (int i = 6; i <= 9; i++)
+                for (int i = 9; i <= 12; i++)
                 {
                     if (i == currentIndex)
                     {
                         players[currentIndex].animator.SetFloat("Forward Amount", 0);
                         players[currentIndex].gameObject.SetActive(true);
-                        players[currentIndex].AnimTriggerReset();
+                       // players[currentIndex].AnimTriggerReset();
                         players[currentIndex].animator.SetTrigger("Idle");
                     }
                     else
                     {
                         players[i].animator.SetFloat("Forward Amount", 0);
                         players[i].gameObject.SetActive(false);
-                        players[i].AnimTriggerReset();
+                        //players[i].AnimTriggerReset();
                         players[i].animator.SetTrigger("Idle");
                     }
                 }
@@ -453,9 +459,9 @@ public class PlayerSelect : MonoBehaviour
                         }
                     }
 
-                    if (currentIndex > 9)
+                    if (currentIndex > 12)
                     {
-                        currentIndex = 6;
+                        currentIndex = 9;
                     }
                 }
 
@@ -473,29 +479,29 @@ public class PlayerSelect : MonoBehaviour
                         }
                     }
 
-                    if (currentIndex < 6)
+                    if (currentIndex < 9)
                     {
-                        currentIndex = 9;
+                        currentIndex = 12;
                     }
                 }
             }
 
             if (baseIndex == 3)
             {
-                for (int i = 10; i <= 13; i++)
+                for (int i = 13; i <= 16; i++)
                 {
                     if (i == currentIndex)
                     {
                         players[currentIndex].animator.SetFloat("Forward Amount", 0);
                         players[currentIndex].gameObject.SetActive(true);
-                        players[currentIndex].AnimTriggerReset();
+                        //players[currentIndex].AnimTriggerReset();
                         players[currentIndex].animator.SetTrigger("Idle");
                     }
                     else
                     {
                         players[i].animator.SetFloat("Forward Amount", 0);
                         players[i].gameObject.SetActive(false);
-                        players[i].AnimTriggerReset();
+                        //players[i].AnimTriggerReset();
                         players[i].animator.SetTrigger("Idle");
                     }
                 }
@@ -551,9 +557,9 @@ public class PlayerSelect : MonoBehaviour
                         }
                     }
 
-                    if (currentIndex > 13)
+                    if (currentIndex > 16)
                     {
-                        currentIndex = 10;
+                        currentIndex = 13;
                     }
                 }
 
@@ -571,9 +577,9 @@ public class PlayerSelect : MonoBehaviour
                         }
                     }
 
-                    if (currentIndex < 10)
+                    if (currentIndex < 13)
                     {
-                        currentIndex = 13;
+                        currentIndex = 16;
                     }
                 }
             }

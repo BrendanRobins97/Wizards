@@ -3047,7 +3047,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1146272103
 Transform:
   m_ObjectHideFlags: 0
@@ -3107,6 +3107,9 @@ MonoBehaviour:
   chargePercent: 0
   tempChargeAmount: 0
   turnOver: 0
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 0
   sensitivity: 1.5
   movementSpeed: 2
   enabled: 1
@@ -3118,6 +3121,7 @@ MonoBehaviour:
   - {fileID: 5920406005746024860, guid: 6fc71b7bb4ffe435b8b52c802719487d, type: 3}
   - {fileID: 5445266672334248905, guid: 24bd975c5f966ab44a2dda673a870377, type: 3}
   feetPosition: {fileID: 1442808541}
+  launchArc: {fileID: 0}
   animator: {fileID: 1146272102}
   rigidbody: {fileID: 0}
   originalFOV: 0
