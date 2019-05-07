@@ -56,7 +56,7 @@ public class TreeSummon : Spell {
 
         drc.spellHitPointIndicator.enabled = false;
 
-        finalPos = TerrainManager.instance.PeakPoint(drc.lightPos.x, drc.lightPos.z).point + Vector3.down * 12f;
+        finalPos = TerrainManager.instance.PeakPoint(drc.lightPos.x, drc.lightPos.z).point;// + Vector3.down * 12f;
         startPos = finalPos + Vector3.down * startPositionHeightOffset; // So it starts in the ground
         transform.position = startPos;
 
