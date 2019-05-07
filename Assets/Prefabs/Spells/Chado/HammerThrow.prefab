@@ -76,7 +76,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 80
-  contactDamage: 25
+  contactDamage: 20
   affectedByCharge: 0
   duration: 10
   damageRadius: 5

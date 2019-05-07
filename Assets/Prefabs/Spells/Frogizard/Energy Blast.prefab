@@ -204,7 +204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 70
-  contactDamage: 25
+  contactDamage: 20
   affectedByCharge: 1
   duration: 10
   damageRadius: 5
@@ -215,6 +215,7 @@ MonoBehaviour:
   spellImage: {fileID: 21300000, guid: 26e83379fd9184b00bd55b0b7d43b9a7, type: 3}
   spellImageColor: {r: 0, g: 0.32968163, b: 1, a: 0}
   timeAfterSpellCast: 3
+  description: 'Straight Shot: Cast An Energy Blast'
 --- !u!54 &4976606058389455720
 Rigidbody:
   m_ObjectHideFlags: 0
