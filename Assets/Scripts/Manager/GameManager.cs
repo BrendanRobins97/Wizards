@@ -71,7 +71,6 @@ public class GameManager : MonoBehaviour {
     [SerializeField]
     private Transform[] cameras;
 
-
     private List<PlayerInfo> players = new List<PlayerInfo>();
     private bool endOfTurn, newRound, meteorShower;
     private bool gameStarted;
@@ -133,6 +132,9 @@ public class GameManager : MonoBehaviour {
             PlayerUI playerUI = Instantiate(playerUIPrefab, playerInfoContainer).GetComponent<PlayerUI>();
             playerUI.playerImage.sprite = player.icon;
             playerUI.playerImage.color = player.color;
+            playerUI.playerName.text = "Player " + (i+1);
+            playerUI.EndTurn();
+
             newPlayerInfo.player = player;
             newPlayerInfo.playerUI = playerUI;
             newPlayerInfo.dead = false;
@@ -286,6 +288,7 @@ public class GameManager : MonoBehaviour {
         currentTurnTimeLeft = turnTime;
         nextTurn = true;
         spellBarAnimator.SetTrigger("ShowInfo");
+        players[playerTurn].playerUI.StartTurn();
     }
 
     public void MapShrink() {
@@ -307,6 +310,7 @@ public class GameManager : MonoBehaviour {
     private void NextPlayerTurn() {
         // Disable current player
         CurrentPlayer.Disable();
+        players[playerTurn].playerUI.EndTurn();
         roundNumber++;
         // Find the next available player
         int count = 0;
