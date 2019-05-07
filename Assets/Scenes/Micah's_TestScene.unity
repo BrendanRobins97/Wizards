@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.12646218, g: 0.23645307, b: 0.6474477, a: 1}
+  m_IndirectSpecularColor: {r: 0.12807566, g: 0.23806068, b: 0.649579, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4427,7 +4427,7 @@ MonoBehaviour:
   - {fileID: 863457270}
   spellDescriptions: []
   playerPrefabs:
-  - {fileID: 4812762877516463586, guid: 851c58b32633f4669b0ef41b96b96003, type: 3}
+  - {fileID: 4499749861033504491, guid: 3c1621cc7bb424c7291ff0af9e3463fd, type: 3}
   - {fileID: 4499749861033504491, guid: b191f2659d1d24d19b78201551e459d6, type: 3}
   - {fileID: 1678527236190916213, guid: 2853e0140ddcf394cb469a3c0e5de2d1, type: 3}
   - {fileID: 3733252538983089315, guid: 8edc07cf7fddcbf4195e9f250e865844, type: 3}
