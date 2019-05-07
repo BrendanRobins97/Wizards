@@ -815,7 +815,7 @@ Cloth:
   m_ExternalAcceleration: {x: 0, y: 0, z: 0}
   m_RandomAcceleration: {x: 0, y: 0, z: 0}
   m_WorldVelocityScale: 0.5
-  m_WorldAccelerationScale: 0.5
+  m_WorldAccelerationScale: 0.05
   m_Friction: 0.5
   m_CollisionMassScale: 0
   m_UseContinuousCollision: 1
@@ -1307,7 +1307,7 @@ Cloth:
     collisionSphereDistance: 3.4028235e+38
   m_CapsuleColliders: []
   m_SphereColliders: []
-  m_SelfCollisionDistance: 0.1
+  m_SelfCollisionDistance: 0.03
   m_SelfCollisionStiffness: 1
   m_SelfAndInterCollisionIndices: a1000000a2000000a3000000a4000000a5000000a6000000a7000000a8000000a9000000aa000000ab000000ac000000ad000000ae000000af000000b0000000b1000000b2000000b3000000b4000000b5000000b6000000b7000000b8000000b9000000ba000000bb000000bc000000bd000000be000000bf000000c0000000c1000000c2000000c3000000c4000000c5000000c6000000c7000000c8000000
   m_VirtualParticleWeights:
@@ -1424,7 +1424,7 @@ Cloth:
   m_ExternalAcceleration: {x: 0, y: 0, z: 0}
   m_RandomAcceleration: {x: 0, y: 0, z: 0}
   m_WorldVelocityScale: 0.5
-  m_WorldAccelerationScale: 1
+  m_WorldAccelerationScale: 0.05
   m_Friction: 0.5
   m_CollisionMassScale: 0
   m_UseContinuousCollision: 1
@@ -3136,7 +3136,7 @@ Cloth:
   m_ExternalAcceleration: {x: 0, y: 0, z: 0}
   m_RandomAcceleration: {x: 0, y: 0, z: 0}
   m_WorldVelocityScale: 0.5
-  m_WorldAccelerationScale: 1
+  m_WorldAccelerationScale: 0.05
   m_Friction: 0.5
   m_CollisionMassScale: 0
   m_UseContinuousCollision: 1
@@ -3662,7 +3662,7 @@ Cloth:
   m_ExternalAcceleration: {x: 0, y: 0, z: 0}
   m_RandomAcceleration: {x: 0, y: 0, z: 0}
   m_WorldVelocityScale: 0.5
-  m_WorldAccelerationScale: 1
+  m_WorldAccelerationScale: 0.05
   m_Friction: 0.5
   m_CollisionMassScale: 0
   m_UseContinuousCollision: 1
@@ -4513,7 +4513,7 @@ Cloth:
   m_ExternalAcceleration: {x: 0, y: 0, z: 0}
   m_RandomAcceleration: {x: 0, y: 0, z: 0}
   m_WorldVelocityScale: 0.5
-  m_WorldAccelerationScale: 0.5
+  m_WorldAccelerationScale: 0.05
   m_Friction: 0.5
   m_CollisionMassScale: 0
   m_UseContinuousCollision: 1

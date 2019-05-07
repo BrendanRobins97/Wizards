@@ -51,7 +51,7 @@ Material:
     - _Cutoff: 0.5
     - _DstBlend: 0
     - _GlossMapScale: 1
-    - _Glossiness: 0.1
+    - _Glossiness: 0.4
     - _GlossyReflections: 1
     - _Metallic: 0
     - _OcclusionStrength: 1
@@ -65,4 +65,4 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 0.71864593, b: 0.5707547, a: 1}
     - _EmissionColor: {r: 0.23584908, g: 0.03256871, b: 0.016687432, a: 1}
-    - _SpecColor: {r: 0, g: 0, b: 0, a: 1}
+    - _SpecColor: {r: 0.26415092, g: 0.110815525, b: 0, a: 1}

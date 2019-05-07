@@ -1429,7 +1429,7 @@ GameObject:
   - component: {fileID: 754101794}
   - component: {fileID: 754101793}
   m_Layer: 0
-  m_Name: Chado Underpants
+  m_Name: ChadoUnderpants
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1503,14 +1503,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ca155e1e3fa98846baa0f3469b25946, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  icon: {fileID: 0}
   color: {r: 1, g: 1, b: 1, a: 0}
   chargeAmount: 2
+  hitPoint: {fileID: 0}
+  demonHit1: {fileID: 0}
   stamina: 0
   jumpForce: 500
   health: 0
   chargePercent: 0
   tempChargeAmount: 0
   turnOver: 0
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 0
   sensitivity: 1
   movementSpeed: 2
   enabled: 1
@@ -1518,8 +1524,8 @@ MonoBehaviour:
   maxHealth: 100
   spells: []
   feetPosition: {fileID: 1902788763}
+  launchArc: {fileID: 0}
   animator: {fileID: 754101796}
-  PS_ElectricOrbPrefab: {fileID: 0}
   rigidbody: {fileID: 0}
   originalFOV: 0
   numberOfAttacks: 1

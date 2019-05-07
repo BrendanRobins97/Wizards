@@ -616,6 +616,9 @@ MonoBehaviour:
   chargePercent: 0
   tempChargeAmount: 0
   turnOver: 0
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 0
   sensitivity: 1.5
   movementSpeed: 2
   enabled: 1
@@ -627,6 +630,7 @@ MonoBehaviour:
   - {fileID: 1991271422628986824, guid: 508f936bd647a33458ffc34e83f73d0b, type: 3}
   - {fileID: 5445266672334248905, guid: 24bd975c5f966ab44a2dda673a870377, type: 3}
   feetPosition: {fileID: 898391837}
+  launchArc: {fileID: 0}
   animator: {fileID: 198693526}
   rigidbody: {fileID: 0}
   originalFOV: 0
@@ -4731,7 +4735,7 @@ Cloth:
     collisionSphereDistance: 3.4028235e+38
   m_CapsuleColliders: []
   m_SphereColliders: []
-  m_SelfCollisionDistance: 0.1
+  m_SelfCollisionDistance: 0.02
   m_SelfCollisionStiffness: 1
   m_SelfAndInterCollisionIndices: a1000000a2000000a3000000a4000000a5000000a6000000a7000000a8000000a9000000aa000000ab000000ac000000ad000000ae000000af000000b0000000b1000000b2000000b3000000b4000000b5000000b6000000b7000000b8000000b9000000ba000000bb000000bc000000bd000000be000000bf000000c0000000c1000000c2000000c3000000c4000000c5000000c6000000c7000000c8000000
   m_VirtualParticleWeights:
