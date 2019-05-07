@@ -89,7 +89,7 @@ PrefabInstance:
     - target: {fileID: 788504871835713992, guid: 3f4a4251d79bb3740b1f004fcc81e315,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1032518970902120018, guid: 3f4a4251d79bb3740b1f004fcc81e315,
         type: 3}
@@ -3022,9 +3022,9 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8616813146070561687}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &215558588135097752 stripped
+--- !u!4 &215558588135097768 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 8460223572535703055, guid: bb7eb7b8328f6425a804809591d2c8a3,
+  m_CorrespondingSourceObject: {fileID: 8460223572535703103, guid: bb7eb7b8328f6425a804809591d2c8a3,
     type: 3}
   m_PrefabInstance: {fileID: 8616813146070561687}
   m_PrefabAsset: {fileID: 0}
@@ -3136,9 +3136,9 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8616813146070561687}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &215558588135097738 stripped
+--- !u!4 &215558588135097780 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 8460223572535703069, guid: bb7eb7b8328f6425a804809591d2c8a3,
+  m_CorrespondingSourceObject: {fileID: 8460223572535703075, guid: bb7eb7b8328f6425a804809591d2c8a3,
     type: 3}
   m_PrefabInstance: {fileID: 8616813146070561687}
   m_PrefabAsset: {fileID: 0}
@@ -3190,9 +3190,9 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8616813146070561687}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &215558588135097780 stripped
+--- !u!4 &215558588135097792 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 8460223572535703075, guid: bb7eb7b8328f6425a804809591d2c8a3,
+  m_CorrespondingSourceObject: {fileID: 8460223572535703127, guid: bb7eb7b8328f6425a804809591d2c8a3,
     type: 3}
   m_PrefabInstance: {fileID: 8616813146070561687}
   m_PrefabAsset: {fileID: 0}
@@ -3238,15 +3238,15 @@ CapsuleCollider:
     type: 3}
   m_PrefabInstance: {fileID: 8616813146070561687}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &215558588135097768 stripped
+--- !u!4 &215558588135097738 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 8460223572535703103, guid: bb7eb7b8328f6425a804809591d2c8a3,
+  m_CorrespondingSourceObject: {fileID: 8460223572535703069, guid: bb7eb7b8328f6425a804809591d2c8a3,
     type: 3}
   m_PrefabInstance: {fileID: 8616813146070561687}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &215558588135097792 stripped
+--- !u!4 &215558588135097752 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 8460223572535703127, guid: bb7eb7b8328f6425a804809591d2c8a3,
+  m_CorrespondingSourceObject: {fileID: 8460223572535703055, guid: bb7eb7b8328f6425a804809591d2c8a3,
     type: 3}
   m_PrefabInstance: {fileID: 8616813146070561687}
   m_PrefabAsset: {fileID: 0}
