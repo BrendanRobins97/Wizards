@@ -21,6 +21,7 @@ public class CameraBehavior : MonoBehaviour
     public float speed = 1f;
     private float shakeAmount;
     private int shake;
+    private bool canShake = true;
     [SerializeField] private TextMeshProUGUI text;
 
     [SerializeField] private Slider chargeBar;
@@ -74,11 +75,12 @@ public class CameraBehavior : MonoBehaviour
         }
         if ((spell == null && fireSpell == null && deathRainSpell == null ) || GameManager.instance.currentTurnTimeLeft > GameManager.instance.timeAfterSpellCast)
         {
+            shake = 0;
+            canShake = true;
             spellCamera.enabled = false;
             Destroy(spell, GameManager.instance.timeAfterSpellCast);
             positionSet = false;
             //Debug.Log("Spell Cam = disabled.");
-            spellCamShake.instance.ScreenShake(spellCamera.transform, .5f, 25);
         }
         if (spell != null && GameManager.instance.currentTurnTimeLeft <= GameManager.instance.timeAfterSpellCast)
         {
@@ -88,9 +90,13 @@ public class CameraBehavior : MonoBehaviour
             {
                 Destroy(spell);
             }
+
+            //canShake = true;
         }
         if ( (spell == null && fireSpell == null && deathRainSpell == null && iceSpell == null) || GameManager.instance.currentTurnTimeLeft > GameManager.instance.timeAfterSpellCast)
         {
+            canShake = true;
+            shake = 0;
             spellCamera.enabled = false;
             player.playerCamera.rect = new Rect(0, 0, 1f, 1);
             spellCamera.rect = new Rect(0, 0, 1f, 1);
@@ -107,6 +113,8 @@ public class CameraBehavior : MonoBehaviour
             {
                 Destroy(fireSpell);
             }
+
+            //canShake = true;
         }
         if (deathRainSpell != null && GameManager.instance.currentTurnTimeLeft <= 7f)//GameManager.instance.timeAfterSpellCast)
         {
@@ -137,10 +145,13 @@ public class CameraBehavior : MonoBehaviour
                 
             }
 
-            if (fireSpell.GetComponent<SphereCollider>() == null)
+            if (fireSpell.GetComponent<SphereCollider>() == null && canShake)
             {
-                spellCamShake.instance.ScreenShake(spellCamera.transform, .3f, 5);
-        }
+                shake++;
+                spellCamShake.instance.ScreenShake(spellCamera.transform, .3f, 2);
+                if(shake > 12)
+                canShake = false;
+            }
         spellCamera.transform.LookAt(fireSpell.transform);
     }
 
@@ -153,9 +164,12 @@ public class CameraBehavior : MonoBehaviour
                 spell.transform.position.z - 6), Quaternion.identity);
         //fireBallCamera.transform.position = new Vector3(spell.transform.position.x + 1, spell.transform.position.y + 2,
         //  spell.transform.position.z - 6);
-        if (spell.GetComponent<SphereCollider>() == null)
+        if (spell.GetComponent<SphereCollider>() == null && canShake)
         {
-            spellCamShake.instance.ScreenShake(spellCamera.transform, .3f, 5);
+            shake++;
+            spellCamShake.instance.ScreenShake(spellCamera.transform, .3f, 1);
+            if(shake > 7)
+            canShake = false;
         }
     }
 

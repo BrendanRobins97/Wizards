@@ -5,7 +5,7 @@ using UnityEngine;
 public class spellCamShake : MonoBehaviour
 {
     public static spellCamShake instance;
-
+    private Vector3 originalPosition;
     public GameObject spellCamContainer;
     // Start is called before the first frame update
     void Start()
@@ -24,6 +24,7 @@ public class spellCamShake : MonoBehaviour
     }
     private IEnumerator ScreenShakeCoroutine(int camIndex, float shakeAmount, int numFrames)
     {
+        originalPosition = spellCamContainer.transform.position;
         for (int i = 0; i < numFrames; i++)
         {
             spellCamContainer.transform.position = spellCamContainer.transform.position + new Vector3(
@@ -35,6 +36,8 @@ public class spellCamShake : MonoBehaviour
             yield return new WaitForFixedUpdate();
             yield return new WaitForFixedUpdate();
         }
+        Debug.Log("Screen shake");
+        spellCamContainer.transform.position = originalPosition;
     }
 
 }
