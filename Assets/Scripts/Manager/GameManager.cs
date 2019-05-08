@@ -129,6 +129,7 @@ public class GameManager : MonoBehaviour {
                         transform)
                     .GetComponent<Player>();
             }
+            player.index = i;
             player.transform.LookAt(new Vector3(TerrainManager.instance.width / 2f, rayHit.point.y, TerrainManager.instance.length / 2f));
             PlayerUI playerUI = Instantiate(playerUIPrefab, playerInfoContainer).GetComponent<PlayerUI>();
             playerUI.playerImage.sprite = player.icon;
@@ -285,6 +286,15 @@ public class GameManager : MonoBehaviour {
         nextTurn = true;
         spellBarAnimator.SetTrigger("ShowInfo");
         players[playerTurn].playerUI.StartTurn();
+        for (int i = 0; i < spellImages.Count; i++) {
+            spellImages[i].color =
+                new Color(spellImages[i].color.r, spellImages[i].color.g, spellImages[i].color.b, 1f);
+        }
+        for (int i = 0; i < CurrentPlayer.spells.Count; i++) {
+            spellImages[i].sprite = CurrentPlayer.spells[i].spellImage;
+            spellImages[i].color = CurrentPlayer.spells[i].spellImageColor;
+            spellDescriptions[i].text = CurrentPlayer.spells[i].description;
+        }
     }
 
     public void MapShrink() {
@@ -337,6 +347,9 @@ public class GameManager : MonoBehaviour {
         CurrentPlayer.EnableCamera();
     }
 
+    public void Damage(int damage, int index) {
+        players[index].playerUI.Damage(damage);
+    }
     #endregion
 
 }

@@ -80,6 +80,7 @@ public class Player : MonoBehaviour {
     [HideInInspector]
     public bool special;
     public GameObject soundPlay;
+    [HideInInspector] public int index = 0;
 
     #endregion
 
@@ -314,6 +315,7 @@ public class Player : MonoBehaviour {
         animator.SetTrigger("Hit");
         soundScript sound = soundPlay.GetComponent(typeof(soundScript)) as soundScript;
         sound.playOof();
+        GameManager.instance.Damage(amount, index);
         //CameraController.instance.ScreenShake(playerCamera);
     }
 

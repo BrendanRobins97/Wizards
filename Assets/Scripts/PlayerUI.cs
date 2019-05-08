@@ -17,6 +17,8 @@ public class PlayerUI : MonoBehaviour {
     public TextMeshProUGUI playerName;
     public Image background;
     public Animator playerNameAnimator;
+    public TextMeshProUGUI damageText;
+    public Animator damageTextAnimator;
 
     #endregion
 
@@ -30,6 +32,12 @@ public class PlayerUI : MonoBehaviour {
     public void EndTurn() {
         background.enabled = false;
         playerNameAnimator.SetBool("NamePop", false);
+    }
+
+    public void Damage(int damage) {
+        damageTextAnimator.SetTrigger("Reset");
+        damageText.text = "-" + damage;
+        damageTextAnimator.SetTrigger("Damage");
     }
 
     #endregion
