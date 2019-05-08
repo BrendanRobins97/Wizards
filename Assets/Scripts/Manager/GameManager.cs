@@ -77,6 +77,7 @@ public class GameManager : MonoBehaviour {
     private float circleRadius;
     private Vector3 circleCenter;
     private bool nextTurn = false;
+    private bool gameOver = false;
 
 
     #endregion
@@ -158,6 +159,7 @@ public class GameManager : MonoBehaviour {
         foreach (Transform cam in cameras) {
             CameraController.instance.RegisterCamera(cam);
         }
+        gameOver = false;
     }
 
     private void Update() {
@@ -187,7 +189,7 @@ public class GameManager : MonoBehaviour {
             }
         }
 
-        if (nextTurn) {
+        if (nextTurn && !gameOver) {
             // Do nothing until player presses start
             if (Input.GetButtonDown("Start") || Input.GetKeyDown(KeyCode.Return)) {
                 nextTurn = false;
@@ -264,7 +266,7 @@ public class GameManager : MonoBehaviour {
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2);
             }
-
+            gameOver = true;
         }
     }
 

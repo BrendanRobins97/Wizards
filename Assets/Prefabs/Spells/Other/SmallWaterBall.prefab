@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 844738351872716878}
   - component: {fileID: 6996181480485081848}
   m_Layer: 18
-  m_Name: SmallExplosiveShot
+  m_Name: SmallWaterBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5108f924abb79d54eb11c01d57bc46c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 8
   contactDamage: 5
   affectedByCharge: 1
   duration: 10
