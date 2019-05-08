@@ -54,7 +54,7 @@ public class CameraBehavior : MonoBehaviour
             //canvas.enabled = true;
             crossHair.enabled = true;
             text.enabled = true;
-            chargeBar.gameObject.SetActive(true);
+            chargeBar.gameObject.SetActive(false);
         }
         xpos = player.transform.position.x;
         zpos = player.transform.position.z;

@@ -95,7 +95,7 @@ public class PlayerSelect : MonoBehaviour
             showTutorial = true;
         }
 
-        if (gameStartTimer <= 0 && gameStartTimer >= -2 || Input.GetButtonUp("Start") || Input.GetKeyDown(KeyCode.S))
+        if (gameStartTimer <= 0 && gameStartTimer >= -2 || Input.GetButtonUp("Start") || Input.GetKeyDown(KeyCode.Return))
         {
             Input.ResetInputAxes();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);

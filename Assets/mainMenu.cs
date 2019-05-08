@@ -87,7 +87,7 @@ public class mainMenu : MonoBehaviour
         }
         if (myAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
         {
-            if (state == 1 && Input.GetAxisRaw("Submit") > 0 || Input.GetButtonUp("Start"))
+            if (state == 1 && Input.GetAxisRaw("Submit") > 0 || Input.GetButtonUp("Start") || Input.GetButtonUp("Fire1"))
             {
                 myAnimator.Play("part3");
                 state = 3;
@@ -106,7 +106,7 @@ public class mainMenu : MonoBehaviour
             }
             else if (state == 3 && Input.GetKeyDown("1"))
             {
-                numPlayers = 1;
+                numPlayers = 2;
                 myAnimator.Play("part4");
                 state = 4;
             }
@@ -152,7 +152,7 @@ public class mainMenu : MonoBehaviour
                 myAnimator.Play("part4");
                 state = 4;
             }
-            else if (state == 3 && Input.GetAxisRaw("Submit") > 0.0)
+            else if (state == 3 && (Input.GetAxisRaw("Submit") > 0.0 || Input.GetButtonUp("Fire1")))
             {
                 numPlayers = hoverNumPlayers;
                 myAnimator.Play("part4");

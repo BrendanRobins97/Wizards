@@ -17,11 +17,9 @@ public class DeathRainParticleBehavior : MonoBehaviour {
 
     public void OnParticleCollision(GameObject collision)
     {
-        Debug.Log("Colliding with " + collision.name);
         if (collision.tag == "Player")
         {
-            collision.GetComponent<Player>().Damage(spell.contactDamage);
-            Debug.Log("Damaging " + collision.name);
+            //collision.GetComponent<Player>().Damage(spell.contactDamage);
         }
 
         // Jitter start direction based on normal

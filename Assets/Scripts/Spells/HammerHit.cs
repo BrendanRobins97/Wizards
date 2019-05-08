@@ -38,7 +38,7 @@ public class HammerHit : Spell
             //sound.playIce();
             player.Damage(contactDamage);
             player.GetComponent<Rigidbody>().Sleep();
-            playerDirection.Normalize();
+            //playerDirection.Normalize();
             player.rigidbody.AddForce(playerDirection.x * knockBackForce, (playerDirection.y / 4f + 1f) * knockBackForce,
                 playerDirection.z * knockBackForce);
         }
