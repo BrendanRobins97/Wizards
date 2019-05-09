@@ -81,6 +81,9 @@ public class Player : MonoBehaviour {
     public bool special;
     public GameObject soundPlay;
     [HideInInspector] public int index = 0;
+    public bool paused;
+    public float timeSincePaused;
+    public GameObject pauseText;
 
     #endregion
 
@@ -102,9 +105,31 @@ public class Player : MonoBehaviour {
 
     private void Start() {
         //CameraController.instance.RegisterCamera(playerCamera.transform);
+        pauseText = GameObject.Find("pauseText");
+        pauseText.SetActive(false);
     }
+
+    private void Pause()
+    {
+        if (!paused)
+        {
+            paused = true;
+            Time.timeScale = 0;
+            timeSincePaused = Time.realtimeSinceStartup;
+            pauseText.SetActive(true);
+        }
+        else if(paused && (Time.realtimeSinceStartup - timeSincePaused) > .5f)
+        {
+            paused = false;
+            Time.timeScale = 1;
+            timeSincePaused = 0;
+            pauseText.SetActive(false);
+        }
+    }
+
     private void Update() {
-        launchArc.gameObject.SetActive(false);
+        if (Input.GetButtonDown("Submit"))
+            Pause();
         if (!enabled) { return; }
         // Vertical rotation calculations
         // Applies to Camera
