@@ -35,9 +35,12 @@ public class PlayerUI : MonoBehaviour {
     }
 
     public void Damage(int damage) {
-        damageTextAnimator.SetTrigger("Reset");
-        damageText.text = "-" + damage;
-        damageTextAnimator.SetTrigger("Damage");
+        if (damage != 0)
+        {
+            damageTextAnimator.SetTrigger("Reset");
+            damageText.text = "-" + damage;
+            damageTextAnimator.SetTrigger("Damage");
+        }
     }
 
     #endregion

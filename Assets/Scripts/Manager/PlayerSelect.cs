@@ -9,6 +9,7 @@ public class PlayerSelect : MonoBehaviour
     public Canvas canvas, tutorialCanvas;
     public static PlayerSelect instance;
     public Camera camera;
+    public Light spotLight;
     public int currentIndex = 0;
     public int stage1Index = 0;
     public List<Player> players;
@@ -65,6 +66,7 @@ public class PlayerSelect : MonoBehaviour
         int playerDisplay = playerPicking + 1;
         gameStartTimer -= Time.deltaTime;
         axisCooldownTime -= Time.deltaTime;
+        spotLight.transform.position = new Vector3(camera.transform.position.x, camera.transform.position.y+1, camera.transform.position.z);
         if (showPlayerPicked)
         {
             text.text = "Player Already Chosen. Choose Another Player.";
@@ -95,7 +97,7 @@ public class PlayerSelect : MonoBehaviour
             showTutorial = true;
         }
 
-        if (gameStartTimer <= 0 && gameStartTimer >= -2 || Input.GetButtonUp("Start") || Input.GetKeyDown(KeyCode.Return))
+        if (gameStartTimer <= 0 && gameStartTimer >= -2 || (Input.GetButtonUp("Start") || Input.GetKeyDown(KeyCode.Return)&& playerPicking >= numPlayers))
         {
             Input.ResetInputAxes();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);

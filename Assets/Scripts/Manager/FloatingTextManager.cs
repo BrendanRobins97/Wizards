@@ -29,9 +29,12 @@ public class FloatingTextManager : MonoBehaviour {
     }
 
     public void SpawnDamageText(Vector3 position, int damage) {
-        GameObject floatingText = Instantiate(floatingTextPrefab, position, Quaternion.identity);
-        floatingText.GetComponentOnObject<TextMeshProUGUI>().text = damage.ToString();
-        Destroy(floatingText, textDuration);
+        if (damage != 0)
+        {
+            GameObject floatingText = Instantiate(floatingTextPrefab, position, Quaternion.identity);
+            floatingText.GetComponentOnObject<TextMeshProUGUI>().text = damage.ToString();
+            Destroy(floatingText, textDuration);
+        }
     }
 
     #endregion
