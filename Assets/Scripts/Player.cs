@@ -6,6 +6,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
 
@@ -128,7 +129,7 @@ public class Player : MonoBehaviour {
     }
 
     private void Update() {
-        if (Input.GetButtonDown("Submit"))
+        if (Input.GetButtonDown("Submit") && SceneManager.GetActiveScene().name == "MainTestScene")
             Pause();
         if (!enabled) { return; }
         // Vertical rotation calculations
