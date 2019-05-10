@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Water ball invert pos
+  m_Shader: {fileID: 4800000, guid: 594925b7651b646878818134b088e94d, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_B0CC8E86:
+        m_Texture: {fileID: 2800000, guid: 67823aba86cae4877b3b4b7ec292ddff, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_C09AEB5B:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_DA04B0BB:
+        m_Texture: {fileID: 2800000, guid: 3c8b60e5d6b154bf2be1d7a9b8eb2fa3, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_F0390EBE:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_3295B077: -0.05
+    - Vector1_63163664: 3
+    - Vector1_6DC7AA3A: 0.02
+    - Vector1_7B1FC173: 0.1
+    - Vector1_99EB78: 0
+    - Vector1_AAEF753D: 5
+    - Vector1_AC0D755A: 0.3
+    - Vector1_E85560B8: 0
+    - Vector1_EB19754: 0
+    - Vector1_F18E01CF: 0.8
+    m_Colors:
+    - Color_6162A907: {r: 0.14382343, g: 0.20218453, b: 0.3018868, a: 0}
+    - Color_8C983C80: {r: 0.16470584, g: 0.2995336, b: 0.57647055, a: 0}
+    - Color_DCDFF37: {r: 0, g: 0.42265058, b: 1, a: 0}
+    - Color_F7010FA6: {r: 0.9009434, g: 0.9700468, b: 1, a: 0}
+    - Vector2_BCDEE352: {r: -0.2, g: -1, b: 0, a: 0}
+    - Vector2_D1929816: {r: -0.05, g: -1, b: 0, a: 0}
+    - Vector2_D7B8EEB5: {r: 0.1, g: -0.5, b: 0, a: 0}
+    - Vector3_7305B121: {r: 0, g: 0, b: 0, a: 0}

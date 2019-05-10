@@ -1410,6 +1410,144 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &251590268909403262
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8866062935268070590, guid: 22b2ab13344b44b5494dc08e8bd2a1dc,
+        type: 3}
+      propertyPath: m_Name
+      value: Droplets explosion
+      objectReference: {fileID: 0}
+    - target: {fileID: 7977340793227791995, guid: 22b2ab13344b44b5494dc08e8bd2a1dc,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.48315132
+      objectReference: {fileID: 0}
+    - target: {fileID: 7977340793227791995, guid: 22b2ab13344b44b5494dc08e8bd2a1dc,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.13651632
+      objectReference: {fileID: 0}
+    - target: {fileID: 7977340793227791995, guid: 22b2ab13344b44b5494dc08e8bd2a1dc,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7977340793227791995, guid: 22b2ab13344b44b5494dc08e8bd2a1dc,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7977340793227791995, guid: 22b2ab13344b44b5494dc08e8bd2a1dc,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7977340793227791995, guid: 22b2ab13344b44b5494dc08e8bd2a1dc,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7977340793227791995, guid: 22b2ab13344b44b5494dc08e8bd2a1dc,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7977340793227791995, guid: 22b2ab13344b44b5494dc08e8bd2a1dc,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 7977340793227791995, guid: 22b2ab13344b44b5494dc08e8bd2a1dc,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7977340793227791995, guid: 22b2ab13344b44b5494dc08e8bd2a1dc,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7977340793227791995, guid: 22b2ab13344b44b5494dc08e8bd2a1dc,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 22b2ab13344b44b5494dc08e8bd2a1dc, type: 3}
+--- !u!1001 &1913284071716964647
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1913284071360297789, guid: dc2a1bd941ccc4162916478e9ac83f8c,
+        type: 3}
+      propertyPath: m_Name
+      value: Water Bomb
+      objectReference: {fileID: 0}
+    - target: {fileID: 1913284071360297788, guid: dc2a1bd941ccc4162916478e9ac83f8c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.48315132
+      objectReference: {fileID: 0}
+    - target: {fileID: 1913284071360297788, guid: dc2a1bd941ccc4162916478e9ac83f8c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.13651632
+      objectReference: {fileID: 0}
+    - target: {fileID: 1913284071360297788, guid: dc2a1bd941ccc4162916478e9ac83f8c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.16836193
+      objectReference: {fileID: 0}
+    - target: {fileID: 1913284071360297788, guid: dc2a1bd941ccc4162916478e9ac83f8c,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1913284071360297788, guid: dc2a1bd941ccc4162916478e9ac83f8c,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1913284071360297788, guid: dc2a1bd941ccc4162916478e9ac83f8c,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1913284071360297788, guid: dc2a1bd941ccc4162916478e9ac83f8c,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1913284071360297788, guid: dc2a1bd941ccc4162916478e9ac83f8c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 1913284071360297788, guid: dc2a1bd941ccc4162916478e9ac83f8c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1913284071360297788, guid: dc2a1bd941ccc4162916478e9ac83f8c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1913284071360297788, guid: dc2a1bd941ccc4162916478e9ac83f8c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: dc2a1bd941ccc4162916478e9ac83f8c, type: 3}
 --- !u!1001 &1986826618152824252
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1634,6 +1772,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Smoke Bomb
+      objectReference: {fileID: 0}
+    - target: {fileID: 8289638696082977004, guid: d23acd9acb46244babe9bac8744d8234,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4801049549494942519, guid: d23acd9acb46244babe9bac8744d8234,
         type: 3}
