@@ -172,7 +172,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 15a509cb5a9624fac835161f3ad4d456, type: 2}
+  - {fileID: 2100000, guid: fbbcae0da917a43a1bbc441dcd37abd0, type: 2}
   - {fileID: 2100000, guid: 1937a2123ce894d1085acb9be7e2168f, type: 2}
   - {fileID: 2100000, guid: a5f3cfd39dd144b0389d7701cac03d2e, type: 2}
   m_StaticBatchInfo:
@@ -3500,7 +3500,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 15a509cb5a9624fac835161f3ad4d456, type: 2}
+  - {fileID: 2100000, guid: 7dcc1f2ca002a407a9f4303bed07a4b6, type: 2}
   - {fileID: 2100000, guid: 1937a2123ce894d1085acb9be7e2168f, type: 2}
   - {fileID: 2100000, guid: a5f3cfd39dd144b0389d7701cac03d2e, type: 2}
   m_StaticBatchInfo:
@@ -4487,6 +4487,16 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6237877335634305161, guid: 3f4a4251d79bb3740b1f004fcc81e315,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 710d1c1e6b1154460a341f58228b03f8, type: 2}
+    - target: {fileID: 6237877335634305161, guid: 3f4a4251d79bb3740b1f004fcc81e315,
+        type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 78a6301ff7ec84672a63df5c9e1e269f, type: 3}
     - target: {fileID: 2429517294149507765, guid: 3f4a4251d79bb3740b1f004fcc81e315,
         type: 3}
       propertyPath: playerCamera
@@ -4557,16 +4567,6 @@ PrefabInstance:
       propertyPath: launchArc
       value: 
       objectReference: {fileID: 4743461298612656498}
-    - target: {fileID: 6237877335634305161, guid: 3f4a4251d79bb3740b1f004fcc81e315,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 710d1c1e6b1154460a341f58228b03f8, type: 2}
-    - target: {fileID: 6237877335634305161, guid: 3f4a4251d79bb3740b1f004fcc81e315,
-        type: 3}
-      propertyPath: m_Avatar
-      value: 
-      objectReference: {fileID: 9000000, guid: 78a6301ff7ec84672a63df5c9e1e269f, type: 3}
     - target: {fileID: 1032518970902120018, guid: 3f4a4251d79bb3740b1f004fcc81e315,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -1534,6 +1534,10 @@ MonoBehaviour:
   casting: 0
   special: 0
   soundPlay: {fileID: 0}
+  index: 0
+  paused: 0
+  timeSincePaused: 0
+  pauseText: {fileID: 0}
 --- !u!136 &754101794
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1830,7 +1834,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 15a509cb5a9624fac835161f3ad4d456, type: 2}
+  - {fileID: 2100000, guid: fbbcae0da917a43a1bbc441dcd37abd0, type: 2}
   - {fileID: 2100000, guid: 1937a2123ce894d1085acb9be7e2168f, type: 2}
   - {fileID: 2100000, guid: a5f3cfd39dd144b0389d7701cac03d2e, type: 2}
   m_StaticBatchInfo:
@@ -2442,7 +2446,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 15a509cb5a9624fac835161f3ad4d456, type: 2}
+  - {fileID: 2100000, guid: 7dcc1f2ca002a407a9f4303bed07a4b6, type: 2}
   - {fileID: 2100000, guid: 1937a2123ce894d1085acb9be7e2168f, type: 2}
   - {fileID: 2100000, guid: a5f3cfd39dd144b0389d7701cac03d2e, type: 2}
   m_StaticBatchInfo:
