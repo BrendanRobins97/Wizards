@@ -208,7 +208,11 @@ public class GameManager : MonoBehaviour {
 
             return;
         }
-
+        //Buttons to press to quit when in a build
+        if (Input.GetButtonDown("Start") && Input.GetButtonDown("Fire1"))
+        {
+            ExitGame();
+        }
         // Update the current time left and update the timer text
         currentTurnTimeLeft -= Time.deltaTime;
         currentTurnTimeLeft = Mathf.Clamp(currentTurnTimeLeft, -0.9f, Mathf.Infinity);
@@ -355,6 +359,10 @@ public class GameManager : MonoBehaviour {
 
     public void Damage(int damage, int index) {
         players[index].playerUI.Damage(damage);
+    }
+    void ExitGame()//Exit game when in build
+    {
+        Application.Quit();
     }
     #endregion
 
