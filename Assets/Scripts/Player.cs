@@ -129,7 +129,7 @@ public class Player : MonoBehaviour {
     }
 
     private void Update() {
-        if (Input.GetButtonDown("Submit") && SceneManager.GetActiveScene().name == "MainTestScene")
+        if ((Input.GetKeyDown(KeyCode.Return)|| Input.GetButtonDown("Start")) && SceneManager.GetActiveScene().name == "MainTestScene")
             Pause();
         if (!enabled) { return; }
         // Vertical rotation calculations
@@ -137,7 +137,7 @@ public class Player : MonoBehaviour {
         float xRot = Input.GetAxisRaw("Mouse Y");
         if (GameManager.instance.isController) { xRot *= -1; }
         float cameraRotationX = xRot * sensitivity;
-        if (xRot > .06 || xRot < -.06) { currentCameraRotationX -= cameraRotationX; }
+        if (xRot > .09 || xRot < -.09) { currentCameraRotationX -= cameraRotationX; }
         currentCameraRotationX = Mathf.Clamp(currentCameraRotationX, -cameraRotationLimit, cameraRotationLimit);
 
         float cameraOffsetZ = -cameraDistFromPlayer * Mathf.Cos(currentCameraRotationX * Mathf.Deg2Rad);
@@ -151,7 +151,7 @@ public class Player : MonoBehaviour {
         // Applies to character
         float rot = Input.GetAxisRaw("Mouse X");
         Vector3 yRot = new Vector3(0f, rot, 0f) * sensitivity;
-        if (rot > .06 || rot < -.06) { rigidbody.MoveRotation(rigidbody.rotation * Quaternion.Euler(yRot)); }
+        if (rot > .09 || rot < -.09) { rigidbody.MoveRotation(rigidbody.rotation * Quaternion.Euler(yRot)); }
 
         stamina -= (transform.position - prevPosition).magnitude;
         prevPosition = transform.position;

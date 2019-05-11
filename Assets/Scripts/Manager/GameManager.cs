@@ -284,16 +284,22 @@ public class GameManager : MonoBehaviour {
         endOfTurn = false;
         currentTurnTimeLeft = turnTime;
         nextTurn = true;
-        spellBarAnimator.SetTrigger("ShowInfo");
-        players[playerTurn].playerUI.StartTurn();
-        for (int i = 0; i < spellImages.Count; i++) {
-            spellImages[i].color =
-                new Color(spellImages[i].color.r, spellImages[i].color.g, spellImages[i].color.b, 1f);
-        }
-        for (int i = 0; i < CurrentPlayer.spells.Count; i++) {
-            spellImages[i].sprite = CurrentPlayer.spells[i].spellImage;
-            spellImages[i].color = CurrentPlayer.spells[i].spellImageColor;
-            spellDescriptions[i].text = CurrentPlayer.spells[i].description;
+        if (meteorShower == false)
+        {
+            spellBarAnimator.SetTrigger("ShowInfo");
+            players[playerTurn].playerUI.StartTurn();
+            for (int i = 0; i < spellImages.Count; i++)
+            {
+                spellImages[i].color =
+                    new Color(spellImages[i].color.r, spellImages[i].color.g, spellImages[i].color.b, 1f);
+            }
+
+            for (int i = 0; i < CurrentPlayer.spells.Count; i++)
+            {
+                spellImages[i].sprite = CurrentPlayer.spells[i].spellImage;
+                spellImages[i].color = CurrentPlayer.spells[i].spellImageColor;
+                spellDescriptions[i].text = CurrentPlayer.spells[i].description;
+            }
         }
     }
 
