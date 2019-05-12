@@ -136,7 +136,7 @@ public class TerrainManager : MonoBehaviour {
     private void Start() {
         if (spawnGrass) {
             for (int i = 0, counter = 0; i < numGrass && counter < 50000; counter++) {
-                const float bounds = 12f; // Bigger value means points will be closer to center
+                const float bounds = 8f; // Bigger value means points will be closer to center
                 float randPointX = Random.Range(bounds, width - bounds);
                 float randPointZ = Random.Range(bounds, length - bounds);
                 RaycastHit hit = PeakPoint(randPointX, randPointZ);
@@ -153,7 +153,7 @@ public class TerrainManager : MonoBehaviour {
         }
         if (spawnAssets) {
             for (int i = 0; i < numAssets;) {
-                const float bounds = 16f; // Bigger value means points will be closer to center
+                const float bounds = 12f; // Bigger value means points will be closer to center
                 float randPointX = Random.Range(bounds, width - bounds);
                 float randPointZ = Random.Range(bounds, length - bounds);
                 RaycastHit hit = PeakPoint(randPointX, randPointZ);
@@ -209,26 +209,26 @@ public class TerrainManager : MonoBehaviour {
         chunksToUpdate.Add(chunks[x, y, z]);
     }
 
-    public void Circle(int x, int y, int z, int radius, float heightDampen = 1) {
+    public void Circle(int x, int y, int z, int radius, float heightDampen = 1, float jitter = 0.1f) {
         for (int i = -radius; i <= radius; i++) {
             for (int j = -radius; j <= radius; j++) {
                 for (int k = -radius; k <= radius; k++) {
                     float density = Mathf.Max(0,
                         -(i * i + j * j / heightDampen + k * k - radius * radius) / (radius * radius / 2f));
-                    UpdatePosition(new Vector3(x + i, y + j, z + k), density + SampleDensity(x + i, y + j, z + k));
+                    UpdatePosition(new Vector3(x + i, y + j, z + k), density + SampleDensity(x + i, y + j, z + k) + Random.Range(-jitter, jitter));
                 }
             }
         }
         DestroyGrass(x, y, z, radius);
     }
 
-    public void AntiCircle(int x, int y, int z, int radius, float heightDampen = 1) {
+    public void AntiCircle(int x, int y, int z, int radius, float heightDampen = 1, float jitter = 0.1f) {
         for (int i = -radius; i <= radius; i++) {
             for (int j = -radius; j <= radius; j++) {
                 for (int k = -radius; k <= radius; k++) {
                     float density = -Mathf.Max(0,
                         -(i * i + j * j / heightDampen + k * k - radius * radius) / (radius * radius / 2f));
-                    UpdatePosition(new Vector3(x + i, y + j, z + k), density + SampleDensity(x + i, y + j, z + k));
+                    UpdatePosition(new Vector3(x + i, y + j, z + k), density + SampleDensity(x + i, y + j, z + k) + Random.Range(-jitter, jitter));
                 }
             }
         }

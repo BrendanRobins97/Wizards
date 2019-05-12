@@ -4318,9 +4318,9 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   spawnAssets: 1
-  numAssets: 12
+  numAssets: 14
   spawnGrass: 1
-  numGrass: 750
+  numGrass: 200
   boulder1: {fileID: 276405504282636540, guid: be35fefaff62a054a98415399370f9a7, type: 3}
   boulder2: {fileID: 1616062920238866603, guid: 24eb39694cf0fae42905e04553ce1a89,
     type: 3}

@@ -128,8 +128,12 @@ MonoBehaviour:
   duration: 4
   damageRadius: 2.5
   explosionDampen: 1.5
-  knockBackForce: 60
+  knockBackForce: 250
   explosion: {fileID: 0}
+  spellImage: {fileID: 0}
+  spellImageColor: {r: 0, g: 0, b: 0, a: 0}
+  timeAfterSpellCast: 3
+  description: 
 --- !u!1 &3699503192864873262
 GameObject:
   m_ObjectHideFlags: 0

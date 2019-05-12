@@ -28,6 +28,17 @@ public class HammerShot : Spell {
         }
     }
 
+    public override void ThrowSpell(Vector3 direction, float charge) {
+        // Disable collisions for a millisecond after casting so
+        // it doesn't instantly collide with player throwing spell
+        DisableCollisions(0.13f);
+        if (!affectedByCharge) { charge = 1; }
+        charge = Mathf.Max(charge, 0.33f); // Min charge is 1/3rd
+        GetComponent<Rigidbody>().velocity = direction * charge * speed;
+        transform.forward = direction;
+        Disable(duration);
+    }
+
     protected override void OnCollisionEnter(Collision collision) {
         base.OnCollisionEnter(collision);
         soundPlay = GameObject.Find("soundManager");

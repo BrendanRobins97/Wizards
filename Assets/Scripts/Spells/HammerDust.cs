@@ -20,10 +20,8 @@ public class HammerDust : Spell
         if (!collisions) { return; }
         DestroyComponents();
         if (explosion) { Destroy(Instantiate(explosion, transform.position, Quaternion.identity), 3f); }
-        TerrainManager.instance.AntiCircle(Mathf.RoundToInt(transform.position.x)
-            , Mathf.RoundToInt(transform.position.y)
-            , Mathf.RoundToInt(transform.position.z),
-            (int)damageRadius, explosionDampen);
+        
+        Invoke("SpawnDust", 0.2f);
         Player[] players = FindObjectsOfType<Player>();
 
         for (int i = 0; i < players.Length; i++) {
@@ -39,5 +37,12 @@ public class HammerDust : Spell
                 playersHit.Add(players[i]);
             }
         }
+    }
+
+    private void SpawnDust() {
+        TerrainManager.instance.AntiCircle(Mathf.RoundToInt(transform.position.x)
+            , Mathf.RoundToInt(transform.position.y)
+            , Mathf.RoundToInt(transform.position.z),
+            (int)damageRadius, explosionDampen);
     }
 }

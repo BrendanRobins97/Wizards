@@ -323,6 +323,7 @@ public class Player : MonoBehaviour {
         AnimTriggerReset();
         Input.ResetInputAxes();
         launchArc.gameObject.SetActive(false);
+        stamina = startingStamina;
         if (playerCamera) { playerCamera.enabled = false; }
     }
 
