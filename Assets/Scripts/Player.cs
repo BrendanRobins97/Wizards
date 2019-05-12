@@ -1,9 +1,8 @@
 ﻿// File: Player.cs
 // Contributors: Brendan Robinson
-// Date Created: 05/03/2019
-// Date Last Modified: 05/05/2019
+// Date Created: 05/11/2019
+// Date Last Modified: 05/12/2019
 
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -14,8 +13,7 @@ public class Player : MonoBehaviour {
 
     private const float chargeMax = 2f;
     private const float chargeRate = 1f;
-    [HideInInspector]
-    private const float startingStamina = 30f;
+    private const float startingStamina = 45f;
 
     #endregion
 
@@ -81,7 +79,8 @@ public class Player : MonoBehaviour {
     [HideInInspector]
     public bool special;
     public GameObject soundPlay;
-    [HideInInspector] public int index = 0;
+    [HideInInspector]
+    public int index = 0;
     public bool paused;
     public float timeSincePaused;
     public GameObject pauseText;
@@ -110,28 +109,11 @@ public class Player : MonoBehaviour {
         pauseText?.SetActive(false);
     }
 
-    private void Pause()
-    {
-        if (!paused)
-        {
-            paused = true;
-            Time.timeScale = 0;
-            timeSincePaused = Time.realtimeSinceStartup;
-            pauseText.SetActive(true);
-        }
-        else if(paused && (Time.realtimeSinceStartup - timeSincePaused) > .5f)
-        {
-            paused = false;
-            Time.timeScale = 1;
-            timeSincePaused = 0;
-            pauseText.SetActive(false);
-        }
-    }
-
     private void Update() {
-        if ((Input.GetKeyDown(KeyCode.Return)|| Input.GetButtonDown("Start")) && SceneManager.GetActiveScene().name == "MainTestScene")
-            Pause();
+        if ((Input.GetKeyDown(KeyCode.Return) || Input.GetButtonDown("Start")) &&
+            SceneManager.GetActiveScene().name == "MainTestScene") { Pause(); }
         if (!enabled) { return; }
+
         // Vertical rotation calculations
         // Applies to Camera
         float xRot = Input.GetAxisRaw("Mouse Y");
@@ -176,13 +158,9 @@ public class Player : MonoBehaviour {
             }
         }
         if (!casting) { // Cant swap spells while casting
-            if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetAxis("spell1") == -1) {
-                currentSpellIndex = 0;
-            }
+            if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetAxis("spell1") == -1) { currentSpellIndex = 0; }
 
-            if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetAxis("spell2") == 1) {
-                currentSpellIndex = 1;
-            }
+            if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetAxis("spell2") == 1) { currentSpellIndex = 1; }
 
             if (Input.GetKeyDown(KeyCode.Alpha3) || Input.GetAxis("spell1") == 1) { currentSpellIndex = 2; }
 
@@ -192,7 +170,7 @@ public class Player : MonoBehaviour {
                 special = true;
             }
         }
-        
+
         if (currentSpellIndex == 3 && numUlt < 1) { currentSpellIndex = 0; }
         currentSpellIndex = Mathf.Clamp(currentSpellIndex, 0, spells.Count - 1);
 
@@ -227,7 +205,7 @@ public class Player : MonoBehaviour {
             }
         }
         // Handle charge for spell
-        
+
         if (Input.GetButton("Fire1")) {
             casting = true;
 
@@ -250,22 +228,23 @@ public class Player : MonoBehaviour {
 
                 if (rayHit.collider != null) {
                     launchArc.transform.forward = rayHit.point - launchArc.transform.position;
-                    launchArc.MakeArcMesh(Mathf.Clamp(chargeAmount, 0.01f, chargeMax) * CurrentSpell.speed, 0, rayHit.distance);
-
-                } else {
-                    launchArc.transform.forward = playerCamera.transform.TransformPoint(new Vector3(0, 0, 100f)) - launchArc.transform.position;
-                    launchArc.MakeArcMesh(Mathf.Clamp(chargeAmount, 0.01f, chargeMax) * CurrentSpell.speed,0,  100f);
-
+                    launchArc.MakeArcMesh(Mathf.Clamp(chargeAmount, 0.01f, chargeMax) * CurrentSpell.speed, 0,
+                        rayHit.distance);
                 }
-
+                else {
+                    launchArc.transform.forward = playerCamera.transform.TransformPoint(new Vector3(0, 0, 100f)) -
+                                                  launchArc.transform.position;
+                    launchArc.MakeArcMesh(Mathf.Clamp(chargeAmount, 0.01f, chargeMax) * CurrentSpell.speed, 0, 100f);
+                }
             }
             if (currentSpellIndex == 1) {
                 launchArc.gameObject.SetActive(true);
-                launchArc.MakeArcMesh(Mathf.Clamp(chargeAmount, 0.01f, chargeMax) * CurrentSpell.speed, Mathf.Abs(Physics.gravity.y));
+                launchArc.MakeArcMesh(Mathf.Clamp(chargeAmount, 0.01f, chargeMax) * CurrentSpell.speed,
+                    Mathf.Abs(Physics.gravity.y));
                 launchArc.transform.forward = new Vector3(playerCamera.transform.forward.x,
                     playerCamera.transform.forward.y / 1.25f, playerCamera.transform.forward.z);
             }
-            
+
             if (chargeAmount > .5f && chargeAmount < chargeMax) {
                 tempChargeAmount = chargeAmount;
                 playerCamera.fieldOfView -= 25f * Time.deltaTime;
@@ -297,6 +276,15 @@ public class Player : MonoBehaviour {
         }
     }
 
+    // Enables the camera only without allowing movement
+    public void EnableCamera() {
+        playerCamera.enabled = true;
+        chargeAmount = 0;
+        stamina = startingStamina;
+        playerCamera.fieldOfView = originalFOV;
+    }
+
+    // Enable to start turn and allow movement/the ability to cast spell
     public void Enable() {
         turnOver = false;
         enabled = true;
@@ -314,13 +302,7 @@ public class Player : MonoBehaviour {
         sound.playPlayerStart();
     }
 
-    public void EnableCamera() {
-        playerCamera.enabled = true;
-        chargeAmount = 0;
-        stamina = startingStamina;
-        playerCamera.fieldOfView = originalFOV;
-    }
-
+    // Disable movement and turn off camera
     public void Disable() {
         casting = false;
         turnOver = true;
@@ -363,6 +345,21 @@ public class Player : MonoBehaviour {
     public void EnableCollider() { FindObjectOfType<HammerHit>().EnableCollider(); }
 
     public void EnableCollider1() { FindObjectOfType<DemonMelee>().EnableCollider(); }
+
+    private void Pause() {
+        if (!paused) {
+            paused = true;
+            Time.timeScale = 0;
+            timeSincePaused = Time.realtimeSinceStartup;
+            pauseText.SetActive(true);
+        }
+        else if (paused && Time.realtimeSinceStartup - timeSincePaused > .5f) {
+            paused = false;
+            Time.timeScale = 1;
+            timeSincePaused = 0;
+            pauseText.SetActive(false);
+        }
+    }
 
     #endregion
 

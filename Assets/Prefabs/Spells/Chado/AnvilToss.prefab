@@ -145,7 +145,7 @@ MonoBehaviour:
   duration: 10
   damageRadius: 5
   explosionDampen: 0.75
-  knockBackForce: 0
+  knockBackForce: 100
   explosion: {fileID: 419876400, guid: 5ff27bc51b8854b9183c893c95f2d189, type: 3}
   spellImage: {fileID: 21300000, guid: 9d0f9c112f9274127987ee9aca1ce89d, type: 3}
   spellImageColor: {r: 1, g: 1, b: 1, a: 1}

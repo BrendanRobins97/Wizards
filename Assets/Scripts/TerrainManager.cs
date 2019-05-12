@@ -1,7 +1,7 @@
 ﻿// File: TerrainManager.cs
 // Contributors: Brendan Robinson
-// Date Created: 04/03/2019
-// Date Last Modified: 04/10/2019
+// Date Created: 04/26/2019
+// Date Last Modified: 05/12/2019
 
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,43 +18,65 @@ public class TerrainManager : MonoBehaviour {
 
     #region Fields
 
-    [Header("Terrain Settings")] 
-
+    [Header("Terrain Settings")]
     public int width = 128;
     public int length = 128;
     public int height = 64;
     [Space]
-    [SerializeField] private float octaves = 5;
-    [SerializeField] private float          smoothness      = 50f;
-    [SerializeField] private float          scale           = 25f;
-    [SerializeField] private float          persistence     = 0.5f;
-    [SerializeField] private float          lacunarity      = 0.5f;
-    [SerializeField] private float          groundThickness = 4f;
-    [SerializeField] private AnimationCurve heightMap;
-    [SerializeField] private bool spawnAssets = true;
-    [SerializeField] private byte numAssets = 12;
+    [SerializeField]
+    private float octaves = 5;
+    [SerializeField]
+    private float smoothness = 50f;
+    [SerializeField]
+    private float scale = 25f;
+    [SerializeField]
+    private float persistence = 0.5f;
+    [SerializeField]
+    private float lacunarity = 0.5f;
+    [SerializeField]
+    private float groundThickness = 4f;
+    [SerializeField]
+    private AnimationCurve heightMap;
+    [SerializeField]
+    private bool spawnAssets = true;
+    [SerializeField]
+    private byte numAssets = 12;
+    [SerializeField]
+    private bool spawnGrass = true;
+    [SerializeField]
+    private ushort numGrass = 100;
 
-
-
-    [Header("Environment Prefabs")] [SerializeField]
+    [Header("Environment Prefabs")]
+    [SerializeField]
     private GameObject boulder1;
-    [SerializeField] private GameObject boulder2;
-    [SerializeField] private GameObject boulder3;
-    [SerializeField] private GameObject boulder4;
-    [SerializeField] private GameObject boulder5;
-    [SerializeField] private GameObject tree1;
-    [SerializeField] private GameObject tree2;
-    [SerializeField] private GameObject tree3;
+    [SerializeField]
+    private GameObject boulder2;
+    [SerializeField]
+    private GameObject boulder3;
+    [SerializeField]
+    private GameObject boulder4;
+    [SerializeField]
+    private GameObject boulder5;
+    [SerializeField]
+    private GameObject tree1;
+    [SerializeField]
+    private GameObject tree2;
+    [SerializeField]
+    private GameObject tree3;
+    [SerializeField]
+    private GameObject grass;
 
-    [Space] [SerializeField] private Chunk chunkPrefab;
+    [Space]
+    [SerializeField]
+    private Chunk chunkPrefab;
 
-    private Cell[,,]       grid;
-    
-    private int            chunkSize = 16;
-    private Vector3Int     numChunks;
-    private Chunk[,,]      chunks;
+    private Cell[,,] grid;
+
+    private int chunkSize = 16;
+    private Vector3Int numChunks;
+    private Chunk[,,] chunks;
     private HashSet<Chunk> chunksToUpdate = new HashSet<Chunk>();
-    public float          seed;
+    public float seed; // 508.69 was our preset seed
 
     private RandomArray<GameObject> boulders;
     private RandomArray<GameObject> trees;
@@ -76,13 +98,14 @@ public class TerrainManager : MonoBehaviour {
             new[] {tree1, tree2, tree3},
             new[] {1f, 1f, 1f});
 
-        //seed = Random.Range(-100f, 100f);
+        seed = Random.Range(-2000f, 2000f);
         grid = new Cell[width + 1, height + 1, length + 1];
 
         for (int x = 0; x <= width; x++) {
             for (int z = 0; z <= length; z++) {
+                // Remove "- seed - 37.37f" to get old preset map
                 float yCoordinate =
-                    Utilities.PerlinNoise(x + seed, z, smoothness, scale, octaves, persistence, lacunarity);
+                    Utilities.PerlinNoise(x + seed, z - seed - 37.37f, smoothness, scale, octaves, persistence, lacunarity);
                 yCoordinate *= heightMap.Evaluate(yCoordinate / scale);
                 yCoordinate += groundThickness;
                 for (int y = 0; y <= height; y++) {
@@ -111,6 +134,23 @@ public class TerrainManager : MonoBehaviour {
     }
 
     private void Start() {
+        if (spawnGrass) {
+            for (int i = 0, counter = 0; i < numGrass && counter < 50000; counter++) {
+                const float bounds = 12f; // Bigger value means points will be closer to center
+                float randPointX = Random.Range(bounds, width - bounds);
+                float randPointZ = Random.Range(bounds, length - bounds);
+                RaycastHit hit = PeakPoint(randPointX, randPointZ);
+
+                if (hit.collider.tag == "Chunk" && hit.distance < height && hit.point.y <= groundThickness + 2f) {
+                    Vector3 spawnPoint = hit.point;
+
+                    if (hit.normal.y >= 0.92) {
+                        Instantiate(grass, spawnPoint + new Vector3(0, -0.05f, 0), Quaternion.identity);
+                        i++;
+                    }
+                }
+            }
+        }
         if (spawnAssets) {
             for (int i = 0; i < numAssets;) {
                 const float bounds = 16f; // Bigger value means points will be closer to center
@@ -124,14 +164,14 @@ public class TerrainManager : MonoBehaviour {
                     if (hit.normal.y >= 0.92) {
                         Instantiate(trees.RandomItem(), spawnPoint + new Vector3(0, -1f, 0), Quaternion.identity);
                         i++;
-                    } else if (hit.normal.y >= 0.8) {
+                    }
+                    else if (hit.normal.y >= 0.8) {
                         Instantiate(boulders.RandomItem(), spawnPoint + new Vector3(0, -1f, 0), Quaternion.identity);
                         i++;
                     }
                 }
             }
         }
-        
     }
 
     private void Update() {
@@ -179,6 +219,7 @@ public class TerrainManager : MonoBehaviour {
                 }
             }
         }
+        DestroyGrass(x, y, z, radius);
     }
 
     public void AntiCircle(int x, int y, int z, int radius, float heightDampen = 1) {
@@ -191,6 +232,7 @@ public class TerrainManager : MonoBehaviour {
                 }
             }
         }
+        DestroyGrass(x, y, z, radius);
     }
 
     // Returns a raycast to the highest y value at a specified x, z
@@ -209,6 +251,26 @@ public class TerrainManager : MonoBehaviour {
 
     private float SampleDensity(float x, float y, float z) {
         return SampleDensity(Mathf.RoundToInt(x), Mathf.RoundToInt(y), Mathf.RoundToInt(z));
+    }
+
+    private void DestroyGrass(float x, float y, float z, float radius) {
+        const float horizontalForce = 8f;
+        const float verticalForce = 6f;
+        const float torque = 6f;
+
+        RaycastHit[] hits = Physics.SphereCastAll(new Vector3(x, y, z), radius + 0.5f, Vector3.one);
+        foreach (RaycastHit hit in hits) {
+            if (hit.collider.gameObject.CompareTag("Grass")) {
+                hit.collider.attachedRigidbody.AddForce(
+                    Random.Range(-horizontalForce, horizontalForce), Random.Range(verticalForce / 2f, verticalForce),
+                    Random.Range(-horizontalForce, horizontalForce), ForceMode.Impulse);
+                hit.collider.attachedRigidbody.AddTorque(
+                    Random.Range(-torque, torque), Random.Range(-torque, torque),
+                    Random.Range(-torque, torque), ForceMode.Impulse);
+                hit.collider.GetComponent<Animator>().SetTrigger("Destroy");
+                Destroy(hit.collider.gameObject, 0.25f);
+            }
+        }
     }
 
     #endregion

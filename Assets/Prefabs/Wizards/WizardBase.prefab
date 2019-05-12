@@ -321,7 +321,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 512
-  sensitivity: 1.5
+  sensitivity: 0.8
   movementSpeed: 2
   enabled: 1
   playerCamera: {fileID: 3615416653538122470}
@@ -342,6 +342,10 @@ MonoBehaviour:
   casting: 0
   special: 0
   soundPlay: {fileID: 0}
+  index: 0
+  paused: 0
+  timeSincePaused: 0
+  pauseText: {fileID: 0}
 --- !u!54 &6716605100745936103
 Rigidbody:
   m_ObjectHideFlags: 0
