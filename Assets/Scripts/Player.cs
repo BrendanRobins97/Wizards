@@ -4,6 +4,7 @@
 // Date Last Modified: 05/12/2019
 
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -19,6 +20,7 @@ public class Player : MonoBehaviour {
 
     #region Fields
 
+    public string wizardName;
     public Sprite icon;
     public Color color;
     public float chargeAmount;
@@ -51,6 +53,8 @@ public class Player : MonoBehaviour {
     private Transform feetPosition;
     [SerializeField]
     private LaunchArc launchArc;
+    [SerializeField]
+    private TextMeshProUGUI name;
     [SerializeField]
     public Animator animator;
     [HideInInspector]
@@ -101,6 +105,8 @@ public class Player : MonoBehaviour {
         drsc = FindObjectOfType<DeathRainSpellCamera>();
         special = false;
         originalFOV = playerCamera.fieldOfView;
+        name.text = wizardName;
+        name.color = color;
     }
 
     private void Start() {
@@ -110,6 +116,7 @@ public class Player : MonoBehaviour {
     }
 
     private void Update() {
+        launchArc.gameObject.SetActive(false);
         if ((Input.GetKeyDown(KeyCode.Return) || Input.GetButtonDown("Start")) &&
             SceneManager.GetActiveScene().name == "MainTestScene") { Pause(); }
         if (!enabled) { return; }
@@ -282,6 +289,7 @@ public class Player : MonoBehaviour {
         chargeAmount = 0;
         stamina = startingStamina;
         playerCamera.fieldOfView = originalFOV;
+        name.enabled = false;
     }
 
     // Enable to start turn and allow movement/the ability to cast spell
@@ -300,6 +308,8 @@ public class Player : MonoBehaviour {
         soundPlay = GameObject.Find("soundManager");
         soundScript sound = soundPlay.GetComponent(typeof(soundScript)) as soundScript;
         sound.playPlayerStart();
+        name.enabled = false;
+
     }
 
     // Disable movement and turn off camera
@@ -312,7 +322,7 @@ public class Player : MonoBehaviour {
         AnimTriggerReset();
         Input.ResetInputAxes();
         launchArc.gameObject.SetActive(false);
-
+        name.enabled = true;
         if (playerCamera) { playerCamera.enabled = false; }
     }
 
