@@ -1,7 +1,7 @@
 ﻿// File: GameManager.cs
 // Contributors: Brendan Robinson
-// Date Created: 04/11/2019
-// Date Last Modified: 04/11/2019
+// Date Created: 05/11/2019
+// Date Last Modified: 05/12/2019
 
 using System.Collections.Generic;
 using TMPro;
@@ -45,6 +45,8 @@ public class GameManager : MonoBehaviour {
     private TextMeshProUGUI ultCharge;
     [SerializeField]
     private GameObject pauseText;
+    [SerializeField]
+    private Canvas mainCanvas;
 
     [Header("Prefabs")]
     [SerializeField]
@@ -80,8 +82,8 @@ public class GameManager : MonoBehaviour {
     private bool gameStarted;
     private float circleRadius;
     private Vector3 circleCenter;
-    private bool nextTurn = false;
-    private bool gameOver = false;
+    private bool nextTurn;
+    private bool gameOver;
     private bool paused;
     private float timeSincePaused;
 
@@ -104,10 +106,7 @@ public class GameManager : MonoBehaviour {
         }
 
         PlayerSelect ps = FindObjectOfType<PlayerSelect>();
-        if (ps)
-        {
-            numPlayers = ps.numPlayers;
-        }
+        if (ps) { numPlayers = ps.numPlayers; }
         mapShrinkNumber = 0;
         circleCenter = new Vector3(TerrainManager.instance.width / 2.0f, 0, TerrainManager.instance.length / 2.0f);
         circleRadius = TerrainManager.instance.width / 2.0f - 5.0f;
@@ -115,27 +114,27 @@ public class GameManager : MonoBehaviour {
         for (int i = 0; i < numPlayers; i++) {
             PlayerInfo newPlayerInfo;
             float angle = i * 360f / numPlayers;
-            Vector3 spawnLocation = new Vector3(Mathf.Cos(Mathf.Deg2Rad * angle) * spawnWidth + circleCenter.x, TerrainManager.instance.height, Mathf.Sin(Mathf.Deg2Rad * angle) * spawnWidth + circleCenter.z);
+            Vector3 spawnLocation = new Vector3(Mathf.Cos(Mathf.Deg2Rad * angle) * spawnWidth + circleCenter.x,
+                TerrainManager.instance.height, Mathf.Sin(Mathf.Deg2Rad * angle) * spawnWidth + circleCenter.z);
             Ray ray = new Ray(spawnLocation, Vector3.down);
             Physics.Raycast(ray, out RaycastHit rayHit);
 
             Player player;
-            if (ps)
-            {
+            if (ps) {
                 player = Instantiate(playerPrefabs[ps.playersPicked[i]], rayHit.point,
                         Quaternion.identity,
                         transform)
                     .GetComponent<Player>();
             }
-            else
-            {
+            else {
                 player = Instantiate(playerPrefabs[i], rayHit.point,
                         Quaternion.identity,
                         transform)
                     .GetComponent<Player>();
             }
             player.index = i;
-            player.transform.LookAt(new Vector3(TerrainManager.instance.width / 2f, rayHit.point.y, TerrainManager.instance.length / 2f));
+            player.transform.LookAt(new Vector3(TerrainManager.instance.width / 2f, rayHit.point.y,
+                TerrainManager.instance.length / 2f));
             PlayerUI playerUI = Instantiate(playerUIPrefab, playerInfoContainer).GetComponent<PlayerUI>();
             playerUI.playerImage.sprite = player.icon;
             playerUI.playerImage.color = player.color;
@@ -155,20 +154,14 @@ public class GameManager : MonoBehaviour {
         roundNumber = 0;
         playerTurn = 0;
         numPlayersLeft = numPlayers;
-        if (ps)
-        {
-            Destroy(ps.gameObject);
-        }
+        if (ps) { Destroy(ps.gameObject); }
         for (int i = 0; i < CurrentPlayer.spells.Count; i++) {
             spellImages[i].sprite = CurrentPlayer.spells[i].spellImage;
             spellImages[i].color = CurrentPlayer.spells[i].spellImageColor;
             spellDescriptions[i].text = CurrentPlayer.spells[i].description;
-
         }
         // Register camera containers for screen shake
-        foreach (Transform cam in cameras) {
-            CameraController.instance.RegisterCamera(cam);
-        }
+        foreach (Transform cam in cameras) { CameraController.instance.RegisterCamera(cam); }
         gameOver = false;
     }
 
@@ -185,19 +178,22 @@ public class GameManager : MonoBehaviour {
                 endOfTurn = true;
                 mainCamera.enabled = true;
                 MapShrink();
+                pressEnterText.SetActive(false);
+
                 return;
             }
 
             if (currentTurnTimeLeft <= turnTime) {
                 CurrentPlayer.EnableCamera();
-                FindObjectOfType<Canvas>().enabled = true;
+                mainCanvas.enabled = true;
                 mapShrinkNumber += 2;
-                
+
                 mainCamera.enabled = false;
                 meteorShower = false;
                 newRound = false;
                 endOfTurn = false;
                 nextTurn = true;
+                pressEnterText.SetActive(true);
             }
         }
 
@@ -209,38 +205,32 @@ public class GameManager : MonoBehaviour {
                 if (CurrentPlayer) {
                     CurrentPlayer.playerCamera.enabled = true;
                     CurrentPlayer?.Enable();
-
-                    
                 }
                 currentTurnTimeLeft = turnTime;
                 pressEnterText.SetActive(false);
             }
-            turnText.text = "Time Left: " + (int)(currentTurnTimeLeft + 0.98f);
+            turnText.text = "Time Left: " + (int) (currentTurnTimeLeft + 0.98f);
 
             return;
         }
         //Buttons to press to quit when in a build
-        if (Input.GetButtonDown("Start") && Input.GetButtonDown("Fire1"))
-        {
-            ExitGame();
-        }
+        if (Input.GetButtonDown("Start") && Input.GetButtonDown("Fire1")) { ExitGame(); }
         // Update the current time left and update the timer text
         currentTurnTimeLeft -= Time.deltaTime;
         currentTurnTimeLeft = Mathf.Clamp(currentTurnTimeLeft, -0.9f, Mathf.Infinity);
-        turnText.text = "Time Left: " + (int)(currentTurnTimeLeft + 0.98f);
+        turnText.text = "Time Left: " + (int) (currentTurnTimeLeft + 0.98f);
 
-        
         if (playerTurn > 0) { newRound = true; }
-        if(mainCamera.enabled == false) { FindObjectOfType<Canvas>().enabled = true; }
+        if (mainCamera.enabled == false) { FindObjectOfType<Canvas>().enabled = true; }
         if (!gameStarted) { // Handle game start behavior
-            FindObjectOfType<Canvas>().enabled = false;
+            mainCanvas.enabled = false;
             // Start game when initial timer hits 0
             if (currentTurnTimeLeft < 0) {
                 CurrentPlayer.playerCamera.enabled = true;
                 StartTurn();
                 mainCamera.enabled = false;
                 gameStarted = true;
-                FindObjectOfType<Canvas>().enabled = true;
+                mainCanvas.enabled = true;
                 return;
             }
         }
@@ -274,19 +264,14 @@ public class GameManager : MonoBehaviour {
             StartTurn();
         }
 
-        if (numPlayersLeft <= 1) { 
+        if (numPlayersLeft <= 1) {
             gameOverText.text = "Player " + (playerTurn + 1) + " Wins!";
             gameOverText.gameObject.SetActive(true);
             resetGameTime -= Time.deltaTime;
-            if (resetGameTime <= 0)
-            {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2);
-            }
+            if (resetGameTime <= 0) { SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2); }
             gameOver = true;
         }
     }
-
-    
 
     private void StartTurn() {
         endOfTurn = false;
@@ -299,13 +284,25 @@ public class GameManager : MonoBehaviour {
         CurrentPlayer.nameUI.enabled = false;
         CurrentPlayer.healthBar.SetActive(false);
 
-        if (meteorShower == false)
-        {
+        if (meteorShower == false) {
             spellBarAnimator.SetTrigger("ShowInfo");
             players[playerTurn].playerUI.StartTurn();
             ResetSpellImages();
         }
         pressEnterText.SetActive(true);
+    }
+
+    public void UpdateSpellImage(int index) {
+        for (int i = 0; i < spellImages.Count; i++) {
+            spellImages[i].color =
+                new Color(spellImages[i].color.r, spellImages[i].color.g, spellImages[i].color.b, 0.1f);
+        }
+        spellImages[index].color = new Color(spellImages[index].color.r, spellImages[index].color.g,
+            spellImages[index].color.b, 1);
+        if (CurrentPlayer.numUlt <= 0) {
+            spellImages[3].color =
+                new Color(spellImages[3].color.r, spellImages[3].color.g, spellImages[3].color.b, 0.5f);
+        }
     }
 
     public void MapShrink() {
@@ -320,9 +317,11 @@ public class GameManager : MonoBehaviour {
         }
 
         CurrentPlayer.enabled = false;
-        FindObjectOfType<Canvas>().enabled = false;
+        mainCanvas.enabled = false;
         circleRadius -= 7f;
     }
+
+    public void Damage(int damage, int index) { players[index].playerUI.Damage(damage); }
 
     private void NextPlayerTurn() {
         // Disable current player
@@ -337,9 +336,8 @@ public class GameManager : MonoBehaviour {
         }
         while (CurrentPlayer == null && count <= numPlayers);
 
-        FindObjectOfType<Canvas>().enabled = true;
+        mainCanvas.enabled = true;
         FindObjectOfType<DeathRainSpellCamera>().spellHitPointIndicator.enabled = false;
-
 
         // Bring up press start to start turn overlay
         pressEnterText.SetActive(true);
@@ -349,10 +347,7 @@ public class GameManager : MonoBehaviour {
         CurrentPlayer.EnableCamera();
     }
 
-    public void Damage(int damage, int index) {
-        players[index].playerUI.Damage(damage);
-    }
-    void ExitGame()//Exit game when in build
+    private void ExitGame() //Exit game when in build
     {
         Application.Quit();
     }
@@ -363,24 +358,12 @@ public class GameManager : MonoBehaviour {
             Time.timeScale = 0;
             timeSincePaused = Time.realtimeSinceStartup;
             pauseText.SetActive(true);
-        } else if (paused && Time.realtimeSinceStartup - timeSincePaused > .5f) {
+        }
+        else if (paused && Time.realtimeSinceStartup - timeSincePaused > .5f) {
             paused = false;
             Time.timeScale = 1;
             timeSincePaused = 0;
             pauseText.SetActive(false);
-        }
-    }
-
-    public void UpdateSpellImage(int index) {
-        for (int i = 0; i < spellImages.Count; i++) {
-            spellImages[i].color =
-                new Color(spellImages[i].color.r, spellImages[i].color.g, spellImages[i].color.b, 0.1f);
-        }
-        spellImages[index].color = new Color(spellImages[index].color.r, spellImages[index].color.g,
-            spellImages[index].color.b, 1);
-        if (CurrentPlayer.numUlt <= 0) {
-            spellImages[3].color =
-                new Color(spellImages[3].color.r, spellImages[3].color.g, spellImages[3].color.b, 0.5f);
         }
     }
 
@@ -400,6 +383,7 @@ public class GameManager : MonoBehaviour {
                 new Color(spellImages[3].color.r, spellImages[3].color.g, spellImages[3].color.b, 0.5f);
         }
     }
+
     #endregion
 
 }

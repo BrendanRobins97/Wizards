@@ -1,7 +1,7 @@
 ﻿// File: PlayerUI.cs
 // Contributors: Brendan Robinson
-// Date Created: 04/26/2019
-// Date Last Modified: 05/07/2019
+// Date Created: 05/11/2019
+// Date Last Modified: 05/12/2019
 
 using TMPro;
 using UnityEngine;
@@ -19,6 +19,8 @@ public class PlayerUI : MonoBehaviour {
     public Animator playerNameAnimator;
     public TextMeshProUGUI damageText;
     public Animator damageTextAnimator;
+    public TextMeshProUGUI healthText;
+    public TextMeshProUGUI staminaText;
 
     #endregion
 
@@ -27,21 +29,25 @@ public class PlayerUI : MonoBehaviour {
     public void StartTurn() {
         background.enabled = true;
         playerNameAnimator.SetBool("NamePop", true);
+        healthText.enabled = true;
+        staminaText.enabled = true;
     }
 
     public void EndTurn() {
         background.enabled = false;
         playerNameAnimator.SetBool("NamePop", false);
+        healthText.enabled = false;
+        staminaText.enabled = false;
     }
 
     public void Damage(int damage) {
-        if (damage != 0)
-        {
+        if (damage != 0) {
             damageTextAnimator.SetTrigger("Reset");
             damageText.text = "-" + damage;
             damageTextAnimator.SetTrigger("Damage");
         }
     }
+
 
     #endregion
 
