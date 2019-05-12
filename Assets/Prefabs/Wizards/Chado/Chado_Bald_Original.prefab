@@ -1429,7 +1429,7 @@ GameObject:
   - component: {fileID: 754101793}
   - component: {fileID: 754101794}
   m_Layer: 0
-  m_Name: Chado Bald
+  m_Name: Chado_Bald_Original
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1503,14 +1503,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ca155e1e3fa98846baa0f3469b25946, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  icon: {fileID: 0}
   color: {r: 0.6117647, g: 0.012363447, b: 0, a: 0}
   chargeAmount: 2
+  hitPoint: {fileID: 0}
+  demonHit1: {fileID: 0}
   stamina: 0
   jumpForce: 500
   health: 0
   chargePercent: 0
   tempChargeAmount: 0
   turnOver: 0
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 0
   sensitivity: 1
   movementSpeed: 2
   enabled: 1
@@ -1522,6 +1528,7 @@ MonoBehaviour:
   - {fileID: 886019029205924418, guid: 4257cf8021b160a4fb675f503a68ed1d, type: 3}
   - {fileID: 5445266672334248905, guid: 24bd975c5f966ab44a2dda673a870377, type: 3}
   feetPosition: {fileID: 1902788763}
+  launchArc: {fileID: 0}
   animator: {fileID: 754101796}
   rigidbody: {fileID: 0}
   originalFOV: 0
@@ -1531,6 +1538,10 @@ MonoBehaviour:
   casting: 0
   special: 0
   soundPlay: {fileID: 0}
+  index: 0
+  paused: 0
+  timeSincePaused: 0
+  pauseText: {fileID: 0}
 --- !u!54 &754101793
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2526,10 +2537,6 @@ SkinnedMeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 9401287089fa145e2bc592de1f17b76f, type: 2}
-  - {fileID: 2100000, guid: 585734cfe2bd74587934a5b2ba88d05f, type: 2}
-  - {fileID: 2100000, guid: c40daebe6ecb24eb7bf6ef10209b41ad, type: 2}
-  - {fileID: 2100000, guid: 0a68abedd44244fbba1a16904ae7ab98, type: 2}
-  - {fileID: 2100000, guid: dfa62108852cb4573a433a44730ebcb5, type: 2}
   - {fileID: 2100000, guid: 97f1ff25239384a1ca7243a2fa5513bc, type: 2}
   - {fileID: 2100000, guid: 5b9c1bc8e857840eaa6d90e8c291f28b, type: 2}
   m_StaticBatchInfo:
@@ -2948,7 +2955,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 97f1ff25239384a1ca7243a2fa5513bc, type: 2}
+  - {fileID: 2100000, guid: 3977f32783a7248e9af774c34622d348, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3593,7 +3600,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 97f1ff25239384a1ca7243a2fa5513bc, type: 2}
+  - {fileID: 2100000, guid: 138e77e9d4b7e4c82bb29e41ea1c5d77, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
