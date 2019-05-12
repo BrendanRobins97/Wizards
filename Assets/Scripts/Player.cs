@@ -54,7 +54,7 @@ public class Player : MonoBehaviour {
     [SerializeField]
     private LaunchArc launchArc;
     [SerializeField]
-    private TextMeshProUGUI name;
+    public TextMeshProUGUI nameUI;
     [SerializeField]
     public Animator animator;
     [HideInInspector]
@@ -105,8 +105,9 @@ public class Player : MonoBehaviour {
         drsc = FindObjectOfType<DeathRainSpellCamera>();
         special = false;
         originalFOV = playerCamera.fieldOfView;
-        name.text = wizardName;
-        name.color = color;
+        nameUI.text = wizardName;
+        nameUI.color = color;
+        nameUI.enabled = false;
     }
 
     private void Start() {
@@ -289,7 +290,7 @@ public class Player : MonoBehaviour {
         chargeAmount = 0;
         stamina = startingStamina;
         playerCamera.fieldOfView = originalFOV;
-        name.enabled = false;
+        nameUI.enabled = false;
     }
 
     // Enable to start turn and allow movement/the ability to cast spell
@@ -308,7 +309,7 @@ public class Player : MonoBehaviour {
         soundPlay = GameObject.Find("soundManager");
         soundScript sound = soundPlay.GetComponent(typeof(soundScript)) as soundScript;
         sound.playPlayerStart();
-        name.enabled = false;
+        nameUI.enabled = false;
 
     }
 
@@ -322,7 +323,6 @@ public class Player : MonoBehaviour {
         AnimTriggerReset();
         Input.ResetInputAxes();
         launchArc.gameObject.SetActive(false);
-        name.enabled = true;
         if (playerCamera) { playerCamera.enabled = false; }
     }
 

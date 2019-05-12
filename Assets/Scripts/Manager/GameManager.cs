@@ -288,6 +288,11 @@ public class GameManager : MonoBehaviour {
         endOfTurn = false;
         currentTurnTimeLeft = turnTime;
         nextTurn = true;
+        for (int i = 0; i < players.Count; i++) {
+            players[i].player.nameUI.enabled = true;
+
+        }
+        CurrentPlayer.nameUI.enabled = false;
         if (meteorShower == false)
         {
             spellBarAnimator.SetTrigger("ShowInfo");
