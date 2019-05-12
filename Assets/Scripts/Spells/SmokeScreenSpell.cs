@@ -5,7 +5,7 @@ using UnityEngine;
 public class SmokeScreenSpell : Spell
 {
     private float disableTime = .2f;
-    private float damageTime = .5f;
+    private float damageTime = .1f;
     private float untagTime = 0f;
     private Player spellOwner;
     private int playerNumber;

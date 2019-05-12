@@ -45,7 +45,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 0.48
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &3865969084014272645
 Rigidbody:
@@ -95,11 +95,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2061551642739732017}
     m_Modifications:
-    - target: {fileID: 6144364145188797887, guid: 03daea65d75f24513be9ca5a097c5ada,
-        type: 3}
-      propertyPath: m_Name
-      value: Hammer Throw Top
-      objectReference: {fileID: 0}
     - target: {fileID: 3517655368474355034, guid: 03daea65d75f24513be9ca5a097c5ada,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -154,6 +149,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6144364145188797887, guid: 03daea65d75f24513be9ca5a097c5ada,
+        type: 3}
+      propertyPath: m_Name
+      value: Hammer Throw Top
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03daea65d75f24513be9ca5a097c5ada, type: 3}

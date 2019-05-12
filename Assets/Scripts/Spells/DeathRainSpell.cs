@@ -28,11 +28,11 @@ public class DeathRainSpell : Spell
         Disable(timeAfterSpellCast);
     }
 
-   void OnTriggerEnter(Collider col)
+   /*void OnTriggerEnter(Collider col)
     {
         if (col.tag == "Player")
         {
             col.GetComponent<Player>().Damage(this.contactDamage);
         }
-    }
+    }*/
 }

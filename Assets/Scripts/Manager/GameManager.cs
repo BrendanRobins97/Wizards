@@ -208,7 +208,11 @@ public class GameManager : MonoBehaviour {
 
             return;
         }
-
+        //Buttons to press to quit when in a build
+        if (Input.GetButtonDown("Start") && Input.GetButtonDown("Fire1"))
+        {
+            ExitGame();
+        }
         // Update the current time left and update the timer text
         currentTurnTimeLeft -= Time.deltaTime;
         currentTurnTimeLeft = Mathf.Clamp(currentTurnTimeLeft, -0.9f, Mathf.Infinity);
@@ -284,16 +288,22 @@ public class GameManager : MonoBehaviour {
         endOfTurn = false;
         currentTurnTimeLeft = turnTime;
         nextTurn = true;
-        spellBarAnimator.SetTrigger("ShowInfo");
-        players[playerTurn].playerUI.StartTurn();
-        for (int i = 0; i < spellImages.Count; i++) {
-            spellImages[i].color =
-                new Color(spellImages[i].color.r, spellImages[i].color.g, spellImages[i].color.b, 1f);
-        }
-        for (int i = 0; i < CurrentPlayer.spells.Count; i++) {
-            spellImages[i].sprite = CurrentPlayer.spells[i].spellImage;
-            spellImages[i].color = CurrentPlayer.spells[i].spellImageColor;
-            spellDescriptions[i].text = CurrentPlayer.spells[i].description;
+        if (meteorShower == false)
+        {
+            spellBarAnimator.SetTrigger("ShowInfo");
+            players[playerTurn].playerUI.StartTurn();
+            for (int i = 0; i < spellImages.Count; i++)
+            {
+                spellImages[i].color =
+                    new Color(spellImages[i].color.r, spellImages[i].color.g, spellImages[i].color.b, 1f);
+            }
+
+            for (int i = 0; i < CurrentPlayer.spells.Count; i++)
+            {
+                spellImages[i].sprite = CurrentPlayer.spells[i].spellImage;
+                spellImages[i].color = CurrentPlayer.spells[i].spellImageColor;
+                spellDescriptions[i].text = CurrentPlayer.spells[i].description;
+            }
         }
     }
 
@@ -349,6 +359,10 @@ public class GameManager : MonoBehaviour {
 
     public void Damage(int damage, int index) {
         players[index].playerUI.Damage(damage);
+    }
+    void ExitGame()//Exit game when in build
+    {
+        Application.Quit();
     }
     #endregion
 
