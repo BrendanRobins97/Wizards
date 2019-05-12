@@ -56,6 +56,9 @@ public class Player : MonoBehaviour {
     [SerializeField]
     public TextMeshProUGUI nameUI;
     [SerializeField]
+    public GameObject healthBar;
+
+    [SerializeField]
     public Animator animator;
     [HideInInspector]
     public Rigidbody rigidbody;
@@ -85,10 +88,7 @@ public class Player : MonoBehaviour {
     public GameObject soundPlay;
     [HideInInspector]
     public int index = 0;
-    public bool paused;
-    public float timeSincePaused;
-    public GameObject pauseText;
-
+    
     #endregion
 
     #region Methods
@@ -110,16 +110,9 @@ public class Player : MonoBehaviour {
         nameUI.enabled = false;
     }
 
-    private void Start() {
-        //CameraController.instance.RegisterCamera(playerCamera.transform);
-        pauseText = GameObject.Find("pauseText");
-        pauseText?.SetActive(false);
-    }
-
     private void Update() {
         launchArc.gameObject.SetActive(false);
-        if ((Input.GetKeyDown(KeyCode.Return) || Input.GetButtonDown("Start")) &&
-            SceneManager.GetActiveScene().name == "MainTestScene") { Pause(); }
+        
         if (!enabled) { return; }
 
         // Vertical rotation calculations
@@ -250,7 +243,7 @@ public class Player : MonoBehaviour {
                 launchArc.MakeArcMesh(Mathf.Clamp(chargeAmount, 0.01f, chargeMax) * CurrentSpell.speed,
                     Mathf.Abs(Physics.gravity.y));
                 launchArc.transform.forward = new Vector3(playerCamera.transform.forward.x,
-                    playerCamera.transform.forward.y / 1.25f, playerCamera.transform.forward.z);
+                    playerCamera.transform.forward.y / 1.35f, playerCamera.transform.forward.z);
             }
 
             if (chargeAmount > .5f && chargeAmount < chargeMax) {
@@ -357,20 +350,7 @@ public class Player : MonoBehaviour {
 
     public void EnableCollider1() { FindObjectOfType<DemonMelee>().EnableCollider(); }
 
-    private void Pause() {
-        if (!paused) {
-            paused = true;
-            Time.timeScale = 0;
-            timeSincePaused = Time.realtimeSinceStartup;
-            pauseText.SetActive(true);
-        }
-        else if (paused && Time.realtimeSinceStartup - timeSincePaused > .5f) {
-            paused = false;
-            Time.timeScale = 1;
-            timeSincePaused = 0;
-            pauseText.SetActive(false);
-        }
-    }
+    
 
     #endregion
 

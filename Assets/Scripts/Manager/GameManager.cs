@@ -41,6 +41,10 @@ public class GameManager : MonoBehaviour {
     private List<Image> spellImages;
     [SerializeField]
     private List<TextMeshProUGUI> spellDescriptions;
+    [SerializeField]
+    private TextMeshProUGUI ultCharge;
+    [SerializeField]
+    private GameObject pauseText;
 
     [Header("Prefabs")]
     [SerializeField]
@@ -78,7 +82,8 @@ public class GameManager : MonoBehaviour {
     private Vector3 circleCenter;
     private bool nextTurn = false;
     private bool gameOver = false;
-
+    private bool paused;
+    private float timeSincePaused;
 
     #endregion
 
@@ -134,7 +139,7 @@ public class GameManager : MonoBehaviour {
             PlayerUI playerUI = Instantiate(playerUIPrefab, playerInfoContainer).GetComponent<PlayerUI>();
             playerUI.playerImage.sprite = player.icon;
             playerUI.playerImage.color = player.color;
-            playerUI.playerName.text = "Player " + (i+1);
+            playerUI.playerName.text = player.wizardName;
             playerUI.EndTurn();
 
             newPlayerInfo.player = player;
@@ -142,7 +147,11 @@ public class GameManager : MonoBehaviour {
             newPlayerInfo.dead = false;
             players.Add(newPlayerInfo);
         }
+        // Start these UI components turned off
         gameOverText.gameObject.SetActive(false);
+        pressEnterText.SetActive(false);
+        pauseText.SetActive(false);
+
         roundNumber = 0;
         playerTurn = 0;
         numPlayersLeft = numPlayers;
@@ -164,6 +173,8 @@ public class GameManager : MonoBehaviour {
     }
 
     private void Update() {
+        if (!nextTurn && (Input.GetKeyDown(KeyCode.Return) || Input.GetButtonDown("Start")) &&
+            SceneManager.GetActiveScene().name == "MainTestScene") { Pause(); }
 
         if (playerTurn == 0 && newRound && roundNumber / numPlayers > mapShrinkNumber) {
             if (meteorShower == false) {
@@ -275,14 +286,7 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    public void UpdateSpellImage(int index) {
-        for (int i = 0; i < spellImages.Count; i++) {
-            spellImages[i].color =
-                new Color(spellImages[i].color.r, spellImages[i].color.g, spellImages[i].color.b, 0.1f);
-        }
-        spellImages[index].color = new Color(spellImages[index].color.r, spellImages[index].color.g,
-            spellImages[index].color.b, 1);
-    }
+    
 
     private void StartTurn() {
         endOfTurn = false;
@@ -290,26 +294,18 @@ public class GameManager : MonoBehaviour {
         nextTurn = true;
         for (int i = 0; i < players.Count; i++) {
             players[i].player.nameUI.enabled = true;
-
+            players[i].player.healthBar.SetActive(true);
         }
         CurrentPlayer.nameUI.enabled = false;
+        CurrentPlayer.healthBar.SetActive(false);
+
         if (meteorShower == false)
         {
             spellBarAnimator.SetTrigger("ShowInfo");
             players[playerTurn].playerUI.StartTurn();
-            for (int i = 0; i < spellImages.Count; i++)
-            {
-                spellImages[i].color =
-                    new Color(spellImages[i].color.r, spellImages[i].color.g, spellImages[i].color.b, 1f);
-            }
-
-            for (int i = 0; i < CurrentPlayer.spells.Count; i++)
-            {
-                spellImages[i].sprite = CurrentPlayer.spells[i].spellImage;
-                spellImages[i].color = CurrentPlayer.spells[i].spellImageColor;
-                spellDescriptions[i].text = CurrentPlayer.spells[i].description;
-            }
+            ResetSpellImages();
         }
+        pressEnterText.SetActive(true);
     }
 
     public void MapShrink() {
@@ -349,16 +345,7 @@ public class GameManager : MonoBehaviour {
         pressEnterText.SetActive(true);
         nextTurn = true;
         spellBarAnimator.SetTrigger("ShowInfo");
-        for (int i = 0; i < spellImages.Count; i++) {
-            spellImages[i].color =
-                new Color(spellImages[i].color.r, spellImages[i].color.g, spellImages[i].color.b, 1f);
-        }
-        for (int i = 0; i < CurrentPlayer.spells.Count; i++)
-        {
-            spellImages[i].sprite = CurrentPlayer.spells[i].spellImage;
-            spellImages[i].color = CurrentPlayer.spells[i].spellImageColor;
-            spellDescriptions[i].text = CurrentPlayer.spells[i].description;
-        }
+        ResetSpellImages();
         CurrentPlayer.EnableCamera();
     }
 
@@ -368,6 +355,50 @@ public class GameManager : MonoBehaviour {
     void ExitGame()//Exit game when in build
     {
         Application.Quit();
+    }
+
+    private void Pause() {
+        if (!paused) {
+            paused = true;
+            Time.timeScale = 0;
+            timeSincePaused = Time.realtimeSinceStartup;
+            pauseText.SetActive(true);
+        } else if (paused && Time.realtimeSinceStartup - timeSincePaused > .5f) {
+            paused = false;
+            Time.timeScale = 1;
+            timeSincePaused = 0;
+            pauseText.SetActive(false);
+        }
+    }
+
+    public void UpdateSpellImage(int index) {
+        for (int i = 0; i < spellImages.Count; i++) {
+            spellImages[i].color =
+                new Color(spellImages[i].color.r, spellImages[i].color.g, spellImages[i].color.b, 0.1f);
+        }
+        spellImages[index].color = new Color(spellImages[index].color.r, spellImages[index].color.g,
+            spellImages[index].color.b, 1);
+        if (CurrentPlayer.numUlt <= 0) {
+            spellImages[3].color =
+                new Color(spellImages[3].color.r, spellImages[3].color.g, spellImages[3].color.b, 0.5f);
+        }
+    }
+
+    private void ResetSpellImages() {
+        for (int i = 0; i < spellImages.Count; i++) {
+            spellImages[i].color =
+                new Color(spellImages[i].color.r, spellImages[i].color.g, spellImages[i].color.b, 1f);
+        }
+        for (int i = 0; i < CurrentPlayer.spells.Count; i++) {
+            spellImages[i].sprite = CurrentPlayer.spells[i].spellImage;
+            spellImages[i].color = CurrentPlayer.spells[i].spellImageColor;
+            spellDescriptions[i].text = CurrentPlayer.spells[i].description;
+        }
+        ultCharge.text = "x" + CurrentPlayer.numUlt;
+        if (CurrentPlayer.numUlt <= 0) {
+            spellImages[3].color =
+                new Color(spellImages[3].color.r, spellImages[3].color.g, spellImages[3].color.b, 0.5f);
+        }
     }
     #endregion
 
