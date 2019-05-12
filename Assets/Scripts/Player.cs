@@ -107,7 +107,7 @@ public class Player : MonoBehaviour {
     private void Start() {
         //CameraController.instance.RegisterCamera(playerCamera.transform);
         pauseText = GameObject.Find("pauseText");
-        pauseText.SetActive(false);
+        pauseText?.SetActive(false);
     }
 
     private void Pause()
