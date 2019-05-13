@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour {
     [SerializeField]
     private float spawnWidth = 40f;
     [SerializeField]
-    private float turnTime = 20f;
+    public float turnTime = 20f;
     [SerializeField]
     private int numPlayers;
     [SerializeField]

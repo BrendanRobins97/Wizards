@@ -46,7 +46,7 @@ public class ResetTimeLimit : MonoBehaviour
         {
             if (col.tag == "Player" && player == gm.GetComponent<GameManager>().CurrentPlayer)
             {
-                gm.currentTurnTimeLeft = 20f;
+                gm.currentTurnTimeLeft = gm.turnTime;
                 //text.gameObject.SetActive(true);
                 //text.text = "Time Reset";
                 image.gameObject.SetActive(true);

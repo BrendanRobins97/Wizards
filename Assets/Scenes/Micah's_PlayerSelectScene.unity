@@ -433,6 +433,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6769594634137290470, guid: 0056518ba368e6747b0e03ea965421ee,
+        type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7918638011020912475, guid: 0056518ba368e6747b0e03ea965421ee,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -443,6 +448,26 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 7dcc1f2ca002a407a9f4303bed07a4b6, type: 2}
+    - target: {fileID: 7258773406485797698, guid: 0056518ba368e6747b0e03ea965421ee,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1552996089015315695, guid: 0056518ba368e6747b0e03ea965421ee,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5420760167119083220, guid: 0056518ba368e6747b0e03ea965421ee,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5420760167119083220, guid: 0056518ba368e6747b0e03ea965421ee,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0056518ba368e6747b0e03ea965421ee, type: 3}
 --- !u!114 &185180548 stripped
@@ -887,7 +912,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 295691288, guid: fde33bef686cc384b92155c4ba0844a4, type: 3}
       propertyPath: m_Name
-      value: DemonBase
+      value: Demoness
       objectReference: {fileID: 0}
     - target: {fileID: 295691288, guid: fde33bef686cc384b92155c4ba0844a4, type: 3}
       propertyPath: m_IsActive
@@ -1084,6 +1109,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Constraints
       value: 126
+      objectReference: {fileID: 0}
+    - target: {fileID: 7258773406485797698, guid: 0056518ba368e6747b0e03ea965421ee,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5420760167119083220, guid: 0056518ba368e6747b0e03ea965421ee,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5420760167119083220, guid: 0056518ba368e6747b0e03ea965421ee,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0056518ba368e6747b0e03ea965421ee, type: 3}
@@ -1630,7 +1670,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: "Welcome to Wizards!\nPlayers Take 20 Second Turns To maneuver \nand Cast
+  m_text: "Welcome to Wizards!\nPlayers Take 30 Second Turns To maneuver \nand Cast
     A Spell At Other Players.\n\nContrlos:\nCast Spell - A\nJump       - Y\nSelect
     Spell - D Pad(left, up, right, down)\nPress Start/Enter To Play!"
   m_isRightToLeft: 0
@@ -2595,6 +2635,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7793769590993142317, guid: a2cb320f2dadf4e4ea82bd1e49081789,
+        type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2618350478929668132, guid: a2cb320f2dadf4e4ea82bd1e49081789,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6153941987476430729, guid: a2cb320f2dadf4e4ea82bd1e49081789,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8854374780854325791, guid: a2cb320f2dadf4e4ea82bd1e49081789,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8854374780854325791, guid: a2cb320f2dadf4e4ea82bd1e49081789,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2cb320f2dadf4e4ea82bd1e49081789, type: 3}

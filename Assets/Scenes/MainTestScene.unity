@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.12799105, g: 0.23792702, b: 0.6519228, a: 1}
+  m_IndirectSpecularColor: {r: 0.12807566, g: 0.23806068, b: 0.649579, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4323,7 +4323,7 @@ MonoBehaviour:
   spawnAssets: 1
   numAssets: 14
   spawnGrass: 1
-  numGrass: 200
+  numGrass: 2000
   boulder1: {fileID: 276405504282636540, guid: be35fefaff62a054a98415399370f9a7, type: 3}
   boulder2: {fileID: 1616062920238866603, guid: 24eb39694cf0fae42905e04553ce1a89,
     type: 3}
