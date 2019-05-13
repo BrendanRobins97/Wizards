@@ -4205,6 +4205,7 @@ MonoBehaviour:
   - {fileID: 1446620238}
   ultCharge: {fileID: 1847947209}
   pauseText: {fileID: 473708732}
+  mainCanvas: {fileID: 694146689}
   playerPrefabs:
   - {fileID: 8164900113966860278, guid: 400511c2ea5be2d4ab5dbc350d0a67d2, type: 3}
   - {fileID: 3733252538983089315, guid: 8edc07cf7fddcbf4195e9f250e865844, type: 3}
