@@ -120,7 +120,7 @@ public class Player : MonoBehaviour {
         float xRot = Input.GetAxisRaw("Mouse Y");
         if (GameManager.instance.isController) { xRot *= -1; }
         float cameraRotationX = xRot * sensitivity;
-        if (xRot > .09 || xRot < -.09) { currentCameraRotationX -= cameraRotationX; }
+        if (xRot > .078 || xRot < -.078) { currentCameraRotationX -= cameraRotationX; }
         currentCameraRotationX = Mathf.Clamp(currentCameraRotationX, -cameraRotationLimit, cameraRotationLimit);
 
         float cameraOffsetZ = -cameraDistFromPlayer * Mathf.Cos(currentCameraRotationX * Mathf.Deg2Rad);
@@ -134,7 +134,7 @@ public class Player : MonoBehaviour {
         // Applies to character
         float rot = Input.GetAxisRaw("Mouse X");
         Vector3 yRot = new Vector3(0f, rot, 0f) * sensitivity;
-        if (rot > .09 || rot < -.09) { rigidbody.MoveRotation(rigidbody.rotation * Quaternion.Euler(yRot)); }
+        if (rot > .078 || rot < -.078) { rigidbody.MoveRotation(rigidbody.rotation * Quaternion.Euler(yRot)); }
 
         stamina -= (transform.position - prevPosition).magnitude;
         prevPosition = transform.position;

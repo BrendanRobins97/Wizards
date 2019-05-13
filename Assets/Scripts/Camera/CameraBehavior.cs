@@ -178,9 +178,9 @@ public class CameraBehavior : MonoBehaviour
         //Debug.Log("RainSpellCam");
         spellCamera.enabled = true;
         player.animator.SetTrigger("Cast3");
-        spellCamera.rect = new Rect(0, 0, 0.5f, 1);
+        spellCamera.rect = new Rect(0.5f, 0, 0.5f, 1);
         player.playerCamera.enabled = true;
-        player.playerCamera.rect = new Rect(0.5f,0,.5f,1);
+        player.playerCamera.rect = new Rect(0f,0,.5f,1);
         float x, z, finalX, finalZ;
         x = (xpos + (deathRainSpell.transform.position.x + 2)) / 2.0f;
         z = (zpos + (deathRainSpell.transform.position.z - 2)) / 2.0f;
