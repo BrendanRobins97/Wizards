@@ -30,6 +30,7 @@ public class mainMenu : MonoBehaviour
         //myAnimator.Play("p1");
         myAnimator.Play("part1");
         hoverNumPlayers = 4;
+        Cursor.visible = false;
     }
 
     void Awake()

@@ -61,7 +61,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.75
+  m_Radius: 0.6
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &8270505493553474935
 MonoBehaviour:
@@ -98,6 +98,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9112150418677081623}
     m_Modifications:
+    - target: {fileID: 1913284071360297789, guid: dc2a1bd941ccc4162916478e9ac83f8c,
+        type: 3}
+      propertyPath: m_Name
+      value: Water Bomb
+      objectReference: {fileID: 0}
     - target: {fileID: 1913284071360297788, guid: dc2a1bd941ccc4162916478e9ac83f8c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -167,11 +172,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1913284071360297789, guid: dc2a1bd941ccc4162916478e9ac83f8c,
-        type: 3}
-      propertyPath: m_Name
-      value: Water Bomb
       objectReference: {fileID: 0}
     - target: {fileID: 1913284070058700500, guid: dc2a1bd941ccc4162916478e9ac83f8c,
         type: 3}
