@@ -62,11 +62,30 @@ public class Spell : MonoBehaviour {
     protected virtual void OnCollisionEnter(Collision collision) {
         if (!collisions) { return; }
         DestroyComponents();
-        if (gameObject.name == "SmallExplosiveShot(Clone)") {
+        if (gameObject.name == "SmallExplosiveShot(Clone)") {//HammerDustShots(Clone)
             soundPlay = GameObject.Find("soundManager");
             soundScript sound = soundPlay.GetComponent(typeof(soundScript)) as soundScript;
             sound.playFireBallEnd();
         }
+        else if (gameObject.name == "HammerThrow(Clone)")
+        {
+            soundPlay = GameObject.Find("soundManager");
+            soundScript sound = soundPlay.GetComponent(typeof(soundScript)) as soundScript;
+            sound.playHammer();
+        }
+        else if (gameObject.name == "Lightning(Clone)")
+        {
+            soundPlay = GameObject.Find("soundManager");
+            soundScript sound = soundPlay.GetComponent(typeof(soundScript)) as soundScript;
+            sound.playZap();
+        }
+        else if (gameObject.name == "FireStream(Clone)")
+        {
+            soundPlay = GameObject.Find("soundManager");
+            soundScript sound = soundPlay.GetComponent(typeof(soundScript)) as soundScript;
+            sound.playZap();
+        }
+
         if (explosion) { Destroy(Instantiate(explosion, transform.position, Quaternion.identity), 3f); }
         TerrainManager.instance.Circle(Mathf.RoundToInt(transform.position.x)
             , Mathf.RoundToInt(transform.position.y)
