@@ -105,9 +105,11 @@ public class Player : MonoBehaviour {
         drsc = FindObjectOfType<DeathRainSpellCamera>();
         special = false;
         originalFOV = playerCamera.fieldOfView;
-        nameUI.text = wizardName;
-        nameUI.color = color;
-        nameUI.enabled = false;
+        if (nameUI) {
+            nameUI.text = wizardName;
+            nameUI.color = color;
+            nameUI.enabled = false;
+        }    
     }
 
     private void Update() {
