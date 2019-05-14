@@ -20,6 +20,20 @@ public class soundScript : MonoBehaviour
     public AudioClip Oof;
     public AudioClip myOof;
     public AudioClip YIIPE;
+    public AudioClip BS_freaks;
+    public AudioClip BS_grind;
+    public AudioClip BS_mallet;
+    public AudioClip BS_notWiz;
+    public AudioClip BS_oof;
+    public AudioClip FG_croak;
+    public AudioClip FG_hop;
+    public AudioClip FG_swamp;
+    public AudioClip FG_oof;
+    public AudioClip PL_amp;
+    public AudioClip PL_booster;
+    public AudioClip PL_hypo;
+    public AudioClip PL_contagious;
+    public AudioClip PL_oof;
     // Start is called before the first frame update        
     void Start()
     {
@@ -55,61 +69,89 @@ public class soundScript : MonoBehaviour
         audioData.Play();
         return;
     }
-    public void playOof()
+    public void playOof(string name)//Chado Icon Demon Icon Frogizard Icon Bauta Icon
     {
-        int myint = Random.Range(0, 3);
-        if (myint == 1)
-        {
-            audioData.clip = Oof;
-            audioData.Play();
-            return;
-        }
-        if (myint == 2)
-        {
-            audioData.clip = myOof;
-            audioData.Play();
-            return;
-        }
-        if (myint == 3)
-        {
-            audioData.clip = YIIPE;
-            audioData.Play();
-            return;
-        }
+        if (name == "Chado Icon")
+            audioData.clip = BS_oof;
+        else if (name == "Bauta Icon")
+            audioData.clip = PL_oof;
+        else if (name == "Frogizard Icon")
+            audioData.clip = FG_oof;
+        //int myint = Random.Range(0, 3);
+        //if (myint == 1)
+        //{
+        //    audioData.clip = Oof;
+        //    audioData.Play();
+        //    return;
+        //}
+        //if (myint == 2)
+        //{
+        //    audioData.clip = myOof;
+        //    audioData.Play();
+        //    return;
+        //}
+        //if (myint == 3)
+        //{
+        //    audioData.clip = YIIPE;
+        //    audioData.Play();
+        //    return;
+        //}
     }
-    public void playPlayerStart()
+    public void playPlayerStart(string name)
     {
-        int myint = Random.Range(0, 12);
-        if (myint == 1 || myint == 7){
-            audioData.clip = satanOn;
+        
+        int myint = Random.Range(0, 7);
+        if (myint == 1 || myint == 5){
+            if(name == "Chado Icon")
+                audioData.clip = BS_freaks;
+            else if (name == "Bauta Icon")
+                audioData.clip = PL_amp;
+            else if (name == "Frogizard Icon")
+                audioData.clip = FG_croak;
             audioData.Play();
             return;
         }
-        if (myint == 2 || myint == 8)
+        if (myint == 2 || myint == 6)
         {
-            audioData.clip = rightWrong;
+            if (name == "Chado Icon")
+                audioData.clip = BS_grind;
+            else if (name == "Bauta Icon")
+                audioData.clip = PL_booster;
+            else if (name == "Frogizard Icon")
+                audioData.clip = FG_hop;
             audioData.Play();
             return;
         }
         if (myint == 3)
         {
-            audioData.clip = hairFoot;
+            //print(name);
+            if (name == "Chado Icon")
+                audioData.clip = BS_notWiz;
+            else if (name == "Bauta Icon")
+                audioData.clip = PL_hypo;
+            else if (name == "Frogizard Icon")
+                audioData.clip = FG_swamp;
             audioData.Play();
             return;
         }
-        if (myint == 4 || myint == 9)
+        if (myint == 4 || myint == 7)
         {
-            audioData.clip = dunnoHowWorks;
+            if (name == "Chado Icon")
+                audioData.clip = BS_mallet;
+            else if (name == "Bauta Icon")
+                audioData.clip = PL_contagious;
+            else if (name == "Frogizard Icon")
+                audioData.clip = FG_swamp;
             audioData.Play();
             return;
         }
-        if (myint == 5)
+        if (myint == 8)
         {
             audioData.clip = badMan;
             audioData.Play();
             return;
         }
-        if (myint == 6)
+        if (myint == 9)
         {
             audioData.clip = basicBitch;
             audioData.Play();

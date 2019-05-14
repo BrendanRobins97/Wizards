@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.12807566, g: 0.23806068, b: 0.649579, a: 1}
+  m_IndirectSpecularColor: {r: 0.12799105, g: 0.23792702, b: 0.6519228, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5975,6 +5975,20 @@ MonoBehaviour:
   Oof: {fileID: 8300000, guid: e00b0071e7bcb7f4595ca5468fd22145, type: 3}
   myOof: {fileID: 8300000, guid: 8918f2c7b8ca3b94bbd18698caef4bf9, type: 3}
   YIIPE: {fileID: 8300000, guid: cad80bafc94bdd347bb57ee824944004, type: 3}
+  BS_freaks: {fileID: 8300000, guid: 5049a8fafeedc2749814f5c415554452, type: 3}
+  BS_grind: {fileID: 8300000, guid: 9f312a4eacf75bd47b9578f08c8b38f9, type: 3}
+  BS_mallet: {fileID: 8300000, guid: 090cdb4710a10454191c94924fdad28c, type: 3}
+  BS_notWiz: {fileID: 8300000, guid: 682e5d25d51d0dc49bd5deca672216e3, type: 3}
+  BS_oof: {fileID: 8300000, guid: a6f0e2123a8632a4ea6938d69f832553, type: 3}
+  FG_croak: {fileID: 8300000, guid: 91da701a84a902f40821f75edd953ca8, type: 3}
+  FG_hop: {fileID: 8300000, guid: a211e28b068d1354ba7b55f578c6c70d, type: 3}
+  FG_swamp: {fileID: 8300000, guid: 579296e1747241d4483cab3b64d7f940, type: 3}
+  FG_oof: {fileID: 8300000, guid: 1dca3dd585ce824499e584289215f574, type: 3}
+  PL_amp: {fileID: 8300000, guid: 79fc80ffd5877dd41b8f6364beba8336, type: 3}
+  PL_booster: {fileID: 8300000, guid: 9f9cb1a9ed18bcd4bb9d7e78c91a399f, type: 3}
+  PL_hypo: {fileID: 8300000, guid: 346fef05953714f4282bad84d42e1259, type: 3}
+  PL_contagious: {fileID: 8300000, guid: d12b8ea53c93548458004d98267933af, type: 3}
+  PL_oof: {fileID: 8300000, guid: 4507072fe6e4f0e43addc5b0dea9e1f6, type: 3}
 --- !u!82 &2007134236
 AudioSource:
   m_ObjectHideFlags: 0
