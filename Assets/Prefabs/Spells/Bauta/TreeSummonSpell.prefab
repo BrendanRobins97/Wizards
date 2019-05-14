@@ -120,7 +120,7 @@ Transform:
   m_GameObject: {fileID: 3465455752813320525}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 9012748869382710953}
   - {fileID: 2721768170161161346}
@@ -173,7 +173,7 @@ MonoBehaviour:
   timeAfterSpellCast: 5
   description: 'Special: Summon Tree From Ground (Limited Use!)'
   summonDuration: 2.5
-  startPositionHeightOffset: 18
+  startPositionHeightOffset: 24
   collidersToEnable:
   - {fileID: 6308899482197020430}
 --- !u!135 &6756154110117550798
