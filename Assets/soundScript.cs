@@ -17,6 +17,7 @@ public class soundScript : MonoBehaviour
     public AudioClip basicBitch;
     public AudioClip zap;
     public AudioClip ice;
+    public AudioClip hammer;
     public AudioClip Oof;
     public AudioClip myOof;
     public AudioClip YIIPE;
@@ -34,6 +35,10 @@ public class soundScript : MonoBehaviour
     public AudioClip PL_hypo;
     public AudioClip PL_contagious;
     public AudioClip PL_oof;
+    public AudioClip DM_1;
+    public AudioClip DM_2;
+    public AudioClip DM_3;
+    public AudioClip DM_4;
     // Start is called before the first frame update        
     void Start()
     {
@@ -45,6 +50,12 @@ public class soundScript : MonoBehaviour
     {
 
     }
+    public void fire()
+    {
+        audioData.clip = DM_1;
+        audioData.Play();
+        return;
+    }
     public void playFireBallStart()
     {
         audioData.clip = fireballStart;
@@ -54,6 +65,12 @@ public class soundScript : MonoBehaviour
     public void playFireBallEnd()
     {
         audioData.clip = fireballEnd;
+        audioData.Play();
+        return;
+    }
+    public void playHammer()
+    {
+        audioData.clip = hammer;
         audioData.Play();
         return;
     }
@@ -108,6 +125,8 @@ public class soundScript : MonoBehaviour
                 audioData.clip = PL_amp;
             else if (name == "Frogizard Icon")
                 audioData.clip = FG_croak;
+            else if (name == "Demon Icon)")
+                audioData.clip = DM_1;
             audioData.Play();
             return;
         }
@@ -119,6 +138,8 @@ public class soundScript : MonoBehaviour
                 audioData.clip = PL_booster;
             else if (name == "Frogizard Icon")
                 audioData.clip = FG_hop;
+            else if (name == "Demon Icon")
+                audioData.clip = DM_2;
             audioData.Play();
             return;
         }
@@ -131,6 +152,8 @@ public class soundScript : MonoBehaviour
                 audioData.clip = PL_hypo;
             else if (name == "Frogizard Icon")
                 audioData.clip = FG_swamp;
+            else if (name == "Demon Icon")
+                audioData.clip = DM_3;
             audioData.Play();
             return;
         }
@@ -142,6 +165,8 @@ public class soundScript : MonoBehaviour
                 audioData.clip = PL_contagious;
             else if (name == "Frogizard Icon")
                 audioData.clip = FG_swamp;
+            else if (name == "Demon Icon")
+                audioData.clip = DM_4;
             audioData.Play();
             return;
         }

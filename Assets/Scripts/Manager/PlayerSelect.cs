@@ -97,7 +97,7 @@ public class PlayerSelect : MonoBehaviour
             showTutorial = true;
         }
 
-        if (gameStartTimer <= 0 && gameStartTimer >= -2 || (Input.GetButtonUp("Start") || Input.GetKeyDown(KeyCode.Return)&& playerPicking >= numPlayers))
+        if ((gameStartTimer <= 0 && gameStartTimer >= -2 || (Input.GetButtonUp("Start") || Input.GetKeyDown(KeyCode.Return))&& playerPicking >= numPlayers))
         {
             Input.ResetInputAxes();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
@@ -164,7 +164,7 @@ public class PlayerSelect : MonoBehaviour
                 }
             }
 
-            if (Input.GetButtonUp("Fire1") && playerPicking < numPlayers)
+            if ((Input.GetButtonUp("Fire1") || Input.GetKeyDown(KeyCode.Return)) && playerPicking < numPlayers)
             {
                 axisCooldownTime = .3f;
                 stage1 = false;
@@ -182,12 +182,12 @@ public class PlayerSelect : MonoBehaviour
 
         if (stage2)
         {
-            if (Input.GetButtonUp("B")||Input.GetKeyUp(KeyCode.B))
+            if (Input.GetButtonUp("B")||Input.GetKeyUp(KeyCode.B)||Input.GetMouseButtonUp(1))
             {
                 stage1 = true;
                 stage2 = false;
             }
-            Debug.Log("Looking at " + players[currentIndex].name + " at index " + currentIndex);
+            //Debug.Log("Looking at " + players[currentIndex].name + " at index " + currentIndex);
             baseIndex = stage1Index;
             Vector3 camPos = new Vector3(players[currentIndex].transform.position.x,
                 players[currentIndex].transform.position.y + 2, players[currentIndex].transform.position.z + 5);
@@ -215,7 +215,7 @@ public class PlayerSelect : MonoBehaviour
                     }
                 }
 
-                if (Input.GetButtonUp("Fire1") && playerPicking < numPlayers && axisCooldownTime < 0)
+                if ((Input.GetButtonUp("Fire1") || Input.GetKeyDown(KeyCode.Return)) && playerPicking < numPlayers && axisCooldownTime < 0)
                 {
                     stage1 = true;
                     stage2 = false;
@@ -312,7 +312,7 @@ public class PlayerSelect : MonoBehaviour
                     }
                 }
 
-                if (Input.GetButtonUp("Fire1") && playerPicking < numPlayers && axisCooldownTime < 0)
+                if ((Input.GetButtonUp("Fire1")|| Input.GetKeyDown(KeyCode.Return)) && playerPicking < numPlayers && axisCooldownTime < 0)
                 {
                     stage1 = true;
                     stage2 = false;
@@ -410,7 +410,7 @@ public class PlayerSelect : MonoBehaviour
                     }
                 }
 
-                if (Input.GetButtonUp("Fire1") && playerPicking < numPlayers && axisCooldownTime < 0)
+                if ((Input.GetButtonUp("Fire1")|| Input.GetKeyDown(KeyCode.Return)) && playerPicking < numPlayers && axisCooldownTime < 0)
                 {
                     stage1 = true;
                     stage2 = false;
@@ -508,7 +508,7 @@ public class PlayerSelect : MonoBehaviour
                     }
                 }
 
-                if (Input.GetButtonUp("Fire1") && playerPicking < numPlayers && axisCooldownTime < 0)
+                if ((Input.GetButtonUp("Fire1") || Input.GetKeyDown(KeyCode.Return)) && playerPicking < numPlayers && axisCooldownTime < 0)
                 {
                     stage1 = true;
                     stage2 = false;
