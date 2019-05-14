@@ -301,7 +301,7 @@ public class Player : MonoBehaviour {
         animator.SetTrigger("Idle");
         soundPlay = GameObject.Find("soundManager");
         soundScript sound = soundPlay.GetComponent(typeof(soundScript)) as soundScript;
-        sound.playPlayerStart();
+        sound.playPlayerStart(icon.name);
         nameUI.enabled = false;
 
     }
@@ -326,7 +326,7 @@ public class Player : MonoBehaviour {
         soundPlay = GameObject.Find("soundManager");
         animator.SetTrigger("Hit");
         soundScript sound = soundPlay.GetComponent(typeof(soundScript)) as soundScript;
-        sound.playOof();
+        sound.playOof(icon.name);
         GameManager.instance.Damage(amount, index);
         //CameraController.instance.ScreenShake(playerCamera);
     }
