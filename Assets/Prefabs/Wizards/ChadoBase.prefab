@@ -4473,6 +4473,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8325792233631082256, guid: 3f4a4251d79bb3740b1f004fcc81e315,
+        type: 3}
+      propertyPath: m_textInfo.textComponent
+      value: 
+      objectReference: {fileID: 1138892303224453955}
+    - target: {fileID: 8325792233631082256, guid: 3f4a4251d79bb3740b1f004fcc81e315,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8325792233631082256, guid: 3f4a4251d79bb3740b1f004fcc81e315,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6237877335634305161, guid: 3f4a4251d79bb3740b1f004fcc81e315,
         type: 3}
       propertyPath: m_Controller
@@ -4483,20 +4498,15 @@ PrefabInstance:
       propertyPath: m_Avatar
       value: 
       objectReference: {fileID: 9000000, guid: 78a6301ff7ec84672a63df5c9e1e269f, type: 3}
-    - target: {fileID: 973767898304488193, guid: 3f4a4251d79bb3740b1f004fcc81e315,
+    - target: {fileID: 3999029130232302215, guid: 3f4a4251d79bb3740b1f004fcc81e315,
         type: 3}
-      propertyPath: m_textInfo.textComponent
-      value: 
-      objectReference: {fileID: 8198393923522658130}
-    - target: {fileID: 8353116921814824563, guid: 3f4a4251d79bb3740b1f004fcc81e315,
-        type: 3}
-      propertyPath: m_Name
-      value: ChadoBase
+      propertyPath: m_AnchorMax.x
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8353116921814824563, guid: 3f4a4251d79bb3740b1f004fcc81e315,
+    - target: {fileID: 3999029130232302215, guid: 3f4a4251d79bb3740b1f004fcc81e315,
         type: 3}
-      propertyPath: m_TagString
-      value: Player
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2429517294149507765, guid: 3f4a4251d79bb3740b1f004fcc81e315,
         type: 3}
@@ -4588,6 +4598,31 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 1552996089015315695}
+    - target: {fileID: 973767898304488193, guid: 3f4a4251d79bb3740b1f004fcc81e315,
+        type: 3}
+      propertyPath: m_textInfo.textComponent
+      value: 
+      objectReference: {fileID: 8198393923522658130}
+    - target: {fileID: 973767898304488193, guid: 3f4a4251d79bb3740b1f004fcc81e315,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 973767898304488193, guid: 3f4a4251d79bb3740b1f004fcc81e315,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8353116921814824563, guid: 3f4a4251d79bb3740b1f004fcc81e315,
+        type: 3}
+      propertyPath: m_Name
+      value: ChadoBase
+      objectReference: {fileID: 0}
+    - target: {fileID: 8353116921814824563, guid: 3f4a4251d79bb3740b1f004fcc81e315,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 1032518970902120018, guid: 3f4a4251d79bb3740b1f004fcc81e315,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4651,12 +4686,12 @@ PrefabInstance:
     - target: {fileID: 4264200349146808768, guid: 3f4a4251d79bb3740b1f004fcc81e315,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: -1
+      value: -1.25
       objectReference: {fileID: 0}
     - target: {fileID: 4264200349146808768, guid: 3f4a4251d79bb3740b1f004fcc81e315,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5365773406449776305, guid: 3f4a4251d79bb3740b1f004fcc81e315,
         type: 3}
@@ -4678,6 +4713,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: 5365773406449776305, guid: 3f4a4251d79bb3740b1f004fcc81e315,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 5094545304489956013, guid: 3f4a4251d79bb3740b1f004fcc81e315,
         type: 3}
       propertyPath: m_Name
@@ -4693,11 +4733,6 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 6769594634137290470}
-    - target: {fileID: 8325792233631082256, guid: 3f4a4251d79bb3740b1f004fcc81e315,
-        type: 3}
-      propertyPath: m_textInfo.textComponent
-      value: 
-      objectReference: {fileID: 1138892303224453955}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f4a4251d79bb3740b1f004fcc81e315, type: 3}
 --- !u!95 &3086209342775934170 stripped

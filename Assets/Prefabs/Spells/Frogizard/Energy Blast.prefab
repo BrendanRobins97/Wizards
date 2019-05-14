@@ -213,7 +213,7 @@ MonoBehaviour:
   explosion: {fileID: 5972189390150765971, guid: 21b4b508cb6094a43b069f335fcb6333,
     type: 3}
   spellImage: {fileID: 21300000, guid: 26e83379fd9184b00bd55b0b7d43b9a7, type: 3}
-  spellImageColor: {r: 0, g: 0.32968163, b: 1, a: 0}
+  spellImageColor: {r: 0, g: 0.32968163, b: 1, a: 1}
   timeAfterSpellCast: 3
   description: 'Straight Shot: Cast An Energy Blast'
 --- !u!54 &4976606058389455720

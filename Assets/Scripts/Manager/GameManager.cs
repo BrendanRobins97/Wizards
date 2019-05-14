@@ -266,6 +266,7 @@ public class GameManager : MonoBehaviour {
 
         if (numPlayersLeft <= 1) {
             gameOverText.text = "Player " + (playerTurn + 1) + " Wins!";
+            foreach (Transform child in mainCanvas.transform) { child.gameObject.SetActive(false); }
             gameOverText.gameObject.SetActive(true);
             resetGameTime -= Time.deltaTime;
             if (resetGameTime <= 0) { SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2); }
@@ -278,8 +279,10 @@ public class GameManager : MonoBehaviour {
         currentTurnTimeLeft = turnTime;
         nextTurn = true;
         for (int i = 0; i < players.Count; i++) {
-            players[i].player.nameUI.enabled = true;
-            players[i].player.healthBar.SetActive(true);
+            if (players[i].player) {
+                players[i].player.nameUI.enabled = true;
+                players[i].player.healthBar.SetActive(true);
+            }
         }
         CurrentPlayer.nameUI.enabled = false;
         CurrentPlayer.healthBar.SetActive(false);
@@ -335,6 +338,16 @@ public class GameManager : MonoBehaviour {
             count++;
         }
         while (CurrentPlayer == null && count <= numPlayers);
+
+        for (int i = 0; i < players.Count; i++) {
+            if (players[i].player) {
+                players[i].player.nameUI.enabled = true;
+                players[i].player.healthBar.SetActive(true);
+            }
+            
+        }
+        CurrentPlayer.nameUI.enabled = false;
+        CurrentPlayer.healthBar.SetActive(false);
 
         mainCanvas.enabled = true;
         FindObjectOfType<DeathRainSpellCamera>().spellHitPointIndicator.enabled = false;
