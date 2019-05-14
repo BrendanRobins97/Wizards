@@ -92,13 +92,13 @@ public class mainMenu : MonoBehaviour
                 myAnimator.Play("part3");
                 state = 3;
             }
-            else if (state == 2 && Input.GetAxisRaw("Cancel") > 0)
+            else if (state == 2 && (Input.GetAxisRaw("Cancel") > 0 || Input.GetAxisRaw("Submit") > 0 || Input.GetButtonUp("Start") || Input.GetButtonUp("Fire1") || Input.GetKeyDown(KeyCode.Return)))
             {
                 teams = false;
                 myAnimator.Play("part3");
                 state = 3;
             }
-            else if (state == 2 && Input.GetAxisRaw("Submit") > 0)
+            else if (state == 2 && (Input.GetAxisRaw("Cancel") > 0 || Input.GetAxisRaw("Submit") > 0 || Input.GetButtonUp("Start") || Input.GetButtonUp("Fire1") || Input.GetKeyDown(KeyCode.Return)))
             {
                 teams = true;
                 myAnimator.Play("part3");
@@ -152,7 +152,7 @@ public class mainMenu : MonoBehaviour
                 myAnimator.Play("part4");
                 state = 4;
             }
-            else if (state == 3 && (Input.GetAxisRaw("Submit") > 0.0 || Input.GetButtonUp("Start") || Input.GetButtonUp("Fire1") || Input.GetKeyDown(KeyCode.Return)))
+            else if (state == 3 && (Input.GetAxisRaw("Cancel") > 0 || Input.GetAxisRaw("Submit") > 0.0 || Input.GetButtonUp("Start") || Input.GetButtonUp("Fire1") || Input.GetKeyDown(KeyCode.Return)))
             {
                 numPlayers = hoverNumPlayers;
                 myAnimator.Play("part4");
