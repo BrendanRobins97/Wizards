@@ -4291,8 +4291,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.196453
-      value: -0.0002866313
+      time: 0.20496741
+      value: 0.0014833882
       inSlope: 0.010621261
       outSlope: 0.010621261
       tangentMode: 0
@@ -4300,8 +4300,8 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.104413934
     - serializedVersion: 3
-      time: 0.77630943
-      value: 0.99552965
+      time: 0.8908724
+      value: 1.0008779
       inSlope: 0.04669303
       outSlope: 0.04669303
       tangentMode: 0
