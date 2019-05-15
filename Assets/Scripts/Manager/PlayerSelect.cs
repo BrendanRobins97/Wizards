@@ -194,7 +194,7 @@ public class PlayerSelect : MonoBehaviour
             //camera.transform.position = camPos;
             camera.transform.position = Vector3.Lerp(camera.transform.position, camPos, Time.deltaTime * 2f);
             camera.transform.LookAt(players[currentIndex].transform.position);
-            text.text = "Player " + playerDisplay + ": " + "Choose your skin.";
+            text.text = "Player " + playerDisplay + ": " + "Choose your skin."+"\nPress B To Go Back.";
             if (baseIndex == 0)
             {
                 for (int i = 0; i <= 4; i++)

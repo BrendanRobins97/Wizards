@@ -46,6 +46,8 @@ public class GameManager : MonoBehaviour {
     [SerializeField]
     private GameObject pauseText;
     [SerializeField]
+    private GameObject gameQuitText;
+    [SerializeField]
     private Canvas mainCanvas;
 
     [Header("Prefabs")]
@@ -85,6 +87,7 @@ public class GameManager : MonoBehaviour {
     private bool nextTurn;
     private bool gameOver;
     private bool paused;
+    private bool quit = false;
     private float timeSincePaused;
 
     #endregion
@@ -104,7 +107,7 @@ public class GameManager : MonoBehaviour {
             numPlayers = mm.NumPlayers();
             Destroy(mm.gameObject);
         }
-
+        gameQuitText.SetActive(false);
         PlayerSelect ps = FindObjectOfType<PlayerSelect>();
         if (ps) { numPlayers = ps.numPlayers; }
         mapShrinkNumber = 0;
@@ -168,7 +171,33 @@ public class GameManager : MonoBehaviour {
     private void Update() {
         if (!nextTurn && (Input.GetKeyDown(KeyCode.Return) || Input.GetButtonDown("Start")) &&
             SceneManager.GetActiveScene().name == "MainTestScene") { Pause(); }
+        if (paused && (Input.GetKeyDown(KeyCode.X) || Input.GetButtonUp("X")))
+        {
+            pauseText.SetActive(false);
+            gameQuitText.SetActive(true);
+            quit = true;
+        }
 
+        if (quit)
+        {
+            if (Input.GetButtonUp("Fire1"))
+            {
+                ExitGame();
+            }
+
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetButtonDown("Start"))
+            {
+                pauseText.SetActive(false);
+                gameQuitText.SetActive(false);
+                quit = false;
+            }
+            if (Input.GetButtonUp("B") || Input.GetKeyDown(KeyCode.B))
+            {
+                pauseText.SetActive(true);
+                gameQuitText.SetActive(false);
+                quit = false;
+            }
+        }
         if (playerTurn == 0 && newRound && roundNumber / numPlayers > mapShrinkNumber) {
             if (meteorShower == false) {
                 CurrentPlayer.playerCamera.enabled = false;
@@ -371,6 +400,7 @@ public class GameManager : MonoBehaviour {
             Time.timeScale = 0;
             timeSincePaused = Time.realtimeSinceStartup;
             pauseText.SetActive(true);
+            
         }
         else if (paused && Time.realtimeSinceStartup - timeSincePaused > .5f) {
             paused = false;
