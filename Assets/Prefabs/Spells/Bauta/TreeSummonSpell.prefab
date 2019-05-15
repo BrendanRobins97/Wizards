@@ -168,7 +168,7 @@ MonoBehaviour:
   explosionDampen: 0.75
   knockBackForce: 1600
   explosion: {fileID: 0}
-  spellImage: {fileID: 21300000, guid: 399b9357a705b4cc6b6ff07f8500c76a, type: 3}
+  spellImage: {fileID: 21300000, guid: 1542cdbd4d3074ede82439281c304483, type: 3}
   spellImageColor: {r: 0.6886792, g: 0.385755, b: 0.055224285, a: 1}
   timeAfterSpellCast: 5
   description: 'Special: Summon Tree From Ground (Limited Use!)'
